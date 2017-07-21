@@ -733,6 +733,484 @@ func YGValueEqual(a YGValue, b YGValue) bool {
 	return fabs(a.value-b.value) < 0.0001
 }
 
+func YGNodeSetContext(node *YGNode, context interface{}) {
+	node.context = context
+}
+
+func YGNodeGetContext(node *YGNode) interface{} { return node.context }
+
+func YGNodeSetPrintFunc(node *YGNode, printFunc YGPrintFunc) {
+	node.print = printFunc
+}
+
+func YGNodeGetPrintFunc(node *YGNode) YGPrintFunc { return node.print }
+
+func YGNodeSetHasNewLayout(node *YGNode, hasNewLayout bool) {
+	node.hasNewLayout = hasNewLayout
+}
+
+func YGNodeGetHasNewLayout(node *YGNode) bool {
+	return node.hasNewLayout
+}
+
+func YGNodeSetNodeType(node *YGNode, nodeType YGNodeType) {
+	node.nodeType = nodeType
+}
+
+func YGNodeGetNodeType(node *YGNode) YGNodeType { return node.nodeType }
+
+func YGNodeStyleSetDirection(node *YGNode, direction YGDirection) {
+	if node.style.direction != direction {
+		node.style.direction = direction
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetDirection(node *YGNode) YGDirection {
+	return node.style.direction
+}
+
+func YGNodeStyleSetFlexDirection(node *YGNode, flexDirection YGFlexDirection) {
+	if node.style.flexDirection != flexDirection {
+		node.style.flexDirection = flexDirection
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetFlexDirection(node *YGNode) YGFlexDirection {
+	return node.style.flexDirection
+}
+
+func YGNodeStyleSetJustifyContent(node *YGNode, justifyContent YGJustify) {
+	if node.style.justifyContent != justifyContent {
+		node.style.justifyContent = justifyContent
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetJustifyContent(node *YGNode) YGJustify {
+	return node.style.justifyContent
+}
+
+func YGNodeStyleSetAlignContent(node *YGNode, alignContent YGAlign) {
+	if node.style.alignContent != alignContent {
+		node.style.alignContent = alignContent
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetAlignContent(node *YGNode) YGAlign {
+	return node.style.alignContent
+}
+
+func YGNodeStyleSetAlignItems(node *YGNode, alignItems YGAlign) {
+	if node.style.alignItems != alignItems {
+		node.style.alignItems = alignItems
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetAlignItems(node *YGNode) YGAlign {
+	return node.style.alignItems
+}
+
+func YGNodeStyleSetAlignSelf(node *YGNode, alignSelf YGAlign) {
+	if node.style.alignSelf != alignSelf {
+		node.style.alignSelf = alignSelf
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetAlignSelf(node *YGNode) YGAlign {
+	return node.style.alignSelf
+}
+
+func YGNodeStyleSetFlexWrap(node *YGNode, flexWrap YGWrap) {
+	if node.style.flexWrap != flexWrap {
+		node.style.flexWrap = flexWrap
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetFlexWrap(node *YGNode) YGWrap {
+	return node.style.flexWrap
+}
+
+func YGNodeStyleSetOverflow(node *YGNode, overflow YGOverflow) {
+	if node.style.overflow != overflow {
+		node.style.overflow = overflow
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetOverflow(node *YGNode) YGOverflow {
+	return node.style.overflow
+}
+
+func YGNodeStyleSetDisplay(node *YGNode, display YGDisplay) {
+	if node.style.display != display {
+		node.style.display = display
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetDisplay(node *YGNode) YGDisplay {
+	return node.style.display
+}
+
+func YGNodeStyleSetFlex(node *YGNode, flex float32) {
+	if node.style.flex != flex {
+		node.style.flex = flex
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetFlex(node *YGNode) float32 { return node.style.flex }
+
+func YGNodeStyleSetFlexGrow(node *YGNode, flexGrow float32) {
+	if node.style.flexGrow != flexGrow {
+		node.style.flexGrow = flexGrow
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetFlexShrink(node *YGNode, flexShrink float32) {
+	if node.style.flexShrink != flexShrink {
+		node.style.flexShrink = flexShrink
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetFlexBasis(node *YGNode, flexBasis float32) {
+	if node.style.flexBasis.value != flexBasis ||
+		node.style.flexBasis.unit != YGUnitPoint {
+		node.style.flexBasis.value = flexBasis
+		node.style.flexBasis.unit = YGUnitPoint
+		if YGFloatIsUndefined(flexBasis) {
+			node.style.flexBasis.unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetFlexBasisPercent(node *YGNode, flexBasis float32) {
+	if node.style.flexBasis.value != flexBasis ||
+		node.style.flexBasis.unit != YGUnitPercent {
+		node.style.flexBasis.value = flexBasis
+		node.style.flexBasis.unit = YGUnitPercent
+		if YGFloatIsUndefined(flexBasis) {
+			node.style.flexBasis.unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetFlexBasisAuto(node *YGNode) {
+	if node.style.flexBasis.unit != YGUnitAuto {
+		node.style.flexBasis.value = YGUndefined
+		node.style.flexBasis.unit = YGUnitAuto
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetFlexBasis(node *YGNode) YGValue {
+	return node.style.flexBasis
+}
+
+func YGNodeStyleSetMargin(node *YGNode, edge YGEdge, margin float32) {
+	if node.style.margin[edge].value != margin ||
+		node.style.margin[edge].unit != YGUnitPoint {
+		node.style.margin[edge].value = margin
+		node.style.margin[edge].unit = YGUnitPoint
+		if YGFloatIsUndefined(margin) {
+			node.style.margin[edge].unit = YGUnitUndefined
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetMarginPercent(node *YGNode, edge YGEdge, margin float32) {
+	if node.style.margin[edge].value != margin ||
+		node.style.margin[edge].unit != YGUnitPercent {
+		node.style.margin[edge].value = margin
+		node.style.margin[edge].unit = YGUnitPercent
+		if YGFloatIsUndefined(margin) {
+			node.style.margin[edge].unit = YGUnitUndefined
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetMargin(node *YGNode, edge YGEdge) YGValue {
+	return node.style.margin[edge]
+}
+
+func YGNodeStyleSetMarginAuto(node *YGNode, edge YGEdge) {
+	if node.style.margin[edge].unit != YGUnitAuto {
+		node.style.margin[edge].value = __builtin_nanf("0x7fc00000")
+		node.style.margin[edge].unit = YGUnitAuto
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetPadding(node *YGNode, edge YGEdge, padding float32) {
+	if node.style.padding[edge].value != padding ||
+		node.style.padding[edge].unit != YGUnitPoint {
+		node.style.padding[edge].value = padding
+		node.style.padding[edge].unit = YGUnitPoint
+		if YGFloatIsUndefined(padding) {
+			node.style.padding[edge].unit = YGUnitUndefined
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetPaddingPercent(node *YGNode, edge YGEdge, padding float32) {
+	if node.style.padding[edge].value != padding ||
+		node.style.padding[edge].unit != YGUnitPercent {
+		node.style.padding[edge].value = padding
+		node.style.padding[edge].unit = YGUnitPercent
+		if YGFloatIsUndefined(padding) {
+			node.style.padding[edge].unit = YGUnitUndefined
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetPadding(node *YGNode, edge YGEdge) YGValue {
+	return node.style.padding[edge]
+}
+
+func YGNodeStyleSetBorder(node *YGNode, edge YGEdge, border float32) {
+	if node.style.border[edge].value != border ||
+		node.style.border[edge].unit != YGUnitPoint {
+		node.style.border[edge].value = border
+		node.style.border[edge].unit = YGUnitPoint
+		if YGFloatIsUndefined(border) {
+			node.style.border[edge].unit = YGUnitUndefined
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetBorder(node *YGNode, edge YGEdge) float32 {
+	return node.style.border[edge].value
+}
+
+func YGNodeStyleSetMinWidth(node *YGNode, minWidth float32) {
+	if node.style.minDimensions[YGDimensionWidth].value != minWidth ||
+		node.style.minDimensions[YGDimensionWidth].unit != YGUnitPoint {
+		node.style.minDimensions[YGDimensionWidth].value = minWidth
+		node.style.minDimensions[YGDimensionWidth].unit = YGUnitPoint
+		if YGFloatIsUndefined(minWidth) {
+			node.style.minDimensions[YGDimensionWidth].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetMinWidthPercent(node *YGNode, minWidth float32) {
+	if node.style.minDimensions[YGDimensionWidth].value != minWidth ||
+		node.style.minDimensions[YGDimensionWidth].unit != YGUnitPercent {
+		node.style.minDimensions[YGDimensionWidth].value = minWidth
+		node.style.minDimensions[YGDimensionWidth].unit = YGUnitPercent
+		if YGFloatIsUndefined(minWidth) {
+			node.style.minDimensions[YGDimensionWidth].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetMinWidth(node *YGNode) YGValue {
+	return node.style.minDimensions[YGDimensionWidth]
+}
+
+func YGNodeStyleSetMinHeight(node *YGNode, minHeight float32) {
+	if node.style.minDimensions[YGDimensionHeight].value != minHeight ||
+		node.style.minDimensions[YGDimensionHeight].unit != YGUnitPoint {
+		node.style.minDimensions[YGDimensionHeight].value = minHeight
+		node.style.minDimensions[YGDimensionHeight].unit = YGUnitPoint
+		if YGFloatIsUndefined(minHeight) {
+			node.style.minDimensions[YGDimensionHeight].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetMinHeightPercent(node *YGNode, minHeight float32) {
+	if node.style.minDimensions[YGDimensionHeight].value != minHeight ||
+		node.style.minDimensions[YGDimensionHeight].unit != YGUnitPercent {
+		node.style.minDimensions[YGDimensionHeight].value = minHeight
+		node.style.minDimensions[YGDimensionHeight].unit = YGUnitPercent
+		if YGFloatIsUndefined(minHeight) {
+			node.style.minDimensions[YGDimensionHeight].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetMinHeight(node *YGNode) YGValue {
+	return node.style.minDimensions[YGDimensionHeight]
+}
+
+func YGNodeStyleSetMaxWidth(node *YGNode, maxWidth float32) {
+	if node.style.maxDimensions[YGDimensionWidth].value != maxWidth ||
+		node.style.maxDimensions[YGDimensionWidth].unit != YGUnitPoint {
+		node.style.maxDimensions[YGDimensionWidth].value = maxWidth
+		node.style.maxDimensions[YGDimensionWidth].unit = YGUnitPoint
+		if YGFloatIsUndefined(maxWidth) {
+			node.style.maxDimensions[YGDimensionWidth].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetMaxWidthPercent(node *YGNode, maxWidth float32) {
+	if node.style.maxDimensions[YGDimensionWidth].value != maxWidth ||
+		node.style.maxDimensions[YGDimensionWidth].unit != YGUnitPercent {
+		node.style.maxDimensions[YGDimensionWidth].value = maxWidth
+		node.style.maxDimensions[YGDimensionWidth].unit = YGUnitPercent
+		if YGFloatIsUndefined(maxWidth) {
+			node.style.maxDimensions[YGDimensionWidth].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetMaxWidth(node *YGNode) YGValue {
+	return node.style.maxDimensions[YGDimensionWidth]
+}
+
+func YGNodeStyleSetMaxHeight(node *YGNode, maxHeight float32) {
+	if node.style.maxDimensions[YGDimensionHeight].value != maxHeight ||
+		node.style.maxDimensions[YGDimensionHeight].unit != YGUnitPoint {
+		node.style.maxDimensions[YGDimensionHeight].value = maxHeight
+		node.style.maxDimensions[YGDimensionHeight].unit = YGUnitPoint
+		if YGFloatIsUndefined(maxHeight) {
+			node.style.maxDimensions[YGDimensionHeight].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleSetMaxHeightPercent(node *YGNode, maxHeight float32) {
+	if node.style.maxDimensions[YGDimensionHeight].value != maxHeight ||
+		node.style.maxDimensions[YGDimensionHeight].unit != YGUnitPercent {
+		node.style.maxDimensions[YGDimensionHeight].value = maxHeight
+		node.style.maxDimensions[YGDimensionHeight].unit = YGUnitPercent
+		if YGFloatIsUndefined(maxHeight) {
+			node.style.maxDimensions[YGDimensionHeight].unit = YGUnitAuto
+		}
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetMaxHeight(node *YGNode) YGValue {
+	return node.style.maxDimensions[YGDimensionHeight]
+}
+
+func YGNodeStyleSetAspectRatio(node *YGNode, aspectRatio float32) {
+	if node.style.aspectRatio != aspectRatio {
+		node.style.aspectRatio = aspectRatio
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+func YGNodeStyleGetAspectRatio(node *YGNode) float32 {
+	return node.style.aspectRatio
+}
+
+func YGNodeLayoutGetLeft(node *YGNode) float32 {
+	return node.layout.position[YGEdgeLeft]
+}
+
+func YGNodeLayoutGetTop(node *YGNode) float32 {
+	return node.layout.position[YGEdgeTop]
+}
+
+func YGNodeLayoutGetRight(node *YGNode) float32 {
+	return node.layout.position[YGEdgeRight]
+}
+
+func YGNodeLayoutGetBottom(node *YGNode) float32 {
+	return node.layout.position[YGEdgeBottom]
+}
+
+func YGNodeLayoutGetWidth(node *YGNode) float32 {
+	return node.layout.dimensions[YGDimensionWidth]
+}
+
+func YGNodeLayoutGetHeight(node *YGNode) float32 {
+	return node.layout.dimensions[YGDimensionHeight]
+}
+
+func YGNodeLayoutGetDirection(node *YGNode) YGDirection {
+	return node.layout.direction
+}
+
+func YGNodeLayoutGetHadOverflow(node *YGNode) bool {
+	return node.layout.hadOverflow
+}
+
+func YGNodeLayoutGetMargin(node *YGNode, edge YGEdge) float32 {
+	YGAssertWithNode(node, edge < YGEdgeEnd, "Cannot get layout properties of multi-edge shorthands")
+	if edge == YGEdgeLeft {
+		if node.layout.direction == YGDirectionRTL {
+			return node.layout.margin[YGEdgeEnd]
+		} else {
+			return node.layout.margin[YGEdgeStart]
+		}
+	}
+	if edge == YGEdgeRight {
+		if node.layout.direction == YGDirectionRTL {
+			return node.layout.margin[YGEdgeStart]
+		} else {
+			return node.layout.margin[YGEdgeEnd]
+		}
+	}
+	return node.layout.margin[edge]
+}
+
+func YGNodeLayoutGetBorder(node *YGNode, edge YGEdge) float32 {
+	YGAssertWithNode(node, edge < YGEdgeEnd,
+		"Cannot get layout properties of multi-edge shorthands")
+	if edge == YGEdgeLeft {
+		if node.layout.direction == YGDirectionRTL {
+			return node.layout.border[YGEdgeEnd]
+		} else {
+			return node.layout.border[YGEdgeStart]
+		}
+	}
+	if edge == YGEdgeRight {
+		if node.layout.direction == YGDirectionRTL {
+			return node.layout.border[YGEdgeStart]
+		} else {
+			return node.layout.border[YGEdgeEnd]
+		}
+	}
+	return node.layout.border[edge]
+}
+
+func YGNodeLayoutGetPadding(node *YGNode, edge YGEdge) float32 {
+	YGAssertWithNode(node, edge < YGEdgeEnd,
+		"Cannot get layout properties of multi-edge shorthands")
+	if edge == YGEdgeLeft {
+		if node.layout.direction == YGDirectionRTL {
+			return node.layout.padding[YGEdgeEnd]
+		} else {
+			return node.layout.padding[YGEdgeStart]
+		}
+	}
+	if edge == YGEdgeRight {
+		if node.layout.direction == YGDirectionRTL {
+			return node.layout.padding[YGEdgeStart]
+		} else {
+			return node.layout.padding[YGEdgeEnd]
+		}
+	}
+	return node.layout.padding[edge]
+}
+
 func YGResolveDimensions(node *YGNode) {
 	for dim := YGDimensionWidth; dim <= YGDimensionHeight; dim++ {
 		if node.style.maxDimensions[dim].unit != YGUnitUndefined &&
@@ -1069,6 +1547,41 @@ var (
 	kMeasureModeNames = [YGMeasureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
 	kLayoutModeNames  = [YGMeasureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
 )
+
+func YGBaseline(node *YGNode) float32 {
+	if node.baseline != nil {
+		baseline := node.baseline(node, node.layout.measuredDimensions[YGDimensionWidth], node.layout.measuredDimensions[YGDimensionHeight])
+		YGAssertWithNode(node, !YGFloatIsUndefined(baseline), "Expect custom baseline function to not return NaN")
+		return baseline
+	}
+
+	var baselineChild *YGNode
+	childCount := YGNodeGetChildCount(node)
+	for i := 0; i < childCount; i++ {
+		child := YGNodeGetChild(node, i)
+		if child.lineIndex > 0 {
+			break
+		}
+		if child.style.positionType == YGPositionTypeAbsolute {
+			continue
+		}
+		if YGNodeAlignItem(node, child) == YGAlignBaseline {
+			baselineChild = child
+			break
+		}
+
+		if baselineChild == nil {
+			baselineChild = child
+		}
+	}
+
+	if baselineChild == nil {
+		return node.layout.measuredDimensions[YGDimensionHeight]
+	}
+
+	baseline := YGBaseline(baselineChild)
+	return baseline + baselineChild.layout.position[YGEdgeTop]
+}
 
 func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
 
