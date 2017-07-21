@@ -2,8 +2,6 @@ package flex
 
 import (
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func AlignContentFlexStartTest(t *testing.T) {
