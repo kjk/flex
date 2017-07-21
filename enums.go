@@ -103,6 +103,10 @@ const (
 	YGMeasureModeAtMost
 )
 
+const (
+	YGMeasureModeCount = 3
+)
+
 type YGNodeType int
 
 const (

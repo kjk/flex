@@ -26,3 +26,18 @@ func fmaxf(a float32, b float32) float32 {
 	}
 	return b
 }
+
+func fabs(x float32) float32 {
+	switch {
+	case x < 0:
+		return -x
+	case x == 0:
+		return 0 // return correctly abs(-0)
+	}
+	return x
+}
+
+func fmodf(x, y float32) float32 {
+	res := math.Mod(float64(x), float64(y))
+	return float32(res)
+}
