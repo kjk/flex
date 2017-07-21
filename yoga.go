@@ -76,7 +76,7 @@ type YGLayout struct {
 	padding    [6]float32
 	direction  YGDirection
 
-	computedFlexBasisGeneration uint32
+	computedFlexBasisGeneration int
 	computedFlexBasis           float32
 	hadOverflow                 bool
 
@@ -947,7 +947,7 @@ func YGNodeStyleGetMargin(node *YGNode, edge YGEdge) YGValue {
 
 func YGNodeStyleSetMarginAuto(node *YGNode, edge YGEdge) {
 	if node.style.margin[edge].unit != YGUnitAuto {
-		node.style.margin[edge].value = __builtin_nanf("0x7fc00000")
+		node.style.margin[edge].value = YGUndefined
 		node.style.margin[edge].unit = YGUnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -1621,6 +1621,149 @@ func YGConfigSetPointScaleFactor(config YGConfigRef, pixelsInPoint float32) {
 	}
 }
 
+func YGNodeComputeFlexBasisForChild(node *YGNode,
+	child *YGNode,
+	width float32,
+	widthMode YGMeasureMode,
+	height float32,
+	parentWidth float32,
+	parentHeight float32,
+	heightMode YGMeasureMode,
+	direction YGDirection,
+	config YGConfigRef) {
+	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
+	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
+	mainAxisSize := height
+	mainAxisParentSize := parentHeight
+	if isMainAxisRow {
+		mainAxisSize = width
+		mainAxisParentSize = parentWidth
+	}
+
+	var childWidth float32
+	var childHeight float32
+	var childWidthMeasureMode YGMeasureMode
+	var childHeightMeasureMode YGMeasureMode
+
+	resolvedFlexBasis := YGResolveValue(YGNodeResolveFlexBasisPtr(child), mainAxisParentSize)
+	isRowStyleDimDefined := YGNodeIsStyleDimDefined(child, YGFlexDirectionRow, parentWidth)
+	isColumnStyleDimDefined := YGNodeIsStyleDimDefined(child, YGFlexDirectionColumn, parentHeight)
+
+	if !YGFloatIsUndefined(resolvedFlexBasis) && !YGFloatIsUndefined(mainAxisSize) {
+		if YGFloatIsUndefined(child.layout.computedFlexBasis) ||
+			(YGConfigIsExperimentalFeatureEnabled(child.config, YGExperimentalFeatureWebFlexBasis) &&
+				child.layout.computedFlexBasisGeneration != gCurrentGenerationCount) {
+			child.layout.computedFlexBasis =
+				fmaxf(resolvedFlexBasis, YGNodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
+		}
+	} else if isMainAxisRow && isRowStyleDimDefined {
+		// The width is definite, so use that as the flex basis.
+		child.layout.computedFlexBasis =
+			fmaxf(YGResolveValue(child.resolvedDimensions[YGDimensionWidth], parentWidth),
+				YGNodePaddingAndBorderForAxis(child, YGFlexDirectionRow, parentWidth))
+	} else if !isMainAxisRow && isColumnStyleDimDefined {
+		// The height is definite, so use that as the flex basis.
+		child.layout.computedFlexBasis =
+			fmaxf(YGResolveValue(child.resolvedDimensions[YGDimensionHeight], parentHeight),
+				YGNodePaddingAndBorderForAxis(child, YGFlexDirectionColumn, parentWidth))
+	} else {
+		// Compute the flex basis and hypothetical main size (i.e. the clamped
+		// flex basis).
+		childWidth = YGUndefined
+		childHeight = YGUndefined
+		childWidthMeasureMode = YGMeasureModeUndefined
+		childHeightMeasureMode = YGMeasureModeUndefined
+
+		marginRow := YGNodeMarginForAxis(child, YGFlexDirectionRow, parentWidth)
+		marginColumn := YGNodeMarginForAxis(child, YGFlexDirectionColumn, parentWidth)
+
+		if isRowStyleDimDefined {
+			childWidth =
+				YGResolveValue(child.resolvedDimensions[YGDimensionWidth], parentWidth) + marginRow
+			childWidthMeasureMode = YGMeasureModeExactly
+		}
+		if isColumnStyleDimDefined {
+			childHeight =
+				YGResolveValue(child.resolvedDimensions[YGDimensionHeight], parentHeight) + marginColumn
+			childHeightMeasureMode = YGMeasureModeExactly
+		}
+
+		// The W3C spec doesn't say anything about the 'overflow' property,
+		// but all major browsers appear to implement the following logic.
+		if (!isMainAxisRow && node.style.overflow == YGOverflowScroll) ||
+			node.style.overflow != YGOverflowScroll {
+			if YGFloatIsUndefined(childWidth) && !YGFloatIsUndefined(width) {
+				childWidth = width
+				childWidthMeasureMode = YGMeasureModeAtMost
+			}
+		}
+
+		if (isMainAxisRow && node.style.overflow == YGOverflowScroll) ||
+			node.style.overflow != YGOverflowScroll {
+			if YGFloatIsUndefined(childHeight) && !YGFloatIsUndefined(height) {
+				childHeight = height
+				childHeightMeasureMode = YGMeasureModeAtMost
+			}
+		}
+
+		// If child has no defined size in the cross axis and is set to stretch,
+		// set the cross
+		// axis to be measured exactly with the available inner width
+		if !isMainAxisRow && !YGFloatIsUndefined(width) && !isRowStyleDimDefined &&
+			widthMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == YGAlignStretch {
+			childWidth = width
+			childWidthMeasureMode = YGMeasureModeExactly
+		}
+		if isMainAxisRow && !YGFloatIsUndefined(height) && !isColumnStyleDimDefined &&
+			heightMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == YGAlignStretch {
+			childHeight = height
+			childHeightMeasureMode = YGMeasureModeExactly
+		}
+
+		if !YGFloatIsUndefined(child.style.aspectRatio) {
+			if !isMainAxisRow && childWidthMeasureMode == YGMeasureModeExactly {
+				child.layout.computedFlexBasis =
+					fmaxf((childWidth-marginRow)/child.style.aspectRatio,
+						YGNodePaddingAndBorderForAxis(child, YGFlexDirectionColumn, parentWidth))
+				return
+			} else if isMainAxisRow && childHeightMeasureMode == YGMeasureModeExactly {
+				child.layout.computedFlexBasis =
+					fmaxf((childHeight-marginColumn)*child.style.aspectRatio,
+						YGNodePaddingAndBorderForAxis(child, YGFlexDirectionRow, parentWidth))
+				return
+			}
+		}
+
+		YGConstrainMaxSizeForMode(
+			child, YGFlexDirectionRow, parentWidth, parentWidth, &childWidthMeasureMode, &childWidth)
+		YGConstrainMaxSizeForMode(child,
+			YGFlexDirectionColumn,
+			parentHeight,
+			parentWidth,
+			&childHeightMeasureMode,
+			&childHeight)
+
+		// Measure the child
+		YGLayoutNodeInternal(child,
+			childWidth,
+			childHeight,
+			direction,
+			childWidthMeasureMode,
+			childHeightMeasureMode,
+			parentWidth,
+			parentHeight,
+			false,
+			"measure",
+			config)
+
+		child.layout.computedFlexBasis =
+			fmaxf(child.layout.measuredDimensions[dim[mainAxis]],
+				YGNodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
+	}
+
+	child.layout.computedFlexBasisGeneration = gCurrentGenerationCount
+}
+
 func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config YGConfigRef) bool {
 	if lastComputedHeight < 0 || lastComputedWidth < 0 {
 		return false
@@ -2221,4 +2364,34 @@ func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft flo
 	for i := 0; i < childCount; i++ {
 		YGRoundToPixelGrid(YGNodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
 	}
+}
+
+func YGConfigSetExperimentalFeatureEnabled(config YGConfigRef,
+	feature YGExperimentalFeature,
+	enabled bool) {
+	config.experimentalFeatures[feature] = enabled
+}
+
+func YGConfigIsExperimentalFeatureEnabled(config YGConfigRef, feature YGExperimentalFeature) bool {
+	return config.experimentalFeatures[feature]
+}
+
+func YGConfigSetUseWebDefaults(config YGConfigRef, enabled bool) {
+	config.useWebDefaults = enabled
+}
+
+func YGConfigSetUseLegacyStretchBehaviour(config YGConfigRef, useLegacyStretchBehaviour bool) {
+	config.useLegacyStretchBehaviour = useLegacyStretchBehaviour
+}
+
+func YGConfigGetUseWebDefaults(config YGConfigRef) bool {
+	return config.useWebDefaults
+}
+
+func YGConfigSetContext(config YGConfigRef, context interface{}) {
+	config.context = context
+}
+
+func YGConfigGetContext(config YGConfigRef) interface{} {
+	return config.context
 }
