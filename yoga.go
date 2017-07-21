@@ -441,6 +441,76 @@ func YGNodeIsDirty(node YGNodeRef) bool {
 	return node.isDirty
 }
 
+func YGNodeSetMeasureFunc(node *YGNode, measureFunc YGMeasureFunc) {
+	if measureFunc == nil {
+		node.measure = nil
+		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
+		node.nodeType = YGNodeTypeDefault
+	} else {
+		YGAssertWithNode(
+			node,
+			YGNodeGetChildCount(node) == 0,
+			"Cannot set measure function: Nodes with measure functions cannot have children.")
+		node.measure = measureFunc
+		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
+		node.nodeType = YGNodeTypeText
+	}
+}
+
+func YGNodeGetMeasureFunc(node *YGNode) YGMeasureFunc {
+	return node.measure
+}
+
+func YGNodeSetBaselineFunc(node *YGNode, baselineFunc YGBaselineFunc) {
+	node.baseline = baselineFunc
+}
+
+func YGNodeGetBaselineFunc(node *YGNode) YGBaselineFunc {
+	return node.baseline
+}
+
+func styleEq(s1, s2 *YGStyle) bool {
+	if s1.direction != s2.direction ||
+		s1.flexDirection != s2.flexDirection ||
+		s1.justifyContent != s2.justifyContent ||
+		s1.alignContent != s2.alignContent ||
+		s1.alignItems != s2.alignItems ||
+		s1.alignSelf != s2.alignSelf ||
+		s1.positionType != s2.positionType ||
+		s1.flexWrap != s2.flexWrap ||
+		s1.overflow != s2.overflow ||
+		s1.display != s2.display ||
+		s1.flex != s2.flex ||
+		s1.flexGrow != s2.flexGrow ||
+		s1.flexShrink != s2.flexShrink ||
+		s1.flexBasis != s2.flexBasis {
+		return false
+	}
+	for i := 0; i < YGEdgeCount; i++ {
+		if s1.margin[i] != s2.margin[i] ||
+			s1.position[i] != s2.position[i] ||
+			s1.padding[i] != s2.padding[i] ||
+			s1.border[i] != s2.border[i] {
+			return false
+		}
+	}
+	for i := 0; i < 2; i++ {
+		if s1.dimensions[i] != s2.dimensions[i] ||
+			s1.minDimensions[i] != s2.minDimensions[i] ||
+			s1.maxDimensions[i] != s2.maxDimensions[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func YGNodeCopyStyle(dstNode *YGNode, srcNode *YGNode) {
+	if !styleEq(&dstNode.style, &srcNode.style) {
+		dstNode.style = srcNode.style
+		YGNodeMarkDirtyInternal(dstNode)
+	}
+}
+
 // YGAssert asserts that cond is true
 func YGAssert(cond bool, format string, args ...interface{}) {
 	if !cond {
@@ -638,6 +708,10 @@ func YGNodeInsertChild(node *YGNode, child *YGNode, index int) {
 	YGNodeListInsert(&node.children, child, index)
 	child.parent = node
 	YGNodeMarkDirtyInternal(node)
+}
+
+func YGNodeGetParent(node *YGNode) *YGNode {
+	return node.parent
 }
 
 func YGFloatsEqual(a float32, b float32) bool {
