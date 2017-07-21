@@ -27,6 +27,13 @@ func fmaxf(a float32, b float32) float32 {
 	return b
 }
 
+func fminf(a float32, b float32) float32 {
+	if a < b {
+		return a
+	}
+	return b
+}
+
 func fabs(x float32) float32 {
 	switch {
 	case x < 0:

@@ -1,6 +1,10 @@
 package flex
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func AbsoluteLayoutWidthHeightStartTopTest(t *testing.T) {
 	config := YGConfigNew()
@@ -17,39 +21,29 @@ func AbsoluteLayoutWidthHeightStartTopTest(t *testing.T) {
 	YGNodeInsertChild(root, root_child0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
 
-	ASSERT_FLOAT_EQ(0, YGNodeLayoutGetLeft(root))
-	ASSERT_FLOAT_EQ(0, YGNodeLayoutGetTop(root))
-	ASSERT_FLOAT_EQ(100, YGNodeLayoutGetWidth(root))
-	ASSERT_FLOAT_EQ(100, YGNodeLayoutGetHeight(root))
+	assert.Equal(t, 0, YGNodeLayoutGetLeft(root))
+	assert.Equal(t, 0, YGNodeLayoutGetTop(root))
+	assert.Equal(t, 100, YGNodeLayoutGetWidth(root))
+	assert.Equal(t, 100, YGNodeLayoutGetHeight(root))
+
+	assert.Equal(t, 10, YGNodeLayoutGetLeft(root_child0))
+	assert.Equal(t, 10, YGNodeLayoutGetTop(root_child0))
+	assert.Equal(t, 10, YGNodeLayoutGetWidth(root_child0))
+	assert.Equal(t, 10, YGNodeLayoutGetHeight(root_child0))
+
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionRTL)
+
+	assert.Equal(t, 0, YGNodeLayoutGetLeft(root))
+	assert.Equal(t, 0, YGNodeLayoutGetTop(root))
+	assert.Equal(t, 100, YGNodeLayoutGetWidth(root))
+	assert.Equal(t, 100, YGNodeLayoutGetHeight(root))
+
+	assert.Equal(t, 80, YGNodeLayoutGetLeft(root_child0))
+	assert.Equal(t, 10, YGNodeLayoutGetTop(root_child0))
+	assert.Equal(t, 10, YGNodeLayoutGetWidth(root_child0))
+	assert.Equal(t, 10, YGNodeLayoutGetHeight(root_child0))
+
+	YGNodeFreeRecursive(root)
+	YGConfigFree(config)
 
 }
-
-/*
-
-TEST(YogaTest, absolute_layout_width_height_start_top) {
-
-
-
-
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetLeft(root_child0));
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetTop(root_child0));
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetWidth(root_child0));
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetHeight(root_child0));
-
-  YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionRTL);
-
-  ASSERT_FLOAT_EQ(0, YGNodeLayoutGetLeft(root));
-  ASSERT_FLOAT_EQ(0, YGNodeLayoutGetTop(root));
-  ASSERT_FLOAT_EQ(100, YGNodeLayoutGetWidth(root));
-  ASSERT_FLOAT_EQ(100, YGNodeLayoutGetHeight(root));
-
-  ASSERT_FLOAT_EQ(80, YGNodeLayoutGetLeft(root_child0));
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetTop(root_child0));
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetWidth(root_child0));
-  ASSERT_FLOAT_EQ(10, YGNodeLayoutGetHeight(root_child0));
-
-  YGNodeFreeRecursive(root);
-
-  YGConfigFree(config);
-}
-*/
