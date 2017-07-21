@@ -1084,6 +1084,210 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 	return widthIsCompatible && heightIsCompatible
 }
 
+func YGIsBaselineLayout(node *YGNode) bool {
+	if YGFlexDirectionIsColumn(node.style.flexDirection) {
+		return false
+	}
+	if node.style.alignItems == YGAlignBaseline {
+		return true
+	}
+	childCount := YGNodeGetChildCount(node)
+	for i := 0; i < childCount; i++ {
+		child := YGNodeGetChild(node, i)
+		if child.style.positionType == YGPositionTypeRelative &&
+			child.style.alignSelf == YGAlignBaseline {
+			return true
+		}
+	}
+
+	return false
+}
+
+func YGNodeBoundAxisWithinMinAndMax(node *YGNode, axis YGFlexDirection, value float32, axisSize float32) float32 {
+	min := YGUndefined
+	max := YGUndefined
+
+	if YGFlexDirectionIsColumn(axis) {
+		min = YGResolveValue(&node.style.minDimensions[YGDimensionHeight], axisSize)
+		max = YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], axisSize)
+	} else if YGFlexDirectionIsRow(axis) {
+		min = YGResolveValue(&node.style.minDimensions[YGDimensionWidth], axisSize)
+		max = YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], axisSize)
+	}
+
+	boundValue := value
+
+	if !YGFloatIsUndefined(max) && max >= 0 && boundValue > max {
+		boundValue = max
+	}
+
+	if !YGFloatIsUndefined(min) && min >= 0 && boundValue < min {
+		boundValue = min
+	}
+
+	return boundValue
+}
+
+// Like YGNodeBoundAxisWithinMinAndMax but also ensures that the value doesn't go
+// below the
+// padding and border amount.
+func YGNodeBoundAxis(node *YGNode, axis YGFlexDirection, value float32, axisSize float32, widthSize float32) float32 {
+	return fmaxf(YGNodeBoundAxisWithinMinAndMax(node, axis, value, axisSize),
+		YGNodePaddingAndBorderForAxis(node, axis, widthSize))
+}
+
+func YGNodeSetChildTrailingPosition(node *YGNode, child *YGNode, axis YGFlexDirection) {
+	size := child.layout.measuredDimensions[dim[axis]]
+	child.layout.position[trailing[axis]] =
+		node.layout.measuredDimensions[dim[axis]] - size - child.layout.position[pos[axis]]
+}
+
+func YGConstrainMaxSizeForMode(node *YGNode, axis YGFlexDirection, parentAxisSize float32, parentWidth float32, mode *YGMeasureMode, size *float32) {
+	maxSize := YGResolveValue(&node.style.maxDimensions[dim[axis]], parentAxisSize) +
+		YGNodeMarginForAxis(node, axis, parentWidth)
+	switch *mode {
+	case YGMeasureModeExactly:
+	case YGMeasureModeAtMost:
+		if YGFloatIsUndefined(maxSize) || *size < maxSize {
+			// TODO: this is redundant, but what is in original code
+			*size = *size
+		} else {
+			*size = maxSize
+		}
+
+		break
+	case YGMeasureModeUndefined:
+		if !YGFloatIsUndefined(maxSize) {
+			*mode = YGMeasureModeAtMost
+			*size = maxSize
+		}
+		break
+	}
+}
+
+func YGNodeFixedSizeSetMeasuredDimensions(node *YGNode,
+	availableWidth float32,
+	availableHeight float32,
+	widthMeasureMode YGMeasureMode,
+	heightMeasureMode YGMeasureMode,
+	parentWidth float32,
+	parentHeight float32) bool {
+	if (widthMeasureMode == YGMeasureModeAtMost && availableWidth <= 0) ||
+		(heightMeasureMode == YGMeasureModeAtMost && availableHeight <= 0) ||
+		(widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly) {
+		marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+		marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+
+		width := availableWidth - marginAxisRow
+		if YGFloatIsUndefined(availableWidth) || (widthMeasureMode == YGMeasureModeAtMost && availableWidth < 0) {
+			width = 0
+		}
+		node.layout.measuredDimensions[YGDimensionWidth] =
+			YGNodeBoundAxis(node, YGFlexDirectionRow, width, parentWidth, parentWidth)
+
+		height := availableHeight - marginAxisColumn
+		if YGFloatIsUndefined(availableHeight) || (heightMeasureMode == YGMeasureModeAtMost && availableHeight < 0) {
+			height = 0
+		}
+		node.layout.measuredDimensions[YGDimensionHeight] =
+			YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
+
+		return true
+	}
+
+	return false
+}
+
+// For nodes with no children, use the available values if they were provided,
+// or the minimum size as indicated by the padding and border sizes.
+func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
+	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionRow, parentWidth)
+	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionColumn, parentWidth)
+	marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+	marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+
+	width := availableWidth - marginAxisRow
+	if widthMeasureMode == YGMeasureModeUndefined || widthMeasureMode == YGMeasureModeAtMost {
+		width = paddingAndBorderAxisRow
+	}
+	node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(node, YGFlexDirectionRow, width, parentWidth, parentWidth)
+
+	height := availableHeight - marginAxisColumn
+	if heightMeasureMode == YGMeasureModeUndefined || heightMeasureMode == YGMeasureModeAtMost {
+		height = paddingAndBorderAxisColumn
+	}
+	node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
+}
+
+func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
+	YGAssertWithNode(node, node.measure != nil, "Expected node to have custom measure function")
+
+	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionRow, availableWidth)
+	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionColumn, availableWidth)
+	marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, availableWidth)
+	marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, availableWidth)
+
+	// We want to make sure we don't call measure with negative size
+	innerWidth := availableWidth
+	if !YGFloatIsUndefined(availableWidth) {
+		innerWidth = fmaxf(0, availableWidth-marginAxisRow-paddingAndBorderAxisRow)
+	}
+	innerHeight := availableHeight
+	if !YGFloatIsUndefined(availableHeight) {
+		innerHeight = fmaxf(0, availableHeight-marginAxisColumn-paddingAndBorderAxisColumn)
+	}
+
+	if widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly {
+		// Don't bother sizing the text if both dimensions are already defined.
+		node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(
+			node, YGFlexDirectionRow, availableWidth-marginAxisRow, parentWidth, parentWidth)
+		node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(
+			node, YGFlexDirectionColumn, availableHeight-marginAxisColumn, parentHeight, parentWidth)
+	} else {
+		// Measure the text under the current raints.
+		measuredSize := node.measure(node, innerWidth, widthMeasureMode, innerHeight, heightMeasureMode)
+
+		width := availableWidth - marginAxisRow
+		if widthMeasureMode == YGMeasureModeUndefined ||
+			widthMeasureMode == YGMeasureModeAtMost {
+			width = measuredSize.width + paddingAndBorderAxisRow
+
+		}
+
+		node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(node, YGFlexDirectionRow, width, availableWidth, availableWidth)
+
+		height := availableHeight - marginAxisColumn
+		if heightMeasureMode == YGMeasureModeUndefined ||
+			heightMeasureMode == YGMeasureModeAtMost {
+			height = measuredSize.height + paddingAndBorderAxisColumn
+
+		}
+
+		node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, availableHeight, availableWidth)
+	}
+}
+
+func YGZeroOutLayoutRecursivly(node *YGNode) {
+	node.layout.dimensions[YGDimensionHeight] = 0
+	node.layout.dimensions[YGDimensionWidth] = 0
+	node.layout.position[YGEdgeTop] = 0
+	node.layout.position[YGEdgeBottom] = 0
+	node.layout.position[YGEdgeLeft] = 0
+	node.layout.position[YGEdgeRight] = 0
+	node.layout.cachedLayout.availableHeight = 0
+	node.layout.cachedLayout.availableWidth = 0
+	node.layout.cachedLayout.heightMeasureMode = YGMeasureModeExactly
+	node.layout.cachedLayout.widthMeasureMode = YGMeasureModeExactly
+	node.layout.cachedLayout.computedWidth = 0
+	node.layout.cachedLayout.computedHeight = 0
+	node.hasNewLayout = true
+	childCount := YGNodeGetChildCount(node)
+	for i := 0; i < childCount; i++ {
+		child := YGNodeListGet(node.children, i)
+		YGZeroOutLayoutRecursivly(child)
+	}
+}
+
 // This is a wrapper around the YGNodelayoutImpl function. It determines
 // whether the layout request is redundant and can be skipped.
 //
