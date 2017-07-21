@@ -2018,6 +2018,165 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 	}
 }
 
+func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode YGMeasureMode, height float32, direction YGDirection, config YGConfigRef) {
+	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
+	crossAxis := YGFlexDirectionCross(mainAxis, direction)
+	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
+
+	childWidth := YGUndefined
+	childHeight := YGUndefined
+	childWidthMeasureMode := YGMeasureModeUndefined
+	childHeightMeasureMode := YGMeasureModeUndefined
+
+	marginRow := YGNodeMarginForAxis(child, YGFlexDirectionRow, width)
+	marginColumn := YGNodeMarginForAxis(child, YGFlexDirectionColumn, width)
+
+	if YGNodeIsStyleDimDefined(child, YGFlexDirectionRow, width) {
+		childWidth = YGResolveValue(child.resolvedDimensions[YGDimensionWidth], width) + marginRow
+	} else {
+		// If the child doesn't have a specified width, compute the width based
+		// on the left/right
+		// offsets if they're defined.
+		if YGNodeIsLeadingPosDefined(child, YGFlexDirectionRow) &&
+			YGNodeIsTrailingPosDefined(child, YGFlexDirectionRow) {
+			childWidth = node.layout.measuredDimensions[YGDimensionWidth] -
+				(YGNodeLeadingBorder(node, YGFlexDirectionRow) +
+					YGNodeTrailingBorder(node, YGFlexDirectionRow)) -
+				(YGNodeLeadingPosition(child, YGFlexDirectionRow, width) +
+					YGNodeTrailingPosition(child, YGFlexDirectionRow, width))
+			childWidth = YGNodeBoundAxis(child, YGFlexDirectionRow, childWidth, width, width)
+		}
+	}
+
+	if YGNodeIsStyleDimDefined(child, YGFlexDirectionColumn, height) {
+		childHeight =
+			YGResolveValue(child.resolvedDimensions[YGDimensionHeight], height) + marginColumn
+	} else {
+		// If the child doesn't have a specified height, compute the height
+		// based on the top/bottom
+		// offsets if they're defined.
+		if YGNodeIsLeadingPosDefined(child, YGFlexDirectionColumn) &&
+			YGNodeIsTrailingPosDefined(child, YGFlexDirectionColumn) {
+			childHeight = node.layout.measuredDimensions[YGDimensionHeight] -
+				(YGNodeLeadingBorder(node, YGFlexDirectionColumn) +
+					YGNodeTrailingBorder(node, YGFlexDirectionColumn)) -
+				(YGNodeLeadingPosition(child, YGFlexDirectionColumn, height) +
+					YGNodeTrailingPosition(child, YGFlexDirectionColumn, height))
+			childHeight = YGNodeBoundAxis(child, YGFlexDirectionColumn, childHeight, height, width)
+		}
+	}
+
+	// Exactly one dimension needs to be defined for us to be able to do aspect ratio
+	// calculation. One dimension being the anchor and the other being flexible.
+	if YGFloatIsUndefined(childWidth) != YGFloatIsUndefined(childHeight) {
+		if !YGFloatIsUndefined(child.style.aspectRatio) {
+			if YGFloatIsUndefined(childWidth) {
+				childWidth =
+					marginRow + fmaxf((childHeight-marginColumn)*child.style.aspectRatio,
+						YGNodePaddingAndBorderForAxis(child, YGFlexDirectionColumn, width))
+			} else if YGFloatIsUndefined(childHeight) {
+				childHeight =
+					marginColumn + fmaxf((childWidth-marginRow)/child.style.aspectRatio,
+						YGNodePaddingAndBorderForAxis(child, YGFlexDirectionRow, width))
+			}
+		}
+	}
+
+	// If we're still missing one or the other dimension, measure the content.
+	if YGFloatIsUndefined(childWidth) || YGFloatIsUndefined(childHeight) {
+		childWidthMeasureMode = YGMeasureModeExactly
+		if YGFloatIsUndefined(childWidth) {
+			childWidthMeasureMode = YGMeasureModeUndefined
+		}
+		childHeightMeasureMode = YGMeasureModeExactly
+		if YGFloatIsUndefined(childHeight) {
+			childHeightMeasureMode = YGMeasureModeUndefined
+		}
+
+		// If the size of the parent is defined then try to rain the absolute child to that size
+		// as well. This allows text within the absolute child to wrap to the size of its parent.
+		// This is the same behavior as many browsers implement.
+		if !isMainAxisRow && YGFloatIsUndefined(childWidth) && widthMode != YGMeasureModeUndefined &&
+			width > 0 {
+			childWidth = width
+			childWidthMeasureMode = YGMeasureModeAtMost
+		}
+
+		YGLayoutNodeInternal(child,
+			childWidth,
+			childHeight,
+			direction,
+			childWidthMeasureMode,
+			childHeightMeasureMode,
+			childWidth,
+			childHeight,
+			false,
+			"abs-measure",
+			config)
+		childWidth = child.layout.measuredDimensions[YGDimensionWidth] +
+			YGNodeMarginForAxis(child, YGFlexDirectionRow, width)
+		childHeight = child.layout.measuredDimensions[YGDimensionHeight] +
+			YGNodeMarginForAxis(child, YGFlexDirectionColumn, width)
+	}
+
+	YGLayoutNodeInternal(child,
+		childWidth,
+		childHeight,
+		direction,
+		YGMeasureModeExactly,
+		YGMeasureModeExactly,
+		childWidth,
+		childHeight,
+		true,
+		"abs-layout",
+		config)
+
+	if YGNodeIsTrailingPosDefined(child, mainAxis) && !YGNodeIsLeadingPosDefined(child, mainAxis) {
+		axisSize := height
+		if isMainAxisRow {
+			axisSize = width
+		}
+		child.layout.position[leading[mainAxis]] = node.layout.measuredDimensions[dim[mainAxis]] -
+			child.layout.measuredDimensions[dim[mainAxis]] -
+			YGNodeTrailingBorder(node, mainAxis) -
+			YGNodeTrailingMargin(child, mainAxis, width) -
+			YGNodeTrailingPosition(child, mainAxis, axisSize)
+	} else if !YGNodeIsLeadingPosDefined(child, mainAxis) &&
+		node.style.justifyContent == YGJustifyCenter {
+		child.layout.position[leading[mainAxis]] = (node.layout.measuredDimensions[dim[mainAxis]] -
+			child.layout.measuredDimensions[dim[mainAxis]]) /
+			2.0
+	} else if !YGNodeIsLeadingPosDefined(child, mainAxis) &&
+		node.style.justifyContent == YGJustifyFlexEnd {
+		child.layout.position[leading[mainAxis]] = (node.layout.measuredDimensions[dim[mainAxis]] -
+			child.layout.measuredDimensions[dim[mainAxis]])
+	}
+
+	if YGNodeIsTrailingPosDefined(child, crossAxis) &&
+		!YGNodeIsLeadingPosDefined(child, crossAxis) {
+		axisSize := height
+		if isMainAxisRow {
+			axisSize = width
+		}
+
+		child.layout.position[leading[crossAxis]] = node.layout.measuredDimensions[dim[crossAxis]] -
+			child.layout.measuredDimensions[dim[crossAxis]] -
+			YGNodeTrailingBorder(node, crossAxis) -
+			YGNodeTrailingMargin(child, crossAxis, width) -
+			YGNodeTrailingPosition(child, crossAxis, axisSize)
+	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
+		YGNodeAlignItem(node, child) == YGAlignCenter {
+		child.layout.position[leading[crossAxis]] =
+			(node.layout.measuredDimensions[dim[crossAxis]] -
+				child.layout.measuredDimensions[dim[crossAxis]]) /
+				2.0
+	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
+		((YGNodeAlignItem(node, child) == YGAlignFlexEnd) != (node.style.flexWrap == YGWrapWrapReverse)) {
+		child.layout.position[leading[crossAxis]] = (node.layout.measuredDimensions[dim[crossAxis]] -
+			child.layout.measuredDimensions[dim[crossAxis]])
+	}
+}
+
 // This is a wrapper around the YGNodelayoutImpl function. It determines
 // whether the layout request is redundant and can be skipped.
 //
