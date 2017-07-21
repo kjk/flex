@@ -2385,7 +2385,6 @@ func YGNodelayoutImpl(node *YGNode,
 
 		// Add items to the current line until it's full or we run out of items.
 		for i := startOfLineIndex; i < childCount; i++ {
-			// TODO: put , endOfLineIndex++ at the end
 			child := YGNodeListGet(node.children, i)
 			if child.style.display == YGDisplayNone {
 				continue
@@ -2431,6 +2430,7 @@ func YGNodelayoutImpl(node *YGNode,
 				currentRelativeChild = child
 				child.nextChild = nil
 			}
+			endOfLineIndex++
 		}
 
 		// The total flex factor needs to be floored to 1.
