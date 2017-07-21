@@ -2018,6 +2018,13 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 	}
 }
 
+func triFloat(useFirst bool, f1, f2 float32) float32 {
+	if useFirst {
+		return f1
+	}
+	return f2
+}
+
 // This is the main routine that implements a subset of the flexbox layout
 // algorithm
 // described in the W3C YG documentation: https://www.w3.org/TR/YG3-flexbox/.
@@ -2135,41 +2142,22 @@ func YGNodelayoutImpl(node *YGNode,
 	node.layout.padding[YGEdgeStart] = YGNodeLeadingPadding(node, flexRowDirection, parentWidth)
 	node.layout.padding[YGEdgeEnd] = YGNodeTrailingPadding(node, flexRowDirection, parentWidth)
 	node.layout.padding[YGEdgeTop] = YGNodeLeadingPadding(node, flexColumnDirection, parentWidth)
-	node.layout.padding[YGEdgeBottom] =
-		YGNodeTrailingPadding(node, flexColumnDirection, parentWidth)
+	node.layout.padding[YGEdgeBottom] = YGNodeTrailingPadding(node, flexColumnDirection, parentWidth)
 
 	if node.measure != nil {
-		YGNodeWithMeasureFuncSetMeasuredDimensions(node,
-			availableWidth,
-			availableHeight,
-			widthMeasureMode,
-			heightMeasureMode,
-			parentWidth,
-			parentHeight)
+		YGNodeWithMeasureFuncSetMeasuredDimensions(node, availableWidth, availableHeight, widthMeasureMode, heightMeasureMode, parentWidth, parentHeight)
 		return
 	}
 
 	childCount := YGNodeListCount(node.children)
 	if childCount == 0 {
-		YGNodeEmptyContainerSetMeasuredDimensions(node,
-			availableWidth,
-			availableHeight,
-			widthMeasureMode,
-			heightMeasureMode,
-			parentWidth,
-			parentHeight)
+		YGNodeEmptyContainerSetMeasuredDimensions(node, availableWidth, availableHeight, widthMeasureMode, heightMeasureMode, parentWidth, parentHeight)
 		return
 	}
 
 	// If we're not being asked to perform a full layout we can skip the algorithm if we already know
 	// the size
-	if !performLayout && YGNodeFixedSizeSetMeasuredDimensions(node,
-		availableWidth,
-		availableHeight,
-		widthMeasureMode,
-		heightMeasureMode,
-		parentWidth,
-		parentHeight) {
+	if !performLayout && YGNodeFixedSizeSetMeasuredDimensions(node, availableWidth, availableHeight, widthMeasureMode, heightMeasureMode, parentWidth, parentHeight) {
 		return
 	}
 
@@ -3750,13 +3738,11 @@ func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft flo
 	// lead to unwanted text truncation.
 	textRounding := node.nodeType == YGNodeTypeText
 
-	node.layout.position[YGEdgeLeft] =
-		YGRoundValueToPixelGrid(nodeLeft, pointScaleFactor, false, textRounding)
-	node.layout.position[YGEdgeTop] =
-		YGRoundValueToPixelGrid(nodeTop, pointScaleFactor, false, textRounding)
+	node.layout.position[YGEdgeLeft] = YGRoundValueToPixelGrid(nodeLeft, pointScaleFactor, false, textRounding)
+	node.layout.position[YGEdgeTop] = YGRoundValueToPixelGrid(nodeTop, pointScaleFactor, false, textRounding)
 
-		// We multiply dimension by scale factor and if the result is close to the whole number, we don't have any fraction
-		// To verify if the result is close to whole number we want to check both floor and ceil numbers
+	// We multiply dimension by scale factor and if the result is close to the whole number, we don't have any fraction
+	// To verify if the result is close to whole number we want to check both floor and ceil numbers
 	hasFractionalWidth := !YGFloatsEqual(fmodf(nodeWidth*pointScaleFactor, 1.0), 0) &&
 		!YGFloatsEqual(fmodf(nodeWidth*pointScaleFactor, 1.0), 1.0)
 	hasFractionalHeight := !YGFloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1.0), 0) &&
@@ -3783,9 +3769,7 @@ func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft flo
 	}
 }
 
-func YGConfigSetExperimentalFeatureEnabled(config YGConfigRef,
-	feature YGExperimentalFeature,
-	enabled bool) {
+func YGConfigSetExperimentalFeatureEnabled(config YGConfigRef, feature YGExperimentalFeature, enabled bool) {
 	config.experimentalFeatures[feature] = enabled
 }
 
