@@ -1341,6 +1341,54 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 	}
 }
 
+// YGNodeWithMeasureFuncSetMeasuredDimensions sets measure dimensions for node with measure func
+func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
+	YGAssertWithNode(node, node.measure != nil, "Expected node to have custom measure function")
+
+	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionRow, availableWidth)
+	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionColumn, availableWidth)
+	marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, availableWidth)
+	marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, availableWidth)
+
+	// We want to make sure we don't call measure with negative size
+	innerWidth := fmaxf(0, availableWidth-marginAxisRow-paddingAndBorderAxisRow)
+	if YGFloatIsUndefined(availableWidth) {
+		innerWidth = availableWidth
+	}
+	innerHeight := fmaxf(0, availableHeight-marginAxisColumn-paddingAndBorderAxisColumn)
+	if YGFloatIsUndefined(availableHeight) {
+		innerHeight = availableHeight
+	}
+
+	if widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly {
+		// Don't bother sizing the text if both dimensions are already defined.
+		node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(
+			node, YGFlexDirectionRow, availableWidth-marginAxisRow, parentWidth, parentWidth)
+		node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(
+			node, YGFlexDirectionColumn, availableHeight-marginAxisColumn, parentHeight, parentWidth)
+	} else {
+		// Measure the text under the current raints.
+		measuredSize := node.measure(node, innerWidth, widthMeasureMode, innerHeight, heightMeasureMode)
+
+		width := availableWidth - marginAxisRow
+		if widthMeasureMode == YGMeasureModeUndefined ||
+			widthMeasureMode == YGMeasureModeAtMost {
+			width = measuredSize.width + paddingAndBorderAxisRow
+
+		}
+
+		node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(node, YGFlexDirectionRow, width, availableWidth, availableWidth)
+
+		height := availableHeight - marginAxisColumn
+		if heightMeasureMode == YGMeasureModeUndefined ||
+			heightMeasureMode == YGMeasureModeAtMost {
+			height = measuredSize.height + paddingAndBorderAxisColumn
+		}
+
+		node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, availableHeight, availableWidth)
+	}
+}
+
 /// -------------------------- not-yet-arranged
 
 func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
@@ -1445,54 +1493,6 @@ func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth floa
 		height = paddingAndBorderAxisColumn
 	}
 	node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
-}
-
-func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
-	YGAssertWithNode(node, node.measure != nil, "Expected node to have custom measure function")
-
-	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionRow, availableWidth)
-	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionColumn, availableWidth)
-	marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, availableWidth)
-	marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, availableWidth)
-
-	// We want to make sure we don't call measure with negative size
-	innerWidth := availableWidth
-	if !YGFloatIsUndefined(availableWidth) {
-		innerWidth = fmaxf(0, availableWidth-marginAxisRow-paddingAndBorderAxisRow)
-	}
-	innerHeight := availableHeight
-	if !YGFloatIsUndefined(availableHeight) {
-		innerHeight = fmaxf(0, availableHeight-marginAxisColumn-paddingAndBorderAxisColumn)
-	}
-
-	if widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly {
-		// Don't bother sizing the text if both dimensions are already defined.
-		node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(
-			node, YGFlexDirectionRow, availableWidth-marginAxisRow, parentWidth, parentWidth)
-		node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(
-			node, YGFlexDirectionColumn, availableHeight-marginAxisColumn, parentHeight, parentWidth)
-	} else {
-		// Measure the text under the current raints.
-		measuredSize := node.measure(node, innerWidth, widthMeasureMode, innerHeight, heightMeasureMode)
-
-		width := availableWidth - marginAxisRow
-		if widthMeasureMode == YGMeasureModeUndefined ||
-			widthMeasureMode == YGMeasureModeAtMost {
-			width = measuredSize.width + paddingAndBorderAxisRow
-
-		}
-
-		node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(node, YGFlexDirectionRow, width, availableWidth, availableWidth)
-
-		height := availableHeight - marginAxisColumn
-		if heightMeasureMode == YGMeasureModeUndefined ||
-			heightMeasureMode == YGMeasureModeAtMost {
-			height = measuredSize.height + paddingAndBorderAxisColumn
-
-		}
-
-		node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, availableHeight, availableWidth)
-	}
 }
 
 func YGZeroOutLayoutRecursivly(node *YGNode) {
