@@ -225,7 +225,6 @@ func YGDefaultLog(config *YGConfig, node *YGNode, level YGLogLevel, format strin
 		n, _ := fmt.Printf(format, args...)
 		return n
 	}
-	return 0
 }
 
 // YGComputedEdgeValue computes edge value
@@ -268,24 +267,6 @@ func YGResolveValue(value *YGValue, parentSize float32) float32 {
 	return YGUndefined
 }
 
-/// -------------------------- not-yet-arranged
-
-var (
-	gCurrentGenerationCount = 0
-
-	gPrintTree    = false
-	gPrintChanges = false
-	gPrintSkips   = false
-	gDepth        = 0
-)
-
-var (
-	leading  = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
-	trailing = [4]YGEdge{YGEdgeBottom, YGEdgeTop, YGEdgeRight, YGEdgeLeft}
-	pos      = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
-	dim      = [4]YGDimension{YGDimensionHeight, YGDimensionHeight, YGDimensionWidth, YGDimensionWidth}
-)
-
 // YGResolveValueMargin resolves margin value
 func YGResolveValueMargin(value *YGValue, parentSize float32) float32 {
 	if value.unit == YGUnitAuto {
@@ -295,16 +276,15 @@ func YGResolveValueMargin(value *YGValue, parentSize float32) float32 {
 }
 
 var (
-	gNodeInstanceCount   int = 0
-	gConfigInstanceCount int = 0
+	gNodeInstanceCount   = 0
+	gConfigInstanceCount = 0
 )
 
 // YGNodeNewWithConfig creates new node with config
 func YGNodeNewWithConfig(config *YGConfig) *YGNode {
-	node := YGNode{}
+	node := gYGNodeDefaults
 	gNodeInstanceCount++
 
-	node = gYGNodeDefaults
 	if config.useWebDefaults {
 		node.style.flexDirection = YGFlexDirectionRow
 		node.style.alignContent = YGAlignStretch
@@ -336,16 +316,6 @@ func YGNodeFree(node *YGNode) {
 	gNodeInstanceCount--
 }
 
-// YGNodeGetChildCount returns number of children
-func YGNodeGetChildCount(node *YGNode) int {
-	return YGNodeListCount(node.children)
-}
-
-// YGNodeGetChild returns a child
-func YGNodeGetChild(node *YGNode, index int) *YGNode {
-	return YGNodeListGet(node.children, index)
-}
-
 // YGNodeFreeRecursive frees root recursevily
 func YGNodeFreeRecursive(root *YGNode) {
 	for YGNodeGetChildCount(root) > 0 {
@@ -356,118 +326,9 @@ func YGNodeFreeRecursive(root *YGNode) {
 	YGNodeFree(root)
 }
 
-// YGNodeRemoveChild removes the child
-func YGNodeRemoveChild(node *YGNode, child *YGNode) {
-	if YGNodeListDelete(node.children, child) != nil {
-		child.layout = gYGNodeDefaults.layout // layout is no longer valid
-		child.parent = nil
-		YGNodeMarkDirtyInternal(node)
-	}
-}
-
-// YGNodeMarkDirtyInternal marks the node as dirty, internally
-func YGNodeMarkDirtyInternal(node *YGNode) {
-	if !node.isDirty {
-		node.isDirty = true
-		node.layout.computedFlexBasis = YGUndefined
-		if node.parent != nil {
-			YGNodeMarkDirtyInternal(node.parent)
-		}
-	}
-}
-
-// YGNodeMarkDirty marks node as dirty. Only valid for nodes with a custom measure function
-// set.
-// YG knows when to mark all other nodes as dirty but because nodes with
-// measure functions
-// depends on information not known to YG they must perform this dirty
-// marking manually.
-func YGNodeMarkDirty(node *YGNode) {
-	YGAssertWithNode(node, node.measure != nil,
-		"Only leaf nodes with custom measure functions should manually mark themselves as dirty")
-	YGNodeMarkDirtyInternal(node)
-}
-
-// YGNodeIsDirty returns true if node is dirty
-func YGNodeIsDirty(node *YGNode) bool {
-	return node.isDirty
-}
-
-func YGNodeSetMeasureFunc(node *YGNode, measureFunc YGMeasureFunc) {
-	if measureFunc == nil {
-		node.measure = nil
-		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
-		node.nodeType = YGNodeTypeDefault
-	} else {
-		YGAssertWithNode(
-			node,
-			YGNodeGetChildCount(node) == 0,
-			"Cannot set measure function: Nodes with measure functions cannot have children.")
-		node.measure = measureFunc
-		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
-		node.nodeType = YGNodeTypeText
-	}
-}
-
-func YGNodeGetMeasureFunc(node *YGNode) YGMeasureFunc {
-	return node.measure
-}
-
-func YGNodeSetBaselineFunc(node *YGNode, baselineFunc YGBaselineFunc) {
-	node.baseline = baselineFunc
-}
-
-func YGNodeGetBaselineFunc(node *YGNode) YGBaselineFunc {
-	return node.baseline
-}
-
-func styleEq(s1, s2 *YGStyle) bool {
-	if s1.direction != s2.direction ||
-		s1.flexDirection != s2.flexDirection ||
-		s1.justifyContent != s2.justifyContent ||
-		s1.alignContent != s2.alignContent ||
-		s1.alignItems != s2.alignItems ||
-		s1.alignSelf != s2.alignSelf ||
-		s1.positionType != s2.positionType ||
-		s1.flexWrap != s2.flexWrap ||
-		s1.overflow != s2.overflow ||
-		s1.display != s2.display ||
-		s1.flex != s2.flex ||
-		s1.flexGrow != s2.flexGrow ||
-		s1.flexShrink != s2.flexShrink ||
-		s1.flexBasis != s2.flexBasis {
-		return false
-	}
-	for i := 0; i < YGEdgeCount; i++ {
-		if s1.margin[i] != s2.margin[i] ||
-			s1.position[i] != s2.position[i] ||
-			s1.padding[i] != s2.padding[i] ||
-			s1.border[i] != s2.border[i] {
-			return false
-		}
-	}
-	for i := 0; i < 2; i++ {
-		if s1.dimensions[i] != s2.dimensions[i] ||
-			s1.minDimensions[i] != s2.minDimensions[i] ||
-			s1.maxDimensions[i] != s2.maxDimensions[i] {
-			return false
-		}
-	}
-	return true
-}
-
-func YGNodeCopyStyle(dstNode *YGNode, srcNode *YGNode) {
-	if !styleEq(&dstNode.style, &srcNode.style) {
-		dstNode.style = srcNode.style
-		YGNodeMarkDirtyInternal(dstNode)
-	}
-}
-
 // YGNodeReset resets a node
 func YGNodeReset(node *YGNode) {
-	YGAssertWithNode(node,
-		YGNodeGetChildCount(node) == 0,
-		"Cannot reset a node which still has children attached")
+	YGAssertWithNode(node, YGNodeGetChildCount(node) == 0, "Cannot reset a node which still has children attached")
 	YGAssertWithNode(node, node.parent == nil, "Cannot reset a node still attached to a parent")
 
 	YGNodeListFree(node.children)
@@ -508,7 +369,6 @@ func YGConfigNew() *YGConfig {
 
 // YGConfigFree frees a config
 func YGConfigFree(config *YGConfig) {
-	// gYGFree(config)
 	gConfigInstanceCount--
 }
 
@@ -516,6 +376,158 @@ func YGConfigFree(config *YGConfig) {
 func YGConfigCopy(dest *YGConfig, src *YGConfig) {
 	*dest = *src
 }
+
+// YGNodeMarkDirtyInternal marks the node as dirty, internally
+func YGNodeMarkDirtyInternal(node *YGNode) {
+	if !node.isDirty {
+		node.isDirty = true
+		node.layout.computedFlexBasis = YGUndefined
+		if node.parent != nil {
+			YGNodeMarkDirtyInternal(node.parent)
+		}
+	}
+}
+
+// YGNodeSetMeasureFunc sets measure function
+func YGNodeSetMeasureFunc(node *YGNode, measureFunc YGMeasureFunc) {
+	if measureFunc == nil {
+		node.measure = nil
+		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
+		node.nodeType = YGNodeTypeDefault
+	} else {
+		YGAssertWithNode(
+			node,
+			YGNodeGetChildCount(node) == 0,
+			"Cannot set measure function: Nodes with measure functions cannot have children.")
+		node.measure = measureFunc
+		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
+		node.nodeType = YGNodeTypeText
+	}
+}
+
+// YGNodeGetMeasureFunc gets measure function
+func YGNodeGetMeasureFunc(node *YGNode) YGMeasureFunc {
+	return node.measure
+}
+
+// YGNodeSetBaselineFunc sets baseline function
+func YGNodeSetBaselineFunc(node *YGNode, baselineFunc YGBaselineFunc) {
+	node.baseline = baselineFunc
+}
+
+// YGNodeGetBaselineFunc gets baseline function
+func YGNodeGetBaselineFunc(node *YGNode) YGBaselineFunc {
+	return node.baseline
+}
+
+// YGNodeInsertChild inserts a child
+func YGNodeInsertChild(node *YGNode, child *YGNode, index int) {
+	YGAssertWithNode(node, child.parent == nil, "Child already has a parent, it must be removed first.")
+	YGAssertWithNode(node, node.measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
+
+	YGNodeListInsert(&node.children, child, index)
+	child.parent = node
+	YGNodeMarkDirtyInternal(node)
+}
+
+// YGNodeRemoveChild removes the child
+func YGNodeRemoveChild(node *YGNode, child *YGNode) {
+	if YGNodeListDelete(node.children, child) != nil {
+		child.layout = gYGNodeDefaults.layout // layout is no longer valid
+		child.parent = nil
+		YGNodeMarkDirtyInternal(node)
+	}
+}
+
+// YGNodeGetChild returns a child
+func YGNodeGetChild(node *YGNode, index int) *YGNode {
+	return YGNodeListGet(node.children, index)
+}
+
+// YGNodeGetParent gets parent
+func YGNodeGetParent(node *YGNode) *YGNode {
+	return node.parent
+}
+
+// YGNodeGetChildCount returns number of children
+func YGNodeGetChildCount(node *YGNode) int {
+	return YGNodeListCount(node.children)
+}
+
+// YGNodeMarkDirty marks node as dirty
+func YGNodeMarkDirty(node *YGNode) {
+	YGAssertWithNode(node, node.measure != nil,
+		"Only leaf nodes with custom measure functions should manually mark themselves as dirty")
+	YGNodeMarkDirtyInternal(node)
+}
+
+// YGNodeIsDirty returns true if node is dirty
+func YGNodeIsDirty(node *YGNode) bool {
+	return node.isDirty
+}
+
+func styleEq(s1, s2 *YGStyle) bool {
+	if s1.direction != s2.direction ||
+		s1.flexDirection != s2.flexDirection ||
+		s1.justifyContent != s2.justifyContent ||
+		s1.alignContent != s2.alignContent ||
+		s1.alignItems != s2.alignItems ||
+		s1.alignSelf != s2.alignSelf ||
+		s1.positionType != s2.positionType ||
+		s1.flexWrap != s2.flexWrap ||
+		s1.overflow != s2.overflow ||
+		s1.display != s2.display ||
+		s1.flex != s2.flex ||
+		s1.flexGrow != s2.flexGrow ||
+		s1.flexShrink != s2.flexShrink ||
+		s1.flexBasis != s2.flexBasis {
+		return false
+	}
+	for i := 0; i < YGEdgeCount; i++ {
+		if s1.margin[i] != s2.margin[i] ||
+			s1.position[i] != s2.position[i] ||
+			s1.padding[i] != s2.padding[i] ||
+			s1.border[i] != s2.border[i] {
+			return false
+		}
+	}
+	for i := 0; i < 2; i++ {
+		if s1.dimensions[i] != s2.dimensions[i] ||
+			s1.minDimensions[i] != s2.minDimensions[i] ||
+			s1.maxDimensions[i] != s2.maxDimensions[i] {
+			return false
+		}
+	}
+	// TODO: for now, always return false
+	return false
+	//return true
+}
+
+// YGNodeCopyStyle copies style
+func YGNodeCopyStyle(dstNode *YGNode, srcNode *YGNode) {
+	if !styleEq(&dstNode.style, &srcNode.style) {
+		dstNode.style = srcNode.style
+		YGNodeMarkDirtyInternal(dstNode)
+	}
+}
+
+/// -------------------------- not-yet-arranged
+
+var (
+	gCurrentGenerationCount = 0
+
+	gPrintTree    = false
+	gPrintChanges = false
+	gPrintSkips   = false
+	gDepth        = 0
+)
+
+var (
+	leading  = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
+	trailing = [4]YGEdge{YGEdgeBottom, YGEdgeTop, YGEdgeRight, YGEdgeLeft}
+	pos      = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
+	dim      = [4]YGDimension{YGDimensionHeight, YGDimensionHeight, YGDimensionWidth, YGDimensionWidth}
+)
 
 // YGFloatIsUndefined returns true if value is undefined
 func YGFloatIsUndefined(value float32) bool {
@@ -640,19 +652,6 @@ func YGNodeStyleSetPositionPercent(node *YGNode, edge YGEdge,
 
 func YGNodeStyleGetPosition(node *YGNode, edge YGEdge) YGValue {
 	return node.style.position[edge]
-}
-
-func YGNodeInsertChild(node *YGNode, child *YGNode, index int) {
-	YGAssertWithNode(node, child.parent == nil, "Child already has a parent, it must be removed first.")
-	YGAssertWithNode(node, node.measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
-
-	YGNodeListInsert(&node.children, child, index)
-	child.parent = node
-	YGNodeMarkDirtyInternal(node)
-}
-
-func YGNodeGetParent(node *YGNode) *YGNode {
-	return node.parent
 }
 
 func YGFloatsEqual(a float32, b float32) bool {
