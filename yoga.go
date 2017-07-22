@@ -1389,6 +1389,28 @@ func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth flo
 	}
 }
 
+// YGNodeEmptyContainerSetMeasuredDimensions sets measure dimensions for empty container
+// For nodes with no children, use the available values if they were provided,
+// or the minimum size as indicated by the padding and border sizes.
+func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
+	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionRow, parentWidth)
+	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionColumn, parentWidth)
+	marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+	marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+
+	width := availableWidth - marginAxisRow
+	if widthMeasureMode == YGMeasureModeUndefined || widthMeasureMode == YGMeasureModeAtMost {
+		width = paddingAndBorderAxisRow
+	}
+	node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(node, YGFlexDirectionRow, width, parentWidth, parentWidth)
+
+	height := availableHeight - marginAxisColumn
+	if heightMeasureMode == YGMeasureModeUndefined || heightMeasureMode == YGMeasureModeAtMost {
+		height = paddingAndBorderAxisColumn
+	}
+	node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
+}
+
 /// -------------------------- not-yet-arranged
 
 func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
@@ -1472,27 +1494,6 @@ func YGNodeFixedSizeSetMeasuredDimensions(node *YGNode,
 	}
 
 	return false
-}
-
-// For nodes with no children, use the available values if they were provided,
-// or the minimum size as indicated by the padding and border sizes.
-func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
-	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionRow, parentWidth)
-	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, YGFlexDirectionColumn, parentWidth)
-	marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
-	marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
-
-	width := availableWidth - marginAxisRow
-	if widthMeasureMode == YGMeasureModeUndefined || widthMeasureMode == YGMeasureModeAtMost {
-		width = paddingAndBorderAxisRow
-	}
-	node.layout.measuredDimensions[YGDimensionWidth] = YGNodeBoundAxis(node, YGFlexDirectionRow, width, parentWidth, parentWidth)
-
-	height := availableHeight - marginAxisColumn
-	if heightMeasureMode == YGMeasureModeUndefined || heightMeasureMode == YGMeasureModeAtMost {
-		height = paddingAndBorderAxisColumn
-	}
-	node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
 }
 
 func YGZeroOutLayoutRecursivly(node *YGNode) {
