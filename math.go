@@ -20,14 +20,30 @@ func IsNaN(f float32) (is bool) {
 	return f != f
 }
 
+// https://github.com/evanphx/ulysses-libc/blob/master/src/math/fmaxf.c
 func fmaxf(a float32, b float32) float32 {
+	if IsNaN(a) {
+		return b
+	}
+	if IsNaN(b) {
+		return a
+	}
+	// TODO: signed zeros
 	if a > b {
 		return a
 	}
 	return b
 }
 
+// https://github.com/evanphx/ulysses-libc/blob/master/src/math/fminf.c
 func fminf(a float32, b float32) float32 {
+	if IsNaN(a) {
+		return b
+	}
+	if IsNaN(b) {
+		return a
+	}
+	// TODO: signed zeros
 	if a < b {
 		return a
 	}
