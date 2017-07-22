@@ -1037,8 +1037,7 @@ func YGNodeSetPosition(node *YGNode, direction YGDirection, mainSize float32, cr
 	pos[trailing[crossAxis]] = YGNodeTrailingMargin(node, crossAxis, parentWidth) + relativePositionCross
 }
 
-/// -------------------------- not-yet-arranged
-
+// YGNodeComputeFlexBasisForChild computes flex basis for child
 func YGNodeComputeFlexBasisForChild(node *YGNode,
 	child *YGNode,
 	width float32,
@@ -1181,6 +1180,8 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 
 	child.layout.computedFlexBasisGeneration = gCurrentGenerationCount
 }
+
+/// -------------------------- not-yet-arranged
 
 func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
 	if lastComputedHeight < 0 || lastComputedWidth < 0 {
