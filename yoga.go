@@ -1411,6 +1411,62 @@ func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth floa
 	node.layout.measuredDimensions[YGDimensionHeight] = YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
 }
 
+// YGNodeFixedSizeSetMeasuredDimensions sets fixed size measure dimensions
+func YGNodeFixedSizeSetMeasuredDimensions(node *YGNode,
+	availableWidth float32,
+	availableHeight float32,
+	widthMeasureMode YGMeasureMode,
+	heightMeasureMode YGMeasureMode,
+	parentWidth float32,
+	parentHeight float32) bool {
+	if (widthMeasureMode == YGMeasureModeAtMost && availableWidth <= 0) ||
+		(heightMeasureMode == YGMeasureModeAtMost && availableHeight <= 0) ||
+		(widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly) {
+		marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+		marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+
+		width := availableWidth - marginAxisRow
+		if YGFloatIsUndefined(availableWidth) || (widthMeasureMode == YGMeasureModeAtMost && availableWidth < 0) {
+			width = 0
+		}
+		node.layout.measuredDimensions[YGDimensionWidth] =
+			YGNodeBoundAxis(node, YGFlexDirectionRow, width, parentWidth, parentWidth)
+
+		height := availableHeight - marginAxisColumn
+		if YGFloatIsUndefined(availableHeight) || (heightMeasureMode == YGMeasureModeAtMost && availableHeight < 0) {
+			height = 0
+		}
+		node.layout.measuredDimensions[YGDimensionHeight] =
+			YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
+
+		return true
+	}
+
+	return false
+}
+
+// YGZeroOutLayoutRecursivly zeros out layout recursively
+func YGZeroOutLayoutRecursivly(node *YGNode) {
+	node.layout.dimensions[YGDimensionHeight] = 0
+	node.layout.dimensions[YGDimensionWidth] = 0
+	node.layout.position[YGEdgeTop] = 0
+	node.layout.position[YGEdgeBottom] = 0
+	node.layout.position[YGEdgeLeft] = 0
+	node.layout.position[YGEdgeRight] = 0
+	node.layout.cachedLayout.availableHeight = 0
+	node.layout.cachedLayout.availableWidth = 0
+	node.layout.cachedLayout.heightMeasureMode = YGMeasureModeExactly
+	node.layout.cachedLayout.widthMeasureMode = YGMeasureModeExactly
+	node.layout.cachedLayout.computedWidth = 0
+	node.layout.cachedLayout.computedHeight = 0
+	node.hasNewLayout = true
+	childCount := YGNodeGetChildCount(node)
+	for i := 0; i < childCount; i++ {
+		child := YGNodeListGet(node.children, i)
+		YGZeroOutLayoutRecursivly(child)
+	}
+}
+
 /// -------------------------- not-yet-arranged
 
 func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
@@ -1461,60 +1517,6 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 				heightMode, height-marginColumn, lastHeightMode, lastHeight, lastComputedHeight)
 
 	return widthIsCompatible && heightIsCompatible
-}
-
-func YGNodeFixedSizeSetMeasuredDimensions(node *YGNode,
-	availableWidth float32,
-	availableHeight float32,
-	widthMeasureMode YGMeasureMode,
-	heightMeasureMode YGMeasureMode,
-	parentWidth float32,
-	parentHeight float32) bool {
-	if (widthMeasureMode == YGMeasureModeAtMost && availableWidth <= 0) ||
-		(heightMeasureMode == YGMeasureModeAtMost && availableHeight <= 0) ||
-		(widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly) {
-		marginAxisColumn := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
-		marginAxisRow := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
-
-		width := availableWidth - marginAxisRow
-		if YGFloatIsUndefined(availableWidth) || (widthMeasureMode == YGMeasureModeAtMost && availableWidth < 0) {
-			width = 0
-		}
-		node.layout.measuredDimensions[YGDimensionWidth] =
-			YGNodeBoundAxis(node, YGFlexDirectionRow, width, parentWidth, parentWidth)
-
-		height := availableHeight - marginAxisColumn
-		if YGFloatIsUndefined(availableHeight) || (heightMeasureMode == YGMeasureModeAtMost && availableHeight < 0) {
-			height = 0
-		}
-		node.layout.measuredDimensions[YGDimensionHeight] =
-			YGNodeBoundAxis(node, YGFlexDirectionColumn, height, parentHeight, parentWidth)
-
-		return true
-	}
-
-	return false
-}
-
-func YGZeroOutLayoutRecursivly(node *YGNode) {
-	node.layout.dimensions[YGDimensionHeight] = 0
-	node.layout.dimensions[YGDimensionWidth] = 0
-	node.layout.position[YGEdgeTop] = 0
-	node.layout.position[YGEdgeBottom] = 0
-	node.layout.position[YGEdgeLeft] = 0
-	node.layout.position[YGEdgeRight] = 0
-	node.layout.cachedLayout.availableHeight = 0
-	node.layout.cachedLayout.availableWidth = 0
-	node.layout.cachedLayout.heightMeasureMode = YGMeasureModeExactly
-	node.layout.cachedLayout.widthMeasureMode = YGMeasureModeExactly
-	node.layout.cachedLayout.computedWidth = 0
-	node.layout.cachedLayout.computedHeight = 0
-	node.hasNewLayout = true
-	childCount := YGNodeGetChildCount(node)
-	for i := 0; i < childCount; i++ {
-		child := YGNodeListGet(node.children, i)
-		YGZeroOutLayoutRecursivly(child)
-	}
 }
 
 func triFloat(useFirst bool, f1, f2 float32) float32 {
