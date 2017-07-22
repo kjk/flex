@@ -661,8 +661,7 @@ func YGNodeStyleGetPositionType(node *YGNode) YGPositionType {
 	return node.style.positionType
 }
 
-func YGNodeStyleSetPosition(node *YGNode, edge YGEdge,
-	position float32) {
+func YGNodeStyleSetPosition(node *YGNode, edge YGEdge, position float32) {
 	if node.style.position[edge].value != position ||
 		node.style.position[edge].unit != YGUnitPoint {
 		node.style.position[edge].value = position
@@ -1215,12 +1214,11 @@ func YGResolveDimensions(node *YGNode) {
 }
 
 func YGNodeIsStyleDimDefined(node *YGNode, axis YGFlexDirection, parentSize float32) bool {
-	return !(node.resolvedDimensions[dim[axis]].unit == YGUnitAuto ||
-		node.resolvedDimensions[dim[axis]].unit == YGUnitUndefined ||
-		(node.resolvedDimensions[dim[axis]].unit == YGUnitPoint &&
-			node.resolvedDimensions[dim[axis]].value < 0) ||
-		(node.resolvedDimensions[dim[axis]].unit == YGUnitPercent &&
-			(node.resolvedDimensions[dim[axis]].value < 0 || YGFloatIsUndefined(parentSize))))
+	v := node.resolvedDimensions[dim[axis]]
+	return !(v.unit == YGUnitAuto ||
+		v.unit == YGUnitUndefined ||
+		(v.unit == YGUnitPoint && v.value < 0) ||
+		(v.unit == YGUnitPercent && (v.value < 0 || YGFloatIsUndefined(parentSize))))
 }
 
 func YGNodeMarginForAxis(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
