@@ -11,7 +11,7 @@ const (
 )
 
 func init() {
-	gPrintTree = true
+	//gPrintTree = true
 	//gPrintChanges = true
 }
 

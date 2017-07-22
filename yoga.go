@@ -303,13 +303,13 @@ func YGComputedEdgeValue(edges []YGValue, edge YGEdge, defaultValue *YGValue) *Y
 		return &edges[edge]
 	}
 
-	if edge == YGEdgeTop || edge == YGEdgeBottom &&
-		edges[YGEdgeVertical].unit != YGUnitUndefined {
+	isVertEdge := edge == YGEdgeTop || edge == YGEdgeBottom
+	if isVertEdge && edges[YGEdgeVertical].unit != YGUnitUndefined {
 		return &edges[YGEdgeVertical]
 	}
 
-	if (edge == YGEdgeLeft || edge == YGEdgeRight || edge == YGEdgeStart || edge == YGEdgeEnd) &&
-		edges[YGEdgeHorizontal].unit != YGUnitUndefined {
+	isHorizEdge := (edge == YGEdgeLeft || edge == YGEdgeRight || edge == YGEdgeStart || edge == YGEdgeEnd)
+	if isHorizEdge && edges[YGEdgeHorizontal].unit != YGUnitUndefined {
 		return &edges[YGEdgeHorizontal]
 	}
 
@@ -575,35 +575,36 @@ func YGFloatIsUndefined(value float32) bool {
 }
 
 func YGNodeStyleSetWidth(node YGNodeRef, width float32) {
-	if node.style.dimensions[YGDimensionWidth].value != width ||
-		node.style.dimensions[YGDimensionWidth].unit != YGUnitPoint {
-		node.style.dimensions[YGDimensionWidth].value = width
+	dim := &node.style.dimensions[YGDimensionWidth]
+	if dim.value != width || dim.unit != YGUnitPoint {
+		dim.value = width
 		unit := YGUnitPoint
 		if YGFloatIsUndefined(width) {
 			unit = YGUnitAuto
 		}
-		node.style.dimensions[YGDimensionWidth].unit = unit
+		dim.unit = unit
 		YGNodeMarkDirtyInternal(node)
 	}
 }
 
 func YGNodeStyleSetWidthPercent(node YGNodeRef, width float32) {
-	if node.style.dimensions[YGDimensionWidth].value != width ||
-		node.style.dimensions[YGDimensionWidth].unit != YGUnitPercent {
-		node.style.dimensions[YGDimensionWidth].value = width
+	dim := &node.style.dimensions[YGDimensionWidth]
+	if dim.value != width || dim.unit != YGUnitPercent {
+		dim.value = width
 		unit := YGUnitPercent
 		if YGFloatIsUndefined(width) {
 			unit = YGUnitAuto
 		}
-		node.style.dimensions[YGDimensionWidth].unit = unit
+		dim.unit = unit
 		YGNodeMarkDirtyInternal(node)
 	}
 }
 
 func YGNodeStyleSetWidthAuto(node YGNodeRef) {
-	if node.style.dimensions[YGDimensionWidth].unit != YGUnitAuto {
-		node.style.dimensions[YGDimensionWidth].value = YGUndefined
-		node.style.dimensions[YGDimensionWidth].unit = YGUnitAuto
+	dim := &node.style.dimensions[YGDimensionWidth]
+	if dim.unit != YGUnitAuto {
+		dim.value = YGUndefined
+		dim.unit = YGUnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}
 }
@@ -613,35 +614,36 @@ func YGNodeStyleGetWidth(node YGNodeRef) YGValue {
 }
 
 func YGNodeStyleSetHeight(node YGNodeRef, height float32) {
-	if node.style.dimensions[YGDimensionHeight].value != height ||
-		node.style.dimensions[YGDimensionHeight].unit != YGUnitPoint {
-		node.style.dimensions[YGDimensionHeight].value = height
+	dim := &node.style.dimensions[YGDimensionHeight]
+	if dim.value != height || dim.unit != YGUnitPoint {
+		dim.value = height
 		unit := YGUnitPoint
 		if YGFloatIsUndefined(height) {
 			unit = YGUnitAuto
 		}
-		node.style.dimensions[YGDimensionHeight].unit = unit
+		dim.unit = unit
 		YGNodeMarkDirtyInternal(node)
 	}
 }
 
 func YGNodeStyleSetHeightPercent(node YGNodeRef, height float32) {
-	if node.style.dimensions[YGDimensionHeight].value != height ||
-		node.style.dimensions[YGDimensionHeight].unit != YGUnitPercent {
-		node.style.dimensions[YGDimensionHeight].value = height
+	dim := &node.style.dimensions[YGDimensionHeight]
+	if dim.value != height || dim.unit != YGUnitPercent {
+		dim.value = height
 		unit := YGUnitPercent
 		if YGFloatIsUndefined(height) {
 			unit = YGUnitAuto
 		}
-		node.style.dimensions[YGDimensionHeight].unit = unit
+		dim.unit = unit
 		YGNodeMarkDirtyInternal(node)
 	}
 }
 
 func YGNodeStyleSetHeightAuto(node YGNodeRef) {
-	if node.style.dimensions[YGDimensionHeight].unit != YGUnitAuto {
-		node.style.dimensions[YGDimensionHeight].value = YGUndefined
-		node.style.dimensions[YGDimensionHeight].unit = YGUnitAuto
+	dim := &node.style.dimensions[YGDimensionHeight]
+	if dim.unit != YGUnitAuto {
+		dim.value = YGUndefined
+		dim.unit = YGUnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}
 }
@@ -1215,14 +1217,17 @@ func YGResolveDimensions(node *YGNode) {
 
 func YGNodeIsStyleDimDefined(node *YGNode, axis YGFlexDirection, parentSize float32) bool {
 	v := node.resolvedDimensions[dim[axis]]
-	return !(v.unit == YGUnitAuto ||
+	isNotDefined := (v.unit == YGUnitAuto ||
 		v.unit == YGUnitUndefined ||
 		(v.unit == YGUnitPoint && v.value < 0) ||
 		(v.unit == YGUnitPercent && (v.value < 0 || YGFloatIsUndefined(parentSize))))
+	return !isNotDefined
 }
 
 func YGNodeMarginForAxis(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
-	return YGNodeLeadingMargin(node, axis, widthSize) + YGNodeTrailingMargin(node, axis, widthSize)
+	leading := YGNodeLeadingMargin(node, axis, widthSize)
+	trailing := YGNodeTrailingMargin(node, axis, widthSize)
+	return leading + trailing
 }
 
 func YGFlexDirectionIsRow(flexDirection YGFlexDirection) bool {
@@ -1238,7 +1243,8 @@ func YGNodeLeadingMargin(node *YGNode, axis YGFlexDirection, widthSize float32) 
 		return YGResolveValueMargin(&node.style.margin[YGEdgeStart], widthSize)
 	}
 
-	return YGResolveValueMargin(YGComputedEdgeValue(node.style.margin[:], leading[axis], &YGValueZero), widthSize)
+	v := YGComputedEdgeValue(node.style.margin[:], leading[axis], &YGValueZero)
+	return YGResolveValueMargin(v, widthSize)
 }
 
 func YGNodeTrailingMargin(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
@@ -2254,16 +2260,10 @@ func triFloat(useFirst bool, f1, f2 float32) float32 {
 //    an available size of
 //    undefined then it must also pass a measure mode of YGMeasureModeUndefined
 //    in that dimension.
-func YGNodelayoutImpl(node *YGNode,
-	availableWidth float32,
-	availableHeight float32,
-	parentDirection YGDirection,
-	widthMeasureMode YGMeasureMode,
-	heightMeasureMode YGMeasureMode,
-	parentWidth float32,
-	parentHeight float32,
-	performLayout bool,
-	config YGConfigRef) {
+func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight float32,
+	parentDirection YGDirection, widthMeasureMode YGMeasureMode,
+	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
+	performLayout bool, config YGConfigRef) {
 	// YGAssertWithNode(node, YGFloatIsUndefined(availableWidth) ? widthMeasureMode == YGMeasureModeUndefined : true, "availableWidth is indefinite so widthMeasureMode must be YGMeasureModeUndefined");
 	//YGAssertWithNode(node, YGFloatIsUndefined(availableHeight) ? heightMeasureMode == YGMeasureModeUndefined : true, "availableHeight is indefinite so heightMeasureMode must be YGMeasureModeUndefined");
 
@@ -3575,14 +3575,9 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 //  Input parameters are the same as YGNodelayoutImpl (see above)
 //  Return parameter is true if layout was performed, false if skipped
 func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight float32,
-	parentDirection YGDirection,
-	widthMeasureMode YGMeasureMode,
-	heightMeasureMode YGMeasureMode,
-	parentWidth float32,
-	parentHeight float32,
-	performLayout bool,
-	reason string,
-	config YGConfigRef) bool {
+	parentDirection YGDirection, widthMeasureMode YGMeasureMode,
+	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
+	performLayout bool, reason string, config YGConfigRef) bool {
 	layout := &node.layout
 
 	gDepth++
@@ -3791,8 +3786,9 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 	width := YGUndefined
 	widthMeasureMode := YGMeasureModeUndefined
 	if YGNodeIsStyleDimDefined(node, YGFlexDirectionRow, parentWidth) {
-		width = YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionRow]], parentWidth) +
-			YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+		width = YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionRow]], parentWidth)
+		margin := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+		width += margin
 		widthMeasureMode = YGMeasureModeExactly
 	} else if YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], parentWidth) >= 0.0 {
 		width = YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], parentWidth)
@@ -3808,10 +3804,11 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 	height := YGUndefined
 	heightMeasureMode := YGMeasureModeUndefined
 	if YGNodeIsStyleDimDefined(node, YGFlexDirectionColumn, parentHeight) {
-		height = YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionColumn]], parentHeight) +
-			YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+		height = YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionColumn]], parentHeight)
+		margin := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+		height += margin
 		heightMeasureMode = YGMeasureModeExactly
-	} else if YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight) >= 0.0 {
+	} else if YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight) >= 0 {
 		height = YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight)
 		heightMeasureMode = YGMeasureModeAtMost
 	} else {
