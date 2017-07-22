@@ -826,7 +826,7 @@ func TestAbsolute_layout_percentage_bottom_based_on_parent_height(t *testing.T) 
 	YGConfigFree(config)
 }
 
-func absolute_layout_in_wrap_reverse_column_containerTest(t *testing.T) {
+func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -868,7 +868,7 @@ func absolute_layout_in_wrap_reverse_column_containerTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func absolute_layout_in_wrap_reverse_row_containerTest(t *testing.T) {
+func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -911,7 +911,7 @@ func absolute_layout_in_wrap_reverse_row_containerTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func absolute_layout_in_wrap_reverse_column_container_flex_endTest(t *testing.T) {
+func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -954,7 +954,7 @@ func absolute_layout_in_wrap_reverse_column_container_flex_endTest(t *testing.T)
 	YGConfigFree(config)
 }
 
-func absolute_layout_in_wrap_reverse_row_container_flex_endTest(t *testing.T) {
+func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)

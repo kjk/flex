@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func AlignContentFlexStartTest(t *testing.T) {
+func TestAlignContentFlexStart(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -106,7 +106,7 @@ func AlignContentFlexStartTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_flex_start_without_height_on_childrenTest(t *testing.T) {
+func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 
 	config := YGConfigNew()
 
@@ -205,7 +205,7 @@ func align_content_flex_start_without_height_on_childrenTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_flex_start_with_flexTest(t *testing.T) {
+func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -309,7 +309,7 @@ func align_content_flex_start_with_flexTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_flex_endTest(t *testing.T) {
+func TestAlign_content_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -411,7 +411,7 @@ func align_content_flex_endTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretchTest(t *testing.T) {
+func TestAlign_content_stretch(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -508,7 +508,7 @@ func align_content_stretchTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_spacebetweenTest(t *testing.T) {
+func TestAlign_content_spacebetween(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -611,7 +611,7 @@ func align_content_spacebetweenTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_spacearoundTest(t *testing.T) {
+func TestAlign_content_spacearound(t *testing.T) {
 
 	config := YGConfigNew()
 
@@ -715,7 +715,7 @@ func align_content_spacearoundTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_rowTest(t *testing.T) {
+func TestAlign_content_stretch_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -813,7 +813,7 @@ func align_content_stretch_rowTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_childrenTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_children(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -927,7 +927,7 @@ func align_content_stretch_row_with_childrenTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_flexTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1031,7 +1031,7 @@ func align_content_stretch_row_with_flexTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_flex_no_shrinkTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1134,7 +1134,7 @@ func align_content_stretch_row_with_flex_no_shrinkTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_marginTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1240,7 +1240,7 @@ func align_content_stretch_row_with_marginTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_paddingTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1346,7 +1346,7 @@ func align_content_stretch_row_with_paddingTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_single_rowTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1402,7 +1402,7 @@ func align_content_stretch_row_with_single_rowTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_fixed_heightTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1501,7 +1501,7 @@ func align_content_stretch_row_with_fixed_heightTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_max_heightTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1600,7 +1600,7 @@ func align_content_stretch_row_with_max_heightTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_row_with_min_heightTest(t *testing.T) {
+func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1699,7 +1699,7 @@ func align_content_stretch_row_with_min_heightTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_columnTest(t *testing.T) {
+func TestAlign_content_stretch_column(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -1815,7 +1815,7 @@ func align_content_stretch_columnTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func align_content_stretch_is_not_overriding_align_itemsTest(t *testing.T) {
+func TestAlign_content_stretch_is_not_overriding_align_items(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
