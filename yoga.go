@@ -1691,12 +1691,9 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 
 	paddingAndBorderAxisRow := paddingAndBorderAxisCross
-	if isMainAxisRow {
-		paddingAndBorderAxisRow = paddingAndBorderAxisMain
-	}
-
 	paddingAndBorderAxisColumn := paddingAndBorderAxisMain
 	if isMainAxisRow {
+		paddingAndBorderAxisRow = paddingAndBorderAxisMain
 		paddingAndBorderAxisColumn = paddingAndBorderAxisCross
 	}
 
@@ -1714,11 +1711,9 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		marginAxisColumn - paddingAndBorderAxisColumn
 
 	minInnerMainDim := minInnerHeight
-	if isMainAxisRow {
-		minInnerMainDim = minInnerWidth
-	}
 	maxInnerMainDim := maxInnerHeight
 	if isMainAxisRow {
+		minInnerMainDim = minInnerWidth
 		maxInnerMainDim = maxInnerWidth
 	}
 
@@ -1737,11 +1732,9 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 
 	availableInnerMainDim := availableInnerHeight
-	if isMainAxisRow {
-		availableInnerMainDim = availableInnerWidth
-	}
 	availableInnerCrossDim := availableInnerWidth
 	if isMainAxisRow {
+		availableInnerMainDim = availableInnerWidth
 		availableInnerCrossDim = availableInnerHeight
 	}
 
@@ -1870,6 +1863,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		for i := startOfLineIndex; i < childCount; i++ {
 			child := YGNodeListGet(node.children, i)
 			if child.style.display == YGDisplayNone {
+				endOfLineIndex++
 				continue
 			}
 			child.lineIndex = lineCount
