@@ -2813,9 +2813,7 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 	return widthIsCompatible && heightIsCompatible
 }
 
-/// -------------------------- not-yet-arranged
-
-// This is a wrapper around the YGNodelayoutImpl function. It determines
+// YGLayoutNodeInternal is a wrapper around the YGNodelayoutImpl function. It determines
 // whether the layout request is redundant and can be skipped.
 //
 // Parameters:
@@ -3017,7 +3015,73 @@ func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight 
 
 	gDepth--
 	layout.generationCount = gCurrentGenerationCount
-	return (needToVisitNode || cachedResults == nil)
+	return needToVisitNode || cachedResults == nil
+}
+
+// YGConfigSetPointScaleFactor sets scale factor
+func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
+	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
+
+	// We store points for Pixel as we will use it for rounding
+	if pixelsInPoint == 0 {
+		// Zero is used to skip rounding
+		config.pointScaleFactor = 0
+	} else {
+		config.pointScaleFactor = pixelsInPoint
+	}
+}
+
+// YGRoundToPixelGrid rounds to pixel grid
+func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft float32, absoluteTop float32) {
+	if pointScaleFactor == 0.0 {
+		return
+	}
+
+	nodeLeft := node.layout.position[YGEdgeLeft]
+	nodeTop := node.layout.position[YGEdgeTop]
+
+	nodeWidth := node.layout.dimensions[YGDimensionWidth]
+	nodeHeight := node.layout.dimensions[YGDimensionHeight]
+
+	absoluteNodeLeft := absoluteLeft + nodeLeft
+	absoluteNodeTop := absoluteTop + nodeTop
+
+	absoluteNodeRight := absoluteNodeLeft + nodeWidth
+	absoluteNodeBottom := absoluteNodeTop + nodeHeight
+
+	// If a node has a custom measure function we never want to round down its size as this could
+	// lead to unwanted text truncation.
+	textRounding := node.nodeType == YGNodeTypeText
+
+	node.layout.position[YGEdgeLeft] = YGRoundValueToPixelGrid(nodeLeft, pointScaleFactor, false, textRounding)
+	node.layout.position[YGEdgeTop] = YGRoundValueToPixelGrid(nodeTop, pointScaleFactor, false, textRounding)
+
+	// We multiply dimension by scale factor and if the result is close to the whole number, we don't have any fraction
+	// To verify if the result is close to whole number we want to check both floor and ceil numbers
+	hasFractionalWidth := !YGFloatsEqual(fmodf(nodeWidth*pointScaleFactor, 1), 0) &&
+		!YGFloatsEqual(fmodf(nodeWidth*pointScaleFactor, 1), 1)
+	hasFractionalHeight := !YGFloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1), 0) &&
+		!YGFloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1), 1)
+
+	node.layout.dimensions[YGDimensionWidth] =
+		YGRoundValueToPixelGrid(
+			absoluteNodeRight,
+			pointScaleFactor,
+			(textRounding && hasFractionalWidth),
+			(textRounding && !hasFractionalWidth)) -
+			YGRoundValueToPixelGrid(absoluteNodeLeft, pointScaleFactor, false, textRounding)
+	node.layout.dimensions[YGDimensionHeight] =
+		YGRoundValueToPixelGrid(
+			absoluteNodeBottom,
+			pointScaleFactor,
+			(textRounding && hasFractionalHeight),
+			(textRounding && !hasFractionalHeight)) -
+			YGRoundValueToPixelGrid(absoluteNodeTop, pointScaleFactor, false, textRounding)
+
+	childCount := YGNodeListCount(node.children)
+	for i := 0; i < childCount; i++ {
+		YGRoundToPixelGrid(YGNodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
+	}
 }
 
 func calcStartWidth(node *YGNode, parentWidth float32) (float32, YGMeasureMode) {
@@ -3056,6 +3120,7 @@ func calcStartHeight(node *YGNode, parentWidth, parentHeight float32) (float32, 
 	return height, heightMeasureMode
 }
 
+// YGNodeCalculateLayout sets
 func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float32, parentDirection YGDirection) {
 	// Increment the generation count. This will force the recursive routine to
 	// visit
@@ -3081,98 +3146,42 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 	}
 }
 
-func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
-	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
-
-	// We store points for Pixel as we will use it for rounding
-	if pixelsInPoint == 0 {
-		// Zero is used to skip rounding
-		config.pointScaleFactor = 0
-	} else {
-		config.pointScaleFactor = pixelsInPoint
-	}
-}
-
-func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft float32, absoluteTop float32) {
-	if pointScaleFactor == 0.0 {
-		return
-	}
-
-	nodeLeft := node.layout.position[YGEdgeLeft]
-	nodeTop := node.layout.position[YGEdgeTop]
-
-	nodeWidth := node.layout.dimensions[YGDimensionWidth]
-	nodeHeight := node.layout.dimensions[YGDimensionHeight]
-
-	absoluteNodeLeft := absoluteLeft + nodeLeft
-	absoluteNodeTop := absoluteTop + nodeTop
-
-	absoluteNodeRight := absoluteNodeLeft + nodeWidth
-	absoluteNodeBottom := absoluteNodeTop + nodeHeight
-
-	// If a node has a custom measure function we never want to round down its size as this could
-	// lead to unwanted text truncation.
-	textRounding := node.nodeType == YGNodeTypeText
-
-	node.layout.position[YGEdgeLeft] = YGRoundValueToPixelGrid(nodeLeft, pointScaleFactor, false, textRounding)
-	node.layout.position[YGEdgeTop] = YGRoundValueToPixelGrid(nodeTop, pointScaleFactor, false, textRounding)
-
-	// We multiply dimension by scale factor and if the result is close to the whole number, we don't have any fraction
-	// To verify if the result is close to whole number we want to check both floor and ceil numbers
-	hasFractionalWidth := !YGFloatsEqual(fmodf(nodeWidth*pointScaleFactor, 1.0), 0) &&
-		!YGFloatsEqual(fmodf(nodeWidth*pointScaleFactor, 1.0), 1.0)
-	hasFractionalHeight := !YGFloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1.0), 0) &&
-		!YGFloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1.0), 1.0)
-
-	node.layout.dimensions[YGDimensionWidth] =
-		YGRoundValueToPixelGrid(
-			absoluteNodeRight,
-			pointScaleFactor,
-			(textRounding && hasFractionalWidth),
-			(textRounding && !hasFractionalWidth)) -
-			YGRoundValueToPixelGrid(absoluteNodeLeft, pointScaleFactor, false, textRounding)
-	node.layout.dimensions[YGDimensionHeight] =
-		YGRoundValueToPixelGrid(
-			absoluteNodeBottom,
-			pointScaleFactor,
-			(textRounding && hasFractionalHeight),
-			(textRounding && !hasFractionalHeight)) -
-			YGRoundValueToPixelGrid(absoluteNodeTop, pointScaleFactor, false, textRounding)
-
-	childCount := YGNodeListCount(node.children)
-	for i := 0; i < childCount; i++ {
-		YGRoundToPixelGrid(YGNodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
-	}
-}
-
+// YGConfigSetExperimentalFeatureEnabled enables experimental feature
 func YGConfigSetExperimentalFeatureEnabled(config *YGConfig, feature YGExperimentalFeature, enabled bool) {
 	config.experimentalFeatures[feature] = enabled
 }
 
+// YGConfigIsExperimentalFeatureEnabled returns if experimental feature is enabled
 func YGConfigIsExperimentalFeatureEnabled(config *YGConfig, feature YGExperimentalFeature) bool {
 	return config.experimentalFeatures[feature]
 }
 
+// YGConfigSetUseWebDefaults sets useWebDefaults
 func YGConfigSetUseWebDefaults(config *YGConfig, enabled bool) {
 	config.useWebDefaults = enabled
 }
 
+// YGConfigSetUseLegacyStretchBehaviour sets legacy stretch behavior
 func YGConfigSetUseLegacyStretchBehaviour(config *YGConfig, useLegacyStretchBehaviour bool) {
 	config.useLegacyStretchBehaviour = useLegacyStretchBehaviour
 }
 
+// YGConfigGetUseWebDefaults gets useWebDefaults
 func YGConfigGetUseWebDefaults(config *YGConfig) bool {
 	return config.useWebDefaults
 }
 
+// YGConfigSetContext sets context
 func YGConfigSetContext(config *YGConfig, context interface{}) {
 	config.context = context
 }
 
+// YGConfigGetContext gets context
 func YGConfigGetContext(config *YGConfig) interface{} {
 	return config.context
 }
 
+// YGLog logs
 func YGLog(node *YGNode, level YGLogLevel, format string, args ...interface{}) {
 	fmt.Printf(format, args...)
 }
@@ -3189,6 +3198,7 @@ func YGAssertWithNode(node *YGNode, cond bool, format string, args ...interface{
 	YGAssert(cond, format, args...)
 }
 
+// YGAssertWithConfig asserts with config
 func YGAssertWithConfig(config *YGConfig, condition bool, message string) {
 	if !condition {
 		panic(message)
