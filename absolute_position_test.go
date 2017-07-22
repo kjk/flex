@@ -64,7 +64,7 @@ func TestAbsoluteLayoutWidthHeightStartTop(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func testAbsoluteLayoutStartTopEndBottom(t *testing.T) {
+func TestAbsoluteLayoutStartTopEndBottom(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -107,7 +107,7 @@ func testAbsoluteLayoutStartTopEndBottom(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutWidthHeightStartTopEndBottomTest(t *testing.T) {
+func TestAbsoluteLayoutWidthHeightStartTopEndBottom(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -152,7 +152,7 @@ func AbsoluteLayoutWidthHeightStartTopEndBottomTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func DoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParentTest(t *testing.T) {
+func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -210,7 +210,7 @@ func DoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParentTest(t *test
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutWithinBorderTest(t *testing.T) {
+func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -327,7 +327,7 @@ func AbsoluteLayoutWithinBorderTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsAndJustifyContentCenterTest(t *testing.T) {
+func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -371,7 +371,7 @@ func AbsoluteLayoutAlignItemsAndJustifyContentCenterTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsAndJustifyContentFlexEndText(t *testing.T) {
+func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -415,7 +415,7 @@ func AbsoluteLayoutAlignItemsAndJustifyContentFlexEndText(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutJustifyContentCenterTest(t *testing.T) {
+func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -458,8 +458,7 @@ func AbsoluteLayoutJustifyContentCenterTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsCenterTest(t *testing.T) {
-
+func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -502,7 +501,7 @@ func AbsoluteLayoutAlignItemsCenterTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsCenterOnChildOnlyTest(t *testing.T) {
+func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -545,7 +544,7 @@ func AbsoluteLayoutAlignItemsCenterOnChildOnlyTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPositionTest(t *testing.T) {
+func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -590,7 +589,7 @@ func AbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPositionTest(t *testin
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPositionTest(t *testing.T) {
+func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -635,7 +634,7 @@ func AbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPositionTest(t *tes
 	YGConfigFree(config)
 }
 
-func AbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPositionTest(t *testing.T) {
+func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -680,7 +679,7 @@ func AbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPositionTest(t *testi
 	YGConfigFree(config)
 }
 
-func absolute_layout_align_items_and_justify_content_center_and_right_positionTest(t *testing.T) {
+func TestAbsolute_layout_align_items_and_justify_content_center_and_right_position(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -725,7 +724,7 @@ func absolute_layout_align_items_and_justify_content_center_and_right_positionTe
 	YGConfigFree(config)
 }
 
-func position_root_with_rtl_should_position_withoutdirectionTest(t *testing.T) {
+func TestPosition_root_with_rtl_should_position_withoutdirection(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
@@ -751,7 +750,7 @@ func position_root_with_rtl_should_position_withoutdirectionTest(t *testing.T) {
 	YGConfigFree(config)
 }
 
-func absolute_layout_percentage_bottom_based_on_parent_heightTest(t *testing.T) {
+func TestAbsolute_layout_percentage_bottom_based_on_parent_height(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
