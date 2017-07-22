@@ -5,57 +5,6 @@ import (
 	"os"
 )
 
-// Yoga.h
-
-// YGSize describes size
-type YGSize struct {
-	width  float32
-	height float32
-}
-
-// YGValue describes value
-type YGValue struct {
-	value float32
-	unit  YGUnit
-}
-
-var (
-	// YGUndefined defines undefined value
-	YGUndefined = NAN
-	// YGValueUndefined defines undefined YGValue
-	YGValueUndefined = YGValue{YGUndefined, YGUnitUndefined}
-	// YGValueAuto defines auto YGValue
-	YGValueAuto = YGValue{YGUndefined, YGUnitAuto}
-
-	gCurrentGenerationCount = 0
-
-	gPrintTree    = false
-	gPrintChanges = false
-	gPrintSkips   = false
-	gDepth        = 0
-)
-
-// YGMeasureFunc describes function for measuring
-type YGMeasureFunc func(node YGNodeRef, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize
-
-// YGBaselineFunc describes function for baseline
-type YGBaselineFunc func(node YGNodeRef, width float32, height float32) float32
-
-// YGPrintFunc defines function for printing
-type YGPrintFunc func(node YGNodeRef)
-
-// YGLogger defines logging function
-type YGLogger func(config YGConfigRef,
-	node YGNodeRef,
-	level YGLogLevel,
-	format string, args ...interface{}) int
-
-// Yoga.c
-
-// This value was chosen based on empiracle data. Even the most complicated
-// layouts should not require more than 16 entries to fit within the cache.
-const YG_MAX_CACHED_RESULT_COUNT = 16
-
 // YGCachedMeasurement describes measurements
 type YGCachedMeasurement struct {
 	availableWidth    float32
@@ -66,6 +15,10 @@ type YGCachedMeasurement struct {
 	computedWidth  float32
 	computedHeight float32
 }
+
+// This value was chosen based on empiracle data. Even the most complicated
+// layouts should not require more than 16 entries to fit within the cache.
+const YG_MAX_CACHED_RESULT_COUNT = 16
 
 // YGLayout describes layout
 type YGLayout struct {
@@ -131,22 +84,29 @@ type YGConfig struct {
 	context                   interface{}
 }
 
-type YGConfigRef *YGConfig
+var (
+	gCurrentGenerationCount = 0
+
+	gPrintTree    = false
+	gPrintChanges = false
+	gPrintSkips   = false
+	gDepth        = 0
+)
 
 type YGNode struct {
 	style     YGStyle
 	layout    YGLayout
 	lineIndex int
 
-	parent   YGNodeRef
-	children YGNodeListRef
+	parent   *YGNode
+	children *YGNodeList
 
 	nextChild *YGNode
 
 	measure  YGMeasureFunc
 	baseline YGBaselineFunc
 	print    YGPrintFunc
-	config   YGConfigRef
+	config   *YGConfig
 	context  interface{}
 
 	isDirty      bool
@@ -155,8 +115,6 @@ type YGNode struct {
 
 	resolvedDimensions [2]*YGValue
 }
-
-type YGNodeRef *YGNode
 
 var (
 	YG_UNDEFINED_VALUES = YGValue{
@@ -279,7 +237,7 @@ func YGLog(node *YGNode, level YGLogLevel, format string, args ...interface{}) {
 }
 
 // YGDefaultLog is default logging function
-func YGDefaultLog(config YGConfigRef, node YGNodeRef, level YGLogLevel, format string,
+func YGDefaultLog(config *YGConfig, node *YGNode, level YGLogLevel, format string,
 	args ...interface{}) int {
 	switch level {
 	case YGLogLevelError:
@@ -352,7 +310,7 @@ var (
 )
 
 // YGNodeNewWithConfig creates new node with config
-func YGNodeNewWithConfig(config YGConfigRef) YGNodeRef {
+func YGNodeNewWithConfig(config *YGConfig) *YGNode {
 	node := YGNode{}
 	gNodeInstanceCount++
 
@@ -366,12 +324,12 @@ func YGNodeNewWithConfig(config YGConfigRef) YGNodeRef {
 }
 
 // YGNodeNew creates a new node
-func YGNodeNew() YGNodeRef {
+func YGNodeNew() *YGNode {
 	return YGNodeNewWithConfig(&gYGConfigDefaults)
 }
 
 // YGNodeFree frees a node
-func YGNodeFree(node YGNodeRef) {
+func YGNodeFree(node *YGNode) {
 	if node.parent != nil {
 		YGNodeListDelete(node.parent.children, node)
 		node.parent = nil
@@ -389,17 +347,17 @@ func YGNodeFree(node YGNodeRef) {
 }
 
 // YGNodeGetChildCount returns number of children
-func YGNodeGetChildCount(node YGNodeRef) int {
+func YGNodeGetChildCount(node *YGNode) int {
 	return YGNodeListCount(node.children)
 }
 
 // YGNodeGetChild returns a child
-func YGNodeGetChild(node YGNodeRef, index int) YGNodeRef {
+func YGNodeGetChild(node *YGNode, index int) *YGNode {
 	return YGNodeListGet(node.children, index)
 }
 
 // YGNodeFreeRecursive frees root recursevily
-func YGNodeFreeRecursive(root YGNodeRef) {
+func YGNodeFreeRecursive(root *YGNode) {
 	for YGNodeGetChildCount(root) > 0 {
 		child := YGNodeGetChild(root, 0)
 		YGNodeRemoveChild(root, child)
@@ -409,7 +367,7 @@ func YGNodeFreeRecursive(root YGNodeRef) {
 }
 
 // YGNodeRemoveChild removes the child
-func YGNodeRemoveChild(node YGNodeRef, child YGNodeRef) {
+func YGNodeRemoveChild(node *YGNode, child *YGNode) {
 	if YGNodeListDelete(node.children, child) != nil {
 		child.layout = gYGNodeDefaults.layout // layout is no longer valid
 		child.parent = nil
@@ -418,7 +376,7 @@ func YGNodeRemoveChild(node YGNodeRef, child YGNodeRef) {
 }
 
 // YGNodeMarkDirtyInternal marks the node as dirty, internally
-func YGNodeMarkDirtyInternal(node YGNodeRef) {
+func YGNodeMarkDirtyInternal(node *YGNode) {
 	if !node.isDirty {
 		node.isDirty = true
 		node.layout.computedFlexBasis = YGUndefined
@@ -434,14 +392,14 @@ func YGNodeMarkDirtyInternal(node YGNodeRef) {
 // measure functions
 // depends on information not known to YG they must perform this dirty
 // marking manually.
-func YGNodeMarkDirty(node YGNodeRef) {
+func YGNodeMarkDirty(node *YGNode) {
 	YGAssertWithNode(node, node.measure != nil,
 		"Only leaf nodes with custom measure functions should manually mark themselves as dirty")
 	YGNodeMarkDirtyInternal(node)
 }
 
 // YGNodeIsDirty returns true if node is dirty
-func YGNodeIsDirty(node YGNodeRef) bool {
+func YGNodeIsDirty(node *YGNode) bool {
 	return node.isDirty
 }
 
@@ -516,7 +474,7 @@ func YGNodeCopyStyle(dstNode *YGNode, srcNode *YGNode) {
 }
 
 // YGNodeReset resets a node
-func YGNodeReset(node YGNodeRef) {
+func YGNodeReset(node *YGNode) {
 	YGAssertWithNode(node,
 		YGNodeGetChildCount(node) == 0,
 		"Cannot reset a node which still has children attached")
@@ -544,12 +502,12 @@ func YGConfigGetInstanceCount() int {
 }
 
 // YGConfigGetDefault returns default config, only for C#
-func YGConfigGetDefault() YGConfigRef {
+func YGConfigGetDefault() *YGConfig {
 	return &gYGConfigDefaults
 }
 
 // YGConfigNew creates new config
-func YGConfigNew() YGConfigRef {
+func YGConfigNew() *YGConfig {
 	config := &YGConfig{}
 	YGAssert(config != nil, "Could not allocate memory for config")
 
@@ -559,13 +517,13 @@ func YGConfigNew() YGConfigRef {
 }
 
 // YGConfigFree frees a config
-func YGConfigFree(config YGConfigRef) {
+func YGConfigFree(config *YGConfig) {
 	// gYGFree(config)
 	gConfigInstanceCount--
 }
 
 // YGConfigCopy copies a config
-func YGConfigCopy(dest YGConfigRef, src YGConfigRef) {
+func YGConfigCopy(dest *YGConfig, src *YGConfig) {
 	*dest = *src
 }
 
@@ -574,7 +532,7 @@ func YGFloatIsUndefined(value float32) bool {
 	return IsNaN(value)
 }
 
-func YGNodeStyleSetWidth(node YGNodeRef, width float32) {
+func YGNodeStyleSetWidth(node *YGNode, width float32) {
 	dim := &node.style.dimensions[YGDimensionWidth]
 	if dim.value != width || dim.unit != YGUnitPoint {
 		dim.value = width
@@ -587,7 +545,7 @@ func YGNodeStyleSetWidth(node YGNodeRef, width float32) {
 	}
 }
 
-func YGNodeStyleSetWidthPercent(node YGNodeRef, width float32) {
+func YGNodeStyleSetWidthPercent(node *YGNode, width float32) {
 	dim := &node.style.dimensions[YGDimensionWidth]
 	if dim.value != width || dim.unit != YGUnitPercent {
 		dim.value = width
@@ -600,7 +558,7 @@ func YGNodeStyleSetWidthPercent(node YGNodeRef, width float32) {
 	}
 }
 
-func YGNodeStyleSetWidthAuto(node YGNodeRef) {
+func YGNodeStyleSetWidthAuto(node *YGNode) {
 	dim := &node.style.dimensions[YGDimensionWidth]
 	if dim.unit != YGUnitAuto {
 		dim.value = YGUndefined
@@ -609,11 +567,11 @@ func YGNodeStyleSetWidthAuto(node YGNodeRef) {
 	}
 }
 
-func YGNodeStyleGetWidth(node YGNodeRef) YGValue {
+func YGNodeStyleGetWidth(node *YGNode) YGValue {
 	return node.style.dimensions[YGDimensionWidth]
 }
 
-func YGNodeStyleSetHeight(node YGNodeRef, height float32) {
+func YGNodeStyleSetHeight(node *YGNode, height float32) {
 	dim := &node.style.dimensions[YGDimensionHeight]
 	if dim.value != height || dim.unit != YGUnitPoint {
 		dim.value = height
@@ -626,7 +584,7 @@ func YGNodeStyleSetHeight(node YGNodeRef, height float32) {
 	}
 }
 
-func YGNodeStyleSetHeightPercent(node YGNodeRef, height float32) {
+func YGNodeStyleSetHeightPercent(node *YGNode, height float32) {
 	dim := &node.style.dimensions[YGDimensionHeight]
 	if dim.value != height || dim.unit != YGUnitPercent {
 		dim.value = height
@@ -639,7 +597,7 @@ func YGNodeStyleSetHeightPercent(node YGNodeRef, height float32) {
 	}
 }
 
-func YGNodeStyleSetHeightAuto(node YGNodeRef) {
+func YGNodeStyleSetHeightAuto(node *YGNode) {
 	dim := &node.style.dimensions[YGDimensionHeight]
 	if dim.unit != YGUnitAuto {
 		dim.value = YGUndefined
@@ -648,7 +606,7 @@ func YGNodeStyleSetHeightAuto(node YGNodeRef) {
 	}
 }
 
-func YGNodeStyleGetHeight(node YGNodeRef) YGValue {
+func YGNodeStyleGetHeight(node *YGNode) YGValue {
 	return node.style.dimensions[YGDimensionHeight]
 }
 
@@ -1760,7 +1718,7 @@ func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, 
 		lastSize > size && (lastComputedSize <= size || YGFloatsEqual(size, lastComputedSize))
 }
 
-func YGConfigSetPointScaleFactor(config YGConfigRef, pixelsInPoint float32) {
+func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
 	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
 
 	// We store points for Pixel as we will use it for rounding
@@ -1781,7 +1739,7 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 	parentHeight float32,
 	heightMode YGMeasureMode,
 	direction YGDirection,
-	config YGConfigRef) {
+	config *YGConfig) {
 	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
 	mainAxisSize := height
@@ -1915,7 +1873,7 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 	child.layout.computedFlexBasisGeneration = gCurrentGenerationCount
 }
 
-func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config YGConfigRef) bool {
+func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
 	if lastComputedHeight < 0 || lastComputedWidth < 0 {
 		return false
 	}
@@ -2263,7 +2221,7 @@ func triFloat(useFirst bool, f1, f2 float32) float32 {
 func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight float32,
 	parentDirection YGDirection, widthMeasureMode YGMeasureMode,
 	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
-	performLayout bool, config YGConfigRef) {
+	performLayout bool, config *YGConfig) {
 	// YGAssertWithNode(node, YGFloatIsUndefined(availableWidth) ? widthMeasureMode == YGMeasureModeUndefined : true, "availableWidth is indefinite so widthMeasureMode must be YGMeasureModeUndefined");
 	//YGAssertWithNode(node, YGFloatIsUndefined(availableHeight) ? heightMeasureMode == YGMeasureModeUndefined : true, "availableHeight is indefinite so heightMeasureMode must be YGMeasureModeUndefined");
 
@@ -3409,7 +3367,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 }
 
-func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode YGMeasureMode, height float32, direction YGDirection, config YGConfigRef) {
+func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode YGMeasureMode, height float32, direction YGDirection, config *YGConfig) {
 	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
 	crossAxis := YGFlexDirectionCross(mainAxis, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
@@ -3577,7 +3535,7 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight float32,
 	parentDirection YGDirection, widthMeasureMode YGMeasureMode,
 	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
-	performLayout bool, reason string, config YGConfigRef) bool {
+	performLayout bool, reason string, config *YGConfig) bool {
 	layout := &node.layout
 
 	gDepth++
@@ -3906,31 +3864,31 @@ func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft flo
 	}
 }
 
-func YGConfigSetExperimentalFeatureEnabled(config YGConfigRef, feature YGExperimentalFeature, enabled bool) {
+func YGConfigSetExperimentalFeatureEnabled(config *YGConfig, feature YGExperimentalFeature, enabled bool) {
 	config.experimentalFeatures[feature] = enabled
 }
 
-func YGConfigIsExperimentalFeatureEnabled(config YGConfigRef, feature YGExperimentalFeature) bool {
+func YGConfigIsExperimentalFeatureEnabled(config *YGConfig, feature YGExperimentalFeature) bool {
 	return config.experimentalFeatures[feature]
 }
 
-func YGConfigSetUseWebDefaults(config YGConfigRef, enabled bool) {
+func YGConfigSetUseWebDefaults(config *YGConfig, enabled bool) {
 	config.useWebDefaults = enabled
 }
 
-func YGConfigSetUseLegacyStretchBehaviour(config YGConfigRef, useLegacyStretchBehaviour bool) {
+func YGConfigSetUseLegacyStretchBehaviour(config *YGConfig, useLegacyStretchBehaviour bool) {
 	config.useLegacyStretchBehaviour = useLegacyStretchBehaviour
 }
 
-func YGConfigGetUseWebDefaults(config YGConfigRef) bool {
+func YGConfigGetUseWebDefaults(config *YGConfig) bool {
 	return config.useWebDefaults
 }
 
-func YGConfigSetContext(config YGConfigRef, context interface{}) {
+func YGConfigSetContext(config *YGConfig, context interface{}) {
 	config.context = context
 }
 
-func YGConfigGetContext(config YGConfigRef) interface{} {
+func YGConfigGetContext(config *YGConfig) interface{} {
 	return config.context
 }
 
@@ -3942,11 +3900,11 @@ func YGAssert(cond bool, format string, args ...interface{}) {
 }
 
 // YGAssertWithNode assert if cond is not true
-func YGAssertWithNode(node YGNodeRef, cond bool, format string, args ...interface{}) {
+func YGAssertWithNode(node *YGNode, cond bool, format string, args ...interface{}) {
 	YGAssert(cond, format, args...)
 }
 
-func YGAssertWithConfig(config YGConfigRef, condition bool, message string) {
+func YGAssertWithConfig(config *YGConfig, condition bool, message string) {
 	if !condition {
 		panic(message)
 	}

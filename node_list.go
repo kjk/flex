@@ -2,23 +2,21 @@ package flex
 
 // YGNodeList is a list of nodes
 type YGNodeList struct {
-	items []YGNodeRef
+	items []*YGNode
 }
 
-type YGNodeListRef *YGNodeList
-
 // YGNodeListNew creates  a new node
-func YGNodeListNew(initialCapacity int) YGNodeListRef {
+func YGNodeListNew(initialCapacity int) *YGNodeList {
 	return &YGNodeList{}
 }
 
 // YGNodeListFree frees a node
-func YGNodeListFree(list YGNodeListRef) {
+func YGNodeListFree(list *YGNodeList) {
 	// nothing to do
 }
 
 // YGNodeListCount returns list of nodes
-func YGNodeListCount(list YGNodeListRef) int {
+func YGNodeListCount(list *YGNodeList) int {
 	if list != nil {
 		return len(list.items)
 	}
@@ -26,7 +24,7 @@ func YGNodeListCount(list YGNodeListRef) int {
 }
 
 // YGNodeListAdd adds a node
-func YGNodeListAdd(listp *YGNodeListRef, node YGNodeRef) {
+func YGNodeListAdd(listp **YGNodeList, node *YGNode) {
 	if *listp == nil {
 		*listp = YGNodeListNew(4)
 	}
@@ -34,18 +32,18 @@ func YGNodeListAdd(listp *YGNodeListRef, node YGNodeRef) {
 }
 
 // YGNodeListInsert insertes a node
-func YGNodeListInsert(listp *YGNodeListRef, node YGNodeRef, i int) {
+func YGNodeListInsert(listp **YGNodeList, node *YGNode, i int) {
 	if *listp == nil {
 		*listp = YGNodeListNew(4)
 	}
 	list := *listp
 	a := list.items
 	// https://github.com/golang/go/wiki/SliceTricks
-	list.items = append(a[:i], append([]YGNodeRef{node}, a[i:]...)...)
+	list.items = append(a[:i], append([]*YGNode{node}, a[i:]...)...)
 }
 
 // YGNodeListRemove removes a node from list
-func YGNodeListRemove(list YGNodeListRef, index int) YGNodeRef {
+func YGNodeListRemove(list *YGNodeList, index int) *YGNode {
 	removed := list.items[index]
 	list.items[index] = nil
 
@@ -60,7 +58,7 @@ func YGNodeListRemove(list YGNodeListRef, index int) YGNodeRef {
 }
 
 // YGNodeListDelete deletes a node
-func YGNodeListDelete(list YGNodeListRef, node YGNodeRef) YGNodeRef {
+func YGNodeListDelete(list *YGNodeList, node *YGNode) *YGNode {
 	n := len(list.items)
 	for i := 0; i < n; i++ {
 		if list.items[i] == node {
@@ -72,7 +70,7 @@ func YGNodeListDelete(list YGNodeListRef, node YGNodeRef) YGNodeRef {
 }
 
 // YGNodeListGet retruns a node at a given position
-func YGNodeListGet(list YGNodeListRef, index int) YGNodeRef {
+func YGNodeListGet(list *YGNodeList, index int) *YGNode {
 	if YGNodeListCount(list) > 0 {
 		return list.items[index]
 	}
