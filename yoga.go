@@ -1467,65 +1467,6 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 	}
 }
 
-/// -------------------------- not-yet-arranged
-
-func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
-	if lastComputedHeight < 0 || lastComputedWidth < 0 {
-		return false
-	}
-	useRoundedComparison := config != nil && config.pointScaleFactor != 0
-	effectiveWidth := width
-	if useRoundedComparison {
-		effectiveWidth = YGRoundValueToPixelGrid(width, config.pointScaleFactor, false, false)
-	}
-	effectiveHeight := height
-	if useRoundedComparison {
-		effectiveHeight = YGRoundValueToPixelGrid(height, config.pointScaleFactor, false, false)
-	}
-	effectiveLastWidth := lastWidth
-	if useRoundedComparison {
-		effectiveLastWidth = YGRoundValueToPixelGrid(lastWidth, config.pointScaleFactor, false, false)
-	}
-	effectiveLastHeight := lastHeight
-	if useRoundedComparison {
-		effectiveLastHeight = YGRoundValueToPixelGrid(lastHeight, config.pointScaleFactor, false, false)
-	}
-
-	hasSameWidthSpec := lastWidthMode == widthMode && YGFloatsEqual(effectiveLastWidth, effectiveWidth)
-	hasSameHeightSpec := lastHeightMode == heightMode && YGFloatsEqual(effectiveLastHeight, effectiveHeight)
-
-	widthIsCompatible :=
-		hasSameWidthSpec || YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(widthMode,
-			width-marginRow,
-			lastComputedWidth) ||
-			YGMeasureModeOldSizeIsUnspecifiedAndStillFits(widthMode,
-				width-marginRow,
-				lastWidthMode,
-				lastComputedWidth) ||
-			YGMeasureModeNewMeasureSizeIsStricterAndStillValid(
-				widthMode, width-marginRow, lastWidthMode, lastWidth, lastComputedWidth)
-
-	heightIsCompatible :=
-		hasSameHeightSpec || YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(heightMode,
-			height-marginColumn,
-			lastComputedHeight) ||
-			YGMeasureModeOldSizeIsUnspecifiedAndStillFits(heightMode,
-				height-marginColumn,
-				lastHeightMode,
-				lastComputedHeight) ||
-			YGMeasureModeNewMeasureSizeIsStricterAndStillValid(
-				heightMode, height-marginColumn, lastHeightMode, lastHeight, lastComputedHeight)
-
-	return widthIsCompatible && heightIsCompatible
-}
-
-func triFloat(useFirst bool, f1, f2 float32) float32 {
-	if useFirst {
-		return f1
-	}
-	return f2
-}
-
 // This is the main routine that implements a subset of the flexbox layout
 // algorithm
 // described in the W3C YG documentation: https://www.w3.org/TR/YG3-flexbox/.
@@ -2748,6 +2689,65 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			}
 		}
 	}
+}
+
+/// -------------------------- not-yet-arranged
+
+func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
+	if lastComputedHeight < 0 || lastComputedWidth < 0 {
+		return false
+	}
+	useRoundedComparison := config != nil && config.pointScaleFactor != 0
+	effectiveWidth := width
+	if useRoundedComparison {
+		effectiveWidth = YGRoundValueToPixelGrid(width, config.pointScaleFactor, false, false)
+	}
+	effectiveHeight := height
+	if useRoundedComparison {
+		effectiveHeight = YGRoundValueToPixelGrid(height, config.pointScaleFactor, false, false)
+	}
+	effectiveLastWidth := lastWidth
+	if useRoundedComparison {
+		effectiveLastWidth = YGRoundValueToPixelGrid(lastWidth, config.pointScaleFactor, false, false)
+	}
+	effectiveLastHeight := lastHeight
+	if useRoundedComparison {
+		effectiveLastHeight = YGRoundValueToPixelGrid(lastHeight, config.pointScaleFactor, false, false)
+	}
+
+	hasSameWidthSpec := lastWidthMode == widthMode && YGFloatsEqual(effectiveLastWidth, effectiveWidth)
+	hasSameHeightSpec := lastHeightMode == heightMode && YGFloatsEqual(effectiveLastHeight, effectiveHeight)
+
+	widthIsCompatible :=
+		hasSameWidthSpec || YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(widthMode,
+			width-marginRow,
+			lastComputedWidth) ||
+			YGMeasureModeOldSizeIsUnspecifiedAndStillFits(widthMode,
+				width-marginRow,
+				lastWidthMode,
+				lastComputedWidth) ||
+			YGMeasureModeNewMeasureSizeIsStricterAndStillValid(
+				widthMode, width-marginRow, lastWidthMode, lastWidth, lastComputedWidth)
+
+	heightIsCompatible :=
+		hasSameHeightSpec || YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(heightMode,
+			height-marginColumn,
+			lastComputedHeight) ||
+			YGMeasureModeOldSizeIsUnspecifiedAndStillFits(heightMode,
+				height-marginColumn,
+				lastHeightMode,
+				lastComputedHeight) ||
+			YGMeasureModeNewMeasureSizeIsStricterAndStillValid(
+				heightMode, height-marginColumn, lastHeightMode, lastHeight, lastComputedHeight)
+
+	return widthIsCompatible && heightIsCompatible
+}
+
+func triFloat(useFirst bool, f1, f2 float32) float32 {
+	if useFirst {
+		return f1
+	}
+	return f2
 }
 
 // This is a wrapper around the YGNodelayoutImpl function. It determines
