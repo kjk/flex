@@ -84,15 +84,7 @@ type YGConfig struct {
 	context                   interface{}
 }
 
-var (
-	gCurrentGenerationCount = 0
-
-	gPrintTree    = false
-	gPrintChanges = false
-	gPrintSkips   = false
-	gDepth        = 0
-)
-
+// YGNode describes a node
 type YGNode struct {
 	style     YGStyle
 	layout    YGLayout
@@ -126,9 +118,7 @@ var (
 		value: YGUndefined,
 		unit:  YGUnitAuto,
 	}
-)
 
-var (
 	YG_DEFAULT_EDGE_VALUES_UNIT = [YGEdgeCount]YGValue{
 		YG_UNDEFINED_VALUES,
 		YG_UNDEFINED_VALUES,
@@ -140,6 +130,7 @@ var (
 		YG_UNDEFINED_VALUES,
 		YG_UNDEFINED_VALUES,
 	}
+
 	YG_DEFAULT_DIMENSION_VALUES = [2]float32{
 		YGUndefined,
 		YGUndefined,
@@ -157,9 +148,9 @@ var (
 )
 
 const (
-	kDefaultFlexGrow      float32 = 0.0
-	kDefaultFlexShrink    float32 = 0.0
-	kWebDefaultFlexShrink float32 = 1.0
+	kDefaultFlexGrow      float32 = 0
+	kDefaultFlexShrink    float32 = 0
+	kWebDefaultFlexShrink float32 = 1
 )
 
 var (
@@ -206,48 +197,30 @@ var (
 			},
 		},
 	}
-)
 
-var (
 	gYGConfigDefaults = YGConfig{
 		experimentalFeatures: [YGExperimentalFeatureCount + 1]bool{
 			false,
 			false,
 		},
 		useWebDefaults:   false,
-		pointScaleFactor: 1.0,
+		pointScaleFactor: 1,
 		logger:           YGDefaultLog,
 		context:          nil,
 	}
-)
 
-var (
 	YGValueZero = YGValue{value: 0, unit: YGUnitPoint}
 )
-
-var (
-	leading  = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
-	trailing = [4]YGEdge{YGEdgeBottom, YGEdgeTop, YGEdgeRight, YGEdgeLeft}
-	pos      = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
-	dim      = [4]YGDimension{YGDimensionHeight, YGDimensionHeight, YGDimensionWidth, YGDimensionWidth}
-)
-
-func YGLog(node *YGNode, level YGLogLevel, format string, args ...interface{}) {
-	fmt.Printf(format, args...)
-}
 
 // YGDefaultLog is default logging function
 func YGDefaultLog(config *YGConfig, node *YGNode, level YGLogLevel, format string,
 	args ...interface{}) int {
 	switch level {
-	case YGLogLevelError:
-	case YGLogLevelFatal:
+	case YGLogLevelError, YGLogLevelFatal:
 		n, _ := fmt.Fprintf(os.Stderr, format, args...)
 		return n
-	case YGLogLevelWarn:
-	case YGLogLevelInfo:
-	case YGLogLevelDebug:
-	case YGLogLevelVerbose:
+	case YGLogLevelWarn, YGLogLevelInfo, YGLogLevelDebug, YGLogLevelVerbose:
+		fallthrough
 	default:
 		n, _ := fmt.Printf(format, args...)
 		return n
@@ -285,8 +258,7 @@ func YGComputedEdgeValue(edges []YGValue, edge YGEdge, defaultValue *YGValue) *Y
 // YGResolveValue resolves a value
 func YGResolveValue(value *YGValue, parentSize float32) float32 {
 	switch value.unit {
-	case YGUnitUndefined:
-	case YGUnitAuto:
+	case YGUnitUndefined, YGUnitAuto:
 		return YGUndefined
 	case YGUnitPoint:
 		return value.value
@@ -295,6 +267,24 @@ func YGResolveValue(value *YGValue, parentSize float32) float32 {
 	}
 	return YGUndefined
 }
+
+/// -------------------------- not-yet-arranged
+
+var (
+	gCurrentGenerationCount = 0
+
+	gPrintTree    = false
+	gPrintChanges = false
+	gPrintSkips   = false
+	gDepth        = 0
+)
+
+var (
+	leading  = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
+	trailing = [4]YGEdge{YGEdgeBottom, YGEdgeTop, YGEdgeRight, YGEdgeLeft}
+	pos      = [4]YGEdge{YGEdgeTop, YGEdgeBottom, YGEdgeLeft, YGEdgeRight}
+	dim      = [4]YGDimension{YGDimensionHeight, YGDimensionHeight, YGDimensionWidth, YGDimensionWidth}
+)
 
 // YGResolveValueMargin resolves margin value
 func YGResolveValueMargin(value *YGValue, parentSize float32) float32 {
@@ -1985,8 +1975,7 @@ func YGConstrainMaxSizeForMode(node *YGNode, axis YGFlexDirection, parentAxisSiz
 	maxSize := YGResolveValue(&node.style.maxDimensions[dim[axis]], parentAxisSize) +
 		YGNodeMarginForAxis(node, axis, parentWidth)
 	switch *mode {
-	case YGMeasureModeExactly:
-	case YGMeasureModeAtMost:
+	case YGMeasureModeExactly, YGMeasureModeAtMost:
 		if YGFloatIsUndefined(maxSize) || *size < maxSize {
 			// TODO: this is redundant, but what is in original code
 			*size = *size
@@ -3250,19 +3239,16 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 											config)
 									}
 								}
-								break
 							}
 						case YGAlignBaseline:
 							{
 								child.layout.position[YGEdgeTop] =
 									currentLead + maxAscentForCurrentLine - YGBaseline(child) +
 										YGNodeLeadingPosition(child, YGFlexDirectionColumn, availableInnerCrossDim)
-								break
 							}
 						case YGAlignAuto:
 						case YGAlignSpaceBetween:
 						case YGAlignSpaceAround:
-							break
 						}
 					}
 				}
@@ -3890,6 +3876,10 @@ func YGConfigSetContext(config *YGConfig, context interface{}) {
 
 func YGConfigGetContext(config *YGConfig) interface{} {
 	return config.context
+}
+
+func YGLog(node *YGNode, level YGLogLevel, format string, args ...interface{}) {
+	fmt.Printf(format, args...)
 }
 
 // YGAssert asserts that cond is true
