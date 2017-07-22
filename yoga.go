@@ -511,6 +511,74 @@ func YGNodeCopyStyle(dstNode *YGNode, srcNode *YGNode) {
 	}
 }
 
+// YGResolveFlexGrow resolves flex grow
+func YGResolveFlexGrow(node *YGNode) float32 {
+	// Root nodes flexGrow should always be 0
+	if node.parent == nil {
+		return 0
+	}
+	if !YGFloatIsUndefined(node.style.flexGrow) {
+		return node.style.flexGrow
+	}
+	if !YGFloatIsUndefined(node.style.flex) && node.style.flex > 0 {
+		return node.style.flex
+	}
+	return kDefaultFlexGrow
+}
+
+// YGNodeStyleGetFlexGrow gets flex grow
+func YGNodeStyleGetFlexGrow(node *YGNode) float32 {
+	if YGFloatIsUndefined(node.style.flexGrow) {
+		return kDefaultFlexGrow
+	}
+	return node.style.flexGrow
+}
+
+// YGNodeStyleGetFlexShrink gets flex shrink
+func YGNodeStyleGetFlexShrink(node *YGNode) float32 {
+	if YGFloatIsUndefined(node.style.flexShrink) {
+		if node.config.useWebDefaults {
+			return kWebDefaultFlexShrink
+		}
+		return kDefaultFlexShrink
+	}
+	return node.style.flexShrink
+}
+
+// YGNodeResolveFlexShrink resolves flex shrink
+func YGNodeResolveFlexShrink(node *YGNode) float32 {
+	// Root nodes flexShrink should always be 0
+	if node.parent == nil {
+		return 0.0
+	}
+	if !YGFloatIsUndefined(node.style.flexShrink) {
+		return node.style.flexShrink
+	}
+	if !node.config.useWebDefaults && !YGFloatIsUndefined(node.style.flex) &&
+		node.style.flex < 0 {
+		return -node.style.flex
+	}
+	if node.config.useWebDefaults {
+		return kWebDefaultFlexShrink
+	}
+	return kDefaultFlexShrink
+}
+
+// YGNodeResolveFlexBasisPtr resolves flex basis ptr
+func YGNodeResolveFlexBasisPtr(node *YGNode) *YGValue {
+	style := &node.style
+	if style.flexBasis.unit != YGUnitAuto && style.flexBasis.unit != YGUnitUndefined {
+		return &style.flexBasis
+	}
+	if !YGFloatIsUndefined(style.flex) && style.flex > 0 {
+		if node.config.useWebDefaults {
+			return &YGValueAuto
+		}
+		return &YGValueZero
+	}
+	return &YGValueAuto
+}
+
 /// -------------------------- not-yet-arranged
 
 var (
@@ -1290,68 +1358,6 @@ func YGFlexDirectionCross(flexDirection YGFlexDirection, direction YGDirection) 
 		return YGResolveFlexDirection(YGFlexDirectionRow, direction)
 	}
 	return YGFlexDirectionColumn
-}
-
-func YGResolveFlexGrow(node *YGNode) float32 {
-	// Root nodes flexGrow should always be 0
-	if node.parent == nil {
-		return 0.0
-	}
-	if !YGFloatIsUndefined(node.style.flexGrow) {
-		return node.style.flexGrow
-	}
-	if !YGFloatIsUndefined(node.style.flex) && node.style.flex > 0 {
-		return node.style.flex
-	}
-	return kDefaultFlexGrow
-}
-
-func YGNodeStyleGetFlexGrow(node *YGNode) float32 {
-	if YGFloatIsUndefined(node.style.flexGrow) {
-		return kDefaultFlexGrow
-	}
-	return node.style.flexGrow
-}
-
-func YGNodeStyleGetFlexShrink(node *YGNode) float32 {
-	if YGFloatIsUndefined(node.style.flexShrink) {
-		if node.config.useWebDefaults {
-			return kWebDefaultFlexShrink
-		}
-		return kDefaultFlexShrink
-	}
-	return node.style.flexShrink
-}
-
-func YGNodeResolveFlexShrink(node *YGNode) float32 {
-	// Root nodes flexShrink should always be 0
-	if node.parent == nil {
-		return 0.0
-	}
-	if !YGFloatIsUndefined(node.style.flexShrink) {
-		return node.style.flexShrink
-	}
-	if !node.config.useWebDefaults && !YGFloatIsUndefined(node.style.flex) &&
-		node.style.flex < 0 {
-		return -node.style.flex
-	}
-	if node.config.useWebDefaults {
-		return kWebDefaultFlexShrink
-	}
-	return kDefaultFlexShrink
-}
-
-func YGNodeResolveFlexBasisPtr(node *YGNode) *YGValue {
-	if node.style.flexBasis.unit != YGUnitAuto && node.style.flexBasis.unit != YGUnitUndefined {
-		return &node.style.flexBasis
-	}
-	if !YGFloatIsUndefined(node.style.flex) && node.style.flex > 0 {
-		if node.config.useWebDefaults {
-			return &YGValueAuto
-		}
-		return &YGValueZero
-	}
-	return &YGValueAuto
 }
 
 func YGNodeIsFlex(node *YGNode) bool {
