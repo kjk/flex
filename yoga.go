@@ -2691,27 +2691,97 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 }
 
-/// -------------------------- not-yet-arranged
+var (
+	gDepth        = 0
+	gPrintTree    = false
+	gPrintChanges = false
+	gPrintSkips   = false
+)
 
+const (
+	spacer = "                                                            "
+)
+
+// YGSpacer returns spacer string
+func YGSpacer(level int) string {
+	n := len(spacer)
+	if level > n {
+		level = n
+	}
+	return spacer[:level]
+}
+
+var (
+	kMeasureModeNames = [YGMeasureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
+	kLayoutModeNames  = [YGMeasureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
+)
+
+// YGMeasureModeName returns name of measure mode
+func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
+
+	if mode >= YGMeasureModeCount {
+		return ""
+	}
+
+	if performLayout {
+		return kLayoutModeNames[mode]
+	}
+	return kMeasureModeNames[mode]
+}
+
+// YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize retruns true if is exact
+func YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(sizeMode YGMeasureMode, size float32, lastComputedSize float32) bool {
+	return sizeMode == YGMeasureModeExactly && YGFloatsEqual(size, lastComputedSize)
+}
+
+// YGMeasureModeOldSizeIsUnspecifiedAndStillFits returns true if fits
+func YGMeasureModeOldSizeIsUnspecifiedAndStillFits(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastComputedSize float32) bool {
+	return sizeMode == YGMeasureModeAtMost && lastSizeMode == YGMeasureModeUndefined &&
+		(size >= lastComputedSize || YGFloatsEqual(size, lastComputedSize))
+}
+
+// YGMeasureModeNewMeasureSizeIsStricterAndStillValid returns true if is strict and valid
+func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastSize float32, lastComputedSize float32) bool {
+	return lastSizeMode == YGMeasureModeAtMost && sizeMode == YGMeasureModeAtMost &&
+		lastSize > size && (lastComputedSize <= size || YGFloatsEqual(size, lastComputedSize))
+}
+
+// YGRoundValueToPixelGrid rounds value to pixel grid
+func YGRoundValueToPixelGrid(value float32, pointScaleFactor float32, forceCeil bool, forceFloor bool) float32 {
+	scaledValue := value * pointScaleFactor
+	fractial := fmodf(scaledValue, 1.0)
+	if YGFloatsEqual(fractial, 0) {
+		// Still remove fractial as fractial could be  extremely small.
+		scaledValue = scaledValue - fractial
+	} else if forceCeil {
+		scaledValue = scaledValue - fractial + 1.0
+	} else if forceFloor {
+		scaledValue = scaledValue - fractial
+	} else {
+		var f float32
+		if fractial >= 0.5 {
+			f = 1.0
+		}
+		scaledValue = scaledValue - fractial + f
+	}
+	return scaledValue / pointScaleFactor
+}
+
+// YGNodeCanUseCachedMeasurement returns true if can use cached measurement
 func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
 	if lastComputedHeight < 0 || lastComputedWidth < 0 {
 		return false
 	}
 	useRoundedComparison := config != nil && config.pointScaleFactor != 0
 	effectiveWidth := width
+	effectiveHeight := height
+	effectiveLastWidth := lastWidth
+	effectiveLastHeight := lastHeight
+
 	if useRoundedComparison {
 		effectiveWidth = YGRoundValueToPixelGrid(width, config.pointScaleFactor, false, false)
-	}
-	effectiveHeight := height
-	if useRoundedComparison {
 		effectiveHeight = YGRoundValueToPixelGrid(height, config.pointScaleFactor, false, false)
-	}
-	effectiveLastWidth := lastWidth
-	if useRoundedComparison {
 		effectiveLastWidth = YGRoundValueToPixelGrid(lastWidth, config.pointScaleFactor, false, false)
-	}
-	effectiveLastHeight := lastHeight
-	if useRoundedComparison {
 		effectiveLastHeight = YGRoundValueToPixelGrid(lastHeight, config.pointScaleFactor, false, false)
 	}
 
@@ -2743,12 +2813,7 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 	return widthIsCompatible && heightIsCompatible
 }
 
-func triFloat(useFirst bool, f1, f2 float32) float32 {
-	if useFirst {
-		return f1
-	}
-	return f2
-}
+/// -------------------------- not-yet-arranged
 
 // This is a wrapper around the YGNodelayoutImpl function. It determines
 // whether the layout request is redundant and can be skipped.
@@ -3016,57 +3081,6 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 	}
 }
 
-var (
-	gDepth        = 0
-	gPrintTree    = false
-	gPrintChanges = false
-	gPrintSkips   = false
-)
-
-const (
-	spacer = "                                                            "
-)
-
-// YGSpacer returns spacer string
-func YGSpacer(level int) string {
-	n := len(spacer)
-	if level > n {
-		level = n
-	}
-	return spacer[:level]
-}
-
-var (
-	kMeasureModeNames = [YGMeasureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
-	kLayoutModeNames  = [YGMeasureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
-)
-
-func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
-
-	if mode >= YGMeasureModeCount {
-		return ""
-	}
-
-	if performLayout {
-		return kLayoutModeNames[mode]
-	}
-	return kMeasureModeNames[mode]
-}
-
-func YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(sizeMode YGMeasureMode, size float32, lastComputedSize float32) bool {
-	return sizeMode == YGMeasureModeExactly && YGFloatsEqual(size, lastComputedSize)
-}
-
-func YGMeasureModeOldSizeIsUnspecifiedAndStillFits(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastComputedSize float32) bool {
-	return sizeMode == YGMeasureModeAtMost && lastSizeMode == YGMeasureModeUndefined &&
-		(size >= lastComputedSize || YGFloatsEqual(size, lastComputedSize))
-}
-
-func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastSize float32, lastComputedSize float32) bool {
-	return lastSizeMode == YGMeasureModeAtMost && sizeMode == YGMeasureModeAtMost &&
-		lastSize > size && (lastComputedSize <= size || YGFloatsEqual(size, lastComputedSize))
-}
-
 func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
 	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
 
@@ -3077,26 +3091,6 @@ func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
 	} else {
 		config.pointScaleFactor = pixelsInPoint
 	}
-}
-
-func YGRoundValueToPixelGrid(value float32, pointScaleFactor float32, forceCeil bool, forceFloor bool) float32 {
-	scaledValue := value * pointScaleFactor
-	fractial := fmodf(scaledValue, 1.0)
-	if YGFloatsEqual(fractial, 0) {
-		// Still remove fractial as fractial could be  extremely small.
-		scaledValue = scaledValue - fractial
-	} else if forceCeil {
-		scaledValue = scaledValue - fractial + 1.0
-	} else if forceFloor {
-		scaledValue = scaledValue - fractial
-	} else {
-		var f float32
-		if fractial >= 0.5 {
-			f = 1.0
-		}
-		scaledValue = scaledValue - fractial + f
-	}
-	return scaledValue / pointScaleFactor
 }
 
 func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft float32, absoluteTop float32) {
