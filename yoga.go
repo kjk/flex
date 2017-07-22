@@ -549,7 +549,7 @@ func YGNodeStyleGetFlexShrink(node *YGNode) float32 {
 func YGNodeResolveFlexShrink(node *YGNode) float32 {
 	// Root nodes flexShrink should always be 0
 	if node.parent == nil {
-		return 0.0
+		return 0
 	}
 	if !YGFloatIsUndefined(node.style.flexShrink) {
 		return node.style.flexShrink
@@ -806,8 +806,7 @@ func YGBaseline(node *YGNode) float32 {
 	return baseline + baselineChild.layout.position[YGEdgeTop]
 }
 
-/// -------------------------- not-yet-arranged
-
+// YGResolveFlexDirection resolves flex direction
 func YGResolveFlexDirection(flexDirection YGFlexDirection, direction YGDirection) YGFlexDirection {
 	if direction == YGDirectionRTL {
 		if flexDirection == YGFlexDirectionRow {
@@ -816,10 +815,10 @@ func YGResolveFlexDirection(flexDirection YGFlexDirection, direction YGDirection
 			return YGFlexDirectionRow
 		}
 	}
-
 	return flexDirection
 }
 
+// YGFlexDirectionCross gets flex direction cross
 func YGFlexDirectionCross(flexDirection YGFlexDirection, direction YGDirection) YGFlexDirection {
 	if YGFlexDirectionIsColumn(flexDirection) {
 		return YGResolveFlexDirection(YGFlexDirectionRow, direction)
@@ -827,31 +826,39 @@ func YGFlexDirectionCross(flexDirection YGFlexDirection, direction YGDirection) 
 	return YGFlexDirectionColumn
 }
 
+// YGNodeIsFlex returns true if node is flex
 func YGNodeIsFlex(node *YGNode) bool {
 	return (node.style.positionType == YGPositionTypeRelative &&
 		(YGResolveFlexGrow(node) != 0 || YGNodeResolveFlexShrink(node) != 0))
 }
 
-func YGMarginLeadingValue(node *YGNode, axis YGFlexDirection) *YGValue {
-	if YGFlexDirectionIsRow(axis) && node.style.margin[YGEdgeStart].unit != YGUnitUndefined {
-		return &node.style.margin[YGEdgeStart]
+// YGIsBaselineLayout returns true if it's baseline layout
+func YGIsBaselineLayout(node *YGNode) bool {
+	if YGFlexDirectionIsColumn(node.style.flexDirection) {
+		return false
 	}
-	return &node.style.margin[leading[axis]]
+	if node.style.alignItems == YGAlignBaseline {
+		return true
+	}
+	childCount := YGNodeGetChildCount(node)
+	for i := 0; i < childCount; i++ {
+		child := YGNodeGetChild(node, i)
+		if child.style.positionType == YGPositionTypeRelative &&
+			child.style.alignSelf == YGAlignBaseline {
+			return true
+		}
+	}
+
+	return false
 }
 
-func YGMarginTrailingValue(node *YGNode, axis YGFlexDirection) *YGValue {
-	if YGFlexDirectionIsRow(axis) && node.style.margin[YGEdgeEnd].unit != YGUnitUndefined {
-		return &node.style.margin[YGEdgeEnd]
-	}
-	return &node.style.margin[trailing[axis]]
-
-}
-
+// YGNodeDimWithMargin returns dimension with margin
 func YGNodeDimWithMargin(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
 	return node.layout.measuredDimensions[dim[axis]] + YGNodeLeadingMargin(node, axis, widthSize) +
 		YGNodeTrailingMargin(node, axis, widthSize)
 }
 
+// YGNodeIsStyleDimDefined returns true if dimension is defined
 func YGNodeIsStyleDimDefined(node *YGNode, axis YGFlexDirection, parentSize float32) bool {
 	v := node.resolvedDimensions[dim[axis]]
 	isNotDefined := (v.unit == YGUnitAuto ||
@@ -861,11 +868,13 @@ func YGNodeIsStyleDimDefined(node *YGNode, axis YGFlexDirection, parentSize floa
 	return !isNotDefined
 }
 
+// YGNodeIsLayoutDimDefined returns true if layout dimension is defined
 func YGNodeIsLayoutDimDefined(node *YGNode, axis YGFlexDirection) bool {
 	value := node.layout.measuredDimensions[dim[axis]]
 	return !YGFloatIsUndefined(value) && value >= 0
 }
 
+// YGNodeIsLeadingPosDefined returns true if leading position is defined
 func YGNodeIsLeadingPosDefined(node *YGNode, axis YGFlexDirection) bool {
 	return (YGFlexDirectionIsRow(axis) &&
 		YGComputedEdgeValue(node.style.position[:], YGEdgeStart, &YGValueUndefined).unit !=
@@ -874,6 +883,7 @@ func YGNodeIsLeadingPosDefined(node *YGNode, axis YGFlexDirection) bool {
 			YGUnitUndefined
 }
 
+// YGNodeIsTrailingPosDefined returns true if trailing pos is defined
 func YGNodeIsTrailingPosDefined(node *YGNode, axis YGFlexDirection) bool {
 	return (YGFlexDirectionIsRow(axis) &&
 		YGComputedEdgeValue(node.style.position[:], YGEdgeEnd, &YGValueUndefined).unit !=
@@ -882,6 +892,7 @@ func YGNodeIsTrailingPosDefined(node *YGNode, axis YGFlexDirection) bool {
 			YGUnitUndefined
 }
 
+// YGNodeLeadingPosition returns leading position
 func YGNodeLeadingPosition(node *YGNode, axis YGFlexDirection, axisSize float32) float32 {
 	if YGFlexDirectionIsRow(axis) {
 		leadingPosition := YGComputedEdgeValue(node.style.position[:], YGEdgeStart, &YGValueUndefined)
@@ -898,6 +909,7 @@ func YGNodeLeadingPosition(node *YGNode, axis YGFlexDirection, axisSize float32)
 	return YGResolveValue(leadingPosition, axisSize)
 }
 
+// YGNodeTrailingPosition returns trailing position
 func YGNodeTrailingPosition(node *YGNode, axis YGFlexDirection, axisSize float32) float32 {
 	if YGFlexDirectionIsRow(axis) {
 		trailingPosition := YGComputedEdgeValue(node.style.position[:], YGEdgeEnd, &YGValueUndefined)
@@ -914,6 +926,64 @@ func YGNodeTrailingPosition(node *YGNode, axis YGFlexDirection, axisSize float32
 	return YGResolveValue(trailingPosition, axisSize)
 }
 
+// YGNodeBoundAxisWithinMinAndMax returns bounds axis
+func YGNodeBoundAxisWithinMinAndMax(node *YGNode, axis YGFlexDirection, value float32, axisSize float32) float32 {
+	min := YGUndefined
+	max := YGUndefined
+
+	if YGFlexDirectionIsColumn(axis) {
+		min = YGResolveValue(&node.style.minDimensions[YGDimensionHeight], axisSize)
+		max = YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], axisSize)
+	} else if YGFlexDirectionIsRow(axis) {
+		min = YGResolveValue(&node.style.minDimensions[YGDimensionWidth], axisSize)
+		max = YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], axisSize)
+	}
+
+	boundValue := value
+
+	if !YGFloatIsUndefined(max) && max >= 0 && boundValue > max {
+		boundValue = max
+	}
+
+	if !YGFloatIsUndefined(min) && min >= 0 && boundValue < min {
+		boundValue = min
+	}
+
+	return boundValue
+}
+
+// YGMarginLeadingValue returns margin leading value
+func YGMarginLeadingValue(node *YGNode, axis YGFlexDirection) *YGValue {
+	if YGFlexDirectionIsRow(axis) && node.style.margin[YGEdgeStart].unit != YGUnitUndefined {
+		return &node.style.margin[YGEdgeStart]
+	}
+	return &node.style.margin[leading[axis]]
+}
+
+// YGMarginTrailingValue returns trailing value
+func YGMarginTrailingValue(node *YGNode, axis YGFlexDirection) *YGValue {
+	if YGFlexDirectionIsRow(axis) && node.style.margin[YGEdgeEnd].unit != YGUnitUndefined {
+		return &node.style.margin[YGEdgeEnd]
+	}
+	return &node.style.margin[trailing[axis]]
+
+}
+
+// YGNodeBoundAxis is like YGNodeBoundAxisWithinMinAndMax but also ensures that
+// the value doesn't go below the padding and border amount.
+func YGNodeBoundAxis(node *YGNode, axis YGFlexDirection, value float32, axisSize float32, widthSize float32) float32 {
+	return fmaxf(YGNodeBoundAxisWithinMinAndMax(node, axis, value, axisSize),
+		YGNodePaddingAndBorderForAxis(node, axis, widthSize))
+}
+
+// YGNodeSetChildTrailingPosition sets child's trailing position
+func YGNodeSetChildTrailingPosition(node *YGNode, child *YGNode, axis YGFlexDirection) {
+	size := child.layout.measuredDimensions[dim[axis]]
+	child.layout.position[trailing[axis]] =
+		node.layout.measuredDimensions[dim[axis]] - size - child.layout.position[pos[axis]]
+}
+
+// YGNodeRelativePosition gets relative position.
 // If both left and right are defined, then use left. Otherwise return
 // +left or -right depending on which is defined.
 func YGNodeRelativePosition(node *YGNode, axis YGFlexDirection, axisSize float32) float32 {
@@ -923,8 +993,32 @@ func YGNodeRelativePosition(node *YGNode, axis YGFlexDirection, axisSize float32
 	return -YGNodeTrailingPosition(node, axis, axisSize)
 }
 
-func YGNodeSetPosition(node *YGNode, direction YGDirection, mainSize float32, crossSize float32, parentWidth float32) {
+// YGConstrainMaxSizeForMode contrains max size for node
+func YGConstrainMaxSizeForMode(node *YGNode, axis YGFlexDirection, parentAxisSize float32, parentWidth float32, mode *YGMeasureMode, size *float32) {
+	maxSize := YGResolveValue(&node.style.maxDimensions[dim[axis]], parentAxisSize) +
+		YGNodeMarginForAxis(node, axis, parentWidth)
+	switch *mode {
+	case YGMeasureModeExactly, YGMeasureModeAtMost:
+		if YGFloatIsUndefined(maxSize) || *size < maxSize {
+			// TODO: this is redundant, but what is in original code
+			//*size = *size
+		} else {
+			*size = maxSize
+		}
 
+		break
+	case YGMeasureModeUndefined:
+		if !YGFloatIsUndefined(maxSize) {
+			*mode = YGMeasureModeAtMost
+			*size = maxSize
+		}
+		break
+	}
+}
+
+// YGNodeSetPosition sets position
+func YGNodeSetPosition(node *YGNode, direction YGDirection, mainSize float32, crossSize float32, parentWidth float32) {
+	/* Root nodes should be always layouted as LTR, so we don't return negative values. */
 	directionRespectingRoot := YGDirectionLTR
 	if node.parent != nil {
 		directionRespectingRoot = direction
@@ -936,79 +1030,14 @@ func YGNodeSetPosition(node *YGNode, direction YGDirection, mainSize float32, cr
 	relativePositionMain := YGNodeRelativePosition(node, mainAxis, mainSize)
 	relativePositionCross := YGNodeRelativePosition(node, crossAxis, crossSize)
 
-	node.layout.position[leading[mainAxis]] =
-		YGNodeLeadingMargin(node, mainAxis, parentWidth) + relativePositionMain
-	node.layout.position[trailing[mainAxis]] =
-		YGNodeTrailingMargin(node, mainAxis, parentWidth) + relativePositionMain
-	node.layout.position[leading[crossAxis]] =
-		YGNodeLeadingMargin(node, crossAxis, parentWidth) + relativePositionCross
-	node.layout.position[trailing[crossAxis]] =
-		YGNodeTrailingMargin(node, crossAxis, parentWidth) +
-			relativePositionCross
+	pos := &node.layout.position
+	pos[leading[mainAxis]] = YGNodeLeadingMargin(node, mainAxis, parentWidth) + relativePositionMain
+	pos[trailing[mainAxis]] = YGNodeTrailingMargin(node, mainAxis, parentWidth) + relativePositionMain
+	pos[leading[crossAxis]] = YGNodeLeadingMargin(node, crossAxis, parentWidth) + relativePositionCross
+	pos[trailing[crossAxis]] = YGNodeTrailingMargin(node, crossAxis, parentWidth) + relativePositionCross
 }
 
-var (
-	gDepth        = 0
-	gPrintTree    = false
-	gPrintChanges = false
-	gPrintSkips   = false
-)
-
-const (
-	spacer = "                                                            "
-)
-
-// YGSpacer returns spacer string
-func YGSpacer(level int) string {
-	n := len(spacer)
-	if level > n {
-		level = n
-	}
-	return spacer[:level]
-}
-
-var (
-	kMeasureModeNames = [YGMeasureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
-	kLayoutModeNames  = [YGMeasureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
-)
-
-func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
-
-	if mode >= YGMeasureModeCount {
-		return ""
-	}
-
-	if performLayout {
-		return kLayoutModeNames[mode]
-	}
-	return kMeasureModeNames[mode]
-}
-
-func YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(sizeMode YGMeasureMode, size float32, lastComputedSize float32) bool {
-	return sizeMode == YGMeasureModeExactly && YGFloatsEqual(size, lastComputedSize)
-}
-
-func YGMeasureModeOldSizeIsUnspecifiedAndStillFits(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastComputedSize float32) bool {
-	return sizeMode == YGMeasureModeAtMost && lastSizeMode == YGMeasureModeUndefined &&
-		(size >= lastComputedSize || YGFloatsEqual(size, lastComputedSize))
-}
-
-func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastSize float32, lastComputedSize float32) bool {
-	return lastSizeMode == YGMeasureModeAtMost && sizeMode == YGMeasureModeAtMost &&
-		lastSize > size && (lastComputedSize <= size || YGFloatsEqual(size, lastComputedSize))
-}
-
-func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
-	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
-
-	// We store points for Pixel as we will use it for rounding
-	if pixelsInPoint == 0 {
-		// Zero is used to skip rounding
-		config.pointScaleFactor = 0
-	} else {
-		config.pointScaleFactor = pixelsInPoint
-	}
-}
+/// -------------------------- not-yet-arranged
 
 func YGNodeComputeFlexBasisForChild(node *YGNode,
 	child *YGNode,
@@ -1201,86 +1230,6 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 				heightMode, height-marginColumn, lastHeightMode, lastHeight, lastComputedHeight)
 
 	return widthIsCompatible && heightIsCompatible
-}
-
-func YGIsBaselineLayout(node *YGNode) bool {
-	if YGFlexDirectionIsColumn(node.style.flexDirection) {
-		return false
-	}
-	if node.style.alignItems == YGAlignBaseline {
-		return true
-	}
-	childCount := YGNodeGetChildCount(node)
-	for i := 0; i < childCount; i++ {
-		child := YGNodeGetChild(node, i)
-		if child.style.positionType == YGPositionTypeRelative &&
-			child.style.alignSelf == YGAlignBaseline {
-			return true
-		}
-	}
-
-	return false
-}
-
-func YGNodeBoundAxisWithinMinAndMax(node *YGNode, axis YGFlexDirection, value float32, axisSize float32) float32 {
-	min := YGUndefined
-	max := YGUndefined
-
-	if YGFlexDirectionIsColumn(axis) {
-		min = YGResolveValue(&node.style.minDimensions[YGDimensionHeight], axisSize)
-		max = YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], axisSize)
-	} else if YGFlexDirectionIsRow(axis) {
-		min = YGResolveValue(&node.style.minDimensions[YGDimensionWidth], axisSize)
-		max = YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], axisSize)
-	}
-
-	boundValue := value
-
-	if !YGFloatIsUndefined(max) && max >= 0 && boundValue > max {
-		boundValue = max
-	}
-
-	if !YGFloatIsUndefined(min) && min >= 0 && boundValue < min {
-		boundValue = min
-	}
-
-	return boundValue
-}
-
-// Like YGNodeBoundAxisWithinMinAndMax but also ensures that the value doesn't go
-// below the
-// padding and border amount.
-func YGNodeBoundAxis(node *YGNode, axis YGFlexDirection, value float32, axisSize float32, widthSize float32) float32 {
-	return fmaxf(YGNodeBoundAxisWithinMinAndMax(node, axis, value, axisSize),
-		YGNodePaddingAndBorderForAxis(node, axis, widthSize))
-}
-
-func YGNodeSetChildTrailingPosition(node *YGNode, child *YGNode, axis YGFlexDirection) {
-	size := child.layout.measuredDimensions[dim[axis]]
-	child.layout.position[trailing[axis]] =
-		node.layout.measuredDimensions[dim[axis]] - size - child.layout.position[pos[axis]]
-}
-
-func YGConstrainMaxSizeForMode(node *YGNode, axis YGFlexDirection, parentAxisSize float32, parentWidth float32, mode *YGMeasureMode, size *float32) {
-	maxSize := YGResolveValue(&node.style.maxDimensions[dim[axis]], parentAxisSize) +
-		YGNodeMarginForAxis(node, axis, parentWidth)
-	switch *mode {
-	case YGMeasureModeExactly, YGMeasureModeAtMost:
-		if YGFloatIsUndefined(maxSize) || *size < maxSize {
-			// TODO: this is redundant, but what is in original code
-			*size = *size
-		} else {
-			*size = maxSize
-		}
-
-		break
-	case YGMeasureModeUndefined:
-		if !YGFloatIsUndefined(maxSize) {
-			*mode = YGMeasureModeAtMost
-			*size = maxSize
-		}
-		break
-	}
 }
 
 func YGNodeFixedSizeSetMeasuredDimensions(node *YGNode,
@@ -3065,6 +3014,69 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 		if gPrintTree {
 			YGNodePrint(node, YGPrintOptionsLayout|YGPrintOptionsChildren|YGPrintOptionsStyle)
 		}
+	}
+}
+
+var (
+	gDepth        = 0
+	gPrintTree    = false
+	gPrintChanges = false
+	gPrintSkips   = false
+)
+
+const (
+	spacer = "                                                            "
+)
+
+// YGSpacer returns spacer string
+func YGSpacer(level int) string {
+	n := len(spacer)
+	if level > n {
+		level = n
+	}
+	return spacer[:level]
+}
+
+var (
+	kMeasureModeNames = [YGMeasureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
+	kLayoutModeNames  = [YGMeasureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
+)
+
+func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
+
+	if mode >= YGMeasureModeCount {
+		return ""
+	}
+
+	if performLayout {
+		return kLayoutModeNames[mode]
+	}
+	return kMeasureModeNames[mode]
+}
+
+func YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(sizeMode YGMeasureMode, size float32, lastComputedSize float32) bool {
+	return sizeMode == YGMeasureModeExactly && YGFloatsEqual(size, lastComputedSize)
+}
+
+func YGMeasureModeOldSizeIsUnspecifiedAndStillFits(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastComputedSize float32) bool {
+	return sizeMode == YGMeasureModeAtMost && lastSizeMode == YGMeasureModeUndefined &&
+		(size >= lastComputedSize || YGFloatsEqual(size, lastComputedSize))
+}
+
+func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastSize float32, lastComputedSize float32) bool {
+	return lastSizeMode == YGMeasureModeAtMost && sizeMode == YGMeasureModeAtMost &&
+		lastSize > size && (lastComputedSize <= size || YGFloatsEqual(size, lastComputedSize))
+}
+
+func YGConfigSetPointScaleFactor(config *YGConfig, pixelsInPoint float32) {
+	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
+
+	// We store points for Pixel as we will use it for rounding
+	if pixelsInPoint == 0 {
+		// Zero is used to skip rounding
+		config.pointScaleFactor = 0
+	} else {
+		config.pointScaleFactor = pixelsInPoint
 	}
 }
 
