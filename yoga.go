@@ -274,6 +274,10 @@ var (
 	dim      = [4]YGDimension{YGDimensionHeight, YGDimensionHeight, YGDimensionWidth, YGDimensionWidth}
 )
 
+func YGLog(node *YGNode, level YGLogLevel, format string, args ...interface{}) {
+	fmt.Printf(format, args...)
+}
+
 // YGDefaultLog is default logging function
 func YGDefaultLog(config YGConfigRef, node YGNodeRef, level YGLogLevel, format string,
 	args ...interface{}) int {
@@ -294,7 +298,7 @@ func YGDefaultLog(config YGConfigRef, node YGNodeRef, level YGLogLevel, format s
 }
 
 // YGComputedEdgeValue computes edge value
-func YGComputedEdgeValue(edges [YGEdgeCount]YGValue, edge YGEdge, defaultValue *YGValue) *YGValue {
+func YGComputedEdgeValue(edges []YGValue, edge YGEdge, defaultValue *YGValue) *YGValue {
 	if edges[edge].unit != YGUnitUndefined {
 		return &edges[edge]
 	}
@@ -509,18 +513,6 @@ func YGNodeCopyStyle(dstNode *YGNode, srcNode *YGNode) {
 		dstNode.style = srcNode.style
 		YGNodeMarkDirtyInternal(dstNode)
 	}
-}
-
-// YGAssert asserts that cond is true
-func YGAssert(cond bool, format string, args ...interface{}) {
-	if !cond {
-		panic(format)
-	}
-}
-
-// YGAssertWithNode assert if cond is not true
-func YGAssertWithNode(node YGNodeRef, cond bool, format string, args ...interface{}) {
-	YGAssert(cond, format, args...)
 }
 
 // YGNodeReset resets a node
@@ -1248,7 +1240,7 @@ func YGNodeLeadingMargin(node *YGNode, axis YGFlexDirection, widthSize float32) 
 		return YGResolveValueMargin(&node.style.margin[YGEdgeStart], widthSize)
 	}
 
-	return YGResolveValueMargin(YGComputedEdgeValue(node.style.margin, leading[axis], &YGValueZero), widthSize)
+	return YGResolveValueMargin(YGComputedEdgeValue(node.style.margin[:], leading[axis], &YGValueZero), widthSize)
 }
 
 func YGNodeTrailingMargin(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
@@ -1256,7 +1248,7 @@ func YGNodeTrailingMargin(node *YGNode, axis YGFlexDirection, widthSize float32)
 		return YGResolveValueMargin(&node.style.margin[YGEdgeEnd], widthSize)
 	}
 
-	return YGResolveValueMargin(YGComputedEdgeValue(node.style.margin, trailing[axis], &YGValueZero),
+	return YGResolveValueMargin(YGComputedEdgeValue(node.style.margin[:], trailing[axis], &YGValueZero),
 		widthSize)
 }
 
@@ -1266,7 +1258,7 @@ func YGNodeLeadingPadding(node *YGNode, axis YGFlexDirection, widthSize float32)
 		return YGResolveValue(&node.style.padding[YGEdgeStart], widthSize)
 	}
 
-	return fmaxf(YGResolveValue(YGComputedEdgeValue(node.style.padding, leading[axis], &YGValueZero), widthSize), 0)
+	return fmaxf(YGResolveValue(YGComputedEdgeValue(node.style.padding[:], leading[axis], &YGValueZero), widthSize), 0)
 }
 
 func YGNodeTrailingPadding(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
@@ -1275,7 +1267,7 @@ func YGNodeTrailingPadding(node *YGNode, axis YGFlexDirection, widthSize float32
 		return YGResolveValue(&node.style.padding[YGEdgeEnd], widthSize)
 	}
 
-	return fmaxf(YGResolveValue(YGComputedEdgeValue(node.style.padding, trailing[axis], &YGValueZero), widthSize), 0)
+	return fmaxf(YGResolveValue(YGComputedEdgeValue(node.style.padding[:], trailing[axis], &YGValueZero), widthSize), 0)
 }
 
 func YGNodeLeadingBorder(node *YGNode, axis YGFlexDirection) float32 {
@@ -1284,7 +1276,7 @@ func YGNodeLeadingBorder(node *YGNode, axis YGFlexDirection) float32 {
 		return node.style.border[YGEdgeStart].value
 	}
 
-	return fmaxf(YGComputedEdgeValue(node.style.border, leading[axis], &YGValueZero).value, 0)
+	return fmaxf(YGComputedEdgeValue(node.style.border[:], leading[axis], &YGValueZero).value, 0)
 }
 
 func YGNodeTrailingBorder(node *YGNode, axis YGFlexDirection) float32 {
@@ -1293,7 +1285,7 @@ func YGNodeTrailingBorder(node *YGNode, axis YGFlexDirection) float32 {
 		return node.style.border[YGEdgeEnd].value
 	}
 
-	return fmaxf(YGComputedEdgeValue(node.style.border, trailing[axis], &YGValueZero).value, 0)
+	return fmaxf(YGComputedEdgeValue(node.style.border[:], trailing[axis], &YGValueZero).value, 0)
 }
 
 func YGNodeLeadingPaddingAndBorder(node *YGNode, axis YGFlexDirection, widthSize float32) float32 {
@@ -1443,29 +1435,29 @@ func YGNodeIsLayoutDimDefined(node *YGNode, axis YGFlexDirection) bool {
 
 func YGNodeIsLeadingPosDefined(node *YGNode, axis YGFlexDirection) bool {
 	return (YGFlexDirectionIsRow(axis) &&
-		YGComputedEdgeValue(node.style.position, YGEdgeStart, &YGValueUndefined).unit !=
+		YGComputedEdgeValue(node.style.position[:], YGEdgeStart, &YGValueUndefined).unit !=
 			YGUnitUndefined) ||
-		YGComputedEdgeValue(node.style.position, leading[axis], &YGValueUndefined).unit !=
+		YGComputedEdgeValue(node.style.position[:], leading[axis], &YGValueUndefined).unit !=
 			YGUnitUndefined
 }
 
 func YGNodeIsTrailingPosDefined(node *YGNode, axis YGFlexDirection) bool {
 	return (YGFlexDirectionIsRow(axis) &&
-		YGComputedEdgeValue(node.style.position, YGEdgeEnd, &YGValueUndefined).unit !=
+		YGComputedEdgeValue(node.style.position[:], YGEdgeEnd, &YGValueUndefined).unit !=
 			YGUnitUndefined) ||
-		YGComputedEdgeValue(node.style.position, trailing[axis], &YGValueUndefined).unit !=
+		YGComputedEdgeValue(node.style.position[:], trailing[axis], &YGValueUndefined).unit !=
 			YGUnitUndefined
 }
 
 func YGNodeLeadingPosition(node *YGNode, axis YGFlexDirection, axisSize float32) float32 {
 	if YGFlexDirectionIsRow(axis) {
-		leadingPosition := YGComputedEdgeValue(node.style.position, YGEdgeStart, &YGValueUndefined)
+		leadingPosition := YGComputedEdgeValue(node.style.position[:], YGEdgeStart, &YGValueUndefined)
 		if leadingPosition.unit != YGUnitUndefined {
 			return YGResolveValue(leadingPosition, axisSize)
 		}
 	}
 
-	leadingPosition := YGComputedEdgeValue(node.style.position, leading[axis], &YGValueUndefined)
+	leadingPosition := YGComputedEdgeValue(node.style.position[:], leading[axis], &YGValueUndefined)
 
 	if leadingPosition.unit == YGUnitUndefined {
 		return 0
@@ -1475,13 +1467,13 @@ func YGNodeLeadingPosition(node *YGNode, axis YGFlexDirection, axisSize float32)
 
 func YGNodeTrailingPosition(node *YGNode, axis YGFlexDirection, axisSize float32) float32 {
 	if YGFlexDirectionIsRow(axis) {
-		trailingPosition := YGComputedEdgeValue(node.style.position, YGEdgeEnd, &YGValueUndefined)
+		trailingPosition := YGComputedEdgeValue(node.style.position[:], YGEdgeEnd, &YGValueUndefined)
 		if trailingPosition.unit != YGUnitUndefined {
 			return YGResolveValue(trailingPosition, axisSize)
 		}
 	}
 
-	trailingPosition := YGComputedEdgeValue(node.style.position, trailing[axis], &YGValueUndefined)
+	trailingPosition := YGComputedEdgeValue(node.style.position[:], trailing[axis], &YGValueUndefined)
 
 	if trailingPosition.unit == YGUnitUndefined {
 		return 0
@@ -1522,8 +1514,163 @@ func YGNodeSetPosition(node *YGNode, direction YGDirection, mainSize float32, cr
 			relativePositionCross
 }
 
+func YGIndent(node *YGNode, n int) {
+	for i := 0; i < n; i++ {
+		YGLog(node, YGLogLevelDebug, "  ")
+	}
+}
+
+func YGPrintNumberIfNotUndefinedf(node *YGNode, str string, number float32) {
+	if !YGFloatIsUndefined(number) {
+		YGLog(node, YGLogLevelDebug, "%s: %g; ", str, number)
+	}
+}
+
+func YGPrintNumberIfNotUndefined(node *YGNode, str string, number *YGValue) {
+	if number.unit != YGUnitUndefined {
+		if number.unit == YGUnitAuto {
+			YGLog(node, YGLogLevelDebug, "%s: auto; ", str)
+		} else {
+			unit := "%"
+
+			if number.unit == YGUnitPoint {
+				unit = "px"
+			}
+			YGLog(node, YGLogLevelDebug, "%s: %g%s; ", str, number.value, unit)
+		}
+	}
+}
+
+func YGPrintNumberIfNotAuto(node *YGNode, str string, number *YGValue) {
+	if number.unit != YGUnitAuto {
+		YGPrintNumberIfNotUndefined(node, str, number)
+	}
+}
+
+func YGPrintEdgeIfNotUndefined(node *YGNode, str string, edges []YGValue, edge YGEdge) {
+	YGPrintNumberIfNotUndefined(node, str, YGComputedEdgeValue(edges, edge, &YGValueUndefined))
+}
+
+func YGPrintNumberIfNotZero(node *YGNode, str string, number *YGValue) {
+	if !YGFloatsEqual(number.value, 0) {
+		YGPrintNumberIfNotUndefined(node, str, number)
+	}
+}
+
+func YGFourValuesEqual(four []YGValue) bool {
+	return YGValueEqual(four[0], four[1]) && YGValueEqual(four[0], four[2]) &&
+		YGValueEqual(four[0], four[3])
+}
+
+func YGPrintEdges(node *YGNode, str string, edges []YGValue) {
+	if YGFourValuesEqual(edges) {
+		YGPrintNumberIfNotZero(node, str, &edges[YGEdgeLeft])
+	} else {
+		for edge := YGEdgeLeft; edge < YGEdgeCount; edge++ {
+			buf := fmt.Sprintf("%s-%s", str, YGEdgeToString(edge))
+			YGPrintNumberIfNotZero(node, buf, &edges[edge])
+		}
+	}
+}
+
 func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
-	// TODO: write me
+	YGIndent(node, level)
+	YGLog(node, YGLogLevelDebug, "<div ")
+
+	if node.print != nil {
+		node.print(node)
+	}
+
+	if options&YGPrintOptionsLayout != 0 {
+		YGLog(node, YGLogLevelDebug, "layout=\"")
+		YGLog(node, YGLogLevelDebug, "width: %g; ", node.layout.dimensions[YGDimensionWidth])
+		YGLog(node, YGLogLevelDebug, "height: %g; ", node.layout.dimensions[YGDimensionHeight])
+		YGLog(node, YGLogLevelDebug, "top: %g; ", node.layout.position[YGEdgeTop])
+		YGLog(node, YGLogLevelDebug, "left: %g;", node.layout.position[YGEdgeLeft])
+		YGLog(node, YGLogLevelDebug, "\" ")
+	}
+
+	if options&YGPrintOptionsStyle != 0 {
+		YGLog(node, YGLogLevelDebug, "style=\"")
+		if node.style.flexDirection != gYGNodeDefaults.style.flexDirection {
+			YGLog(node,
+				YGLogLevelDebug,
+				"flex-direction: %s; ",
+				YGFlexDirectionToString(node.style.flexDirection))
+		}
+		if node.style.justifyContent != gYGNodeDefaults.style.justifyContent {
+			YGLog(node,
+				YGLogLevelDebug,
+				"justify-content: %s; ",
+				YGJustifyToString(node.style.justifyContent))
+		}
+		if node.style.alignItems != gYGNodeDefaults.style.alignItems {
+			YGLog(node, YGLogLevelDebug, "align-items: %s; ", YGAlignToString(node.style.alignItems))
+		}
+		if node.style.alignContent != gYGNodeDefaults.style.alignContent {
+			YGLog(node, YGLogLevelDebug, "align-content: %s; ", YGAlignToString(node.style.alignContent))
+		}
+		if node.style.alignSelf != gYGNodeDefaults.style.alignSelf {
+			YGLog(node, YGLogLevelDebug, "align-self: %s; ", YGAlignToString(node.style.alignSelf))
+		}
+
+		YGPrintNumberIfNotUndefinedf(node, "flex-grow", node.style.flexGrow)
+		YGPrintNumberIfNotUndefinedf(node, "flex-shrink", node.style.flexShrink)
+		YGPrintNumberIfNotAuto(node, "flex-basis", &node.style.flexBasis)
+		YGPrintNumberIfNotUndefinedf(node, "flex", node.style.flex)
+
+		if node.style.flexWrap != gYGNodeDefaults.style.flexWrap {
+			YGLog(node, YGLogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.style.flexWrap))
+		}
+
+		if node.style.overflow != gYGNodeDefaults.style.overflow {
+			YGLog(node, YGLogLevelDebug, "overflow: %s; ", YGOverflowToString(node.style.overflow))
+		}
+
+		if node.style.display != gYGNodeDefaults.style.display {
+			YGLog(node, YGLogLevelDebug, "display: %s; ", YGDisplayToString(node.style.display))
+		}
+
+		YGPrintEdges(node, "margin", node.style.margin[:])
+		YGPrintEdges(node, "padding", node.style.padding[:])
+		YGPrintEdges(node, "border", node.style.border[:])
+
+		YGPrintNumberIfNotAuto(node, "width", &node.style.dimensions[YGDimensionWidth])
+		YGPrintNumberIfNotAuto(node, "height", &node.style.dimensions[YGDimensionHeight])
+		YGPrintNumberIfNotAuto(node, "max-width", &node.style.maxDimensions[YGDimensionWidth])
+		YGPrintNumberIfNotAuto(node, "max-height", &node.style.maxDimensions[YGDimensionHeight])
+		YGPrintNumberIfNotAuto(node, "min-width", &node.style.minDimensions[YGDimensionWidth])
+		YGPrintNumberIfNotAuto(node, "min-height", &node.style.minDimensions[YGDimensionHeight])
+
+		if node.style.positionType != gYGNodeDefaults.style.positionType {
+			YGLog(node,
+				YGLogLevelDebug,
+				"position: %s; ",
+				YGPositionTypeToString(node.style.positionType))
+		}
+
+		YGPrintEdgeIfNotUndefined(node, "left", node.style.position[:], YGEdgeLeft)
+		YGPrintEdgeIfNotUndefined(node, "right", node.style.position[:], YGEdgeRight)
+		YGPrintEdgeIfNotUndefined(node, "top", node.style.position[:], YGEdgeTop)
+		YGPrintEdgeIfNotUndefined(node, "bottom", node.style.position[:], YGEdgeBottom)
+		YGLog(node, YGLogLevelDebug, "\" ")
+
+		if node.measure != nil {
+			YGLog(node, YGLogLevelDebug, "has-custom-measure=\"true\"")
+		}
+	}
+	YGLog(node, YGLogLevelDebug, ">")
+
+	childCount := YGNodeListCount(node.children)
+	if options&YGPrintOptionsChildren != 0 && childCount > 0 {
+		for i := 0; i < childCount; i++ {
+			YGLog(node, YGLogLevelDebug, "\n")
+			YGNodePrintInternal(YGNodeGetChild(node, i), options, level+1)
+		}
+		YGIndent(node, level)
+		YGLog(node, YGLogLevelDebug, "\n")
+	}
+	YGLog(node, YGLogLevelDebug, "</div>")
 }
 
 func YGNodePrint(node *YGNode, options YGPrintOptions) {
@@ -1610,7 +1757,7 @@ func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, 
 }
 
 func YGConfigSetPointScaleFactor(config YGConfigRef, pixelsInPoint float32) {
-	//YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero");
+	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
 
 	// We store points for Pixel as we will use it for rounding
 	if pixelsInPoint == 0 {
@@ -3795,4 +3942,22 @@ func YGConfigSetContext(config YGConfigRef, context interface{}) {
 
 func YGConfigGetContext(config YGConfigRef) interface{} {
 	return config.context
+}
+
+// YGAssert asserts that cond is true
+func YGAssert(cond bool, format string, args ...interface{}) {
+	if !cond {
+		panic(format)
+	}
+}
+
+// YGAssertWithNode assert if cond is not true
+func YGAssertWithNode(node YGNodeRef, cond bool, format string, args ...interface{}) {
+	YGAssert(cond, format, args...)
+}
+
+func YGAssertWithConfig(config YGConfigRef, condition bool, message string) {
+	if !condition {
+		panic(message)
+	}
 }

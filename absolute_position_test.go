@@ -10,6 +10,11 @@ const (
 	eps = 0.000001
 )
 
+func init() {
+	gPrintTree = true
+	//gPrintChanges = true
+}
+
 func assertFloatEqual(t *testing.T, got, exp float32) {
 	assert.Equal(t, got, exp)
 	diff := fabs(got - exp)
