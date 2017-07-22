@@ -11,7 +11,7 @@ import (
 func cmpFloat(exp, got float32) {
 
 }
-func assertFloatEqual(t *testing.T, got, exp float32) {
+func assertFloatEqual(t *testing.T, exp, got float32) {
 	if exp != got {
 		fmt.Printf("got: %.2f, exp: %2.f\n", got, exp)
 	}

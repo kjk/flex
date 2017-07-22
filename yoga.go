@@ -3773,6 +3773,42 @@ func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight 
 	return (needToVisitNode || cachedResults == nil)
 }
 
+func calcStartWidth(node *YGNode, parentWidth float32) (float32, YGMeasureMode) {
+	if YGNodeIsStyleDimDefined(node, YGFlexDirectionRow, parentWidth) {
+		width := YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionRow]], parentWidth)
+		margin := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
+		return width + margin, YGMeasureModeExactly
+	}
+	if YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], parentWidth) >= 0.0 {
+		width := YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], parentWidth)
+		return width, YGMeasureModeAtMost
+	}
+
+	width := parentWidth
+	widthMeasureMode := YGMeasureModeExactly
+	if YGFloatIsUndefined(width) {
+		widthMeasureMode = YGMeasureModeUndefined
+	}
+	return width, widthMeasureMode
+}
+func calcStartHeight(node *YGNode, parentWidth, parentHeight float32) (float32, YGMeasureMode) {
+	if YGNodeIsStyleDimDefined(node, YGFlexDirectionColumn, parentHeight) {
+		height := YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionColumn]], parentHeight)
+		margin := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
+		return height + margin, YGMeasureModeExactly
+	}
+	if YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight) >= 0 {
+		height := YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight)
+		return height, YGMeasureModeAtMost
+	}
+	height := parentHeight
+	heightMeasureMode := YGMeasureModeExactly
+	if YGFloatIsUndefined(height) {
+		heightMeasureMode = YGMeasureModeUndefined
+	}
+	return height, heightMeasureMode
+}
+
 func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float32, parentDirection YGDirection) {
 	// Increment the generation count. This will force the recursive routine to
 	// visit
@@ -3783,53 +3819,12 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 
 	YGResolveDimensions(node)
 
-	width := YGUndefined
-	widthMeasureMode := YGMeasureModeUndefined
-	if YGNodeIsStyleDimDefined(node, YGFlexDirectionRow, parentWidth) {
-		width = YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionRow]], parentWidth)
-		margin := YGNodeMarginForAxis(node, YGFlexDirectionRow, parentWidth)
-		width += margin
-		widthMeasureMode = YGMeasureModeExactly
-	} else if YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], parentWidth) >= 0.0 {
-		width = YGResolveValue(&node.style.maxDimensions[YGDimensionWidth], parentWidth)
-		widthMeasureMode = YGMeasureModeAtMost
-	} else {
-		width = parentWidth
-		widthMeasureMode = YGMeasureModeExactly
-		if YGFloatIsUndefined(width) {
-			widthMeasureMode = YGMeasureModeUndefined
-		}
-	}
+	width, widthMeasureMode := calcStartWidth(node, parentWidth)
+	height, heightMeasureMode := calcStartHeight(node, parentWidth, parentHeight)
 
-	height := YGUndefined
-	heightMeasureMode := YGMeasureModeUndefined
-	if YGNodeIsStyleDimDefined(node, YGFlexDirectionColumn, parentHeight) {
-		height = YGResolveValue(node.resolvedDimensions[dim[YGFlexDirectionColumn]], parentHeight)
-		margin := YGNodeMarginForAxis(node, YGFlexDirectionColumn, parentWidth)
-		height += margin
-		heightMeasureMode = YGMeasureModeExactly
-	} else if YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight) >= 0 {
-		height = YGResolveValue(&node.style.maxDimensions[YGDimensionHeight], parentHeight)
-		heightMeasureMode = YGMeasureModeAtMost
-	} else {
-		height = parentHeight
-		heightMeasureMode = YGMeasureModeExactly
-		if YGFloatIsUndefined(height) {
-			heightMeasureMode = YGMeasureModeUndefined
-		}
-	}
-
-	if YGLayoutNodeInternal(node,
-		width,
-		height,
-		parentDirection,
-		widthMeasureMode,
-		heightMeasureMode,
-		parentWidth,
-		parentHeight,
-		true,
-		"initial",
-		node.config) {
+	if YGLayoutNodeInternal(node, width, height, parentDirection,
+		widthMeasureMode, heightMeasureMode, parentWidth, parentHeight,
+		true, "initial", node.config) {
 		YGNodeSetPosition(node, node.layout.direction, parentWidth, parentHeight, parentWidth)
 		YGRoundToPixelGrid(node, node.config.pointScaleFactor, 0, 0)
 
