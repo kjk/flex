@@ -212,6 +212,13 @@ var (
 	YGValueZero = YGValue{value: 0, unit: YGUnitPoint}
 )
 
+func valueEq(v1, v2 YGValue) bool {
+	if v1.unit != v2.unit {
+		return false
+	}
+	return feq(v1.value, v2.value)
+}
+
 // YGDefaultLog is default logging function
 func YGDefaultLog(config *YGConfig, node *YGNode, level YGLogLevel, format string,
 	args ...interface{}) int {
@@ -477,30 +484,28 @@ func styleEq(s1, s2 *YGStyle) bool {
 		s1.flexWrap != s2.flexWrap ||
 		s1.overflow != s2.overflow ||
 		s1.display != s2.display ||
-		s1.flex != s2.flex ||
-		s1.flexGrow != s2.flexGrow ||
-		s1.flexShrink != s2.flexShrink ||
-		s1.flexBasis != s2.flexBasis {
+		!feq(s1.flex, s2.flex) ||
+		!feq(s1.flexGrow, s2.flexGrow) ||
+		!feq(s1.flexShrink, s2.flexShrink) ||
+		!valueEq(s1.flexBasis, s2.flexBasis) {
 		return false
 	}
 	for i := 0; i < YGEdgeCount; i++ {
-		if s1.margin[i] != s2.margin[i] ||
-			s1.position[i] != s2.position[i] ||
-			s1.padding[i] != s2.padding[i] ||
-			s1.border[i] != s2.border[i] {
+		if !valueEq(s1.margin[i], s2.margin[i]) ||
+			!valueEq(s1.position[i], s2.position[i]) ||
+			!valueEq(s1.padding[i], s2.padding[i]) ||
+			!valueEq(s1.border[i], s2.border[i]) {
 			return false
 		}
 	}
 	for i := 0; i < 2; i++ {
-		if s1.dimensions[i] != s2.dimensions[i] ||
-			s1.minDimensions[i] != s2.minDimensions[i] ||
-			s1.maxDimensions[i] != s2.maxDimensions[i] {
+		if !valueEq(s1.dimensions[i], s2.dimensions[i]) ||
+			!valueEq(s1.minDimensions[i], s2.minDimensions[i]) ||
+			!valueEq(s1.maxDimensions[i], s2.maxDimensions[i]) {
 			return false
 		}
 	}
-	// TODO: for now, always return false
-	return false
-	//return true
+	return true
 }
 
 // YGNodeCopyStyle copies style

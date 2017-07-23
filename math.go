@@ -20,6 +20,13 @@ func IsNaN(f float32) (is bool) {
 	return f != f
 }
 
+func feq(a, b float32) bool {
+	if IsNaN(a) && IsNaN(b) {
+		return true
+	}
+	return a == b
+}
+
 // https://github.com/evanphx/ulysses-libc/blob/master/src/math/fmaxf.c
 func fmaxf(a float32, b float32) float32 {
 	if IsNaN(a) {
