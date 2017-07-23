@@ -605,42 +605,42 @@ func YGNodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
 	}
 }
 
-// YGNodeStyleGetMaxHeight gets max height
-func YGNodeStyleGetMaxHeight(node *Node) Value {
+// NodeStyleGetMaxHeight gets max height
+func NodeStyleGetMaxHeight(node *Node) Value {
 	return node.Style.maxDimensions[DimensionHeight]
 }
 
-// YGNodeStyleSetAspectRatio sets axpect ratio
-func YGNodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
+// NodeStyleSetAspectRatio sets axpect ratio
+func NodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
 	if node.Style.aspectRatio != aspectRatio {
 		node.Style.aspectRatio = aspectRatio
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetAspectRatio gets aspect ratio
-func YGNodeStyleGetAspectRatio(node *Node) float32 {
+// NodeStyleGetAspectRatio gets aspect ratio
+func NodeStyleGetAspectRatio(node *Node) float32 {
 	return node.Style.aspectRatio
 }
 
 // YGNodeLayoutGetLeft gets left
 func YGNodeLayoutGetLeft(node *Node) float32 {
-	return node.Layout.position[EdgeLeft]
+	return node.Layout.Position[EdgeLeft]
 }
 
 // YGNodeLayoutGetTop gets top
 func YGNodeLayoutGetTop(node *Node) float32 {
-	return node.Layout.position[EdgeTop]
+	return node.Layout.Position[EdgeTop]
 }
 
-// YGNodeLayoutGetRight gets right
-func YGNodeLayoutGetRight(node *Node) float32 {
-	return node.Layout.position[EdgeRight]
+// NodeLayoutGetRight gets right
+func NodeLayoutGetRight(node *Node) float32 {
+	return node.Layout.Position[EdgeRight]
 }
 
-// YGNodeLayoutGetBottom gets bottom
-func YGNodeLayoutGetBottom(node *Node) float32 {
-	return node.Layout.position[EdgeBottom]
+// NodeLayoutGetBottom gets bottom
+func NodeLayoutGetBottom(node *Node) float32 {
+	return node.Layout.Position[EdgeBottom]
 }
 
 // YGNodeLayoutGetWidth gets width
@@ -653,68 +653,68 @@ func YGNodeLayoutGetHeight(node *Node) float32 {
 	return node.Layout.dimensions[DimensionHeight]
 }
 
-// YGNodeLayoutGetDirection gets direction
-func YGNodeLayoutGetDirection(node *Node) Direction {
-	return node.Layout.direction
+// NodeLayoutGetDirection gets direction
+func NodeLayoutGetDirection(node *Node) Direction {
+	return node.Layout.Direction
 }
 
-// YGNodeLayoutGetHadOverflow gets hadOverflow
-func YGNodeLayoutGetHadOverflow(node *Node) bool {
-	return node.Layout.hadOverflow
+// NodeLayoutGetHadOverflow gets hadOverflow
+func NodeLayoutGetHadOverflow(node *Node) bool {
+	return node.Layout.HadOverflow
 }
 
-// YGNodeLayoutGetMargin gets margin
-func YGNodeLayoutGetMargin(node *Node, edge Edge) float32 {
+// NodeLayoutGetMargin gets margin
+func NodeLayoutGetMargin(node *Node, edge Edge) float32 {
 	assertWithNode(node, edge < EdgeEnd, "Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
-		if node.Layout.direction == DirectionRTL {
-			return node.Layout.margin[EdgeEnd]
+		if node.Layout.Direction == DirectionRTL {
+			return node.Layout.Margin[EdgeEnd]
 		}
-		return node.Layout.margin[EdgeStart]
+		return node.Layout.Margin[EdgeStart]
 	}
 	if edge == EdgeRight {
-		if node.Layout.direction == DirectionRTL {
-			return node.Layout.margin[EdgeStart]
+		if node.Layout.Direction == DirectionRTL {
+			return node.Layout.Margin[EdgeStart]
 		}
-		return node.Layout.margin[EdgeEnd]
+		return node.Layout.Margin[EdgeEnd]
 	}
-	return node.Layout.margin[edge]
+	return node.Layout.Margin[edge]
 }
 
-// YGNodeLayoutGetBorder gets border
-func YGNodeLayoutGetBorder(node *Node, edge Edge) float32 {
+// NodeLayoutGetBorder gets border
+func NodeLayoutGetBorder(node *Node, edge Edge) float32 {
 	assertWithNode(node, edge < EdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
-		if node.Layout.direction == DirectionRTL {
-			return node.Layout.border[EdgeEnd]
+		if node.Layout.Direction == DirectionRTL {
+			return node.Layout.Border[EdgeEnd]
 		}
-		return node.Layout.border[EdgeStart]
+		return node.Layout.Border[EdgeStart]
 	}
 	if edge == EdgeRight {
-		if node.Layout.direction == DirectionRTL {
-			return node.Layout.border[EdgeStart]
+		if node.Layout.Direction == DirectionRTL {
+			return node.Layout.Border[EdgeStart]
 		}
-		return node.Layout.border[EdgeEnd]
+		return node.Layout.Border[EdgeEnd]
 	}
-	return node.Layout.border[edge]
+	return node.Layout.Border[edge]
 }
 
-// YGNodeLayoutGetPadding gets padding
-func YGNodeLayoutGetPadding(node *Node, edge Edge) float32 {
+// NodeLayoutGetPadding gets padding
+func NodeLayoutGetPadding(node *Node, edge Edge) float32 {
 	assertWithNode(node, edge < EdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
-		if node.Layout.direction == DirectionRTL {
-			return node.Layout.padding[EdgeEnd]
+		if node.Layout.Direction == DirectionRTL {
+			return node.Layout.Padding[EdgeEnd]
 		}
-		return node.Layout.padding[EdgeStart]
+		return node.Layout.Padding[EdgeStart]
 	}
 	if edge == EdgeRight {
-		if node.Layout.direction == DirectionRTL {
-			return node.Layout.padding[EdgeStart]
+		if node.Layout.Direction == DirectionRTL {
+			return node.Layout.Padding[EdgeStart]
 		}
-		return node.Layout.padding[EdgeEnd]
+		return node.Layout.Padding[EdgeEnd]
 	}
-	return node.Layout.padding[edge]
+	return node.Layout.Padding[edge]
 }

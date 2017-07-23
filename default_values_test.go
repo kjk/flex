@@ -60,31 +60,31 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, YGNodeStyleGetMinWidth(root).Unit, UnitUndefined)
 	assert.Equal(t, YGNodeStyleGetMinHeight(root).Unit, UnitUndefined)
 	assert.Equal(t, YGNodeStyleGetMaxWidth(root).Unit, UnitUndefined)
-	assert.Equal(t, YGNodeStyleGetMaxHeight(root).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetMaxHeight(root).Unit, UnitUndefined)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetRight(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetBottom(root))
+	assertFloatEqual(t, 0, NodeLayoutGetRight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetBottom(root))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeLeft))
-	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeTop))
-	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeRight))
-	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeBottom))
+	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeLeft))
+	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeTop))
+	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeRight))
+	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeBottom))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, EdgeLeft))
-	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, EdgeTop))
-	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, EdgeRight))
-	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, EdgeBottom))
+	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeLeft))
+	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeTop))
+	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeRight))
+	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeBottom))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetBorder(root, EdgeLeft))
-	assertFloatEqual(t, 0, YGNodeLayoutGetBorder(root, EdgeTop))
-	assertFloatEqual(t, 0, YGNodeLayoutGetBorder(root, EdgeRight))
-	assertFloatEqual(t, 0, YGNodeLayoutGetBorder(root, EdgeBottom))
+	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeLeft))
+	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeTop))
+	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeRight))
+	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeBottom))
 
 	assert.True(t, FloatIsUndefined(YGNodeLayoutGetWidth(root)))
 	assert.True(t, FloatIsUndefined(YGNodeLayoutGetHeight(root)))
-	assert.Equal(t, DirectionInherit, YGNodeLayoutGetDirection(root))
+	assert.Equal(t, DirectionInherit, NodeLayoutGetDirection(root))
 
 }
 

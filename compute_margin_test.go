@@ -10,11 +10,11 @@ func TestComputed_layout_margin(t *testing.T) {
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 
-	assertFloatEqual(t, 10, YGNodeLayoutGetMargin(root, EdgeLeft))
-	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeRight))
+	assertFloatEqual(t, 10, NodeLayoutGetMargin(root, EdgeLeft))
+	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeRight))
 
 	NodeCalculateLayout(root, 100, 100, DirectionRTL)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeLeft))
-	assertFloatEqual(t, 10, YGNodeLayoutGetMargin(root, EdgeRight))
+	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeLeft))
+	assertFloatEqual(t, 10, NodeLayoutGetMargin(root, EdgeRight))
 }

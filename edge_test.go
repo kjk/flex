@@ -17,11 +17,11 @@ func TestStart_overrides(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 20, YGNodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 20, NodeLayoutGetRight(rootChild0))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 	assertFloatEqual(t, 20, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetRight(rootChild0))
 }
 
 func TestEnd_overrides(t *testing.T) {
@@ -39,11 +39,11 @@ func TestEnd_overrides(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetRight(rootChild0))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 20, YGNodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 20, NodeLayoutGetRight(rootChild0))
 }
 
 func TestHorizontal_overridden(t *testing.T) {
@@ -60,7 +60,7 @@ func TestHorizontal_overridden(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetRight(rootChild0))
 }
 
 func TestVertical_overridden(t *testing.T) {
@@ -77,7 +77,7 @@ func TestVertical_overridden(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetBottom(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetBottom(rootChild0))
 }
 
 func TestHorizontal_overrides_all(t *testing.T) {
@@ -95,8 +95,8 @@ func TestHorizontal_overrides_all(t *testing.T) {
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetRight(rootChild0))
-	assertFloatEqual(t, 20, YGNodeLayoutGetBottom(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 20, NodeLayoutGetBottom(rootChild0))
 }
 
 func TestVertical_overrides_all(t *testing.T) {
@@ -114,8 +114,8 @@ func TestVertical_overrides_all(t *testing.T) {
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 20, YGNodeLayoutGetRight(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetBottom(rootChild0))
+	assertFloatEqual(t, 20, NodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetBottom(rootChild0))
 }
 
 func TestAll_overridden(t *testing.T) {
@@ -136,6 +136,6 @@ func TestAll_overridden(t *testing.T) {
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetRight(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetBottom(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetRight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetBottom(rootChild0))
 }
