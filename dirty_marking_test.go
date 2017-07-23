@@ -36,7 +36,6 @@ func TestDirty_propagation(t *testing.T) {
 	assert.False(t, YGNodeIsDirty(root_child1))
 	assert.False(t, YGNodeIsDirty(root))
 
-	YGNodeFreeRecursive(root)
 }
 
 func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
@@ -63,7 +62,6 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	assert.False(t, YGNodeIsDirty(root_child1))
 	assert.False(t, YGNodeIsDirty(root))
 
-	YGNodeFreeRecursive(root)
 }
 
 func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
@@ -110,8 +108,6 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
 	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1_child0_child0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1_child0_child0))
-
-	YGNodeFreeRecursive(root)
 }
 
 func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
@@ -130,11 +126,7 @@ func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	child1 := YGNodeNew()
 	YGNodeRemoveChild(root, child1)
 	assert.False(t, YGNodeIsDirty(root))
-	YGNodeFree(child1)
 
 	YGNodeRemoveChild(root, child0)
 	assert.True(t, YGNodeIsDirty(root))
-	YGNodeFree(child0)
-
-	YGNodeFreeRecursive(root)
 }

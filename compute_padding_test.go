@@ -18,5 +18,5 @@ func TestComputed_layout_padding(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, YGEdgeLeft))
 	assertFloatEqual(t, 10, YGNodeLayoutGetPadding(root, YGEdgeRight))
 
-	YGNodeFreeRecursive(root)
+
 }

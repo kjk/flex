@@ -282,14 +282,9 @@ func YGResolveValueMargin(value *YGValue, parentSize float32) float32 {
 	return YGResolveValue(value, parentSize)
 }
 
-var (
-	gNodeInstanceCount = 0
-)
-
 // YGNodeNewWithConfig creates new node with config
 func YGNodeNewWithConfig(config *YGConfig) *YGNode {
 	node := gYGNodeDefaults
-	gNodeInstanceCount++
 
 	if config.useWebDefaults {
 		node.style.flexDirection = YGFlexDirectionRow
@@ -302,34 +297,6 @@ func YGNodeNewWithConfig(config *YGConfig) *YGNode {
 // YGNodeNew creates a new node
 func YGNodeNew() *YGNode {
 	return YGNodeNewWithConfig(&gYGConfigDefaults)
-}
-
-// YGNodeFree frees a node
-func YGNodeFree(node *YGNode) {
-	if node.parent != nil {
-		YGNodeListDelete(node.parent.children, node)
-		node.parent = nil
-	}
-
-	childCount := YGNodeGetChildCount(node)
-	for i := 0; i < childCount; i++ {
-		child := YGNodeGetChild(node, i)
-		child.parent = nil
-	}
-
-	YGNodeListFree(node.children)
-	//gYGFree(node);
-	gNodeInstanceCount--
-}
-
-// YGNodeFreeRecursive frees root recursevily
-func YGNodeFreeRecursive(root *YGNode) {
-	for YGNodeGetChildCount(root) > 0 {
-		child := YGNodeGetChild(root, 0)
-		YGNodeRemoveChild(root, child)
-		YGNodeFreeRecursive(child)
-	}
-	YGNodeFree(root)
 }
 
 // YGNodeReset resets a node
@@ -346,11 +313,6 @@ func YGNodeReset(node *YGNode) {
 		node.style.alignContent = YGAlignStretch
 	}
 	node.config = config
-}
-
-// YGNodeGetInstanceCount returns node instance count
-func YGNodeGetInstanceCount() int {
-	return gNodeInstanceCount
 }
 
 // YGConfigGetDefault returns default config, only for C#

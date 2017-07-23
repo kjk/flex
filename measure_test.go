@@ -62,7 +62,7 @@ func TestDont_measure_single_grow_shrink_child(t *testing.T) {
 
 	assert.Equal(t, 0, measureCount)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
@@ -83,7 +83,7 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 
 	assert.Equal(t, 1, measureCount)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestDont_measure_when_min_equals_max(t *testing.T) {
@@ -111,7 +111,7 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
@@ -139,7 +139,7 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
@@ -167,7 +167,7 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
@@ -195,7 +195,7 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
@@ -213,7 +213,7 @@ func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
 	assertFloatEqual(t, 68, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
@@ -231,7 +231,7 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 32, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestMeasure_zero_space_should_grow(t *testing.T) {
@@ -255,7 +255,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 	assertFloatEqual(t, 282, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
@@ -295,7 +295,7 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -334,7 +334,7 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -373,7 +373,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -413,7 +413,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -454,7 +454,7 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -494,7 +494,7 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -533,7 +533,7 @@ func TestMeasure_no_padding(t *testing.T) {
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -547,7 +547,7 @@ TEST(YogaDeathTest, cannot_add_child_to_node_with_measure_func) {
   root_child0 := YGNodeNew();
   ASSERT_DEATH(YGNodeInsertChild(root, root_child0, 0), "Cannot add child.*");
   YGNodeFree(root_child0);
-  YGNodeFreeRecursive(root);
+  ;
 }
 
 TEST(YogaDeathTest, cannot_add_nonnull_measure_func_to_non_leaf_node) {
@@ -556,7 +556,7 @@ TEST(YogaDeathTest, cannot_add_nonnull_measure_func_to_non_leaf_node) {
   YGNodeInsertChild(root, root_child0, 0);
 
   ASSERT_DEATH(YGNodeSetMeasureFunc(root, _measure3), "Cannot set measure function.*");
-  YGNodeFreeRecursive(root);
+  ;
 }
 #endif
 */
@@ -567,7 +567,7 @@ func TestCan_nullify_measure_func_on_any_node(t *testing.T) {
 
 	YGNodeSetMeasureFunc(root, nil)
 	assert.True(t, YGNodeGetMeasureFunc(root) == nil)
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestCant_call_negative_measure(t *testing.T) {
@@ -585,7 +585,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
 
-	YGNodeFreeRecursive(root)
+
 
 }
 
@@ -604,6 +604,6 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
 
-	YGNodeFreeRecursive(root)
+
 
 }

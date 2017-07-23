@@ -69,7 +69,7 @@ func TestExactly_measure_stretched_child_column(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
 	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[0].widthMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestExactly_measure_stretched_child_row(t *testing.T) {
@@ -95,7 +95,7 @@ func TestExactly_measure_stretched_child_row(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
 	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[0].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAt_most_main_axis_column(t *testing.T) {
@@ -120,7 +120,7 @@ func TestAt_most_main_axis_column(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
 	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAt_most_cross_axis_column(t *testing.T) {
@@ -146,7 +146,7 @@ func TestAt_most_cross_axis_column(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
 	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].widthMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAt_most_main_axis_row(t *testing.T) {
@@ -172,7 +172,7 @@ func TestAt_most_main_axis_row(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
 	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].widthMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAt_most_cross_axis_row(t *testing.T) {
@@ -199,7 +199,7 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
 	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestFlex_child(t *testing.T) {
@@ -227,7 +227,7 @@ func TestFlex_child(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[1].height)
 	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[1].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestFlex_child_with_flex_basis(t *testing.T) {
@@ -253,7 +253,7 @@ func TestFlex_child_with_flex_basis(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
 	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[0].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestOverflow_scroll_column(t *testing.T) {
@@ -283,7 +283,7 @@ func TestOverflow_scroll_column(t *testing.T) {
 	assert.True(t, YGFloatIsUndefined(constraintList.constraints[0].height))
 	assert.Equal(t, YGMeasureModeUndefined, constraintList.constraints[0].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestOverflow_scroll_row(t *testing.T) {
@@ -314,5 +314,5 @@ func TestOverflow_scroll_row(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
 	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
 
-	YGNodeFreeRecursive(root)
+
 }

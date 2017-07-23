@@ -52,7 +52,7 @@ func TestDisplay_none(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -108,7 +108,7 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -168,7 +168,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -262,7 +262,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -318,7 +318,7 @@ func TestDisplay_none_with_position(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

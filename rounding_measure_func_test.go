@@ -63,7 +63,7 @@ func TestRounding_feature_with_custom_measure_func_floor(t *testing.T) {
 	assertFloatEqual(t, 12.0, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 12.0, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -83,7 +83,7 @@ func TestRounding_feature_with_custom_measure_func_ceil(t *testing.T) {
 	assertFloatEqual(t, 11, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 11, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -105,7 +105,7 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 	assertFloatEqual(t, 0.5, YGNodeLayoutGetHeight(root_child0))
 	assertFloatEqual(t, 73.5, YGNodeLayoutGetLeft(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

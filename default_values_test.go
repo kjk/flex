@@ -86,7 +86,7 @@ func TestAssert_default_values(t *testing.T) {
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetHeight(root)))
 	assert.Equal(t, YGDirectionInherit, YGNodeLayoutGetDirection(root))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAssert_webdefault_values(t *testing.T) {
@@ -98,7 +98,7 @@ func TestAssert_webdefault_values(t *testing.T) {
 	assert.Equal(t, YGAlignStretch, YGNodeStyleGetAlignContent(root))
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
 
-	YGNodeFreeRecursive(root)
+
 
 }
 
@@ -112,6 +112,6 @@ func TestAssert_webdefault_values_reset(t *testing.T) {
 	assert.Equal(t, YGAlignStretch, YGNodeStyleGetAlignContent(root))
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
 
-	YGNodeFreeRecursive(root)
+
 
 }

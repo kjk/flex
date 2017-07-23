@@ -24,7 +24,7 @@ func TestBorder_no_size(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -66,7 +66,7 @@ func TestBorder_container_match_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -110,7 +110,7 @@ func TestBorder_flex_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -153,7 +153,7 @@ func TestBorder_stretch_child(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -198,7 +198,7 @@ func TestBorder_center_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

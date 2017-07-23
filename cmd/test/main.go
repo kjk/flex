@@ -23,8 +23,6 @@ func testCopy_style_same(t *testing.T) {
 	YGNodeCopyStyle(node0, node1)
 	assert.False(t, YGNodeIsDirty(node0))
 
-	YGNodeFree(node0)
-	YGNodeFree(node1)
 }
 
 func main() {

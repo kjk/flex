@@ -35,7 +35,7 @@ func TestWrap_child(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -86,7 +86,7 @@ func TestWrap_grandchild(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

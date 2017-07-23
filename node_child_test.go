@@ -28,5 +28,5 @@ func TestReset_layout_when_child_removed(t *testing.T) {
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetWidth(root_child0)))
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetHeight(root_child0)))
 
-	YGNodeFreeRecursive(root)
+
 }

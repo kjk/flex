@@ -24,7 +24,7 @@ func TestPadding_no_size(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -66,7 +66,7 @@ func TestPadding_container_match_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -110,7 +110,7 @@ func TestPadding_flex_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -153,7 +153,7 @@ func TestPadding_stretch_child(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -198,7 +198,7 @@ func TestPadding_center_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -244,7 +244,7 @@ func TestChild_with_padding_align_end(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

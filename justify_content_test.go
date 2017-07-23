@@ -65,7 +65,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -134,7 +134,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -203,7 +203,7 @@ func TestJustify_content_row_center(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -272,7 +272,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -341,7 +341,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -407,7 +407,7 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -475,7 +475,7 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -543,7 +543,7 @@ func TestJustify_content_column_center(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -611,7 +611,7 @@ func TestJustify_content_column_space_between(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -679,7 +679,7 @@ func TestJustify_content_column_space_around(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

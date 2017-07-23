@@ -84,7 +84,7 @@ func TestWrap_column(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -170,7 +170,7 @@ func TestWrap_row(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -257,7 +257,7 @@ func TestWrap_row_align_items_flex_end(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -344,7 +344,7 @@ func TestWrap_row_align_items_center(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -402,7 +402,7 @@ func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 	assertFloatEqual(t, 55, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -485,7 +485,7 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -540,7 +540,7 @@ func TestFlex_wrap_align_stretch_fits_one_row(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -641,7 +641,7 @@ func TestWrap_reverse_row_align_content_flex_start(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child4))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -743,7 +743,7 @@ func TestWrap_reverse_row_align_content_center(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child4))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -844,7 +844,7 @@ func TestWrap_reverse_row_single_line_different_size(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child4))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -946,7 +946,7 @@ func TestWrap_reverse_row_align_content_stretch(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child4))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1048,7 +1048,7 @@ func TestWrap_reverse_row_align_content_space_around(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child4))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1150,7 +1150,7 @@ func TestWrap_reverse_column_fixed_size(t *testing.T) {
 	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root_child4))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1221,7 +1221,7 @@ func TestWrapped_row_within_align_items_center(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0_child1))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1292,7 +1292,7 @@ func TestWrapped_row_within_align_items_flex_start(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0_child1))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1363,7 +1363,7 @@ func TestWrapped_row_within_align_items_flex_end(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0_child1))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1442,7 +1442,7 @@ func TestWrapped_column_max_height(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1527,7 +1527,7 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child2))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1625,7 +1625,7 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	assertFloatEqual(t, 40, YGNodeLayoutGetWidth(root_child0_child1_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1723,7 +1723,7 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	assertFloatEqual(t, 40, YGNodeLayoutGetWidth(root_child0_child1_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }

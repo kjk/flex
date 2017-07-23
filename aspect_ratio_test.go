@@ -35,7 +35,7 @@ func TestAspect_ratio_cross_defined(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_main_defined(t *testing.T) {
@@ -56,7 +56,7 @@ func TestAspect_ratio_main_defined(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_both_dimensions_defined_row(t *testing.T) {
@@ -79,7 +79,7 @@ func TestAspect_ratio_both_dimensions_defined_row(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_both_dimensions_defined_column(t *testing.T) {
@@ -101,7 +101,7 @@ func TestAspect_ratio_both_dimensions_defined_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_align_stretch(t *testing.T) {
@@ -120,7 +120,7 @@ func TestAspect_ratio_align_stretch(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_flex_grow(t *testing.T) {
@@ -142,7 +142,7 @@ func TestAspect_ratio_flex_grow(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_flex_shrink(t *testing.T) {
@@ -164,7 +164,7 @@ func TestAspect_ratio_flex_shrink(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_basis(t *testing.T) {
@@ -185,7 +185,7 @@ func TestAspect_ratio_basis(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
@@ -208,7 +208,7 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
@@ -231,7 +231,7 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_with_max_cross_defined(t *testing.T) {
@@ -253,7 +253,7 @@ func TestAspect_ratio_with_max_cross_defined(t *testing.T) {
 	assertFloatEqual(t, 40, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_with_max_main_defined(t *testing.T) {
@@ -275,7 +275,7 @@ func TestAspect_ratio_with_max_main_defined(t *testing.T) {
 	assertFloatEqual(t, 40, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_with_min_cross_defined(t *testing.T) {
@@ -297,7 +297,7 @@ func TestAspect_ratio_with_min_cross_defined(t *testing.T) {
 	assertFloatEqual(t, 40, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_with_min_main_defined(t *testing.T) {
@@ -319,7 +319,7 @@ func TestAspect_ratio_with_min_main_defined(t *testing.T) {
 	assertFloatEqual(t, 40, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_double_cross(t *testing.T) {
@@ -340,7 +340,7 @@ func TestAspect_ratio_double_cross(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_half_cross(t *testing.T) {
@@ -361,7 +361,7 @@ func TestAspect_ratio_half_cross(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_double_main(t *testing.T) {
@@ -382,7 +382,7 @@ func TestAspect_ratio_double_main(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_half_main(t *testing.T) {
@@ -403,7 +403,7 @@ func TestAspect_ratio_half_main(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_with_measure_func(t *testing.T) {
@@ -424,7 +424,7 @@ func TestAspect_ratio_with_measure_func(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
@@ -448,7 +448,7 @@ func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
@@ -471,7 +471,7 @@ func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
@@ -505,7 +505,7 @@ func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
 	assertFloatEqual(t, 125, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 125, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
@@ -538,7 +538,7 @@ func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
 	assertFloatEqual(t, 125, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 125, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
@@ -561,7 +561,7 @@ func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_overrides_flex_grow_column(t *testing.T) {
@@ -583,7 +583,7 @@ func TestAspect_ratio_overrides_flex_grow_column(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_left_right_absolute(t *testing.T) {
@@ -606,7 +606,7 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
@@ -629,7 +629,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_width_overrides_align_stretch_row(t *testing.T) {
@@ -650,7 +650,7 @@ func TestAspect_ratio_width_overrides_align_stretch_row(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_height_overrides_align_stretch_column(t *testing.T) {
@@ -670,7 +670,7 @@ func TestAspect_ratio_height_overrides_align_stretch_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_allow_child_overflow_parent_size(t *testing.T) {
@@ -691,7 +691,7 @@ func TestAspect_ratio_allow_child_overflow_parent_size(t *testing.T) {
 	assertFloatEqual(t, 200, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
@@ -716,7 +716,7 @@ func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }
 
 func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
@@ -741,5 +741,5 @@ func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 }

@@ -36,7 +36,7 @@ func TestAlign_items_stretch(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -77,7 +77,7 @@ func TestAlign_items_center(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -118,7 +118,7 @@ func TestAlign_items_flex_start(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -159,7 +159,7 @@ func TestAlign_items_flex_end(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -216,7 +216,7 @@ func TestAlign_baseline(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -288,7 +288,7 @@ func TestAlign_baseline_child(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -407,7 +407,7 @@ func TestAlign_baseline_child_multiline(t *testing.T) {
 	assertFloatEqual(t, 25, YGNodeLayoutGetWidth(root_child1_child3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -528,7 +528,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 	assertFloatEqual(t, 25, YGNodeLayoutGetWidth(root_child1_child3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -648,7 +648,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 	assertFloatEqual(t, 25, YGNodeLayoutGetWidth(root_child1_child3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -721,7 +721,7 @@ func TestAlign_baseline_child_top(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -794,7 +794,7 @@ func TestAlign_baseline_child_top2(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -881,7 +881,7 @@ func TestAlign_baseline_double_nested_child(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1_child0))
 	assertFloatEqual(t, 15, YGNodeLayoutGetHeight(root_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -937,7 +937,7 @@ func TestAlign_baseline_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child1))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1017,7 +1017,7 @@ func TestAlign_baseline_child_margin(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1097,7 +1097,7 @@ func TestAlign_baseline_child_padding(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child1_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child1_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1215,7 +1215,7 @@ func TestAlign_baseline_multiline(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1332,7 +1332,7 @@ func TestAlign_baseline_multiline_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1449,7 +1449,7 @@ func TestAlign_baseline_multiline_column2(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1567,7 +1567,7 @@ func TestAlign_baseline_multiline_row_and_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child3))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1625,7 +1625,7 @@ func TestAlign_items_center_child_with_margin_bigger_than_parent(t *testing.T) {
 	assertFloatEqual(t, 52, YGNodeLayoutGetWidth(root_child0_child0))
 	assertFloatEqual(t, 52, YGNodeLayoutGetHeight(root_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1683,7 +1683,7 @@ func TestAlign_items_flex_end_child_with_margin_bigger_than_parent(t *testing.T)
 	assertFloatEqual(t, 52, YGNodeLayoutGetWidth(root_child0_child0))
 	assertFloatEqual(t, 52, YGNodeLayoutGetHeight(root_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1739,7 +1739,7 @@ func TestAlign_items_center_child_without_margin_bigger_than_parent(t *testing.T
 	assertFloatEqual(t, 72, YGNodeLayoutGetWidth(root_child0_child0))
 	assertFloatEqual(t, 72, YGNodeLayoutGetHeight(root_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1795,7 +1795,7 @@ func TestAlign_items_flex_end_child_without_margin_bigger_than_parent(t *testing
 	assertFloatEqual(t, 72, YGNodeLayoutGetWidth(root_child0_child0))
 	assertFloatEqual(t, 72, YGNodeLayoutGetHeight(root_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1867,7 +1867,7 @@ func TestAlign_center_should_size_based_on_content(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root_child0_child0_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child0_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
@@ -1938,7 +1938,7 @@ func TestAlign_strech_should_size_based_on_parent(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root_child0_child0_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child0_child0_child0))
 
-	YGNodeFreeRecursive(root)
+
 
 
 }
