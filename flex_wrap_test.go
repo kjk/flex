@@ -1,6 +1,8 @@
 package flex
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestWrap_column(t *testing.T) {
 	config := YGConfigNew()
