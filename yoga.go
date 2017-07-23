@@ -630,8 +630,7 @@ func nodeLeadingBorder(node *Node, axis FlexDirection) float32 {
 	return fmaxf(computedEdgeValue(node.Style.border[:], leading[axis], &ValueZero).Value, 0)
 }
 
-// YGNodeTrailingBorder returns trailing border
-func YGNodeTrailingBorder(node *Node, axis FlexDirection) float32 {
+func nodeTrailingBorder(node *Node, axis FlexDirection) float32 {
 	if flexDirectionIsRow(axis) && node.Style.border[EdgeEnd].Unit != UnitUndefined &&
 		node.Style.border[EdgeEnd].Value >= 0 {
 		return node.Style.border[EdgeEnd].Value
@@ -640,31 +639,26 @@ func YGNodeTrailingBorder(node *Node, axis FlexDirection) float32 {
 	return fmaxf(computedEdgeValue(node.Style.border[:], trailing[axis], &ValueZero).Value, 0)
 }
 
-// YGNodeLeadingPaddingAndBorder returns leading padding and border
-func YGNodeLeadingPaddingAndBorder(node *Node, axis FlexDirection, widthSize float32) float32 {
+func nodeLeadingPaddingAndBorder(node *Node, axis FlexDirection, widthSize float32) float32 {
 	return nodeLeadingPadding(node, axis, widthSize) + nodeLeadingBorder(node, axis)
 }
 
-// YGNodeTrailingPaddingAndBorder returns trailing padding and border
-func YGNodeTrailingPaddingAndBorder(node *Node, axis FlexDirection, widthSize float32) float32 {
-	return nodeTrailingPadding(node, axis, widthSize) + YGNodeTrailingBorder(node, axis)
+func nodeTrailingPaddingAndBorder(node *Node, axis FlexDirection, widthSize float32) float32 {
+	return nodeTrailingPadding(node, axis, widthSize) + nodeTrailingBorder(node, axis)
 }
 
-// YGNodeMarginForAxis returns margin for axis
-func YGNodeMarginForAxis(node *Node, axis FlexDirection, widthSize float32) float32 {
+func nodeMarginForAxis(node *Node, axis FlexDirection, widthSize float32) float32 {
 	leading := nodeLeadingMargin(node, axis, widthSize)
 	trailing := nodeTrailingMargin(node, axis, widthSize)
 	return leading + trailing
 }
 
-// YGNodePaddingAndBorderForAxis returns padding and border for axis
-func YGNodePaddingAndBorderForAxis(node *Node, axis FlexDirection, widthSize float32) float32 {
-	return YGNodeLeadingPaddingAndBorder(node, axis, widthSize) +
-		YGNodeTrailingPaddingAndBorder(node, axis, widthSize)
+func nodePaddingAndBorderForAxis(node *Node, axis FlexDirection, widthSize float32) float32 {
+	return nodeLeadingPaddingAndBorder(node, axis, widthSize) +
+		nodeTrailingPaddingAndBorder(node, axis, widthSize)
 }
 
-// YGNodeAlignItem returns align item
-func YGNodeAlignItem(node *Node, child *Node) Align {
+func nodeAlignItem(node *Node, child *Node) Align {
 	align := child.Style.alignSelf
 	if child.Style.alignSelf == AlignAuto {
 		align = node.Style.alignItems
@@ -675,8 +669,7 @@ func YGNodeAlignItem(node *Node, child *Node) Align {
 	return align
 }
 
-// YGNodeResolveDirection resolves direction
-func YGNodeResolveDirection(node *Node, parentDirection Direction) Direction {
+func nodeResolveDirection(node *Node, parentDirection Direction) Direction {
 	if node.Style.direction == DirectionInherit {
 		if parentDirection > DirectionInherit {
 			return parentDirection
@@ -704,7 +697,7 @@ func YGBaseline(node *Node) float32 {
 		if child.Style.positionType == PositionTypeAbsolute {
 			continue
 		}
-		if YGNodeAlignItem(node, child) == AlignBaseline {
+		if nodeAlignItem(node, child) == AlignBaseline {
 			baselineChild = child
 			break
 		}
@@ -722,8 +715,7 @@ func YGBaseline(node *Node) float32 {
 	return baseline + baselineChild.Layout.position[EdgeTop]
 }
 
-// YGResolveFlexDirection resolves flex direction
-func YGResolveFlexDirection(flexDirection FlexDirection, direction Direction) FlexDirection {
+func resolveFlexDirection(flexDirection FlexDirection, direction Direction) FlexDirection {
 	if direction == DirectionRTL {
 		if flexDirection == FlexDirectionRow {
 			return FlexDirectionRowReverse
@@ -734,22 +726,21 @@ func YGResolveFlexDirection(flexDirection FlexDirection, direction Direction) Fl
 	return flexDirection
 }
 
-// YGFlexDirectionCross gets flex direction cross
-func YGFlexDirectionCross(flexDirection FlexDirection, direction Direction) FlexDirection {
+func flexDirectionCross(flexDirection FlexDirection, direction Direction) FlexDirection {
 	if flexDirectionIsColumn(flexDirection) {
-		return YGResolveFlexDirection(FlexDirectionRow, direction)
+		return resolveFlexDirection(FlexDirectionRow, direction)
 	}
 	return FlexDirectionColumn
 }
 
-// YGNodeIsFlex returns true if node is flex
-func YGNodeIsFlex(node *Node) bool {
+// NodeIsFlex returns true if node is flex
+func NodeIsFlex(node *Node) bool {
 	return (node.Style.positionType == PositionTypeRelative &&
 		(resolveFlexGrow(node) != 0 || nodeResolveFlexShrink(node) != 0))
 }
 
-// YGIsBaselineLayout returns true if it's baseline layout
-func YGIsBaselineLayout(node *Node) bool {
+// IsBaselineLayout returns true if it's baseline layout
+func IsBaselineLayout(node *Node) bool {
 	if flexDirectionIsColumn(node.Style.flexDirection) {
 		return false
 	}
@@ -768,14 +759,12 @@ func YGIsBaselineLayout(node *Node) bool {
 	return false
 }
 
-// YGNodeDimWithMargin returns dimension with margin
-func YGNodeDimWithMargin(node *Node, axis FlexDirection, widthSize float32) float32 {
+func nodeDimWithMargin(node *Node, axis FlexDirection, widthSize float32) float32 {
 	return node.Layout.measuredDimensions[dim[axis]] + nodeLeadingMargin(node, axis, widthSize) +
 		nodeTrailingMargin(node, axis, widthSize)
 }
 
-// YGNodeIsStyleDimDefined returns true if dimension is defined
-func YGNodeIsStyleDimDefined(node *Node, axis FlexDirection, parentSize float32) bool {
+func nodeIsStyleDimDefined(node *Node, axis FlexDirection, parentSize float32) bool {
 	v := node.resolvedDimensions[dim[axis]]
 	isNotDefined := (v.Unit == UnitAuto ||
 		v.Unit == UnitUndefined ||
@@ -784,14 +773,12 @@ func YGNodeIsStyleDimDefined(node *Node, axis FlexDirection, parentSize float32)
 	return !isNotDefined
 }
 
-// YGNodeIsLayoutDimDefined returns true if layout dimension is defined
-func YGNodeIsLayoutDimDefined(node *Node, axis FlexDirection) bool {
+func nodeIsLayoutDimDefined(node *Node, axis FlexDirection) bool {
 	value := node.Layout.measuredDimensions[dim[axis]]
 	return !FloatIsUndefined(value) && value >= 0
 }
 
-// YGNodeIsLeadingPosDefined returns true if leading position is defined
-func YGNodeIsLeadingPosDefined(node *Node, axis FlexDirection) bool {
+func nodeIsLeadingPosDefined(node *Node, axis FlexDirection) bool {
 	return (flexDirectionIsRow(axis) &&
 		computedEdgeValue(node.Style.position[:], EdgeStart, &ValueUndefined).Unit !=
 			UnitUndefined) ||
@@ -799,8 +786,7 @@ func YGNodeIsLeadingPosDefined(node *Node, axis FlexDirection) bool {
 			UnitUndefined
 }
 
-// YGNodeIsTrailingPosDefined returns true if trailing pos is defined
-func YGNodeIsTrailingPosDefined(node *Node, axis FlexDirection) bool {
+func nodeIsTrailingPosDefined(node *Node, axis FlexDirection) bool {
 	return (flexDirectionIsRow(axis) &&
 		computedEdgeValue(node.Style.position[:], EdgeEnd, &ValueUndefined).Unit !=
 			UnitUndefined) ||
@@ -808,8 +794,7 @@ func YGNodeIsTrailingPosDefined(node *Node, axis FlexDirection) bool {
 			UnitUndefined
 }
 
-// YGNodeLeadingPosition returns leading position
-func YGNodeLeadingPosition(node *Node, axis FlexDirection, axisSize float32) float32 {
+func nodeLeadingPosition(node *Node, axis FlexDirection, axisSize float32) float32 {
 	if flexDirectionIsRow(axis) {
 		leadingPosition := computedEdgeValue(node.Style.position[:], EdgeStart, &ValueUndefined)
 		if leadingPosition.Unit != UnitUndefined {
@@ -889,7 +874,7 @@ func YGMarginTrailingValue(node *Node, axis FlexDirection) *Value {
 // the value doesn't go below the padding and border amount.
 func YGNodeBoundAxis(node *Node, axis FlexDirection, value float32, axisSize float32, widthSize float32) float32 {
 	return fmaxf(YGNodeBoundAxisWithinMinAndMax(node, axis, value, axisSize),
-		YGNodePaddingAndBorderForAxis(node, axis, widthSize))
+		nodePaddingAndBorderForAxis(node, axis, widthSize))
 }
 
 // YGNodeSetChildTrailingPosition sets child's trailing position
@@ -903,8 +888,8 @@ func YGNodeSetChildTrailingPosition(node *Node, child *Node, axis FlexDirection)
 // If both left and right are defined, then use left. Otherwise return
 // +left or -right depending on which is defined.
 func YGNodeRelativePosition(node *Node, axis FlexDirection, axisSize float32) float32 {
-	if YGNodeIsLeadingPosDefined(node, axis) {
-		return YGNodeLeadingPosition(node, axis, axisSize)
+	if nodeIsLeadingPosDefined(node, axis) {
+		return nodeLeadingPosition(node, axis, axisSize)
 	}
 	return -YGNodeTrailingPosition(node, axis, axisSize)
 }
@@ -912,7 +897,7 @@ func YGNodeRelativePosition(node *Node, axis FlexDirection, axisSize float32) fl
 // YGConstrainMaxSizeForMode contrains max size for node
 func YGConstrainMaxSizeForMode(node *Node, axis FlexDirection, parentAxisSize float32, parentWidth float32, mode *MeasureMode, size *float32) {
 	maxSize := resolveValue(&node.Style.maxDimensions[dim[axis]], parentAxisSize) +
-		YGNodeMarginForAxis(node, axis, parentWidth)
+		nodeMarginForAxis(node, axis, parentWidth)
 	switch *mode {
 	case MeasureModeExactly, MeasureModeAtMost:
 		if FloatIsUndefined(maxSize) || *size < maxSize {
@@ -940,8 +925,8 @@ func YGNodeSetPosition(node *Node, direction Direction, mainSize float32, crossS
 		directionRespectingRoot = direction
 	}
 
-	mainAxis := YGResolveFlexDirection(node.Style.flexDirection, directionRespectingRoot)
-	crossAxis := YGFlexDirectionCross(mainAxis, directionRespectingRoot)
+	mainAxis := resolveFlexDirection(node.Style.flexDirection, directionRespectingRoot)
+	crossAxis := flexDirectionCross(mainAxis, directionRespectingRoot)
 
 	relativePositionMain := YGNodeRelativePosition(node, mainAxis, mainSize)
 	relativePositionCross := YGNodeRelativePosition(node, crossAxis, crossSize)
@@ -964,7 +949,7 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 	heightMode MeasureMode,
 	direction Direction,
 	config *Config) {
-	mainAxis := YGResolveFlexDirection(node.Style.flexDirection, direction)
+	mainAxis := resolveFlexDirection(node.Style.flexDirection, direction)
 	isMainAxisRow := flexDirectionIsRow(mainAxis)
 	mainAxisSize := height
 	mainAxisParentSize := parentHeight
@@ -979,26 +964,26 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 	var childHeightMeasureMode MeasureMode
 
 	resolvedFlexBasis := resolveValue(nodeResolveFlexBasisPtr(child), mainAxisParentSize)
-	isRowStyleDimDefined := YGNodeIsStyleDimDefined(child, FlexDirectionRow, parentWidth)
-	isColumnStyleDimDefined := YGNodeIsStyleDimDefined(child, FlexDirectionColumn, parentHeight)
+	isRowStyleDimDefined := nodeIsStyleDimDefined(child, FlexDirectionRow, parentWidth)
+	isColumnStyleDimDefined := nodeIsStyleDimDefined(child, FlexDirectionColumn, parentHeight)
 
 	if !FloatIsUndefined(resolvedFlexBasis) && !FloatIsUndefined(mainAxisSize) {
 		if FloatIsUndefined(child.Layout.computedFlexBasis) ||
 			(YGConfigIsExperimentalFeatureEnabled(child.Config, ExperimentalFeatureWebFlexBasis) &&
 				child.Layout.computedFlexBasisGeneration != currentGenerationCount) {
 			child.Layout.computedFlexBasis =
-				fmaxf(resolvedFlexBasis, YGNodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
+				fmaxf(resolvedFlexBasis, nodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
 		}
 	} else if isMainAxisRow && isRowStyleDimDefined {
 		// The width is definite, so use that as the flex basis.
 		child.Layout.computedFlexBasis =
 			fmaxf(resolveValue(child.resolvedDimensions[DimensionWidth], parentWidth),
-				YGNodePaddingAndBorderForAxis(child, FlexDirectionRow, parentWidth))
+				nodePaddingAndBorderForAxis(child, FlexDirectionRow, parentWidth))
 	} else if !isMainAxisRow && isColumnStyleDimDefined {
 		// The height is definite, so use that as the flex basis.
 		child.Layout.computedFlexBasis =
 			fmaxf(resolveValue(child.resolvedDimensions[DimensionHeight], parentHeight),
-				YGNodePaddingAndBorderForAxis(child, FlexDirectionColumn, parentWidth))
+				nodePaddingAndBorderForAxis(child, FlexDirectionColumn, parentWidth))
 	} else {
 		// Compute the flex basis and hypothetical main size (i.e. the clamped
 		// flex basis).
@@ -1007,8 +992,8 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 		childWidthMeasureMode = MeasureModeUndefined
 		childHeightMeasureMode = MeasureModeUndefined
 
-		marginRow := YGNodeMarginForAxis(child, FlexDirectionRow, parentWidth)
-		marginColumn := YGNodeMarginForAxis(child, FlexDirectionColumn, parentWidth)
+		marginRow := nodeMarginForAxis(child, FlexDirectionRow, parentWidth)
+		marginColumn := nodeMarginForAxis(child, FlexDirectionColumn, parentWidth)
 
 		if isRowStyleDimDefined {
 			childWidth =
@@ -1043,12 +1028,12 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 		// set the cross
 		// axis to be measured exactly with the available inner width
 		if !isMainAxisRow && !FloatIsUndefined(width) && !isRowStyleDimDefined &&
-			widthMode == MeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
+			widthMode == MeasureModeExactly && nodeAlignItem(node, child) == AlignStretch {
 			childWidth = width
 			childWidthMeasureMode = MeasureModeExactly
 		}
 		if isMainAxisRow && !FloatIsUndefined(height) && !isColumnStyleDimDefined &&
-			heightMode == MeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
+			heightMode == MeasureModeExactly && nodeAlignItem(node, child) == AlignStretch {
 			childHeight = height
 			childHeightMeasureMode = MeasureModeExactly
 		}
@@ -1057,12 +1042,12 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 			if !isMainAxisRow && childWidthMeasureMode == MeasureModeExactly {
 				child.Layout.computedFlexBasis =
 					fmaxf((childWidth-marginRow)/child.Style.aspectRatio,
-						YGNodePaddingAndBorderForAxis(child, FlexDirectionColumn, parentWidth))
+						nodePaddingAndBorderForAxis(child, FlexDirectionColumn, parentWidth))
 				return
 			} else if isMainAxisRow && childHeightMeasureMode == MeasureModeExactly {
 				child.Layout.computedFlexBasis =
 					fmaxf((childHeight-marginColumn)*child.Style.aspectRatio,
-						YGNodePaddingAndBorderForAxis(child, FlexDirectionRow, parentWidth))
+						nodePaddingAndBorderForAxis(child, FlexDirectionRow, parentWidth))
 				return
 			}
 		}
@@ -1091,7 +1076,7 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 
 		child.Layout.computedFlexBasis =
 			fmaxf(child.Layout.measuredDimensions[dim[mainAxis]],
-				YGNodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
+				nodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
 	}
 
 	child.Layout.computedFlexBasisGeneration = currentGenerationCount
@@ -1099,8 +1084,8 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 
 // YGNodeAbsoluteLayoutChild calculates absolute child layout
 func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode MeasureMode, height float32, direction Direction, config *Config) {
-	mainAxis := YGResolveFlexDirection(node.Style.flexDirection, direction)
-	crossAxis := YGFlexDirectionCross(mainAxis, direction)
+	mainAxis := resolveFlexDirection(node.Style.flexDirection, direction)
+	crossAxis := flexDirectionCross(mainAxis, direction)
 	isMainAxisRow := flexDirectionIsRow(mainAxis)
 
 	childWidth := Undefined
@@ -1108,39 +1093,39 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 	childWidthMeasureMode := MeasureModeUndefined
 	childHeightMeasureMode := MeasureModeUndefined
 
-	marginRow := YGNodeMarginForAxis(child, FlexDirectionRow, width)
-	marginColumn := YGNodeMarginForAxis(child, FlexDirectionColumn, width)
+	marginRow := nodeMarginForAxis(child, FlexDirectionRow, width)
+	marginColumn := nodeMarginForAxis(child, FlexDirectionColumn, width)
 
-	if YGNodeIsStyleDimDefined(child, FlexDirectionRow, width) {
+	if nodeIsStyleDimDefined(child, FlexDirectionRow, width) {
 		childWidth = resolveValue(child.resolvedDimensions[DimensionWidth], width) + marginRow
 	} else {
 		// If the child doesn't have a specified width, compute the width based
 		// on the left/right
 		// offsets if they're defined.
-		if YGNodeIsLeadingPosDefined(child, FlexDirectionRow) &&
-			YGNodeIsTrailingPosDefined(child, FlexDirectionRow) {
+		if nodeIsLeadingPosDefined(child, FlexDirectionRow) &&
+			nodeIsTrailingPosDefined(child, FlexDirectionRow) {
 			childWidth = node.Layout.measuredDimensions[DimensionWidth] -
 				(nodeLeadingBorder(node, FlexDirectionRow) +
-					YGNodeTrailingBorder(node, FlexDirectionRow)) -
-				(YGNodeLeadingPosition(child, FlexDirectionRow, width) +
+					nodeTrailingBorder(node, FlexDirectionRow)) -
+				(nodeLeadingPosition(child, FlexDirectionRow, width) +
 					YGNodeTrailingPosition(child, FlexDirectionRow, width))
 			childWidth = YGNodeBoundAxis(child, FlexDirectionRow, childWidth, width, width)
 		}
 	}
 
-	if YGNodeIsStyleDimDefined(child, FlexDirectionColumn, height) {
+	if nodeIsStyleDimDefined(child, FlexDirectionColumn, height) {
 		childHeight =
 			resolveValue(child.resolvedDimensions[DimensionHeight], height) + marginColumn
 	} else {
 		// If the child doesn't have a specified height, compute the height
 		// based on the top/bottom
 		// offsets if they're defined.
-		if YGNodeIsLeadingPosDefined(child, FlexDirectionColumn) &&
-			YGNodeIsTrailingPosDefined(child, FlexDirectionColumn) {
+		if nodeIsLeadingPosDefined(child, FlexDirectionColumn) &&
+			nodeIsTrailingPosDefined(child, FlexDirectionColumn) {
 			childHeight = node.Layout.measuredDimensions[DimensionHeight] -
 				(nodeLeadingBorder(node, FlexDirectionColumn) +
-					YGNodeTrailingBorder(node, FlexDirectionColumn)) -
-				(YGNodeLeadingPosition(child, FlexDirectionColumn, height) +
+					nodeTrailingBorder(node, FlexDirectionColumn)) -
+				(nodeLeadingPosition(child, FlexDirectionColumn, height) +
 					YGNodeTrailingPosition(child, FlexDirectionColumn, height))
 			childHeight = YGNodeBoundAxis(child, FlexDirectionColumn, childHeight, height, width)
 		}
@@ -1153,11 +1138,11 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 			if FloatIsUndefined(childWidth) {
 				childWidth =
 					marginRow + fmaxf((childHeight-marginColumn)*child.Style.aspectRatio,
-						YGNodePaddingAndBorderForAxis(child, FlexDirectionColumn, width))
+						nodePaddingAndBorderForAxis(child, FlexDirectionColumn, width))
 			} else if FloatIsUndefined(childHeight) {
 				childHeight =
 					marginColumn + fmaxf((childWidth-marginRow)/child.Style.aspectRatio,
-						YGNodePaddingAndBorderForAxis(child, FlexDirectionRow, width))
+						nodePaddingAndBorderForAxis(child, FlexDirectionRow, width))
 			}
 		}
 	}
@@ -1194,9 +1179,9 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 			"abs-measure",
 			config)
 		childWidth = child.Layout.measuredDimensions[DimensionWidth] +
-			YGNodeMarginForAxis(child, FlexDirectionRow, width)
+			nodeMarginForAxis(child, FlexDirectionRow, width)
 		childHeight = child.Layout.measuredDimensions[DimensionHeight] +
-			YGNodeMarginForAxis(child, FlexDirectionColumn, width)
+			nodeMarginForAxis(child, FlexDirectionColumn, width)
 	}
 
 	YGLayoutNodeInternal(child,
@@ -1211,29 +1196,29 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 		"abs-layout",
 		config)
 
-	if YGNodeIsTrailingPosDefined(child, mainAxis) && !YGNodeIsLeadingPosDefined(child, mainAxis) {
+	if nodeIsTrailingPosDefined(child, mainAxis) && !nodeIsLeadingPosDefined(child, mainAxis) {
 		axisSize := height
 		if isMainAxisRow {
 			axisSize = width
 		}
 		child.Layout.position[leading[mainAxis]] = node.Layout.measuredDimensions[dim[mainAxis]] -
 			child.Layout.measuredDimensions[dim[mainAxis]] -
-			YGNodeTrailingBorder(node, mainAxis) -
+			nodeTrailingBorder(node, mainAxis) -
 			nodeTrailingMargin(child, mainAxis, width) -
 			YGNodeTrailingPosition(child, mainAxis, axisSize)
-	} else if !YGNodeIsLeadingPosDefined(child, mainAxis) &&
+	} else if !nodeIsLeadingPosDefined(child, mainAxis) &&
 		node.Style.justifyContent == JustifyCenter {
 		child.Layout.position[leading[mainAxis]] = (node.Layout.measuredDimensions[dim[mainAxis]] -
 			child.Layout.measuredDimensions[dim[mainAxis]]) /
 			2.0
-	} else if !YGNodeIsLeadingPosDefined(child, mainAxis) &&
+	} else if !nodeIsLeadingPosDefined(child, mainAxis) &&
 		node.Style.justifyContent == JustifyFlexEnd {
 		child.Layout.position[leading[mainAxis]] = (node.Layout.measuredDimensions[dim[mainAxis]] -
 			child.Layout.measuredDimensions[dim[mainAxis]])
 	}
 
-	if YGNodeIsTrailingPosDefined(child, crossAxis) &&
-		!YGNodeIsLeadingPosDefined(child, crossAxis) {
+	if nodeIsTrailingPosDefined(child, crossAxis) &&
+		!nodeIsLeadingPosDefined(child, crossAxis) {
 		axisSize := width
 		if isMainAxisRow {
 			axisSize = height
@@ -1241,17 +1226,17 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 
 		child.Layout.position[leading[crossAxis]] = node.Layout.measuredDimensions[dim[crossAxis]] -
 			child.Layout.measuredDimensions[dim[crossAxis]] -
-			YGNodeTrailingBorder(node, crossAxis) -
+			nodeTrailingBorder(node, crossAxis) -
 			nodeTrailingMargin(child, crossAxis, width) -
 			YGNodeTrailingPosition(child, crossAxis, axisSize)
-	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
-		YGNodeAlignItem(node, child) == AlignCenter {
+	} else if !nodeIsLeadingPosDefined(child, crossAxis) &&
+		nodeAlignItem(node, child) == AlignCenter {
 		child.Layout.position[leading[crossAxis]] =
 			(node.Layout.measuredDimensions[dim[crossAxis]] -
 				child.Layout.measuredDimensions[dim[crossAxis]]) /
 				2.0
-	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
-		((YGNodeAlignItem(node, child) == AlignFlexEnd) != (node.Style.flexWrap == WrapWrapReverse)) {
+	} else if !nodeIsLeadingPosDefined(child, crossAxis) &&
+		((nodeAlignItem(node, child) == AlignFlexEnd) != (node.Style.flexWrap == WrapWrapReverse)) {
 		child.Layout.position[leading[crossAxis]] = (node.Layout.measuredDimensions[dim[crossAxis]] -
 			child.Layout.measuredDimensions[dim[crossAxis]])
 	}
@@ -1261,10 +1246,10 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 func YGNodeWithMeasureFuncSetMeasuredDimensions(node *Node, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
 	assertWithNode(node, node.Measure != nil, "Expected node to have custom measure function")
 
-	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, FlexDirectionRow, availableWidth)
-	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, FlexDirectionColumn, availableWidth)
-	marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, availableWidth)
-	marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, availableWidth)
+	paddingAndBorderAxisRow := nodePaddingAndBorderForAxis(node, FlexDirectionRow, availableWidth)
+	paddingAndBorderAxisColumn := nodePaddingAndBorderForAxis(node, FlexDirectionColumn, availableWidth)
+	marginAxisRow := nodeMarginForAxis(node, FlexDirectionRow, availableWidth)
+	marginAxisColumn := nodeMarginForAxis(node, FlexDirectionColumn, availableWidth)
 
 	// We want to make sure we don't call measure with negative size
 	innerWidth := fmaxf(0, availableWidth-marginAxisRow-paddingAndBorderAxisRow)
@@ -1309,10 +1294,10 @@ func YGNodeWithMeasureFuncSetMeasuredDimensions(node *Node, availableWidth float
 // For nodes with no children, use the available values if they were provided,
 // or the minimum size as indicated by the padding and border sizes.
 func YGNodeEmptyContainerSetMeasuredDimensions(node *Node, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
-	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, FlexDirectionRow, parentWidth)
-	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, FlexDirectionColumn, parentWidth)
-	marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
-	marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
+	paddingAndBorderAxisRow := nodePaddingAndBorderForAxis(node, FlexDirectionRow, parentWidth)
+	paddingAndBorderAxisColumn := nodePaddingAndBorderForAxis(node, FlexDirectionColumn, parentWidth)
+	marginAxisRow := nodeMarginForAxis(node, FlexDirectionRow, parentWidth)
+	marginAxisColumn := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 
 	width := availableWidth - marginAxisRow
 	if widthMeasureMode == MeasureModeUndefined || widthMeasureMode == MeasureModeAtMost {
@@ -1338,8 +1323,8 @@ func YGNodeFixedSizeSetMeasuredDimensions(node *Node,
 	if (widthMeasureMode == MeasureModeAtMost && availableWidth <= 0) ||
 		(heightMeasureMode == MeasureModeAtMost && availableHeight <= 0) ||
 		(widthMeasureMode == MeasureModeExactly && heightMeasureMode == MeasureModeExactly) {
-		marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
-		marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
+		marginAxisColumn := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
+		marginAxisRow := nodeMarginForAxis(node, FlexDirectionRow, parentWidth)
 
 		width := availableWidth - marginAxisRow
 		if FloatIsUndefined(availableWidth) || (widthMeasureMode == MeasureModeAtMost && availableWidth < 0) {
@@ -1475,11 +1460,11 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 	//YGAssertWithNode(node, YGFloatIsUndefined(availableHeight) ? heightMeasureMode == YGMeasureModeUndefined : true, "availableHeight is indefinite so heightMeasureMode must be YGMeasureModeUndefined");
 
 	// Set the resolved resolution in the node's layout.
-	direction := YGNodeResolveDirection(node, parentDirection)
+	direction := nodeResolveDirection(node, parentDirection)
 	node.Layout.direction = direction
 
-	flexRowDirection := YGResolveFlexDirection(FlexDirectionRow, direction)
-	flexColumnDirection := YGResolveFlexDirection(FlexDirectionColumn, direction)
+	flexRowDirection := resolveFlexDirection(FlexDirectionRow, direction)
+	flexColumnDirection := resolveFlexDirection(FlexDirectionColumn, direction)
 
 	node.Layout.margin[EdgeStart] = nodeLeadingMargin(node, flexRowDirection, parentWidth)
 	node.Layout.margin[EdgeEnd] = nodeTrailingMargin(node, flexRowDirection, parentWidth)
@@ -1487,9 +1472,9 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 	node.Layout.margin[EdgeBottom] = nodeTrailingMargin(node, flexColumnDirection, parentWidth)
 
 	node.Layout.border[EdgeStart] = nodeLeadingBorder(node, flexRowDirection)
-	node.Layout.border[EdgeEnd] = YGNodeTrailingBorder(node, flexRowDirection)
+	node.Layout.border[EdgeEnd] = nodeTrailingBorder(node, flexRowDirection)
 	node.Layout.border[EdgeTop] = nodeLeadingBorder(node, flexColumnDirection)
-	node.Layout.border[EdgeBottom] = YGNodeTrailingBorder(node, flexColumnDirection)
+	node.Layout.border[EdgeBottom] = nodeTrailingBorder(node, flexColumnDirection)
 
 	node.Layout.padding[EdgeStart] = nodeLeadingPadding(node, flexRowDirection, parentWidth)
 	node.Layout.padding[EdgeEnd] = nodeTrailingPadding(node, flexRowDirection, parentWidth)
@@ -1517,8 +1502,8 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 	node.Layout.hadOverflow = false
 
 	// STEP 1: CALCULATE VALUES FOR REMAINDER OF ALGORITHM
-	mainAxis := YGResolveFlexDirection(node.Style.flexDirection, direction)
-	crossAxis := YGFlexDirectionCross(mainAxis, direction)
+	mainAxis := resolveFlexDirection(node.Style.flexDirection, direction)
+	crossAxis := flexDirectionCross(mainAxis, direction)
 	isMainAxisRow := flexDirectionIsRow(mainAxis)
 	justifyContent := node.Style.justifyContent
 	isNodeFlexWrap := node.Style.flexWrap != WrapNoWrap
@@ -1533,11 +1518,11 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 	var firstAbsoluteChild *Node
 	var currentAbsoluteChild *Node
 
-	leadingPaddingAndBorderMain := YGNodeLeadingPaddingAndBorder(node, mainAxis, parentWidth)
-	trailingPaddingAndBorderMain := YGNodeTrailingPaddingAndBorder(node, mainAxis, parentWidth)
-	leadingPaddingAndBorderCross := YGNodeLeadingPaddingAndBorder(node, crossAxis, parentWidth)
-	paddingAndBorderAxisMain := YGNodePaddingAndBorderForAxis(node, mainAxis, parentWidth)
-	paddingAndBorderAxisCross := YGNodePaddingAndBorderForAxis(node, crossAxis, parentWidth)
+	leadingPaddingAndBorderMain := nodeLeadingPaddingAndBorder(node, mainAxis, parentWidth)
+	trailingPaddingAndBorderMain := nodeTrailingPaddingAndBorder(node, mainAxis, parentWidth)
+	leadingPaddingAndBorderCross := nodeLeadingPaddingAndBorder(node, crossAxis, parentWidth)
+	paddingAndBorderAxisMain := nodePaddingAndBorderForAxis(node, mainAxis, parentWidth)
+	paddingAndBorderAxisCross := nodePaddingAndBorderForAxis(node, crossAxis, parentWidth)
 
 	measureModeMainDim := heightMeasureMode
 	measureModeCrossDim := widthMeasureMode
@@ -1554,8 +1539,8 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 		paddingAndBorderAxisColumn = paddingAndBorderAxisCross
 	}
 
-	marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
-	marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
+	marginAxisRow := nodeMarginForAxis(node, FlexDirectionRow, parentWidth)
+	marginAxisColumn := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 
 	// STEP 2: DETERMINE AVAILABLE SIZE IN MAIN AND CROSS DIRECTIONS
 	minInnerWidth := resolveValue(&node.Style.minDimensions[DimensionWidth], parentWidth) - marginAxisRow -
@@ -1603,7 +1588,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 		for i := 0; i < childCount; i++ {
 			child := YGNodeGetChild(node, i)
 			if singleFlexChild != nil {
-				if YGNodeIsFlex(child) {
+				if NodeIsFlex(child) {
 					// There is already a flexible child, abort.
 					singleFlexChild = nil
 					break
@@ -1628,7 +1613,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 		resolveDimensions(child)
 		if performLayout {
 			// Set the initial position (relative to the parent).
-			childDirection := YGNodeResolveDirection(child, direction)
+			childDirection := nodeResolveDirection(child, direction)
 			YGNodeSetPosition(child,
 				childDirection,
 				availableInnerMainDim,
@@ -1668,7 +1653,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 		}
 
 		totalOuterFlexBasis +=
-			child.Layout.computedFlexBasis + YGNodeMarginForAxis(child, mainAxis, availableInnerWidth)
+			child.Layout.computedFlexBasis + nodeMarginForAxis(child, mainAxis, availableInnerWidth)
 
 	}
 
@@ -1726,7 +1711,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 			child.lineIndex = lineCount
 
 			if child.Style.positionType != PositionTypeAbsolute {
-				childMarginMainAxis := YGNodeMarginForAxis(child, mainAxis, availableInnerWidth)
+				childMarginMainAxis := nodeMarginForAxis(child, mainAxis, availableInnerWidth)
 				flexBasisWithMaxConstraints := fminf(resolveValue(&child.Style.maxDimensions[dim[mainAxis]], mainAxisParentSize), child.Layout.computedFlexBasis)
 				flexBasisWithMinAndMaxConstraints := fmaxf(resolveValue(&child.Style.minDimensions[dim[mainAxis]], mainAxisParentSize), flexBasisWithMaxConstraints)
 
@@ -1746,7 +1731,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 				sizeConsumedOnCurrentLine += flexBasisWithMinAndMaxConstraints + childMarginMainAxis
 				itemsOnLine++
 
-				if YGNodeIsFlex(child) {
+				if NodeIsFlex(child) {
 					totalFlexGrowFactors += resolveFlexGrow(child)
 
 					// Unlike the grow factor, the shrink factor is scaled relative to the child dimension.
@@ -1970,8 +1955,8 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 
 				deltaFreeSpace -= updatedMainSize - childFlexBasis
 
-				marginMain := YGNodeMarginForAxis(currentRelativeChild, mainAxis, availableInnerWidth)
-				marginCross := YGNodeMarginForAxis(currentRelativeChild, crossAxis, availableInnerWidth)
+				marginMain := nodeMarginForAxis(currentRelativeChild, mainAxis, availableInnerWidth)
+				marginCross := nodeMarginForAxis(currentRelativeChild, crossAxis, availableInnerWidth)
 
 				var childCrossSize float32
 				childMainSize := updatedMainSize + marginMain
@@ -1979,13 +1964,13 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 				childMainMeasureMode := MeasureModeExactly
 
 				if !FloatIsUndefined(availableInnerCrossDim) &&
-					!YGNodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
+					!nodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
 					measureModeCrossDim == MeasureModeExactly &&
 					!(isNodeFlexWrap && flexBasisOverflows) &&
-					YGNodeAlignItem(node, currentRelativeChild) == AlignStretch {
+					nodeAlignItem(node, currentRelativeChild) == AlignStretch {
 					childCrossSize = availableInnerCrossDim
 					childCrossMeasureMode = MeasureModeExactly
-				} else if !YGNodeIsStyleDimDefined(currentRelativeChild,
+				} else if !nodeIsStyleDimDefined(currentRelativeChild,
 					crossAxis,
 					availableInnerCrossDim) {
 					childCrossSize = availableInnerCrossDim
@@ -2010,11 +1995,11 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 					if isMainAxisRow {
 						v = (childMainSize - marginMain) / currentRelativeChild.Style.aspectRatio
 					}
-					childCrossSize = fmaxf(v, YGNodePaddingAndBorderForAxis(currentRelativeChild, crossAxis, availableInnerWidth))
+					childCrossSize = fmaxf(v, nodePaddingAndBorderForAxis(currentRelativeChild, crossAxis, availableInnerWidth))
 					childCrossMeasureMode = MeasureModeExactly
 
 					// Parent size raint should have higher priority than flex
-					if YGNodeIsFlex(currentRelativeChild) {
+					if NodeIsFlex(currentRelativeChild) {
 						childCrossSize = fminf(childCrossSize-marginCross, availableInnerCrossDim)
 						childMainSize = marginMain
 						if isMainAxisRow {
@@ -2040,8 +2025,8 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 					&childCrossMeasureMode,
 					&childCrossSize)
 
-				requiresStretchLayout := !YGNodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
-					YGNodeAlignItem(node, currentRelativeChild) == AlignStretch
+				requiresStretchLayout := !nodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
+					nodeAlignItem(node, currentRelativeChild) == AlignStretch
 
 				childWidth := childCrossSize
 				if isMainAxisRow {
@@ -2153,13 +2138,13 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 				continue
 			}
 			if child.Style.positionType == PositionTypeAbsolute &&
-				YGNodeIsLeadingPosDefined(child, mainAxis) {
+				nodeIsLeadingPosDefined(child, mainAxis) {
 				if performLayout {
 					// In case the child is position absolute and has left/top being
 					// defined, we override the position to whatever the user said
 					// (and margin/border).
 					child.Layout.position[pos[mainAxis]] =
-						YGNodeLeadingPosition(child, mainAxis, availableInnerMainDim) +
+						nodeLeadingPosition(child, mainAxis, availableInnerMainDim) +
 							nodeLeadingBorder(node, mainAxis) +
 							nodeLeadingMargin(child, mainAxis, availableInnerWidth)
 				}
@@ -2184,16 +2169,16 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 						// If we skipped the flex step, then we can't rely on the
 						// measuredDims because
 						// they weren't computed. This means we can't call YGNodeDimWithMargin.
-						mainDim += betweenMainDim + YGNodeMarginForAxis(child, mainAxis, availableInnerWidth) +
+						mainDim += betweenMainDim + nodeMarginForAxis(child, mainAxis, availableInnerWidth) +
 							child.Layout.computedFlexBasis
 						crossDim = availableInnerCrossDim
 					} else {
 						// The main dimension is the sum of all the elements dimension plus the spacing.
-						mainDim += betweenMainDim + YGNodeDimWithMargin(child, mainAxis, availableInnerWidth)
+						mainDim += betweenMainDim + nodeDimWithMargin(child, mainAxis, availableInnerWidth)
 
 						// The cross dimension is the max of the elements dimension since
 						// there can only be one element in that cross dimension.
-						crossDim = fmaxf(crossDim, YGNodeDimWithMargin(child, crossAxis, availableInnerWidth))
+						crossDim = fmaxf(crossDim, nodeDimWithMargin(child, crossAxis, availableInnerWidth))
 					}
 				} else if performLayout {
 					child.Layout.position[pos[mainAxis]] +=
@@ -2242,9 +2227,9 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 					// top/left/bottom/right
 					// set, override all the previously computed positions to set it
 					// correctly.
-					if YGNodeIsLeadingPosDefined(child, crossAxis) {
+					if nodeIsLeadingPosDefined(child, crossAxis) {
 						child.Layout.position[pos[crossAxis]] =
-							YGNodeLeadingPosition(child, crossAxis, availableInnerCrossDim) +
+							nodeLeadingPosition(child, crossAxis, availableInnerCrossDim) +
 								nodeLeadingBorder(node, crossAxis) +
 								nodeLeadingMargin(child, crossAxis, availableInnerWidth)
 					} else {
@@ -2258,7 +2243,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 					// For a relative children, we're either using alignItems (parent) or
 					// alignSelf (child) in order to determine the position in the cross
 					// axis
-					alignItem := YGNodeAlignItem(node, child)
+					alignItem := nodeAlignItem(node, child)
 
 					// If the child uses align stretch, we need to lay it out one more
 					// time, this time
@@ -2269,11 +2254,11 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 						YGMarginTrailingValue(child, crossAxis).Unit != UnitAuto {
 						// If the child defines a definite size for its cross axis, there's
 						// no need to stretch.
-						if !YGNodeIsStyleDimDefined(child, crossAxis, availableInnerCrossDim) {
+						if !nodeIsStyleDimDefined(child, crossAxis, availableInnerCrossDim) {
 							childMainSize := child.Layout.measuredDimensions[dim[mainAxis]]
 							childCrossSize := crossDim
 							if !FloatIsUndefined(child.Style.aspectRatio) {
-								childCrossSize = YGNodeMarginForAxis(child, crossAxis, availableInnerWidth)
+								childCrossSize = nodeMarginForAxis(child, crossAxis, availableInnerWidth)
 								if isMainAxisRow {
 									childCrossSize += childMainSize / child.Style.aspectRatio
 								} else {
@@ -2281,7 +2266,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 								}
 							}
 
-							childMainSize += YGNodeMarginForAxis(child, mainAxis, availableInnerWidth)
+							childMainSize += nodeMarginForAxis(child, mainAxis, availableInnerWidth)
 
 							childMainMeasureMode := MeasureModeExactly
 							childCrossMeasureMode := MeasureModeExactly
@@ -2330,7 +2315,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 								config)
 						}
 					} else {
-						remainingCrossDim := containerCrossAxis - YGNodeDimWithMargin(child, crossAxis, availableInnerWidth)
+						remainingCrossDim := containerCrossAxis - nodeDimWithMargin(child, crossAxis, availableInnerWidth)
 
 						if YGMarginLeadingValue(child, crossAxis).Unit == UnitAuto &&
 							YGMarginTrailingValue(child, crossAxis).Unit == UnitAuto {
@@ -2362,7 +2347,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 	}
 
 	// STEP 8: MULTI-LINE CONTENT ALIGNMENT
-	if performLayout && (lineCount > 1 || YGIsBaselineLayout(node)) &&
+	if performLayout && (lineCount > 1 || IsBaselineLayout(node)) &&
 		!FloatIsUndefined(availableInnerCrossDim) {
 		remainingAlignContentDim := availableInnerCrossDim - totalLineCrossDim
 
@@ -2414,14 +2399,14 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 					if child.lineIndex != i {
 						break
 					}
-					if YGNodeIsLayoutDimDefined(child, crossAxis) {
+					if nodeIsLayoutDimDefined(child, crossAxis) {
 						lineHeight = fmaxf(lineHeight,
 							child.Layout.measuredDimensions[dim[crossAxis]]+
-								YGNodeMarginForAxis(child, crossAxis, availableInnerWidth))
+								nodeMarginForAxis(child, crossAxis, availableInnerWidth))
 					}
-					if YGNodeAlignItem(node, child) == AlignBaseline {
+					if nodeAlignItem(node, child) == AlignBaseline {
 						ascent := YGBaseline(child) + nodeLeadingMargin(child, FlexDirectionColumn, availableInnerWidth)
-						descent := child.Layout.measuredDimensions[DimensionHeight] + YGNodeMarginForAxis(child, FlexDirectionColumn, availableInnerWidth) - ascent
+						descent := child.Layout.measuredDimensions[DimensionHeight] + nodeMarginForAxis(child, FlexDirectionColumn, availableInnerWidth) - ascent
 						maxAscentForCurrentLine = fmaxf(maxAscentForCurrentLine, ascent)
 						maxDescentForCurrentLine = fmaxf(maxDescentForCurrentLine, descent)
 						lineHeight = fmaxf(lineHeight, maxAscentForCurrentLine+maxDescentForCurrentLine)
@@ -2438,7 +2423,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 						continue
 					}
 					if child.Style.positionType == PositionTypeRelative {
-						switch YGNodeAlignItem(node, child) {
+						switch nodeAlignItem(node, child) {
 						case AlignFlexStart:
 							{
 								child.Layout.position[pos[crossAxis]] =
@@ -2463,17 +2448,17 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 
 								// Remeasure child with the line height as it as been only measured with the
 								// parents height yet.
-								if !YGNodeIsStyleDimDefined(child, crossAxis, availableInnerCrossDim) {
+								if !nodeIsStyleDimDefined(child, crossAxis, availableInnerCrossDim) {
 									childWidth := lineHeight
 									if isMainAxisRow {
 										childWidth = child.Layout.measuredDimensions[DimensionWidth] +
-											YGNodeMarginForAxis(child, mainAxis, availableInnerWidth)
+											nodeMarginForAxis(child, mainAxis, availableInnerWidth)
 									}
 
 									childHeight := lineHeight
 									if !isMainAxisRow {
 										childHeight = child.Layout.measuredDimensions[DimensionHeight] +
-											YGNodeMarginForAxis(child, crossAxis, availableInnerWidth)
+											nodeMarginForAxis(child, crossAxis, availableInnerWidth)
 									}
 
 									if !(FloatsEqual(childWidth,
@@ -2498,7 +2483,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 							{
 								child.Layout.position[EdgeTop] =
 									currentLead + maxAscentForCurrentLine - YGBaseline(child) +
-										YGNodeLeadingPosition(child, FlexDirectionColumn, availableInnerCrossDim)
+										nodeLeadingPosition(child, FlexDirectionColumn, availableInnerCrossDim)
 							}
 						case AlignAuto:
 						case AlignSpaceBetween:
@@ -2771,8 +2756,8 @@ func YGLayoutNodeInternal(node *Node, availableWidth float32, availableHeight fl
 	// expensive to measure, so it's worth avoiding redundant measurements if at
 	// all possible.
 	if node.Measure != nil {
-		marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
-		marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
+		marginAxisRow := nodeMarginForAxis(node, FlexDirectionRow, parentWidth)
+		marginAxisColumn := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 
 		// First, try to use the layout cache.
 		if YGNodeCanUseCachedMeasurement(widthMeasureMode,
@@ -3001,9 +2986,9 @@ func YGRoundToPixelGrid(node *Node, pointScaleFactor float32, absoluteLeft float
 }
 
 func calcStartWidth(node *Node, parentWidth float32) (float32, MeasureMode) {
-	if YGNodeIsStyleDimDefined(node, FlexDirectionRow, parentWidth) {
+	if nodeIsStyleDimDefined(node, FlexDirectionRow, parentWidth) {
 		width := resolveValue(node.resolvedDimensions[dim[FlexDirectionRow]], parentWidth)
-		margin := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
+		margin := nodeMarginForAxis(node, FlexDirectionRow, parentWidth)
 		return width + margin, MeasureModeExactly
 	}
 	if resolveValue(&node.Style.maxDimensions[DimensionWidth], parentWidth) >= 0.0 {
@@ -3019,9 +3004,9 @@ func calcStartWidth(node *Node, parentWidth float32) (float32, MeasureMode) {
 	return width, widthMeasureMode
 }
 func calcStartHeight(node *Node, parentWidth, parentHeight float32) (float32, MeasureMode) {
-	if YGNodeIsStyleDimDefined(node, FlexDirectionColumn, parentHeight) {
+	if nodeIsStyleDimDefined(node, FlexDirectionColumn, parentHeight) {
 		height := resolveValue(node.resolvedDimensions[dim[FlexDirectionColumn]], parentHeight)
-		margin := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
+		margin := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 		return height + margin, MeasureModeExactly
 	}
 	if resolveValue(&node.Style.maxDimensions[DimensionHeight], parentHeight) >= 0 {
