@@ -3030,7 +3030,7 @@ func NodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32, 
 		roundToPixelGrid(node, node.Config.PointScaleFactor, 0, 0)
 
 		if gPrintTree {
-			YGNodePrint(node, PrintOptionsLayout|PrintOptionsChildren|PrintOptionsStyle)
+			NodePrint(node, PrintOptionsLayout|PrintOptionsChildren|PrintOptionsStyle)
 		}
 	}
 }

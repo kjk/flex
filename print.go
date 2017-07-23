@@ -2,19 +2,19 @@ package flex
 
 import "fmt"
 
-func YGIndent(node *Node, n int) {
+func indent(node *Node, n int) {
 	for i := 0; i < n; i++ {
 		log(node, LogLevelDebug, "  ")
 	}
 }
 
-func YGPrintNumberIfNotUndefinedf(node *Node, str string, number float32) {
+func printNumberIfNotUndefinedf(node *Node, str string, number float32) {
 	if !FloatIsUndefined(number) {
 		log(node, LogLevelDebug, "%s: %g; ", str, number)
 	}
 }
 
-func YGPrintNumberIfNotUndefined(node *Node, str string, number *Value) {
+func printNumberIfNotUndefined(node *Node, str string, number *Value) {
 	if number.Unit != UnitUndefined {
 		if number.Unit == UnitAuto {
 			log(node, LogLevelDebug, "%s: auto; ", str)
@@ -28,40 +28,40 @@ func YGPrintNumberIfNotUndefined(node *Node, str string, number *Value) {
 		}
 	}
 }
-func YGPrintNumberIfNotAuto(node *Node, str string, number *Value) {
+func printNumberIfNotAuto(node *Node, str string, number *Value) {
 	if number.Unit != UnitAuto {
-		YGPrintNumberIfNotUndefined(node, str, number)
+		printNumberIfNotUndefined(node, str, number)
 	}
 }
 
-func YGPrintEdgeIfNotUndefined(node *Node, str string, edges []Value, edge Edge) {
-	YGPrintNumberIfNotUndefined(node, str, computedEdgeValue(edges, edge, &ValueUndefined))
+func printEdgeIfNotUndefined(node *Node, str string, edges []Value, edge Edge) {
+	printNumberIfNotUndefined(node, str, computedEdgeValue(edges, edge, &ValueUndefined))
 }
 
-func YGPrintNumberIfNotZero(node *Node, str string, number *Value) {
+func printNumberIfNotZero(node *Node, str string, number *Value) {
 	if !FloatsEqual(number.Value, 0) {
-		YGPrintNumberIfNotUndefined(node, str, number)
+		printNumberIfNotUndefined(node, str, number)
 	}
 }
 
-func YGFourValuesEqual(four []Value) bool {
+func fourValuesEqual(four []Value) bool {
 	return ValueEqual(four[0], four[1]) && ValueEqual(four[0], four[2]) &&
 		ValueEqual(four[0], four[3])
 }
 
-func YGPrintEdges(node *Node, str string, edges []Value) {
-	if YGFourValuesEqual(edges) {
-		YGPrintNumberIfNotZero(node, str, &edges[EdgeLeft])
+func printEdges(node *Node, str string, edges []Value) {
+	if fourValuesEqual(edges) {
+		printNumberIfNotZero(node, str, &edges[EdgeLeft])
 	} else {
 		for edge := EdgeLeft; edge < EdgeCount; edge++ {
 			buf := fmt.Sprintf("%s-%s", str, YGEdgeToString(edge))
-			YGPrintNumberIfNotZero(node, buf, &edges[edge])
+			printNumberIfNotZero(node, buf, &edges[edge])
 		}
 	}
 }
 
-func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
-	YGIndent(node, level)
+func nodePrintInternal(node *Node, options PrintOptions, level int) {
+	indent(node, level)
 	log(node, LogLevelDebug, "<div ")
 
 	if node.Print != nil {
@@ -101,10 +101,10 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 			log(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.Style.alignSelf))
 		}
 
-		YGPrintNumberIfNotUndefinedf(node, "flex-grow", node.Style.flexGrow)
-		YGPrintNumberIfNotUndefinedf(node, "flex-shrink", node.Style.flexShrink)
-		YGPrintNumberIfNotAuto(node, "flex-basis", &node.Style.flexBasis)
-		YGPrintNumberIfNotUndefinedf(node, "flex", node.Style.flex)
+		printNumberIfNotUndefinedf(node, "flex-grow", node.Style.flexGrow)
+		printNumberIfNotUndefinedf(node, "flex-shrink", node.Style.flexShrink)
+		printNumberIfNotAuto(node, "flex-basis", &node.Style.flexBasis)
+		printNumberIfNotUndefinedf(node, "flex", node.Style.flex)
 
 		if node.Style.flexWrap != gYGNodeDefaults.Style.flexWrap {
 			log(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.Style.flexWrap))
@@ -118,16 +118,16 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 			log(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.Style.display))
 		}
 
-		YGPrintEdges(node, "margin", node.Style.margin[:])
-		YGPrintEdges(node, "padding", node.Style.padding[:])
-		YGPrintEdges(node, "border", node.Style.border[:])
+		printEdges(node, "margin", node.Style.margin[:])
+		printEdges(node, "padding", node.Style.padding[:])
+		printEdges(node, "border", node.Style.border[:])
 
-		YGPrintNumberIfNotAuto(node, "width", &node.Style.dimensions[DimensionWidth])
-		YGPrintNumberIfNotAuto(node, "height", &node.Style.dimensions[DimensionHeight])
-		YGPrintNumberIfNotAuto(node, "max-width", &node.Style.maxDimensions[DimensionWidth])
-		YGPrintNumberIfNotAuto(node, "max-height", &node.Style.maxDimensions[DimensionHeight])
-		YGPrintNumberIfNotAuto(node, "min-width", &node.Style.minDimensions[DimensionWidth])
-		YGPrintNumberIfNotAuto(node, "min-height", &node.Style.minDimensions[DimensionHeight])
+		printNumberIfNotAuto(node, "width", &node.Style.dimensions[DimensionWidth])
+		printNumberIfNotAuto(node, "height", &node.Style.dimensions[DimensionHeight])
+		printNumberIfNotAuto(node, "max-width", &node.Style.maxDimensions[DimensionWidth])
+		printNumberIfNotAuto(node, "max-height", &node.Style.maxDimensions[DimensionHeight])
+		printNumberIfNotAuto(node, "min-width", &node.Style.minDimensions[DimensionWidth])
+		printNumberIfNotAuto(node, "min-height", &node.Style.minDimensions[DimensionHeight])
 
 		if node.Style.positionType != gYGNodeDefaults.Style.positionType {
 			log(node,
@@ -136,10 +136,10 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 				YGPositionTypeToString(node.Style.positionType))
 		}
 
-		YGPrintEdgeIfNotUndefined(node, "left", node.Style.position[:], EdgeLeft)
-		YGPrintEdgeIfNotUndefined(node, "right", node.Style.position[:], EdgeRight)
-		YGPrintEdgeIfNotUndefined(node, "top", node.Style.position[:], EdgeTop)
-		YGPrintEdgeIfNotUndefined(node, "bottom", node.Style.position[:], EdgeBottom)
+		printEdgeIfNotUndefined(node, "left", node.Style.position[:], EdgeLeft)
+		printEdgeIfNotUndefined(node, "right", node.Style.position[:], EdgeRight)
+		printEdgeIfNotUndefined(node, "top", node.Style.position[:], EdgeTop)
+		printEdgeIfNotUndefined(node, "bottom", node.Style.position[:], EdgeBottom)
 		log(node, LogLevelDebug, "\" ")
 
 		if node.Measure != nil {
@@ -152,14 +152,15 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
 			log(node, LogLevelDebug, "\n")
-			YGNodePrintInternal(YGNodeGetChild(node, i), options, level+1)
+			nodePrintInternal(YGNodeGetChild(node, i), options, level+1)
 		}
-		YGIndent(node, level)
+		indent(node, level)
 		log(node, LogLevelDebug, "\n")
 	}
 	log(node, LogLevelDebug, "</div>")
 }
 
-func YGNodePrint(node *Node, options PrintOptions) {
-	YGNodePrintInternal(node, options, 0)
+// NodePrint prints node
+func NodePrint(node *Node, options PrintOptions) {
+	nodePrintInternal(node, options, 0)
 }
