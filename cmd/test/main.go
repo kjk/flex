@@ -18,10 +18,10 @@ func assertFloatEqual(t *testing.T, exp, got float32) {
 func testCopy_style_same(t *testing.T) {
 	node0 := NewNode()
 	node1 := NewNode()
-	assert.False(t, YGNodeIsDirty(node0))
+	assert.False(t, node0.IsDirty)
 
 	YGNodeCopyStyle(node0, node1)
-	assert.False(t, YGNodeIsDirty(node0))
+	assert.False(t, (node0.IsDirty)
 
 }
 

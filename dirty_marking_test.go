@@ -26,15 +26,15 @@ func TestDirty_propagation(t *testing.T) {
 
 	YGNodeStyleSetWidth(rootChild0, 20)
 
-	assert.True(t, YGNodeIsDirty(rootChild0))
-	assert.False(t, YGNodeIsDirty(rootChild1))
-	assert.True(t, YGNodeIsDirty(root))
+	assert.True(t, rootChild0.IsDirty)
+	assert.False(t, rootChild1.IsDirty)
+	assert.True(t, root.IsDirty)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assert.False(t, YGNodeIsDirty(rootChild0))
-	assert.False(t, YGNodeIsDirty(rootChild1))
-	assert.False(t, YGNodeIsDirty(root))
+	assert.False(t, rootChild0.IsDirty)
+	assert.False(t, rootChild1.IsDirty)
+	assert.False(t, root.IsDirty)
 
 }
 
@@ -58,9 +58,9 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 
 	YGNodeStyleSetWidth(rootChild0, 50)
 
-	assert.False(t, YGNodeIsDirty(rootChild0))
-	assert.False(t, YGNodeIsDirty(rootChild1))
-	assert.False(t, YGNodeIsDirty(root))
+	assert.False(t, rootChild0.IsDirty)
+	assert.False(t, rootChild1.IsDirty)
+	assert.False(t, root.IsDirty)
 
 }
 
@@ -125,8 +125,8 @@ func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 
 	child1 := NewNode()
 	YGNodeRemoveChild(root, child1)
-	assert.False(t, YGNodeIsDirty(root))
+	assert.False(t, root.IsDirty)
 
 	YGNodeRemoveChild(root, child0)
-	assert.True(t, YGNodeIsDirty(root))
+	assert.True(t, root.IsDirty)
 }

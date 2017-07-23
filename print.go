@@ -64,91 +64,91 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 	YGIndent(node, level)
 	log(node, LogLevelDebug, "<div ")
 
-	if node.print != nil {
-		node.print(node)
+	if node.Print != nil {
+		node.Print(node)
 	}
 
 	if options&PrintOptionsLayout != 0 {
 		log(node, LogLevelDebug, "layout=\"")
-		log(node, LogLevelDebug, "width: %g; ", node.layout.dimensions[DimensionWidth])
-		log(node, LogLevelDebug, "height: %g; ", node.layout.dimensions[DimensionHeight])
-		log(node, LogLevelDebug, "top: %g; ", node.layout.position[EdgeTop])
-		log(node, LogLevelDebug, "left: %g;", node.layout.position[EdgeLeft])
+		log(node, LogLevelDebug, "width: %g; ", node.Layout.dimensions[DimensionWidth])
+		log(node, LogLevelDebug, "height: %g; ", node.Layout.dimensions[DimensionHeight])
+		log(node, LogLevelDebug, "top: %g; ", node.Layout.position[EdgeTop])
+		log(node, LogLevelDebug, "left: %g;", node.Layout.position[EdgeLeft])
 		log(node, LogLevelDebug, "\" ")
 	}
 
 	if options&PrintOptionsStyle != 0 {
 		log(node, LogLevelDebug, "style=\"")
-		if node.style.flexDirection != gYGNodeDefaults.style.flexDirection {
+		if node.Style.flexDirection != gYGNodeDefaults.Style.flexDirection {
 			log(node,
 				LogLevelDebug,
 				"flex-direction: %s; ",
-				YGFlexDirectionToString(node.style.flexDirection))
+				YGFlexDirectionToString(node.Style.flexDirection))
 		}
-		if node.style.justifyContent != gYGNodeDefaults.style.justifyContent {
+		if node.Style.justifyContent != gYGNodeDefaults.Style.justifyContent {
 			log(node,
 				LogLevelDebug,
 				"justify-content: %s; ",
-				YGJustifyToString(node.style.justifyContent))
+				YGJustifyToString(node.Style.justifyContent))
 		}
-		if node.style.alignItems != gYGNodeDefaults.style.alignItems {
-			log(node, LogLevelDebug, "align-items: %s; ", YGAlignToString(node.style.alignItems))
+		if node.Style.alignItems != gYGNodeDefaults.Style.alignItems {
+			log(node, LogLevelDebug, "align-items: %s; ", YGAlignToString(node.Style.alignItems))
 		}
-		if node.style.alignContent != gYGNodeDefaults.style.alignContent {
-			log(node, LogLevelDebug, "align-content: %s; ", YGAlignToString(node.style.alignContent))
+		if node.Style.alignContent != gYGNodeDefaults.Style.alignContent {
+			log(node, LogLevelDebug, "align-content: %s; ", YGAlignToString(node.Style.alignContent))
 		}
-		if node.style.alignSelf != gYGNodeDefaults.style.alignSelf {
-			log(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.style.alignSelf))
-		}
-
-		YGPrintNumberIfNotUndefinedf(node, "flex-grow", node.style.flexGrow)
-		YGPrintNumberIfNotUndefinedf(node, "flex-shrink", node.style.flexShrink)
-		YGPrintNumberIfNotAuto(node, "flex-basis", &node.style.flexBasis)
-		YGPrintNumberIfNotUndefinedf(node, "flex", node.style.flex)
-
-		if node.style.flexWrap != gYGNodeDefaults.style.flexWrap {
-			log(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.style.flexWrap))
+		if node.Style.alignSelf != gYGNodeDefaults.Style.alignSelf {
+			log(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.Style.alignSelf))
 		}
 
-		if node.style.overflow != gYGNodeDefaults.style.overflow {
-			log(node, LogLevelDebug, "overflow: %s; ", YGOverflowToString(node.style.overflow))
+		YGPrintNumberIfNotUndefinedf(node, "flex-grow", node.Style.flexGrow)
+		YGPrintNumberIfNotUndefinedf(node, "flex-shrink", node.Style.flexShrink)
+		YGPrintNumberIfNotAuto(node, "flex-basis", &node.Style.flexBasis)
+		YGPrintNumberIfNotUndefinedf(node, "flex", node.Style.flex)
+
+		if node.Style.flexWrap != gYGNodeDefaults.Style.flexWrap {
+			log(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.Style.flexWrap))
 		}
 
-		if node.style.display != gYGNodeDefaults.style.display {
-			log(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.style.display))
+		if node.Style.overflow != gYGNodeDefaults.Style.overflow {
+			log(node, LogLevelDebug, "overflow: %s; ", YGOverflowToString(node.Style.overflow))
 		}
 
-		YGPrintEdges(node, "margin", node.style.margin[:])
-		YGPrintEdges(node, "padding", node.style.padding[:])
-		YGPrintEdges(node, "border", node.style.border[:])
+		if node.Style.display != gYGNodeDefaults.Style.display {
+			log(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.Style.display))
+		}
 
-		YGPrintNumberIfNotAuto(node, "width", &node.style.dimensions[DimensionWidth])
-		YGPrintNumberIfNotAuto(node, "height", &node.style.dimensions[DimensionHeight])
-		YGPrintNumberIfNotAuto(node, "max-width", &node.style.maxDimensions[DimensionWidth])
-		YGPrintNumberIfNotAuto(node, "max-height", &node.style.maxDimensions[DimensionHeight])
-		YGPrintNumberIfNotAuto(node, "min-width", &node.style.minDimensions[DimensionWidth])
-		YGPrintNumberIfNotAuto(node, "min-height", &node.style.minDimensions[DimensionHeight])
+		YGPrintEdges(node, "margin", node.Style.margin[:])
+		YGPrintEdges(node, "padding", node.Style.padding[:])
+		YGPrintEdges(node, "border", node.Style.border[:])
 
-		if node.style.positionType != gYGNodeDefaults.style.positionType {
+		YGPrintNumberIfNotAuto(node, "width", &node.Style.dimensions[DimensionWidth])
+		YGPrintNumberIfNotAuto(node, "height", &node.Style.dimensions[DimensionHeight])
+		YGPrintNumberIfNotAuto(node, "max-width", &node.Style.maxDimensions[DimensionWidth])
+		YGPrintNumberIfNotAuto(node, "max-height", &node.Style.maxDimensions[DimensionHeight])
+		YGPrintNumberIfNotAuto(node, "min-width", &node.Style.minDimensions[DimensionWidth])
+		YGPrintNumberIfNotAuto(node, "min-height", &node.Style.minDimensions[DimensionHeight])
+
+		if node.Style.positionType != gYGNodeDefaults.Style.positionType {
 			log(node,
 				LogLevelDebug,
 				"position: %s; ",
-				YGPositionTypeToString(node.style.positionType))
+				YGPositionTypeToString(node.Style.positionType))
 		}
 
-		YGPrintEdgeIfNotUndefined(node, "left", node.style.position[:], EdgeLeft)
-		YGPrintEdgeIfNotUndefined(node, "right", node.style.position[:], EdgeRight)
-		YGPrintEdgeIfNotUndefined(node, "top", node.style.position[:], EdgeTop)
-		YGPrintEdgeIfNotUndefined(node, "bottom", node.style.position[:], EdgeBottom)
+		YGPrintEdgeIfNotUndefined(node, "left", node.Style.position[:], EdgeLeft)
+		YGPrintEdgeIfNotUndefined(node, "right", node.Style.position[:], EdgeRight)
+		YGPrintEdgeIfNotUndefined(node, "top", node.Style.position[:], EdgeTop)
+		YGPrintEdgeIfNotUndefined(node, "bottom", node.Style.position[:], EdgeBottom)
 		log(node, LogLevelDebug, "\" ")
 
-		if node.measure != nil {
+		if node.Measure != nil {
 			log(node, LogLevelDebug, "has-custom-measure=\"true\"")
 		}
 	}
 	log(node, LogLevelDebug, ">")
 
-	childCount := YGNodeListCount(node.children)
+	childCount := YGNodeListCount(node.Children)
 	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
 			log(node, LogLevelDebug, "\n")

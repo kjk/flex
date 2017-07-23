@@ -515,7 +515,7 @@ func TestCan_nullify_measure_func_on_any_node(t *testing.T) {
 	YGNodeInsertChild(root, NewNode(), 0)
 
 	NodeSetMeasureFunc(root, nil)
-	assert.True(t, YGNodeGetMeasureFunc(root) == nil)
+	assert.True(t, root.Measure == nil)
 }
 
 func TestCant_call_negative_measure(t *testing.T) {

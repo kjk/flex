@@ -28,7 +28,7 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	rootChild1child0 := NewNode()
 	YGNodeSetContext(rootChild1child0, baselineValue)
 	YGNodeStyleSetWidth(rootChild1child0, 50)
-	YGNodeSetBaselineFunc(rootChild1child0, _baseline)
+	rootChild1child0.Baseline = _baseline
 	YGNodeStyleSetHeight(rootChild1child0, 20)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
