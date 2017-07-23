@@ -4,7 +4,6 @@ import "testing"
 
 func TestWrap_child(t *testing.T) {
 	config := YGConfigNew()
-
 	root := YGNodeNewWithConfig(config)
 
 	rootChild0 := YGNodeNewWithConfig(config)
@@ -34,7 +33,6 @@ func TestWrap_child(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestWrap_grandchild(t *testing.T) {
@@ -82,5 +80,4 @@ func TestWrap_grandchild(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0Child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0Child0))
-
 }

@@ -27,5 +27,4 @@ func TestReset_layout_when_child_removed(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetWidth(rootChild0)))
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetHeight(rootChild0)))
-
 }

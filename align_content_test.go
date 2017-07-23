@@ -33,10 +33,10 @@ func TestAlignContentFlexStart(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild3, 10)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeStyleSetHeight(root_child4, 10)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeStyleSetHeight(rootChild4, 10)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -64,10 +64,10 @@ func TestAlignContentFlexStart(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -96,11 +96,10 @@ func TestAlignContentFlexStart(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 80, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 80, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
@@ -130,9 +129,9 @@ func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild3, 10)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -160,10 +159,10 @@ func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -192,11 +191,10 @@ func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_flex_start_with_flex(t *testing.T) {
@@ -231,9 +229,9 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -261,10 +259,10 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 120, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 120, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -293,11 +291,10 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 120, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 120, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_flex_end(t *testing.T) {
@@ -329,10 +326,10 @@ func TestAlign_content_flex_end(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild3, 10)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeStyleSetHeight(root_child4, 10)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeStyleSetHeight(rootChild4, 10)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -360,10 +357,10 @@ func TestAlign_content_flex_end(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 40, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 40, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -392,11 +389,10 @@ func TestAlign_content_flex_end(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 40, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 40, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch(t *testing.T) {
@@ -424,9 +420,9 @@ func TestAlign_content_stretch(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -454,10 +450,10 @@ func TestAlign_content_stretch(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -486,11 +482,10 @@ func TestAlign_content_stretch(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_spacebetween(t *testing.T) {
@@ -523,10 +518,10 @@ func TestAlign_content_spacebetween(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild3, 10)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeStyleSetHeight(root_child4, 10)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeStyleSetHeight(rootChild4, 10)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -554,10 +549,10 @@ func TestAlign_content_spacebetween(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 90, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 90, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -586,10 +581,10 @@ func TestAlign_content_spacebetween(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 80, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 90, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 80, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 90, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 
 }
 
@@ -624,10 +619,10 @@ func TestAlign_content_spacearound(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild3, 10)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeStyleSetHeight(root_child4, 10)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeStyleSetHeight(rootChild4, 10)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -655,10 +650,10 @@ func TestAlign_content_spacearound(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 95, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 95, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -687,11 +682,10 @@ func TestAlign_content_spacearound(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 90, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 95, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 90, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 95, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row(t *testing.T) {
@@ -720,9 +714,9 @@ func TestAlign_content_stretch_row(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -750,10 +744,10 @@ func TestAlign_content_stretch_row(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -782,11 +776,10 @@ func TestAlign_content_stretch_row(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_children(t *testing.T) {
@@ -821,9 +814,9 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -856,10 +849,10 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -893,11 +886,10 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_flex(t *testing.T) {
@@ -932,9 +924,9 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -962,10 +954,10 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -994,11 +986,10 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
@@ -1032,9 +1023,9 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1062,10 +1053,10 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1094,11 +1085,10 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_margin(t *testing.T) {
@@ -1135,9 +1125,9 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1165,10 +1155,10 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 80, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 80, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1197,11 +1187,10 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 80, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 100, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 80, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_padding(t *testing.T) {
@@ -1238,9 +1227,9 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1268,10 +1257,10 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1300,11 +1289,10 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
@@ -1357,7 +1345,6 @@ func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
@@ -1387,9 +1374,9 @@ func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1417,10 +1404,10 @@ func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 80, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 80, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1449,11 +1436,10 @@ func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 80, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 80, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
@@ -1483,9 +1469,9 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1513,10 +1499,10 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1545,11 +1531,10 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
@@ -1579,9 +1564,9 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetWidth(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetWidth(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1609,10 +1594,10 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 90, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 90, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1641,11 +1626,10 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 90, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 90, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_column(t *testing.T) {
@@ -1682,9 +1666,9 @@ func TestAlign_content_stretch_column(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetHeight(root_child4, 50)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetHeight(rootChild4, 50)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -1717,10 +1701,10 @@ func TestAlign_content_stretch_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -1754,11 +1738,10 @@ func TestAlign_content_stretch_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestAlign_content_stretch_is_not_overriding_align_items(t *testing.T) {
@@ -1813,5 +1796,4 @@ func TestAlign_content_stretch_is_not_overriding_align_items(t *testing.T) {
 	assertFloatEqual(t, 45, YGNodeLayoutGetTop(rootChild0Child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0Child0))
-
 }

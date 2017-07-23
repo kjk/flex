@@ -50,7 +50,6 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 	assertFloatEqual(t, 75, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 25, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestFlex_basis_flex_grow_row(t *testing.T) {
@@ -102,7 +101,6 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 25, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestFlex_basis_flex_shrink_column(t *testing.T) {
@@ -153,7 +151,6 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestFlex_basis_flex_shrink_row(t *testing.T) {
@@ -205,7 +202,6 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestFlex_shrink_to_zero(t *testing.T) {
@@ -272,7 +268,6 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_basis_overrides_main_size(t *testing.T) {
@@ -340,7 +335,6 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_grow_shrink_at_most(t *testing.T) {
@@ -390,7 +384,6 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0Child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild0Child0))
-
 }
 
 func TestFlex_grow_less_than_factor_one(t *testing.T) {
@@ -455,5 +448,4 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 	assertFloatEqual(t, 224, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 200, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 184, YGNodeLayoutGetHeight(rootChild2))
-
 }

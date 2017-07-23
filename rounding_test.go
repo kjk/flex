@@ -64,7 +64,6 @@ func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 33, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
@@ -91,9 +90,9 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	YGNodeStyleSetFlexGrow(rootChild3, 1)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	root_child4 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexGrow(root_child4, 1)
-	YGNodeInsertChild(root, root_child4, 4)
+	rootChild4 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetFlexGrow(rootChild4, 1)
+	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -121,10 +120,10 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	assertFloatEqual(t, 22, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 90, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 23, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child4))
+	assertFloatEqual(t, 90, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 23, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild4))
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
 
@@ -153,11 +152,10 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	assertFloatEqual(t, 22, YGNodeLayoutGetWidth(rootChild3))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild3))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root_child4))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child4))
-	assertFloatEqual(t, 23, YGNodeLayoutGetWidth(root_child4))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child4))
-
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild4))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild4))
+	assertFloatEqual(t, 23, YGNodeLayoutGetWidth(rootChild4))
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild4))
 }
 
 func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
@@ -223,7 +221,6 @@ func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 25, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
@@ -291,7 +288,6 @@ func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 24, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_total_fractial(t *testing.T) {
@@ -359,7 +355,6 @@ func TestRounding_total_fractial(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 24, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_total_fractial_nested(t *testing.T) {
@@ -382,12 +377,12 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild0Child0, 9.9)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0_child1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexGrow(rootChild0_child1, 4)
-	YGNodeStyleSetFlexBasis(rootChild0_child1, 0.3)
-	YGNodeStyleSetPosition(rootChild0_child1, EdgeTop, 13.3)
-	YGNodeStyleSetHeight(rootChild0_child1, 1.1)
-	YGNodeInsertChild(rootChild0, rootChild0_child1, 1)
+	rootChild0child1 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetFlexGrow(rootChild0child1, 4)
+	YGNodeStyleSetFlexBasis(rootChild0child1, 0.3)
+	YGNodeStyleSetPosition(rootChild0child1, EdgeTop, 13.3)
+	YGNodeStyleSetHeight(rootChild0child1, 1.1)
+	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 
 	rootChild1 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1.6)
@@ -415,10 +410,10 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 12, YGNodeLayoutGetHeight(rootChild0Child0))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0_child1))
-	assertFloatEqual(t, 25, YGNodeLayoutGetTop(rootChild0_child1))
-	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild0_child1))
-	assertFloatEqual(t, 47, YGNodeLayoutGetHeight(rootChild0_child1))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0child1))
+	assertFloatEqual(t, 25, YGNodeLayoutGetTop(rootChild0child1))
+	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild0child1))
+	assertFloatEqual(t, 47, YGNodeLayoutGetHeight(rootChild0child1))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1))
 	assertFloatEqual(t, 59, YGNodeLayoutGetTop(rootChild1))
@@ -447,10 +442,10 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 12, YGNodeLayoutGetHeight(rootChild0Child0))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0_child1))
-	assertFloatEqual(t, 25, YGNodeLayoutGetTop(rootChild0_child1))
-	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild0_child1))
-	assertFloatEqual(t, 47, YGNodeLayoutGetHeight(rootChild0_child1))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0child1))
+	assertFloatEqual(t, 25, YGNodeLayoutGetTop(rootChild0child1))
+	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild0child1))
+	assertFloatEqual(t, 47, YGNodeLayoutGetHeight(rootChild0child1))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1))
 	assertFloatEqual(t, 59, YGNodeLayoutGetTop(rootChild1))
@@ -461,7 +456,6 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 87, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 24, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_fractial_input_1(t *testing.T) {
@@ -529,7 +523,6 @@ func TestRounding_fractial_input_1(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 24, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_fractial_input_2(t *testing.T) {
@@ -597,7 +590,6 @@ func TestRounding_fractial_input_2(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 25, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_fractial_input_3(t *testing.T) {
@@ -666,7 +658,6 @@ func TestRounding_fractial_input_3(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 25, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_fractial_input_4(t *testing.T) {
@@ -735,7 +726,6 @@ func TestRounding_fractial_input_4(t *testing.T) {
 	assertFloatEqual(t, 89, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 24, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
@@ -755,10 +745,10 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexGrow(rootChild1_child0, 1)
-	YGNodeStyleSetHeight(rootChild1_child0, 10)
-	YGNodeInsertChild(rootChild1, rootChild1_child0, 0)
+	rootChild1child0 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
+	YGNodeStyleSetHeight(rootChild1child0, 10)
+	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
@@ -781,10 +771,10 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	assertFloatEqual(t, 106, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild1))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1_child0))
-	assertFloatEqual(t, 106, YGNodeLayoutGetWidth(rootChild1_child0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild1_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1child0))
+	assertFloatEqual(t, 106, YGNodeLayoutGetWidth(rootChild1child0))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild1child0))
 
 	assertFloatEqual(t, 213, YGNodeLayoutGetLeft(rootChild2))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
@@ -808,16 +798,15 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	assertFloatEqual(t, 106, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild1))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1_child0))
-	assertFloatEqual(t, 106, YGNodeLayoutGetWidth(rootChild1_child0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild1_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1child0))
+	assertFloatEqual(t, 106, YGNodeLayoutGetWidth(rootChild1child0))
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild1child0))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild2))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 107, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_inner_node_controversy_vertical(t *testing.T) {
@@ -836,10 +825,10 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexGrow(rootChild1_child0, 1)
-	YGNodeStyleSetWidth(rootChild1_child0, 10)
-	YGNodeInsertChild(rootChild1, rootChild1_child0, 0)
+	rootChild1child0 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
+	YGNodeStyleSetWidth(rootChild1child0, 10)
+	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
@@ -862,10 +851,10 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 106, YGNodeLayoutGetHeight(rootChild1))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1_child0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild1_child0))
-	assertFloatEqual(t, 106, YGNodeLayoutGetHeight(rootChild1_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1child0))
+	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild1child0))
+	assertFloatEqual(t, 106, YGNodeLayoutGetHeight(rootChild1child0))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild2))
 	assertFloatEqual(t, 213, YGNodeLayoutGetTop(rootChild2))
@@ -889,16 +878,15 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 106, YGNodeLayoutGetHeight(rootChild1))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1_child0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild1_child0))
-	assertFloatEqual(t, 106, YGNodeLayoutGetHeight(rootChild1_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1child0))
+	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild1child0))
+	assertFloatEqual(t, 106, YGNodeLayoutGetHeight(rootChild1child0))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild2))
 	assertFloatEqual(t, 213, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 107, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestRounding_inner_node_controversy_combined(t *testing.T) {
@@ -919,10 +907,10 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	YGNodeStyleSetHeightPercent(rootChild1, 100)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexGrow(rootChild1_child0, 1)
-	YGNodeStyleSetWidthPercent(rootChild1_child0, 100)
-	YGNodeInsertChild(rootChild1, rootChild1_child0, 0)
+	rootChild1child0 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
+	YGNodeStyleSetWidthPercent(rootChild1child0, 100)
+	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild1_child1 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1_child1, 1)
@@ -960,10 +948,10 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	assertFloatEqual(t, 214, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 320, YGNodeLayoutGetHeight(rootChild1))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1_child0))
-	assertFloatEqual(t, 214, YGNodeLayoutGetWidth(rootChild1_child0))
-	assertFloatEqual(t, 107, YGNodeLayoutGetHeight(rootChild1_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1child0))
+	assertFloatEqual(t, 214, YGNodeLayoutGetWidth(rootChild1child0))
+	assertFloatEqual(t, 107, YGNodeLayoutGetHeight(rootChild1child0))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child1))
 	assertFloatEqual(t, 107, YGNodeLayoutGetTop(rootChild1_child1))
@@ -1002,10 +990,10 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	assertFloatEqual(t, 214, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 320, YGNodeLayoutGetHeight(rootChild1))
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1_child0))
-	assertFloatEqual(t, 214, YGNodeLayoutGetWidth(rootChild1_child0))
-	assertFloatEqual(t, 107, YGNodeLayoutGetHeight(rootChild1_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1child0))
+	assertFloatEqual(t, 214, YGNodeLayoutGetWidth(rootChild1child0))
+	assertFloatEqual(t, 107, YGNodeLayoutGetHeight(rootChild1child0))
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild1_child1))
 	assertFloatEqual(t, 107, YGNodeLayoutGetTop(rootChild1_child1))
@@ -1026,5 +1014,4 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 213, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 320, YGNodeLayoutGetHeight(rootChild2))
-
 }

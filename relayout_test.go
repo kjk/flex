@@ -18,7 +18,6 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
 
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
@@ -36,5 +35,4 @@ func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild0))
-
 }

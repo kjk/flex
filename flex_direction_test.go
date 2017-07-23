@@ -4,7 +4,6 @@ import "testing"
 
 func TestFlex_direction_column_no_height(t *testing.T) {
 	config := YGConfigNew()
-
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 
@@ -62,7 +61,6 @@ func TestFlex_direction_column_no_height(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_direction_row_no_width(t *testing.T) {
@@ -126,7 +124,6 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_direction_column(t *testing.T) {
@@ -190,7 +187,6 @@ func TestFlex_direction_column(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_direction_row(t *testing.T) {
@@ -255,7 +251,6 @@ func TestFlex_direction_row(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_direction_column_reverse(t *testing.T) {
@@ -320,7 +315,6 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 	assertFloatEqual(t, 70, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
-
 }
 
 func TestFlex_direction_row_reverse(t *testing.T) {
@@ -385,5 +379,4 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
-
 }

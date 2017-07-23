@@ -13,10 +13,7 @@ func _measure3(node *YGNode, width float32, widthMode YGMeasureMode, height floa
 		(*measureCount)++
 	}
 
-	return YGSize{
-		width:  10,
-		height: 10,
-	}
+	return YGSize{width: 10, height: 10}
 }
 
 func _simulate_wrapping_text(node *YGNode, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize {
@@ -24,9 +21,7 @@ func _simulate_wrapping_text(node *YGNode, width float32, widthMode YGMeasureMod
 		return YGSize{width: 68, height: 16}
 	}
 
-	return YGSize{
-		width: 50, height: 32,
-	}
+	return YGSize{width: 50, height: 32}
 }
 
 func _measure_assert_negative(node *YGNode, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize {
@@ -61,7 +56,6 @@ func TestDont_measure_single_grow_shrink_child(t *testing.T) {
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assert.Equal(t, 0, measureCount)
-
 }
 
 func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
@@ -81,7 +75,6 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assert.Equal(t, 1, measureCount)
-
 }
 
 func TestDont_measure_when_min_equals_max(t *testing.T) {
@@ -108,7 +101,6 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
@@ -135,7 +127,6 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
@@ -162,7 +153,6 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
@@ -189,7 +179,6 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
@@ -206,7 +195,6 @@ func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
 
 	assertFloatEqual(t, 68, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
@@ -223,7 +211,6 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 32, YGNodeLayoutGetHeight(rootChild0))
-
 }
 
 func TestMeasure_zero_space_should_grow(t *testing.T) {
@@ -246,7 +233,6 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 
 	assertFloatEqual(t, 282, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
-
 }
 
 func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
@@ -285,7 +271,6 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 	assertFloatEqual(t, 25, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
@@ -321,7 +306,6 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 	assertFloatEqual(t, 57, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
@@ -357,7 +341,6 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.T) {
@@ -394,7 +377,6 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestMeasure_with_fixed_size(t *testing.T) {
@@ -432,7 +414,6 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 	assertFloatEqual(t, 35, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestMeasure_with_flex_shrink(t *testing.T) {
@@ -469,7 +450,6 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 	assertFloatEqual(t, 25, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 func TestMeasure_no_padding(t *testing.T) {
@@ -505,7 +485,6 @@ func TestMeasure_no_padding(t *testing.T) {
 	assertFloatEqual(t, 32, YGNodeLayoutGetTop(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetWidth(rootChild1))
 	assertFloatEqual(t, 5, YGNodeLayoutGetHeight(rootChild1))
-
 }
 
 /*
@@ -537,7 +516,6 @@ func TestCan_nullify_measure_func_on_any_node(t *testing.T) {
 
 	YGNodeSetMeasureFunc(root, nil)
 	assert.True(t, YGNodeGetMeasureFunc(root) == nil)
-
 }
 
 func TestCant_call_negative_measure(t *testing.T) {
@@ -554,7 +532,6 @@ func TestCant_call_negative_measure(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
-
 }
 
 func TestCant_call_negative_measure_horizontal(t *testing.T) {
@@ -571,5 +548,4 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
-
 }

@@ -49,7 +49,6 @@ func TestNested_overflowing_child(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetHeight(rootChild0Child0))
-
 }
 
 func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
@@ -101,7 +100,6 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetHeight(rootChild0Child0))
-
 }
 
 func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
@@ -152,5 +150,4 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0Child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetHeight(rootChild0Child0))
-
 }

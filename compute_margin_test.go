@@ -17,5 +17,4 @@ func TestComputed_layout_margin(t *testing.T) {
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetMargin(root, EdgeLeft))
 	assertFloatEqual(t, 10, YGNodeLayoutGetMargin(root, EdgeRight))
-
 }
