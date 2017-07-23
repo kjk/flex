@@ -21,7 +21,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -43,7 +43,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -86,7 +86,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -108,7 +108,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -151,7 +151,7 @@ func TestJustify_content_row_center(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -173,7 +173,7 @@ func TestJustify_content_row_center(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -216,7 +216,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -238,7 +238,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -281,7 +281,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -303,7 +303,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 102, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -343,7 +343,7 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -365,7 +365,7 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -407,7 +407,7 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -429,7 +429,7 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -471,7 +471,7 @@ func TestJustify_content_column_center(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -493,7 +493,7 @@ func TestJustify_content_column_center(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -535,7 +535,7 @@ func TestJustify_content_column_space_between(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -557,7 +557,7 @@ func TestJustify_content_column_space_between(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -599,7 +599,7 @@ func TestJustify_content_column_space_around(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -621,7 +621,7 @@ func TestJustify_content_column_space_around(t *testing.T) {
 	assertFloatEqual(t, 102, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))

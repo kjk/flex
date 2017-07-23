@@ -31,7 +31,7 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	rootChild1child0.Baseline = _baseline
 	YGNodeStyleSetHeight(rootChild1child0, 20)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))

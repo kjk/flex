@@ -30,7 +30,7 @@ func TestChildren_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
 	YGNodeInsertChild(root, child1, 1)
 
-	YGNodeCalculateLayout(root, 200, 100, DirectionLTR)
+	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, YGNodeLayoutGetHadOverflow(root))
 }
@@ -49,7 +49,7 @@ func TestSpacing_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
 	YGNodeInsertChild(root, child1, 1)
 
-	YGNodeCalculateLayout(root, 200, 100, DirectionLTR)
+	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, YGNodeLayoutGetHadOverflow(root))
 }
@@ -69,7 +69,7 @@ func TestNo_overflow_no_wrap_and_flex_children(t *testing.T) {
 	YGNodeStyleSetFlexShrink(child1, 1)
 	YGNodeInsertChild(root, child1, 1)
 
-	YGNodeCalculateLayout(root, 200, 100, DirectionLTR)
+	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.False(t, YGNodeLayoutGetHadOverflow(root))
 }
@@ -88,13 +88,13 @@ func TestHadOverflow_gets_reset_if_not_logger_valid(t *testing.T) {
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
 	YGNodeInsertChild(root, child1, 1)
 
-	YGNodeCalculateLayout(root, 200, 100, DirectionLTR)
+	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, YGNodeLayoutGetHadOverflow(root))
 
 	YGNodeStyleSetFlexShrink(child1, 1)
 
-	YGNodeCalculateLayout(root, 200, 100, DirectionLTR)
+	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.False(t, YGNodeLayoutGetHadOverflow(root))
 }
@@ -117,7 +117,7 @@ func TestSpacing_overflow_in_nested_nodes(t *testing.T) {
 	YGNodeStyleSetMargin(child1_1, EdgeBottom, 5)
 	YGNodeInsertChild(child1, child1_1, 0)
 
-	YGNodeCalculateLayout(root, 200, 100, DirectionLTR)
+	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, YGNodeLayoutGetHadOverflow(root))
 }

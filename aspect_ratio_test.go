@@ -28,7 +28,7 @@ func TestAspect_ratio_cross_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -48,7 +48,7 @@ func TestAspect_ratio_main_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -70,7 +70,7 @@ func TestAspect_ratio_both_dimensions_defined_row(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -91,7 +91,7 @@ func TestAspect_ratio_both_dimensions_defined_column(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -109,7 +109,7 @@ func TestAspect_ratio_align_stretch(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -130,7 +130,7 @@ func TestAspect_ratio_flex_grow(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -151,7 +151,7 @@ func TestAspect_ratio_flex_shrink(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -171,7 +171,7 @@ func TestAspect_ratio_basis(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -193,7 +193,7 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -215,7 +215,7 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -236,7 +236,7 @@ func TestAspect_ratio_with_max_cross_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -257,7 +257,7 @@ func TestAspect_ratio_with_max_main_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -278,7 +278,7 @@ func TestAspect_ratio_with_min_cross_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -299,7 +299,7 @@ func TestAspect_ratio_with_min_main_defined(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -319,7 +319,7 @@ func TestAspect_ratio_double_cross(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -339,7 +339,7 @@ func TestAspect_ratio_half_cross(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 0.5)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -359,7 +359,7 @@ func TestAspect_ratio_double_main(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 0.5)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -379,7 +379,7 @@ func TestAspect_ratio_half_main(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -399,7 +399,7 @@ func TestAspect_ratio_with_measure_func(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -422,7 +422,7 @@ func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -444,7 +444,7 @@ func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -472,7 +472,7 @@ func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -504,7 +504,7 @@ func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -531,7 +531,7 @@ func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 0.5)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -552,7 +552,7 @@ func TestAspect_ratio_overrides_flex_grow_column(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -574,7 +574,7 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
@@ -596,7 +596,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
@@ -616,7 +616,7 @@ func TestAspect_ratio_width_overrides_align_stretch_row(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -635,7 +635,7 @@ func TestAspect_ratio_height_overrides_align_stretch_column(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
@@ -654,7 +654,7 @@ func TestAspect_ratio_allow_child_overflow_parent_size(t *testing.T) {
 	YGNodeStyleSetAspectRatio(rootChild0, 4)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root))
@@ -678,7 +678,7 @@ func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
@@ -702,7 +702,7 @@ func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
 	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))

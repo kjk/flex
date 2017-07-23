@@ -77,11 +77,11 @@ type Style struct {
 // Config describes a configuration
 type Config struct {
 	experimentalFeatures      [experimentalFeatureCount + 1]bool
-	useWebDefaults            bool
-	useLegacyStretchBehaviour bool
-	pointScaleFactor          float32
-	logger                    Logger
-	context                   interface{}
+	UseWebDefaults            bool
+	UseLegacyStretchBehaviour bool
+	PointScaleFactor          float32
+	Logger                    Logger
+	Context                   interface{}
 }
 
 // Node describes a node
@@ -203,10 +203,10 @@ var (
 			false,
 			false,
 		},
-		useWebDefaults:   false,
-		pointScaleFactor: 1,
-		logger:           DefaultLog,
-		context:          nil,
+		UseWebDefaults:   false,
+		PointScaleFactor: 1,
+		Logger:           DefaultLog,
+		Context:          nil,
 	}
 
 	// ValueZero defines a zero value
@@ -284,7 +284,7 @@ func resolveValueMargin(value *Value, parentSize float32) float32 {
 func NewNodeWithConfig(config *Config) *Node {
 	node := gYGNodeDefaults
 
-	if config.useWebDefaults {
+	if config.UseWebDefaults {
 		node.Style.flexDirection = FlexDirectionRow
 		node.Style.alignContent = AlignStretch
 	}
@@ -306,7 +306,7 @@ func NodeReset(node *Node) {
 
 	config := node.Config
 	*node = gYGNodeDefaults
-	if config.useWebDefaults {
+	if config.UseWebDefaults {
 		node.Style.flexDirection = FlexDirectionRow
 		node.Style.alignContent = AlignStretch
 	}
@@ -463,7 +463,7 @@ func NodeStyleGetFlexGrow(node *Node) float32 {
 // NodeStyleGetFlexShrink gets flex shrink
 func NodeStyleGetFlexShrink(node *Node) float32 {
 	if FloatIsUndefined(node.Style.flexShrink) {
-		if node.Config.useWebDefaults {
+		if node.Config.UseWebDefaults {
 			return webDefaultFlexShrink
 		}
 		return defaultFlexShrink
@@ -479,11 +479,11 @@ func nodeResolveFlexShrink(node *Node) float32 {
 	if !FloatIsUndefined(node.Style.flexShrink) {
 		return node.Style.flexShrink
 	}
-	if !node.Config.useWebDefaults && !FloatIsUndefined(node.Style.flex) &&
+	if !node.Config.UseWebDefaults && !FloatIsUndefined(node.Style.flex) &&
 		node.Style.flex < 0 {
 		return -node.Style.flex
 	}
-	if node.Config.useWebDefaults {
+	if node.Config.UseWebDefaults {
 		return webDefaultFlexShrink
 	}
 	return defaultFlexShrink
@@ -495,7 +495,7 @@ func nodeResolveFlexBasisPtr(node *Node) *Value {
 		return &style.flexBasis
 	}
 	if !FloatIsUndefined(style.flex) && style.flex > 0 {
-		if node.Config.useWebDefaults {
+		if node.Config.UseWebDefaults {
 			return &ValueAuto
 		}
 		return &ValueZero
@@ -963,7 +963,7 @@ func nodeComputeFlexBasisForChild(node *Node,
 
 	if !FloatIsUndefined(resolvedFlexBasis) && !FloatIsUndefined(mainAxisSize) {
 		if FloatIsUndefined(child.Layout.computedFlexBasis) ||
-			(YGConfigIsExperimentalFeatureEnabled(child.Config, ExperimentalFeatureWebFlexBasis) &&
+			(ConfigIsExperimentalFeatureEnabled(child.Config, ExperimentalFeatureWebFlexBasis) &&
 				child.Layout.computedFlexBasisGeneration != currentGenerationCount) {
 			child.Layout.computedFlexBasis =
 				fmaxf(resolvedFlexBasis, nodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
@@ -1777,7 +1777,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 				sizeConsumedOnCurrentLine > maxInnerMainDim {
 				availableInnerMainDim = maxInnerMainDim
 			} else {
-				if !node.Config.useLegacyStretchBehaviour &&
+				if !node.Config.UseLegacyStretchBehaviour &&
 					(totalFlexGrowFactors == 0 || resolveFlexGrow(node) == 0) {
 					// If we don't have any children to flex or we can't flex the node itself,
 					// space we've used is all space we need. Root node also should be shrunk to minimum
@@ -2662,17 +2662,17 @@ func nodeCanUseCachedMeasurement(widthMode MeasureMode, width float32, heightMod
 	if lastComputedHeight < 0 || lastComputedWidth < 0 {
 		return false
 	}
-	useRoundedComparison := config != nil && config.pointScaleFactor != 0
+	useRoundedComparison := config != nil && config.PointScaleFactor != 0
 	effectiveWidth := width
 	effectiveHeight := height
 	effectiveLastWidth := lastWidth
 	effectiveLastHeight := lastHeight
 
 	if useRoundedComparison {
-		effectiveWidth = roundValueToPixelGrid(width, config.pointScaleFactor, false, false)
-		effectiveHeight = roundValueToPixelGrid(height, config.pointScaleFactor, false, false)
-		effectiveLastWidth = roundValueToPixelGrid(lastWidth, config.pointScaleFactor, false, false)
-		effectiveLastHeight = roundValueToPixelGrid(lastHeight, config.pointScaleFactor, false, false)
+		effectiveWidth = roundValueToPixelGrid(width, config.PointScaleFactor, false, false)
+		effectiveHeight = roundValueToPixelGrid(height, config.PointScaleFactor, false, false)
+		effectiveLastWidth = roundValueToPixelGrid(lastWidth, config.PointScaleFactor, false, false)
+		effectiveLastHeight = roundValueToPixelGrid(lastHeight, config.PointScaleFactor, false, false)
 	}
 
 	hasSameWidthSpec := lastWidthMode == widthMode && FloatsEqual(effectiveLastWidth, effectiveWidth)
@@ -2915,9 +2915,9 @@ func ConfigSetPointScaleFactor(config *Config, pixelsInPoint float32) {
 	// We store points for Pixel as we will use it for rounding
 	if pixelsInPoint == 0 {
 		// Zero is used to skip rounding
-		config.pointScaleFactor = 0
+		config.PointScaleFactor = 0
 	} else {
-		config.pointScaleFactor = pixelsInPoint
+		config.PointScaleFactor = pixelsInPoint
 	}
 }
 
@@ -3009,8 +3009,8 @@ func calcStartHeight(node *Node, parentWidth, parentHeight float32) (float32, Me
 	return height, heightMeasureMode
 }
 
-// YGNodeCalculateLayout sets
-func YGNodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32, parentDirection Direction) {
+// NodeCalculateLayout calculates layout
+func NodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32, parentDirection Direction) {
 	// Increment the generation count. This will force the recursive routine to
 	// visit
 	// all dirty nodes at least once. Subsequent visits will be skipped if the
@@ -3027,7 +3027,7 @@ func YGNodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32
 		widthMeasureMode, heightMeasureMode, parentWidth, parentHeight,
 		true, "initial", node.Config) {
 		NodeSetPosition(node, node.Layout.direction, parentWidth, parentHeight, parentWidth)
-		roundToPixelGrid(node, node.Config.pointScaleFactor, 0, 0)
+		roundToPixelGrid(node, node.Config.PointScaleFactor, 0, 0)
 
 		if gPrintTree {
 			YGNodePrint(node, PrintOptionsLayout|PrintOptionsChildren|PrintOptionsStyle)
@@ -3035,39 +3035,14 @@ func YGNodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32
 	}
 }
 
-// YGConfigSetExperimentalFeatureEnabled enables experimental feature
-func YGConfigSetExperimentalFeatureEnabled(config *Config, feature ExperimentalFeature, enabled bool) {
+// ConfigSetExperimentalFeatureEnabled enables experimental feature
+func ConfigSetExperimentalFeatureEnabled(config *Config, feature ExperimentalFeature, enabled bool) {
 	config.experimentalFeatures[feature] = enabled
 }
 
-// YGConfigIsExperimentalFeatureEnabled returns if experimental feature is enabled
-func YGConfigIsExperimentalFeatureEnabled(config *Config, feature ExperimentalFeature) bool {
+// ConfigIsExperimentalFeatureEnabled returns if experimental feature is enabled
+func ConfigIsExperimentalFeatureEnabled(config *Config, feature ExperimentalFeature) bool {
 	return config.experimentalFeatures[feature]
-}
-
-// YGConfigSetUseWebDefaults sets useWebDefaults
-func YGConfigSetUseWebDefaults(config *Config, enabled bool) {
-	config.useWebDefaults = enabled
-}
-
-// YGConfigSetUseLegacyStretchBehaviour sets legacy stretch behavior
-func YGConfigSetUseLegacyStretchBehaviour(config *Config, useLegacyStretchBehaviour bool) {
-	config.useLegacyStretchBehaviour = useLegacyStretchBehaviour
-}
-
-// YGConfigGetUseWebDefaults gets useWebDefaults
-func YGConfigGetUseWebDefaults(config *Config) bool {
-	return config.useWebDefaults
-}
-
-// YGConfigSetContext sets context
-func YGConfigSetContext(config *Config, context interface{}) {
-	config.context = context
-}
-
-// YGConfigGetContext gets context
-func YGConfigGetContext(config *Config) interface{} {
-	return config.context
 }
 
 // log logs

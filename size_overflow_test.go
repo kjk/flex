@@ -16,7 +16,7 @@ func TestNested_overflowing_child(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild0Child0, 200)
 	YGNodeStyleSetHeight(rootChild0Child0, 200)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -33,7 +33,7 @@ func TestNested_overflowing_child(t *testing.T) {
 	assertFloatEqual(t, 200, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetHeight(rootChild0Child0))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -67,7 +67,7 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild0Child0, 200)
 	YGNodeStyleSetHeight(rootChild0Child0, 200)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -84,7 +84,7 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	assertFloatEqual(t, 200, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetHeight(rootChild0Child0))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -117,7 +117,7 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 	YGNodeStyleSetWidth(rootChild0Child0, 100)
 	YGNodeStyleSetHeight(rootChild0Child0, 200)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -134,7 +134,7 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild0Child0))
 	assertFloatEqual(t, 200, YGNodeLayoutGetHeight(rootChild0Child0))
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))

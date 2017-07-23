@@ -4,7 +4,7 @@ import "testing"
 
 func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	config := NewConfig()
-	YGConfigSetExperimentalFeatureEnabled(config, ExperimentalFeatureWebFlexBasis, true)
+	ConfigSetExperimentalFeatureEnabled(config, ExperimentalFeatureWebFlexBasis, true)
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetHeightPercent(root, 100)
@@ -14,8 +14,8 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	YGNodeStyleSetFlexBasisPercent(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, Undefined, DirectionLTR)
-	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
+	NodeCalculateLayout(root, 100, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0))
 }
@@ -28,11 +28,11 @@ func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
 	YGNodeStyleSetMaxHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
 
 	YGNodeStyleSetMinHeight(rootChild0, Undefined)
-	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild0))
 }
