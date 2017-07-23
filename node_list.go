@@ -71,7 +71,8 @@ func YGNodeListDelete(list *YGNodeList, node *YGNode) *YGNode {
 
 // YGNodeListGet retruns a node at a given position
 func YGNodeListGet(list *YGNodeList, index int) *YGNode {
-	if YGNodeListCount(list) > 0 {
+	n := YGNodeListCount(list)
+	if index < n {
 		return list.items[index]
 	}
 
