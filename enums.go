@@ -195,13 +195,18 @@ const (
 	PrintOptionsChildren
 )
 
-type YGUnit int
+// Unit is "unit" property
+type Unit int
 
 const (
-	YGUnitUndefined YGUnit = iota
-	YGUnitPoint
-	YGUnitPercent
-	YGUnitAuto
+	// UnitUndefined is "undefined"
+	UnitUndefined Unit = iota
+	// UnitPoint is "point"
+	UnitPoint
+	// UnitPercent is "percent"
+	UnitPercent
+	// UnitAuto is "auto"
+	UnitAuto
 )
 
 type YGWrap int
@@ -271,6 +276,6 @@ func YGPrintOptionsToString(value PrintOptions) string {
 	return ""
 }
 
-func YGUnitToString(value YGUnit) string {
+func YGUnitToString(value Unit) string {
 	return ""
 }

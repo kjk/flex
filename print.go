@@ -15,13 +15,13 @@ func YGPrintNumberIfNotUndefinedf(node *YGNode, str string, number float32) {
 }
 
 func YGPrintNumberIfNotUndefined(node *YGNode, str string, number *YGValue) {
-	if number.unit != YGUnitUndefined {
-		if number.unit == YGUnitAuto {
+	if number.unit != UnitUndefined {
+		if number.unit == UnitAuto {
 			YGLog(node, LogLevelDebug, "%s: auto; ", str)
 		} else {
 			unit := "%"
 
-			if number.unit == YGUnitPoint {
+			if number.unit == UnitPoint {
 				unit = "px"
 			}
 			YGLog(node, LogLevelDebug, "%s: %g%s; ", str, number.value, unit)
@@ -29,7 +29,7 @@ func YGPrintNumberIfNotUndefined(node *YGNode, str string, number *YGValue) {
 	}
 }
 func YGPrintNumberIfNotAuto(node *YGNode, str string, number *YGValue) {
-	if number.unit != YGUnitAuto {
+	if number.unit != UnitAuto {
 		YGPrintNumberIfNotUndefined(node, str, number)
 	}
 }

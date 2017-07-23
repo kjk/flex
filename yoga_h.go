@@ -14,14 +14,14 @@ type YGSize struct {
 // YGValue describes value
 type YGValue struct {
 	value float32
-	unit  YGUnit
+	unit  Unit
 }
 
 var (
 	// YGValueUndefined defines undefined YGValue
-	YGValueUndefined = YGValue{YGUndefined, YGUnitUndefined}
+	YGValueUndefined = YGValue{YGUndefined, UnitUndefined}
 	// YGValueAuto defines auto YGValue
-	YGValueAuto = YGValue{YGUndefined, YGUnitAuto}
+	YGValueAuto = YGValue{YGUndefined, UnitAuto}
 )
 
 // YGMeasureFunc describes function for measuring
