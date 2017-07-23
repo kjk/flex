@@ -148,9 +148,9 @@ var (
 )
 
 const (
-	kDefaultFlexGrow      float32 = 0
-	kDefaultFlexShrink    float32 = 0
-	kWebDefaultFlexShrink float32 = 1
+	defaultFlexGrow      float32 = 0
+	defaultFlexShrink    float32 = 0
+	webDefaultFlexShrink float32 = 1
 )
 
 var (
@@ -205,7 +205,7 @@ var (
 		},
 		useWebDefaults:   false,
 		pointScaleFactor: 1,
-		logger:           YGDefaultLog,
+		logger:           DefaultLog,
 		context:          nil,
 	}
 
@@ -220,8 +220,8 @@ func valueEq(v1, v2 Value) bool {
 	return feq(v1.Value, v2.Value)
 }
 
-// YGDefaultLog is default logging function
-func YGDefaultLog(config *Config, node *Node, level LogLevel, format string,
+// DefaultLog is default logging function
+func DefaultLog(config *Config, node *Node, level LogLevel, format string,
 	args ...interface{}) int {
 	switch level {
 	case LogLevelError, LogLevelFatal:
@@ -479,13 +479,13 @@ func YGResolveFlexGrow(node *Node) float32 {
 	if !YGFloatIsUndefined(node.style.flex) && node.style.flex > 0 {
 		return node.style.flex
 	}
-	return kDefaultFlexGrow
+	return defaultFlexGrow
 }
 
 // YGNodeStyleGetFlexGrow gets flex grow
 func YGNodeStyleGetFlexGrow(node *Node) float32 {
 	if YGFloatIsUndefined(node.style.flexGrow) {
-		return kDefaultFlexGrow
+		return defaultFlexGrow
 	}
 	return node.style.flexGrow
 }
@@ -494,9 +494,9 @@ func YGNodeStyleGetFlexGrow(node *Node) float32 {
 func YGNodeStyleGetFlexShrink(node *Node) float32 {
 	if YGFloatIsUndefined(node.style.flexShrink) {
 		if node.config.useWebDefaults {
-			return kWebDefaultFlexShrink
+			return webDefaultFlexShrink
 		}
-		return kDefaultFlexShrink
+		return defaultFlexShrink
 	}
 	return node.style.flexShrink
 }
@@ -515,9 +515,9 @@ func YGNodeResolveFlexShrink(node *Node) float32 {
 		return -node.style.flex
 	}
 	if node.config.useWebDefaults {
-		return kWebDefaultFlexShrink
+		return webDefaultFlexShrink
 	}
-	return kDefaultFlexShrink
+	return defaultFlexShrink
 }
 
 // YGNodeResolveFlexBasisPtr resolves flex basis ptr
