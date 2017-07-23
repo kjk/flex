@@ -2,17 +2,26 @@ package flex
 
 // port of YGEnums.h
 
-type YGAlign int
+// Align describes align flex attribute
+type Align int
 
 const (
-	YGAlignAuto YGAlign = iota
-	YGAlignFlexStart
-	YGAlignCenter
-	YGAlignFlexEnd
-	YGAlignStretch
-	YGAlignBaseline
-	YGAlignSpaceBetween
-	YGAlignSpaceAround
+	// AlignAuto is "auto"
+	AlignAuto Align = iota
+	// AlignFlexStart is "flex-start"
+	AlignFlexStart
+	// AlignCenter if "center"
+	AlignCenter
+	// AlignFlexEnd is "flex-end"
+	AlignFlexEnd
+	// AlignStretch is "strech"
+	AlignStretch
+	// AlignBaseline is "baseline"
+	AlignBaseline
+	// AlignSpaceBetween is "space-between"
+	AlignSpaceBetween
+	// AlignSpaceAround is "space-around"
+	AlignSpaceAround
 )
 
 type YGDimension int
@@ -158,7 +167,7 @@ func YGWrapToString(value YGWrap) string {
 	return ""
 }
 
-func YGAlignToString(value YGAlign) string {
+func YGAlignToString(value Align) string {
 	return ""
 }
 

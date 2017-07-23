@@ -17,9 +17,9 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, YGDirectionInherit, YGNodeStyleGetDirection(root))
 	assert.Equal(t, YGFlexDirectionColumn, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, YGJustifyFlexStart, YGNodeStyleGetJustifyContent(root))
-	assert.Equal(t, YGAlignFlexStart, YGNodeStyleGetAlignContent(root))
-	assert.Equal(t, YGAlignStretch, YGNodeStyleGetAlignItems(root))
-	assert.Equal(t, YGAlignAuto, YGNodeStyleGetAlignSelf(root))
+	assert.Equal(t, AlignFlexStart, YGNodeStyleGetAlignContent(root))
+	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignItems(root))
+	assert.Equal(t, AlignAuto, YGNodeStyleGetAlignSelf(root))
 	assert.Equal(t, YGPositionTypeRelative, YGNodeStyleGetPositionType(root))
 	assert.Equal(t, YGWrapNoWrap, YGNodeStyleGetFlexWrap(root))
 	assert.Equal(t, YGOverflowVisible, YGNodeStyleGetOverflow(root))
@@ -86,7 +86,6 @@ func TestAssert_default_values(t *testing.T) {
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetHeight(root)))
 	assert.Equal(t, YGDirectionInherit, YGNodeLayoutGetDirection(root))
 
-
 }
 
 func TestAssert_webdefault_values(t *testing.T) {
@@ -95,10 +94,8 @@ func TestAssert_webdefault_values(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 
 	assert.Equal(t, YGFlexDirectionRow, YGNodeStyleGetFlexDirection(root))
-	assert.Equal(t, YGAlignStretch, YGNodeStyleGetAlignContent(root))
+	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignContent(root))
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
-
-
 
 }
 
@@ -109,9 +106,7 @@ func TestAssert_webdefault_values_reset(t *testing.T) {
 	YGNodeReset(root)
 
 	assert.Equal(t, YGFlexDirectionRow, YGNodeStyleGetFlexDirection(root))
-	assert.Equal(t, YGAlignStretch, YGNodeStyleGetAlignContent(root))
+	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignContent(root))
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
-
-
 
 }

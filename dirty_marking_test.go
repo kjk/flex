@@ -8,7 +8,7 @@ import (
 
 func TestDirty_propagation(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetAlignItems(root, YGAlignFlexStart)
+	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -40,7 +40,7 @@ func TestDirty_propagation(t *testing.T) {
 
 func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetAlignItems(root, YGAlignFlexStart)
+	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -112,7 +112,7 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 
 func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetAlignItems(root, YGAlignFlexStart)
+	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 

@@ -51,9 +51,9 @@ type YGStyle struct {
 	direction      YGDirection
 	flexDirection  YGFlexDirection
 	justifyContent YGJustify
-	alignContent   YGAlign
-	alignItems     YGAlign
-	alignSelf      YGAlign
+	alignContent   Align
+	alignItems     Align
+	alignSelf      Align
 	positionType   YGPositionType
 	flexWrap       YGWrap
 	overflow       YGOverflow
@@ -167,8 +167,8 @@ var (
 			flexShrink:     YGUndefined,
 			flexBasis:      YG_AUTO_VALUES,
 			justifyContent: YGJustifyFlexStart,
-			alignItems:     YGAlignStretch,
-			alignContent:   YGAlignFlexStart,
+			alignItems:     AlignStretch,
+			alignContent:   AlignFlexStart,
 			direction:      YGDirectionInherit,
 			flexDirection:  YGFlexDirectionColumn,
 			overflow:       YGOverflowVisible,
@@ -288,7 +288,7 @@ func YGNodeNewWithConfig(config *YGConfig) *YGNode {
 
 	if config.useWebDefaults {
 		node.style.flexDirection = YGFlexDirectionRow
-		node.style.alignContent = YGAlignStretch
+		node.style.alignContent = AlignStretch
 	}
 	node.config = config
 	return &node
@@ -310,7 +310,7 @@ func YGNodeReset(node *YGNode) {
 	*node = gYGNodeDefaults
 	if config.useWebDefaults {
 		node.style.flexDirection = YGFlexDirectionRow
-		node.style.alignContent = YGAlignStretch
+		node.style.alignContent = AlignStretch
 	}
 	node.config = config
 }
@@ -703,13 +703,13 @@ func YGNodePaddingAndBorderForAxis(node *YGNode, axis YGFlexDirection, widthSize
 }
 
 // YGNodeAlignItem returns align item
-func YGNodeAlignItem(node *YGNode, child *YGNode) YGAlign {
+func YGNodeAlignItem(node *YGNode, child *YGNode) Align {
 	align := child.style.alignSelf
-	if child.style.alignSelf == YGAlignAuto {
+	if child.style.alignSelf == AlignAuto {
 		align = node.style.alignItems
 	}
-	if align == YGAlignBaseline && YGFlexDirectionIsColumn(node.style.flexDirection) {
-		return YGAlignFlexStart
+	if align == AlignBaseline && YGFlexDirectionIsColumn(node.style.flexDirection) {
+		return AlignFlexStart
 	}
 	return align
 }
@@ -743,7 +743,7 @@ func YGBaseline(node *YGNode) float32 {
 		if child.style.positionType == YGPositionTypeAbsolute {
 			continue
 		}
-		if YGNodeAlignItem(node, child) == YGAlignBaseline {
+		if YGNodeAlignItem(node, child) == AlignBaseline {
 			baselineChild = child
 			break
 		}
@@ -792,14 +792,14 @@ func YGIsBaselineLayout(node *YGNode) bool {
 	if YGFlexDirectionIsColumn(node.style.flexDirection) {
 		return false
 	}
-	if node.style.alignItems == YGAlignBaseline {
+	if node.style.alignItems == AlignBaseline {
 		return true
 	}
 	childCount := YGNodeGetChildCount(node)
 	for i := 0; i < childCount; i++ {
 		child := YGNodeGetChild(node, i)
 		if child.style.positionType == YGPositionTypeRelative &&
-			child.style.alignSelf == YGAlignBaseline {
+			child.style.alignSelf == AlignBaseline {
 			return true
 		}
 	}
@@ -1082,12 +1082,12 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 		// set the cross
 		// axis to be measured exactly with the available inner width
 		if !isMainAxisRow && !YGFloatIsUndefined(width) && !isRowStyleDimDefined &&
-			widthMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == YGAlignStretch {
+			widthMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
 			childWidth = width
 			childWidthMeasureMode = YGMeasureModeExactly
 		}
 		if isMainAxisRow && !YGFloatIsUndefined(height) && !isColumnStyleDimDefined &&
-			heightMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == YGAlignStretch {
+			heightMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
 			childHeight = height
 			childHeightMeasureMode = YGMeasureModeExactly
 		}
@@ -1284,13 +1284,13 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 			YGNodeTrailingMargin(child, crossAxis, width) -
 			YGNodeTrailingPosition(child, crossAxis, axisSize)
 	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
-		YGNodeAlignItem(node, child) == YGAlignCenter {
+		YGNodeAlignItem(node, child) == AlignCenter {
 		child.layout.position[leading[crossAxis]] =
 			(node.layout.measuredDimensions[dim[crossAxis]] -
 				child.layout.measuredDimensions[dim[crossAxis]]) /
 				2.0
 	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
-		((YGNodeAlignItem(node, child) == YGAlignFlexEnd) != (node.style.flexWrap == YGWrapWrapReverse)) {
+		((YGNodeAlignItem(node, child) == AlignFlexEnd) != (node.style.flexWrap == YGWrapWrapReverse)) {
 		child.layout.position[leading[crossAxis]] = (node.layout.measuredDimensions[dim[crossAxis]] -
 			child.layout.measuredDimensions[dim[crossAxis]])
 	}
@@ -2021,7 +2021,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 					!YGNodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
 					measureModeCrossDim == YGMeasureModeExactly &&
 					!(isNodeFlexWrap && flexBasisOverflows) &&
-					YGNodeAlignItem(node, currentRelativeChild) == YGAlignStretch {
+					YGNodeAlignItem(node, currentRelativeChild) == AlignStretch {
 					childCrossSize = availableInnerCrossDim
 					childCrossMeasureMode = YGMeasureModeExactly
 				} else if !YGNodeIsStyleDimDefined(currentRelativeChild,
@@ -2080,7 +2080,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 					&childCrossSize)
 
 				requiresStretchLayout := !YGNodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
-					YGNodeAlignItem(node, currentRelativeChild) == YGAlignStretch
+					YGNodeAlignItem(node, currentRelativeChild) == AlignStretch
 
 				childWidth := childCrossSize
 				if isMainAxisRow {
@@ -2303,7 +2303,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 					// time, this time
 					// forcing the cross-axis size to be the computed cross size for the
 					// current line.
-					if alignItem == YGAlignStretch &&
+					if alignItem == AlignStretch &&
 						YGMarginLeadingValue(child, crossAxis).unit != YGUnitAuto &&
 						YGMarginTrailingValue(child, crossAxis).unit != YGUnitAuto {
 						// If the child defines a definite size for its cross axis, there's
@@ -2378,9 +2378,9 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 							// No-Op
 						} else if YGMarginLeadingValue(child, crossAxis).unit == YGUnitAuto {
 							leadingCrossDim += fmaxf(0, remainingCrossDim)
-						} else if alignItem == YGAlignFlexStart {
+						} else if alignItem == AlignFlexStart {
 							// No-Op
-						} else if alignItem == YGAlignCenter {
+						} else if alignItem == AlignCenter {
 							leadingCrossDim += remainingCrossDim / 2
 						} else {
 							leadingCrossDim += remainingCrossDim
@@ -2409,15 +2409,15 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		currentLead := leadingPaddingAndBorderCross
 
 		switch node.style.alignContent {
-		case YGAlignFlexEnd:
+		case AlignFlexEnd:
 			currentLead += remainingAlignContentDim
-		case YGAlignCenter:
+		case AlignCenter:
 			currentLead += remainingAlignContentDim / 2
-		case YGAlignStretch:
+		case AlignStretch:
 			if availableInnerCrossDim > totalLineCrossDim {
 				crossDimLead = remainingAlignContentDim / float32(lineCount)
 			}
-		case YGAlignSpaceAround:
+		case AlignSpaceAround:
 			if availableInnerCrossDim > totalLineCrossDim {
 				currentLead += remainingAlignContentDim / float32(2*lineCount)
 				if lineCount > 1 {
@@ -2426,13 +2426,13 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			} else {
 				currentLead += remainingAlignContentDim / 2
 			}
-		case YGAlignSpaceBetween:
+		case AlignSpaceBetween:
 			if availableInnerCrossDim > totalLineCrossDim && lineCount > 1 {
 				crossDimLead = remainingAlignContentDim / float32(lineCount-1)
 			}
-		case YGAlignAuto:
-		case YGAlignFlexStart:
-		case YGAlignBaseline:
+		case AlignAuto:
+		case AlignFlexStart:
+		case AlignBaseline:
 		}
 
 		endIndex := 0
@@ -2458,7 +2458,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 							child.layout.measuredDimensions[dim[crossAxis]]+
 								YGNodeMarginForAxis(child, crossAxis, availableInnerWidth))
 					}
-					if YGNodeAlignItem(node, child) == YGAlignBaseline {
+					if YGNodeAlignItem(node, child) == AlignBaseline {
 						ascent := YGBaseline(child) + YGNodeLeadingMargin(child, YGFlexDirectionColumn, availableInnerWidth)
 						descent := child.layout.measuredDimensions[YGDimensionHeight] + YGNodeMarginForAxis(child, YGFlexDirectionColumn, availableInnerWidth) - ascent
 						maxAscentForCurrentLine = fmaxf(maxAscentForCurrentLine, ascent)
@@ -2478,24 +2478,24 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 					}
 					if child.style.positionType == YGPositionTypeRelative {
 						switch YGNodeAlignItem(node, child) {
-						case YGAlignFlexStart:
+						case AlignFlexStart:
 							{
 								child.layout.position[pos[crossAxis]] =
 									currentLead + YGNodeLeadingMargin(child, crossAxis, availableInnerWidth)
 							}
-						case YGAlignFlexEnd:
+						case AlignFlexEnd:
 							{
 								child.layout.position[pos[crossAxis]] =
 									currentLead + lineHeight -
 										YGNodeTrailingMargin(child, crossAxis, availableInnerWidth) -
 										child.layout.measuredDimensions[dim[crossAxis]]
 							}
-						case YGAlignCenter:
+						case AlignCenter:
 							{
 								childHeight := child.layout.measuredDimensions[dim[crossAxis]]
 								child.layout.position[pos[crossAxis]] = currentLead + (lineHeight-childHeight)/2
 							}
-						case YGAlignStretch:
+						case AlignStretch:
 							{
 								child.layout.position[pos[crossAxis]] =
 									currentLead + YGNodeLeadingMargin(child, crossAxis, availableInnerWidth)
@@ -2533,15 +2533,15 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 									}
 								}
 							}
-						case YGAlignBaseline:
+						case AlignBaseline:
 							{
 								child.layout.position[YGEdgeTop] =
 									currentLead + maxAscentForCurrentLine - YGBaseline(child) +
 										YGNodeLeadingPosition(child, YGFlexDirectionColumn, availableInnerCrossDim)
 							}
-						case YGAlignAuto:
-						case YGAlignSpaceBetween:
-						case YGAlignSpaceAround:
+						case AlignAuto:
+						case AlignSpaceBetween:
+						case AlignSpaceAround:
 						}
 					}
 				}

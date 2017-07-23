@@ -24,9 +24,6 @@ func TestPadding_no_size(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root))
 
-
-
-
 }
 
 func TestPadding_container_match_child(t *testing.T) {
@@ -65,9 +62,6 @@ func TestPadding_container_match_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -110,9 +104,6 @@ func TestPadding_flex_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestPadding_stretch_child(t *testing.T) {
@@ -153,9 +144,6 @@ func TestPadding_stretch_child(t *testing.T) {
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestPadding_center_child(t *testing.T) {
@@ -163,7 +151,7 @@ func TestPadding_center_child(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetPadding(root, YGEdgeStart, 10)
 	YGNodeStyleSetPadding(root, YGEdgeEnd, 20)
 	YGNodeStyleSetPadding(root, YGEdgeBottom, 20)
@@ -198,9 +186,6 @@ func TestPadding_center_child(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestChild_with_padding_align_end(t *testing.T) {
@@ -208,7 +193,7 @@ func TestChild_with_padding_align_end(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
-	YGNodeStyleSetAlignItems(root, YGAlignFlexEnd)
+	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -243,8 +228,5 @@ func TestChild_with_padding_align_end(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }

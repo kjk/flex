@@ -261,7 +261,7 @@ func YGNodeStyleGetJustifyContent(node *YGNode) YGJustify {
 }
 
 // YGNodeStyleSetAlignContent sets align content
-func YGNodeStyleSetAlignContent(node *YGNode, alignContent YGAlign) {
+func YGNodeStyleSetAlignContent(node *YGNode, alignContent Align) {
 	if node.style.alignContent != alignContent {
 		node.style.alignContent = alignContent
 		YGNodeMarkDirtyInternal(node)
@@ -269,12 +269,12 @@ func YGNodeStyleSetAlignContent(node *YGNode, alignContent YGAlign) {
 }
 
 // YGNodeStyleGetAlignContent gets align content
-func YGNodeStyleGetAlignContent(node *YGNode) YGAlign {
+func YGNodeStyleGetAlignContent(node *YGNode) Align {
 	return node.style.alignContent
 }
 
 // YGNodeStyleSetAlignItems sets align content
-func YGNodeStyleSetAlignItems(node *YGNode, alignItems YGAlign) {
+func YGNodeStyleSetAlignItems(node *YGNode, alignItems Align) {
 	if node.style.alignItems != alignItems {
 		node.style.alignItems = alignItems
 		YGNodeMarkDirtyInternal(node)
@@ -282,12 +282,12 @@ func YGNodeStyleSetAlignItems(node *YGNode, alignItems YGAlign) {
 }
 
 // YGNodeStyleGetAlignItems gets align items
-func YGNodeStyleGetAlignItems(node *YGNode) YGAlign {
+func YGNodeStyleGetAlignItems(node *YGNode) Align {
 	return node.style.alignItems
 }
 
 // YGNodeStyleSetAlignSelf sets align self
-func YGNodeStyleSetAlignSelf(node *YGNode, alignSelf YGAlign) {
+func YGNodeStyleSetAlignSelf(node *YGNode, alignSelf Align) {
 	if node.style.alignSelf != alignSelf {
 		node.style.alignSelf = alignSelf
 		YGNodeMarkDirtyInternal(node)
@@ -295,7 +295,7 @@ func YGNodeStyleSetAlignSelf(node *YGNode, alignSelf YGAlign) {
 }
 
 // YGNodeStyleGetAlignSelf gets align self
-func YGNodeStyleGetAlignSelf(node *YGNode) YGAlign {
+func YGNodeStyleGetAlignSelf(node *YGNode) Align {
 	return node.style.alignSelf
 }
 

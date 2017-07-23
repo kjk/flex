@@ -60,8 +60,6 @@ func TestAbsoluteLayoutWidthHeightStartTop(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
-
-
 }
 
 func TestAbsoluteLayoutStartTopEndBottom(t *testing.T) {
@@ -101,9 +99,6 @@ func TestAbsoluteLayoutStartTopEndBottom(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -146,9 +141,6 @@ func TestAbsoluteLayoutWidthHeightStartTopEndBottom(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -204,9 +196,6 @@ func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *test
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child0_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root_child0_child0))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0_child0))
-
-
-
 
 }
 
@@ -322,9 +311,6 @@ func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 	assertFloatEqual(t, 50, YGNodeLayoutGetWidth(root_child3))
 	assertFloatEqual(t, 50, YGNodeLayoutGetHeight(root_child3))
 
-
-
-
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
@@ -332,7 +318,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -366,9 +352,6 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
@@ -376,7 +359,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
-	YGNodeStyleSetAlignItems(root, YGAlignFlexEnd)
+	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -409,9 +392,6 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 	assertFloatEqual(t, 60, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -453,16 +433,13 @@ func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -495,9 +472,6 @@ func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -510,7 +484,7 @@ func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	root_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetAlignSelf(root_child0, YGAlignCenter)
+	YGNodeStyleSetAlignSelf(root_child0, AlignCenter)
 	YGNodeStyleSetPositionType(root_child0, YGPositionTypeAbsolute)
 	YGNodeStyleSetWidth(root_child0, 60)
 	YGNodeStyleSetHeight(root_child0, 40)
@@ -539,9 +513,6 @@ func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testing.T) {
@@ -549,7 +520,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testin
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -584,9 +555,6 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testin
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *testing.T) {
@@ -594,7 +562,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *tes
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -629,9 +597,6 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *tes
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testing.T) {
@@ -639,7 +604,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testi
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -674,9 +639,6 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testi
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsolute_layout_align_items_and_justify_content_center_and_right_position(t *testing.T) {
@@ -684,7 +646,7 @@ func TestAbsolute_layout_align_items_and_justify_content_center_and_right_positi
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
-	YGNodeStyleSetAlignItems(root, YGAlignCenter)
+	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -719,9 +681,6 @@ func TestAbsolute_layout_align_items_and_justify_content_center_and_right_positi
 	assertFloatEqual(t, 60, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 40, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestPosition_root_with_rtl_should_position_withoutdirection(t *testing.T) {
@@ -744,9 +703,6 @@ func TestPosition_root_with_rtl_should_position_withoutdirection(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
 	assertFloatEqual(t, 52, YGNodeLayoutGetWidth(root))
 	assertFloatEqual(t, 52, YGNodeLayoutGetHeight(root))
-
-
-
 
 }
 
@@ -821,9 +777,6 @@ func TestAbsolute_layout_percentage_bottom_based_on_parent_height(t *testing.T) 
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(root_child2))
 	assertFloatEqual(t, 160, YGNodeLayoutGetHeight(root_child2))
 
-
-
-
 }
 
 func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
@@ -862,9 +815,6 @@ func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -906,9 +856,6 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child0))
 
-
-
-
 }
 
 func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T) {
@@ -920,7 +867,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T)
 	YGNodeStyleSetHeight(root, 100)
 
 	root_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetAlignSelf(root_child0, YGAlignFlexEnd)
+	YGNodeStyleSetAlignSelf(root_child0, AlignFlexEnd)
 	YGNodeStyleSetPositionType(root_child0, YGPositionTypeAbsolute)
 	YGNodeStyleSetWidth(root_child0, 20)
 	YGNodeStyleSetHeight(root_child0, 20)
@@ -948,9 +895,6 @@ func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T)
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
 
@@ -964,7 +908,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	root_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetAlignSelf(root_child0, YGAlignFlexEnd)
+	YGNodeStyleSetAlignSelf(root_child0, AlignFlexEnd)
 	YGNodeStyleSetPositionType(root_child0, YGPositionTypeAbsolute)
 	YGNodeStyleSetWidth(root_child0, 20)
 	YGNodeStyleSetHeight(root_child0, 20)
@@ -992,8 +936,5 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root_child0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root_child0))
-
-
-
 
 }
