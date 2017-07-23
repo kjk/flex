@@ -7,8 +7,8 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	ConfigSetExperimentalFeatureEnabled(config, ExperimentalFeatureWebFlexBasis, true)
 
 	root := NewNodeWithConfig(config)
-	YGNodeStyleSetHeightPercent(root, 100)
-	YGNodeStyleSetWidthPercent(root, 100)
+	NodeStyleSetHeightPercent(root, 100)
+	NodeStyleSetWidthPercent(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexBasisPercent(rootChild0, 100)

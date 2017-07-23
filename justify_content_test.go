@@ -7,19 +7,19 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild0, 10)
+	NodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild1, 10)
+	NodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild2, 10)
+	NodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -72,19 +72,19 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild0, 10)
+	NodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild1, 10)
+	NodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild2, 10)
+	NodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -137,19 +137,19 @@ func TestJustify_content_row_center(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild0, 10)
+	NodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild1, 10)
+	NodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild2, 10)
+	NodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -202,19 +202,19 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, JustifySpaceBetween)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild0, 10)
+	NodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild1, 10)
+	NodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild2, 10)
+	NodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -267,19 +267,19 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, JustifySpaceAround)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild0, 10)
+	NodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild1, 10)
+	NodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(rootChild2, 10)
+	NodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -330,18 +330,18 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild0, 10)
+	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild2, 10)
+	NodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -393,19 +393,19 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild0, 10)
+	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild1, 10)
+	NodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild2, 10)
+	NodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -457,19 +457,19 @@ func TestJustify_content_column_center(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild0, 10)
+	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild1, 10)
+	NodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild2, 10)
+	NodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -521,19 +521,19 @@ func TestJustify_content_column_space_between(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifySpaceBetween)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild0, 10)
+	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild1, 10)
+	NodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild2, 10)
+	NodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -585,19 +585,19 @@ func TestJustify_content_column_space_around(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifySpaceAround)
-	YGNodeStyleSetWidth(root, 102)
-	YGNodeStyleSetHeight(root, 102)
+	NodeStyleSetWidth(root, 102)
+	NodeStyleSetHeight(root, 102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild0, 10)
+	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild1, 10)
+	NodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	YGNodeStyleSetHeight(rootChild2, 10)
+	NodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

@@ -11,25 +11,25 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
-	YGNodeStyleSetWidth(root, 100)
-	YGNodeStyleSetHeight(root, 100)
+	NodeStyleSetWidth(root, 100)
+	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNode()
-	YGNodeStyleSetWidth(rootChild0, 50)
-	YGNodeStyleSetHeight(rootChild0, 50)
+	NodeStyleSetWidth(rootChild0, 50)
+	NodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
-	YGNodeStyleSetWidth(rootChild1, 50)
-	YGNodeStyleSetHeight(rootChild1, 20)
+	NodeStyleSetWidth(rootChild1, 50)
+	NodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	var baselineValue float32 = 10
 	rootChild1child0 := NewNode()
-	YGNodeSetContext(rootChild1child0, baselineValue)
-	YGNodeStyleSetWidth(rootChild1child0, 50)
+	rootChild1child0.Context = baselineValue
+	NodeStyleSetWidth(rootChild1child0, 50)
 	rootChild1child0.Baseline = _baseline
-	YGNodeStyleSetHeight(rootChild1child0, 20)
+	NodeStyleSetHeight(rootChild1child0, 20)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

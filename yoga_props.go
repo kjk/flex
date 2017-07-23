@@ -55,8 +55,8 @@ YG_NODE_LAYOUT_RESOLVED_PROPERTY_IMPL(float, Border, border);
 YG_NODE_LAYOUT_RESOLVED_PROPERTY_IMPL(float, Padding, padding);
 */
 
-// YGNodeStyleSetWidth sets width
-func YGNodeStyleSetWidth(node *Node, width float32) {
+// NodeStyleSetWidth sets width
+func NodeStyleSetWidth(node *Node, width float32) {
 	dim := &node.Style.dimensions[DimensionWidth]
 	if dim.Value != width || dim.Unit != UnitPoint {
 		dim.Value = width
@@ -68,8 +68,8 @@ func YGNodeStyleSetWidth(node *Node, width float32) {
 	}
 }
 
-// YGNodeStyleSetWidthPercent sets width percent
-func YGNodeStyleSetWidthPercent(node *Node, width float32) {
+// NodeStyleSetWidthPercent sets width percent
+func NodeStyleSetWidthPercent(node *Node, width float32) {
 	dim := &node.Style.dimensions[DimensionWidth]
 	if dim.Value != width || dim.Unit != UnitPercent {
 		dim.Value = width
@@ -81,8 +81,8 @@ func YGNodeStyleSetWidthPercent(node *Node, width float32) {
 	}
 }
 
-// YGNodeStyleSetWidthAuto sets width auto
-func YGNodeStyleSetWidthAuto(node *Node) {
+// NodeStyleSetWidthAuto sets width auto
+func NodeStyleSetWidthAuto(node *Node) {
 	dim := &node.Style.dimensions[DimensionWidth]
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
@@ -91,13 +91,13 @@ func YGNodeStyleSetWidthAuto(node *Node) {
 	}
 }
 
-// YGNodeStyleGetWidth gets width
-func YGNodeStyleGetWidth(node *Node) Value {
+// NodeStyleGetWidth gets width
+func NodeStyleGetWidth(node *Node) Value {
 	return node.Style.dimensions[DimensionWidth]
 }
 
-// YGNodeStyleSetHeight sets height
-func YGNodeStyleSetHeight(node *Node, height float32) {
+// NodeStyleSetHeight sets height
+func NodeStyleSetHeight(node *Node, height float32) {
 	dim := &node.Style.dimensions[DimensionHeight]
 	if dim.Value != height || dim.Unit != UnitPoint {
 		dim.Value = height
@@ -109,8 +109,8 @@ func YGNodeStyleSetHeight(node *Node, height float32) {
 	}
 }
 
-// YGNodeStyleSetHeightPercent sets height percent
-func YGNodeStyleSetHeightPercent(node *Node, height float32) {
+// NodeStyleSetHeightPercent sets height percent
+func NodeStyleSetHeightPercent(node *Node, height float32) {
 	dim := &node.Style.dimensions[DimensionHeight]
 	if dim.Value != height || dim.Unit != UnitPercent {
 		dim.Value = height
@@ -122,8 +122,8 @@ func YGNodeStyleSetHeightPercent(node *Node, height float32) {
 	}
 }
 
-// YGNodeStyleSetHeightAuto sets height auto
-func YGNodeStyleSetHeightAuto(node *Node) {
+// NodeStyleSetHeightAuto sets height auto
+func NodeStyleSetHeightAuto(node *Node) {
 	dim := &node.Style.dimensions[DimensionHeight]
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
@@ -132,26 +132,26 @@ func YGNodeStyleSetHeightAuto(node *Node) {
 	}
 }
 
-// YGNodeStyleGetHeight gets height
-func YGNodeStyleGetHeight(node *Node) Value {
+// NodeStyleGetHeight gets height
+func NodeStyleGetHeight(node *Node) Value {
 	return node.Style.dimensions[DimensionHeight]
 }
 
-// YGNodeStyleSetPositionType sets position type
-func YGNodeStyleSetPositionType(node *Node, positionType PositionType) {
+// NodeStyleSetPositionType sets position type
+func NodeStyleSetPositionType(node *Node, positionType PositionType) {
 	if node.Style.positionType != positionType {
 		node.Style.positionType = positionType
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetPositionType gets position type
-func YGNodeStyleGetPositionType(node *Node) PositionType {
+// NodeStyleGetPositionType gets position type
+func NodeStyleGetPositionType(node *Node) PositionType {
 	return node.Style.positionType
 }
 
-// YGNodeStyleSetPosition sets position
-func YGNodeStyleSetPosition(node *Node, edge Edge, position float32) {
+// NodeStyleSetPosition sets position
+func NodeStyleSetPosition(node *Node, edge Edge, position float32) {
 	pos := &node.Style.position[edge]
 	if pos.Value != position || pos.Unit != UnitPoint {
 		pos.Value = position
@@ -163,8 +163,8 @@ func YGNodeStyleSetPosition(node *Node, edge Edge, position float32) {
 	}
 }
 
-// YGNodeStyleSetPositionPercent sets position percent
-func YGNodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
+// NodeStyleSetPositionPercent sets position percent
+func NodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
 	pos := &node.Style.position[edge]
 	if pos.Value != position || pos.Unit != UnitPercent {
 		pos.Value = position
@@ -179,11 +179,6 @@ func YGNodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
 // YGNodeStyleGetPosition gets position
 func YGNodeStyleGetPosition(node *Node, edge Edge) Value {
 	return node.Style.position[edge]
-}
-
-// YGNodeSetContext sets context
-func YGNodeSetContext(node *Node, context interface{}) {
-	node.Context = context
 }
 
 // YGNodeGetContext gets context
