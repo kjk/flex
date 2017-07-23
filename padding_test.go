@@ -146,7 +146,7 @@ func TestPadding_center_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetPadding(root, EdgeStart, 10)
 	YGNodeStyleSetPadding(root, EdgeEnd, 20)
@@ -187,7 +187,7 @@ func TestChild_with_padding_align_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
+	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
 	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)

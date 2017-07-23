@@ -1519,7 +1519,7 @@ func TestAlign_items_center_child_with_margin_bigger_than_parent(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
@@ -1574,7 +1574,7 @@ func TestAlign_items_flex_end_child_with_margin_bigger_than_parent(t *testing.T)
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
@@ -1629,7 +1629,7 @@ func TestAlign_items_center_child_without_margin_bigger_than_parent(t *testing.T
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
@@ -1682,7 +1682,7 @@ func TestAlign_items_flex_end_child_without_margin_bigger_than_parent(t *testing
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
@@ -1741,7 +1741,7 @@ func TestAlign_center_should_size_based_on_content(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(rootChild0, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(rootChild0, JustifyCenter)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -1809,7 +1809,7 @@ func TestAlign_strech_should_size_based_on_parent(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(rootChild0, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(rootChild0, JustifyCenter)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 

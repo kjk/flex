@@ -82,7 +82,7 @@ func TestMargin_end(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
+	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -120,7 +120,7 @@ func TestMargin_bottom(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
+	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -578,7 +578,7 @@ func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -1344,7 +1344,7 @@ func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
 
@@ -1384,7 +1384,7 @@ func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
 
@@ -1423,7 +1423,7 @@ func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
 
@@ -1463,7 +1463,7 @@ func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 52)
 	YGNodeStyleSetHeight(root, 52)
 

@@ -111,25 +111,32 @@ const (
 	FlexDirectionRowReverse
 )
 
-type YGJustify int
+// Justify is "justify" property
+type Justify int
 
 const (
-	YGJustifyFlexStart YGJustify = iota
-	YGJustifyCenter
-	YGJustifyFlexEnd
-	YGJustifySpaceBetween
-	YGJustifySpaceAround
+	// JustifyFlexStart is "flex-start"
+	JustifyFlexStart Justify = iota
+	// JustifyCenter is "center"
+	JustifyCenter
+	// JustifyFlexEnd is "flex-end"
+	JustifyFlexEnd
+	// JustifySpaceBetween is "space-between"
+	JustifySpaceBetween
+	// JustifySpaceAround is "space-around"
+	JustifySpaceAround
 )
 
-type YGLogLevel int
+// LogLevel represents log level
+type LogLevel int
 
 const (
-	YGLogLevelError YGLogLevel = iota
-	YGLogLevelWarn
-	YGLogLevelInfo
-	YGLogLevelDebug
-	YGLogLevelVerbose
-	YGLogLevelFatal
+	LogLevelError LogLevel = iota
+	LogLevelWarn
+	LogLevelInfo
+	LogLevelDebug
+	LogLevelVerbose
+	LogLevelFatal
 )
 
 type YGMeasureMode int
@@ -222,11 +229,11 @@ func YGFlexDirectionToString(value FlexDirection) string {
 	return ""
 }
 
-func YGJustifyToString(value YGJustify) string {
+func YGJustifyToString(value Justify) string {
 	return ""
 }
 
-func YGLogLevelToString(value YGLogLevel) string {
+func YGLogLevelToString(value LogLevel) string {
 	return ""
 }
 

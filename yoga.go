@@ -50,7 +50,7 @@ type YGLayout struct {
 type YGStyle struct {
 	direction      Direction
 	flexDirection  FlexDirection
-	justifyContent YGJustify
+	justifyContent Justify
 	alignContent   Align
 	alignItems     Align
 	alignSelf      Align
@@ -166,7 +166,7 @@ var (
 			flexGrow:       YGUndefined,
 			flexShrink:     YGUndefined,
 			flexBasis:      YG_AUTO_VALUES,
-			justifyContent: YGJustifyFlexStart,
+			justifyContent: JustifyFlexStart,
 			alignItems:     AlignStretch,
 			alignContent:   AlignFlexStart,
 			direction:      DirectionInherit,
@@ -220,13 +220,13 @@ func valueEq(v1, v2 YGValue) bool {
 }
 
 // YGDefaultLog is default logging function
-func YGDefaultLog(config *YGConfig, node *YGNode, level YGLogLevel, format string,
+func YGDefaultLog(config *YGConfig, node *YGNode, level LogLevel, format string,
 	args ...interface{}) int {
 	switch level {
-	case YGLogLevelError, YGLogLevelFatal:
+	case LogLevelError, LogLevelFatal:
 		n, _ := fmt.Fprintf(os.Stderr, format, args...)
 		return n
-	case YGLogLevelWarn, YGLogLevelInfo, YGLogLevelDebug, YGLogLevelVerbose:
+	case LogLevelWarn, LogLevelInfo, LogLevelDebug, LogLevelVerbose:
 		fallthrough
 	default:
 		n, _ := fmt.Printf(format, args...)
@@ -1261,12 +1261,12 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 			YGNodeTrailingMargin(child, mainAxis, width) -
 			YGNodeTrailingPosition(child, mainAxis, axisSize)
 	} else if !YGNodeIsLeadingPosDefined(child, mainAxis) &&
-		node.style.justifyContent == YGJustifyCenter {
+		node.style.justifyContent == JustifyCenter {
 		child.layout.position[leading[mainAxis]] = (node.layout.measuredDimensions[dim[mainAxis]] -
 			child.layout.measuredDimensions[dim[mainAxis]]) /
 			2.0
 	} else if !YGNodeIsLeadingPosDefined(child, mainAxis) &&
-		node.style.justifyContent == YGJustifyFlexEnd {
+		node.style.justifyContent == JustifyFlexEnd {
 		child.layout.position[leading[mainAxis]] = (node.layout.measuredDimensions[dim[mainAxis]] -
 			child.layout.measuredDimensions[dim[mainAxis]])
 	}
@@ -2165,21 +2165,21 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 		if numberOfAutoMarginsOnCurrentLine == 0 {
 			switch justifyContent {
-			case YGJustifyCenter:
+			case JustifyCenter:
 				leadingMainDim = remainingFreeSpace / 2
-			case YGJustifyFlexEnd:
+			case JustifyFlexEnd:
 				leadingMainDim = remainingFreeSpace
-			case YGJustifySpaceBetween:
+			case JustifySpaceBetween:
 				if itemsOnLine > 1 {
 					betweenMainDim = fmaxf(remainingFreeSpace, 0) / float32(itemsOnLine-1)
 				} else {
 					betweenMainDim = 0
 				}
-			case YGJustifySpaceAround:
+			case JustifySpaceAround:
 				// Space on the edges is half of the space between elements
 				betweenMainDim = remainingFreeSpace / float32(itemsOnLine)
 				leadingMainDim = betweenMainDim / 2
-			case YGJustifyFlexStart:
+			case JustifyFlexStart:
 			}
 		}
 
@@ -3137,7 +3137,7 @@ func YGConfigGetContext(config *YGConfig) interface{} {
 }
 
 // YGLog logs
-func YGLog(node *YGNode, level YGLogLevel, format string, args ...interface{}) {
+func YGLog(node *YGNode, level LogLevel, format string, args ...interface{}) {
 	fmt.Printf(format, args...)
 }
 

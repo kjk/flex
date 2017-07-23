@@ -16,7 +16,7 @@ func TestAssert_default_values(t *testing.T) {
 
 	assert.Equal(t, DirectionInherit, YGNodeStyleGetDirection(root))
 	assert.Equal(t, FlexDirectionColumn, YGNodeStyleGetFlexDirection(root))
-	assert.Equal(t, YGJustifyFlexStart, YGNodeStyleGetJustifyContent(root))
+	assert.Equal(t, JustifyFlexStart, YGNodeStyleGetJustifyContent(root))
 	assert.Equal(t, AlignFlexStart, YGNodeStyleGetAlignContent(root))
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignItems(root))
 	assert.Equal(t, AlignAuto, YGNodeStyleGetAlignSelf(root))

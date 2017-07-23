@@ -146,7 +146,7 @@ func TestBorder_center_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetBorder(root, EdgeStart, 10)
 	YGNodeStyleSetBorder(root, EdgeEnd, 20)

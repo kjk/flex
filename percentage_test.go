@@ -960,7 +960,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
@@ -970,7 +970,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 
 	rootChild0Child0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0Child0, FlexDirectionRow)
-	YGNodeStyleSetJustifyContent(rootChild0Child0, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(rootChild0Child0, JustifyCenter)
 	YGNodeStyleSetWidthPercent(rootChild0Child0, 100)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 

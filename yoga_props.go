@@ -248,7 +248,7 @@ func YGNodeStyleGetFlexDirection(node *YGNode) FlexDirection {
 }
 
 // YGNodeStyleSetJustifyContent sets justify content
-func YGNodeStyleSetJustifyContent(node *YGNode, justifyContent YGJustify) {
+func YGNodeStyleSetJustifyContent(node *YGNode, justifyContent Justify) {
 	if node.style.justifyContent != justifyContent {
 		node.style.justifyContent = justifyContent
 		YGNodeMarkDirtyInternal(node)
@@ -256,7 +256,7 @@ func YGNodeStyleSetJustifyContent(node *YGNode, justifyContent YGJustify) {
 }
 
 // YGNodeStyleGetJustifyContent gets justify content
-func YGNodeStyleGetJustifyContent(node *YGNode) YGJustify {
+func YGNodeStyleGetJustifyContent(node *YGNode) Justify {
 	return node.style.justifyContent
 }
 

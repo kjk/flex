@@ -667,7 +667,7 @@ func TestAspect_ratio_allow_child_overflow_parent_size(t *testing.T) {
 func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignCenter)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -691,7 +691,7 @@ func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignCenter)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 

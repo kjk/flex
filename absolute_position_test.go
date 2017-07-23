@@ -307,7 +307,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
@@ -347,7 +347,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
+	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
 	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
@@ -387,7 +387,7 @@ func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
 	YGNodeStyleSetHeight(root, 100)
@@ -504,7 +504,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testin
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
@@ -545,7 +545,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *tes
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
@@ -586,7 +586,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testi
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)
@@ -627,7 +627,7 @@ func TestAbsolute_layout_align_items_and_justify_content_center_and_right_positi
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 110)

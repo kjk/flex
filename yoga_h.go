@@ -34,4 +34,4 @@ type YGBaselineFunc func(node *YGNode, width float32, height float32) float32
 type YGPrintFunc func(node *YGNode)
 
 // YGLogger defines logging function
-type YGLogger func(config *YGConfig, node *YGNode, level YGLogLevel, format string, args ...interface{}) int
+type YGLogger func(config *YGConfig, node *YGNode, level LogLevel, format string, args ...interface{}) int

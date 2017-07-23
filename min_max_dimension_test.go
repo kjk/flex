@@ -184,7 +184,7 @@ func TestJustify_content_min_max(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 200)
@@ -262,7 +262,7 @@ func TestJustify_content_overflow_min_max(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
+	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 110)
 
