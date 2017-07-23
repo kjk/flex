@@ -70,8 +70,8 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 
 	if options&YGPrintOptionsLayout != 0 {
 		YGLog(node, YGLogLevelDebug, "layout=\"")
-		YGLog(node, YGLogLevelDebug, "width: %g; ", node.layout.dimensions[YGDimensionWidth])
-		YGLog(node, YGLogLevelDebug, "height: %g; ", node.layout.dimensions[YGDimensionHeight])
+		YGLog(node, YGLogLevelDebug, "width: %g; ", node.layout.dimensions[DimensionWidth])
+		YGLog(node, YGLogLevelDebug, "height: %g; ", node.layout.dimensions[DimensionHeight])
 		YGLog(node, YGLogLevelDebug, "top: %g; ", node.layout.position[YGEdgeTop])
 		YGLog(node, YGLogLevelDebug, "left: %g;", node.layout.position[YGEdgeLeft])
 		YGLog(node, YGLogLevelDebug, "\" ")
@@ -122,12 +122,12 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 		YGPrintEdges(node, "padding", node.style.padding[:])
 		YGPrintEdges(node, "border", node.style.border[:])
 
-		YGPrintNumberIfNotAuto(node, "width", &node.style.dimensions[YGDimensionWidth])
-		YGPrintNumberIfNotAuto(node, "height", &node.style.dimensions[YGDimensionHeight])
-		YGPrintNumberIfNotAuto(node, "max-width", &node.style.maxDimensions[YGDimensionWidth])
-		YGPrintNumberIfNotAuto(node, "max-height", &node.style.maxDimensions[YGDimensionHeight])
-		YGPrintNumberIfNotAuto(node, "min-width", &node.style.minDimensions[YGDimensionWidth])
-		YGPrintNumberIfNotAuto(node, "min-height", &node.style.minDimensions[YGDimensionHeight])
+		YGPrintNumberIfNotAuto(node, "width", &node.style.dimensions[DimensionWidth])
+		YGPrintNumberIfNotAuto(node, "height", &node.style.dimensions[DimensionHeight])
+		YGPrintNumberIfNotAuto(node, "max-width", &node.style.maxDimensions[DimensionWidth])
+		YGPrintNumberIfNotAuto(node, "max-height", &node.style.maxDimensions[DimensionHeight])
+		YGPrintNumberIfNotAuto(node, "min-width", &node.style.minDimensions[DimensionWidth])
+		YGPrintNumberIfNotAuto(node, "min-height", &node.style.minDimensions[DimensionHeight])
 
 		if node.style.positionType != gYGNodeDefaults.style.positionType {
 			YGLog(node,

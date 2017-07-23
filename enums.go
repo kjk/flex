@@ -24,11 +24,14 @@ const (
 	AlignSpaceAround
 )
 
-type YGDimension int
+// Dimension represents dimention
+type Dimension int
 
 const (
-	YGDimensionWidth YGDimension = iota
-	YGDimensionHeight
+	// DimensionWidth is width
+	DimensionWidth Dimension = iota
+	// DimensionHeight is height
+	DimensionHeight
 )
 
 type YGDirection int
@@ -171,7 +174,7 @@ func YGAlignToString(value Align) string {
 	return ""
 }
 
-func YGDimensionToString(value YGDimension) string {
+func YGDimensionToString(value Dimension) string {
 	return ""
 }
 

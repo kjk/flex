@@ -57,7 +57,7 @@ YG_NODE_LAYOUT_RESOLVED_PROPERTY_IMPL(float, Padding, padding);
 
 // YGNodeStyleSetWidth sets width
 func YGNodeStyleSetWidth(node *YGNode, width float32) {
-	dim := &node.style.dimensions[YGDimensionWidth]
+	dim := &node.style.dimensions[DimensionWidth]
 	if dim.value != width || dim.unit != YGUnitPoint {
 		dim.value = width
 		dim.unit = YGUnitPoint
@@ -70,7 +70,7 @@ func YGNodeStyleSetWidth(node *YGNode, width float32) {
 
 // YGNodeStyleSetWidthPercent sets width percent
 func YGNodeStyleSetWidthPercent(node *YGNode, width float32) {
-	dim := &node.style.dimensions[YGDimensionWidth]
+	dim := &node.style.dimensions[DimensionWidth]
 	if dim.value != width || dim.unit != YGUnitPercent {
 		dim.value = width
 		dim.unit = YGUnitPercent
@@ -83,7 +83,7 @@ func YGNodeStyleSetWidthPercent(node *YGNode, width float32) {
 
 // YGNodeStyleSetWidthAuto sets width auto
 func YGNodeStyleSetWidthAuto(node *YGNode) {
-	dim := &node.style.dimensions[YGDimensionWidth]
+	dim := &node.style.dimensions[DimensionWidth]
 	if dim.unit != YGUnitAuto {
 		dim.value = YGUndefined
 		dim.unit = YGUnitAuto
@@ -93,12 +93,12 @@ func YGNodeStyleSetWidthAuto(node *YGNode) {
 
 // YGNodeStyleGetWidth gets width
 func YGNodeStyleGetWidth(node *YGNode) YGValue {
-	return node.style.dimensions[YGDimensionWidth]
+	return node.style.dimensions[DimensionWidth]
 }
 
 // YGNodeStyleSetHeight sets height
 func YGNodeStyleSetHeight(node *YGNode, height float32) {
-	dim := &node.style.dimensions[YGDimensionHeight]
+	dim := &node.style.dimensions[DimensionHeight]
 	if dim.value != height || dim.unit != YGUnitPoint {
 		dim.value = height
 		dim.unit = YGUnitPoint
@@ -111,7 +111,7 @@ func YGNodeStyleSetHeight(node *YGNode, height float32) {
 
 // YGNodeStyleSetHeightPercent sets height percent
 func YGNodeStyleSetHeightPercent(node *YGNode, height float32) {
-	dim := &node.style.dimensions[YGDimensionHeight]
+	dim := &node.style.dimensions[DimensionHeight]
 	if dim.value != height || dim.unit != YGUnitPercent {
 		dim.value = height
 		dim.unit = YGUnitPercent
@@ -124,7 +124,7 @@ func YGNodeStyleSetHeightPercent(node *YGNode, height float32) {
 
 // YGNodeStyleSetHeightAuto sets height auto
 func YGNodeStyleSetHeightAuto(node *YGNode) {
-	dim := &node.style.dimensions[YGDimensionHeight]
+	dim := &node.style.dimensions[DimensionHeight]
 	if dim.unit != YGUnitAuto {
 		dim.value = YGUndefined
 		dim.unit = YGUnitAuto
@@ -134,7 +134,7 @@ func YGNodeStyleSetHeightAuto(node *YGNode) {
 
 // YGNodeStyleGetHeight gets height
 func YGNodeStyleGetHeight(node *YGNode) YGValue {
-	return node.style.dimensions[YGDimensionHeight]
+	return node.style.dimensions[DimensionHeight]
 }
 
 // YGNodeStyleSetPositionType sets position type
@@ -498,12 +498,12 @@ func YGNodeStyleGetBorder(node *YGNode, edge YGEdge) float32 {
 
 // YGNodeStyleSetMinWidth sets min width
 func YGNodeStyleSetMinWidth(node *YGNode, minWidth float32) {
-	if node.style.minDimensions[YGDimensionWidth].value != minWidth ||
-		node.style.minDimensions[YGDimensionWidth].unit != YGUnitPoint {
-		node.style.minDimensions[YGDimensionWidth].value = minWidth
-		node.style.minDimensions[YGDimensionWidth].unit = YGUnitPoint
+	if node.style.minDimensions[DimensionWidth].value != minWidth ||
+		node.style.minDimensions[DimensionWidth].unit != YGUnitPoint {
+		node.style.minDimensions[DimensionWidth].value = minWidth
+		node.style.minDimensions[DimensionWidth].unit = YGUnitPoint
 		if YGFloatIsUndefined(minWidth) {
-			node.style.minDimensions[YGDimensionWidth].unit = YGUnitAuto
+			node.style.minDimensions[DimensionWidth].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -511,12 +511,12 @@ func YGNodeStyleSetMinWidth(node *YGNode, minWidth float32) {
 
 // YGNodeStyleSetMinWidthPercent sets width percent
 func YGNodeStyleSetMinWidthPercent(node *YGNode, minWidth float32) {
-	if node.style.minDimensions[YGDimensionWidth].value != minWidth ||
-		node.style.minDimensions[YGDimensionWidth].unit != YGUnitPercent {
-		node.style.minDimensions[YGDimensionWidth].value = minWidth
-		node.style.minDimensions[YGDimensionWidth].unit = YGUnitPercent
+	if node.style.minDimensions[DimensionWidth].value != minWidth ||
+		node.style.minDimensions[DimensionWidth].unit != YGUnitPercent {
+		node.style.minDimensions[DimensionWidth].value = minWidth
+		node.style.minDimensions[DimensionWidth].unit = YGUnitPercent
 		if YGFloatIsUndefined(minWidth) {
-			node.style.minDimensions[YGDimensionWidth].unit = YGUnitAuto
+			node.style.minDimensions[DimensionWidth].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -524,17 +524,17 @@ func YGNodeStyleSetMinWidthPercent(node *YGNode, minWidth float32) {
 
 // YGNodeStyleGetMinWidth gets min width
 func YGNodeStyleGetMinWidth(node *YGNode) YGValue {
-	return node.style.minDimensions[YGDimensionWidth]
+	return node.style.minDimensions[DimensionWidth]
 }
 
 // YGNodeStyleSetMinHeight sets min width
 func YGNodeStyleSetMinHeight(node *YGNode, minHeight float32) {
-	if node.style.minDimensions[YGDimensionHeight].value != minHeight ||
-		node.style.minDimensions[YGDimensionHeight].unit != YGUnitPoint {
-		node.style.minDimensions[YGDimensionHeight].value = minHeight
-		node.style.minDimensions[YGDimensionHeight].unit = YGUnitPoint
+	if node.style.minDimensions[DimensionHeight].value != minHeight ||
+		node.style.minDimensions[DimensionHeight].unit != YGUnitPoint {
+		node.style.minDimensions[DimensionHeight].value = minHeight
+		node.style.minDimensions[DimensionHeight].unit = YGUnitPoint
 		if YGFloatIsUndefined(minHeight) {
-			node.style.minDimensions[YGDimensionHeight].unit = YGUnitAuto
+			node.style.minDimensions[DimensionHeight].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -542,12 +542,12 @@ func YGNodeStyleSetMinHeight(node *YGNode, minHeight float32) {
 
 // YGNodeStyleSetMinHeightPercent sets min height percent
 func YGNodeStyleSetMinHeightPercent(node *YGNode, minHeight float32) {
-	if node.style.minDimensions[YGDimensionHeight].value != minHeight ||
-		node.style.minDimensions[YGDimensionHeight].unit != YGUnitPercent {
-		node.style.minDimensions[YGDimensionHeight].value = minHeight
-		node.style.minDimensions[YGDimensionHeight].unit = YGUnitPercent
+	if node.style.minDimensions[DimensionHeight].value != minHeight ||
+		node.style.minDimensions[DimensionHeight].unit != YGUnitPercent {
+		node.style.minDimensions[DimensionHeight].value = minHeight
+		node.style.minDimensions[DimensionHeight].unit = YGUnitPercent
 		if YGFloatIsUndefined(minHeight) {
-			node.style.minDimensions[YGDimensionHeight].unit = YGUnitAuto
+			node.style.minDimensions[DimensionHeight].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -555,17 +555,17 @@ func YGNodeStyleSetMinHeightPercent(node *YGNode, minHeight float32) {
 
 // YGNodeStyleGetMinHeight gets min height
 func YGNodeStyleGetMinHeight(node *YGNode) YGValue {
-	return node.style.minDimensions[YGDimensionHeight]
+	return node.style.minDimensions[DimensionHeight]
 }
 
 // YGNodeStyleSetMaxWidth sets max width
 func YGNodeStyleSetMaxWidth(node *YGNode, maxWidth float32) {
-	if node.style.maxDimensions[YGDimensionWidth].value != maxWidth ||
-		node.style.maxDimensions[YGDimensionWidth].unit != YGUnitPoint {
-		node.style.maxDimensions[YGDimensionWidth].value = maxWidth
-		node.style.maxDimensions[YGDimensionWidth].unit = YGUnitPoint
+	if node.style.maxDimensions[DimensionWidth].value != maxWidth ||
+		node.style.maxDimensions[DimensionWidth].unit != YGUnitPoint {
+		node.style.maxDimensions[DimensionWidth].value = maxWidth
+		node.style.maxDimensions[DimensionWidth].unit = YGUnitPoint
 		if YGFloatIsUndefined(maxWidth) {
-			node.style.maxDimensions[YGDimensionWidth].unit = YGUnitAuto
+			node.style.maxDimensions[DimensionWidth].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -573,12 +573,12 @@ func YGNodeStyleSetMaxWidth(node *YGNode, maxWidth float32) {
 
 // YGNodeStyleSetMaxWidthPercent sets max width percent
 func YGNodeStyleSetMaxWidthPercent(node *YGNode, maxWidth float32) {
-	if node.style.maxDimensions[YGDimensionWidth].value != maxWidth ||
-		node.style.maxDimensions[YGDimensionWidth].unit != YGUnitPercent {
-		node.style.maxDimensions[YGDimensionWidth].value = maxWidth
-		node.style.maxDimensions[YGDimensionWidth].unit = YGUnitPercent
+	if node.style.maxDimensions[DimensionWidth].value != maxWidth ||
+		node.style.maxDimensions[DimensionWidth].unit != YGUnitPercent {
+		node.style.maxDimensions[DimensionWidth].value = maxWidth
+		node.style.maxDimensions[DimensionWidth].unit = YGUnitPercent
 		if YGFloatIsUndefined(maxWidth) {
-			node.style.maxDimensions[YGDimensionWidth].unit = YGUnitAuto
+			node.style.maxDimensions[DimensionWidth].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -586,17 +586,17 @@ func YGNodeStyleSetMaxWidthPercent(node *YGNode, maxWidth float32) {
 
 // YGNodeStyleGetMaxWidth gets max width
 func YGNodeStyleGetMaxWidth(node *YGNode) YGValue {
-	return node.style.maxDimensions[YGDimensionWidth]
+	return node.style.maxDimensions[DimensionWidth]
 }
 
 // YGNodeStyleSetMaxHeight sets max width
 func YGNodeStyleSetMaxHeight(node *YGNode, maxHeight float32) {
-	if node.style.maxDimensions[YGDimensionHeight].value != maxHeight ||
-		node.style.maxDimensions[YGDimensionHeight].unit != YGUnitPoint {
-		node.style.maxDimensions[YGDimensionHeight].value = maxHeight
-		node.style.maxDimensions[YGDimensionHeight].unit = YGUnitPoint
+	if node.style.maxDimensions[DimensionHeight].value != maxHeight ||
+		node.style.maxDimensions[DimensionHeight].unit != YGUnitPoint {
+		node.style.maxDimensions[DimensionHeight].value = maxHeight
+		node.style.maxDimensions[DimensionHeight].unit = YGUnitPoint
 		if YGFloatIsUndefined(maxHeight) {
-			node.style.maxDimensions[YGDimensionHeight].unit = YGUnitAuto
+			node.style.maxDimensions[DimensionHeight].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -604,12 +604,12 @@ func YGNodeStyleSetMaxHeight(node *YGNode, maxHeight float32) {
 
 // YGNodeStyleSetMaxHeightPercent sets max height percent
 func YGNodeStyleSetMaxHeightPercent(node *YGNode, maxHeight float32) {
-	if node.style.maxDimensions[YGDimensionHeight].value != maxHeight ||
-		node.style.maxDimensions[YGDimensionHeight].unit != YGUnitPercent {
-		node.style.maxDimensions[YGDimensionHeight].value = maxHeight
-		node.style.maxDimensions[YGDimensionHeight].unit = YGUnitPercent
+	if node.style.maxDimensions[DimensionHeight].value != maxHeight ||
+		node.style.maxDimensions[DimensionHeight].unit != YGUnitPercent {
+		node.style.maxDimensions[DimensionHeight].value = maxHeight
+		node.style.maxDimensions[DimensionHeight].unit = YGUnitPercent
 		if YGFloatIsUndefined(maxHeight) {
-			node.style.maxDimensions[YGDimensionHeight].unit = YGUnitAuto
+			node.style.maxDimensions[DimensionHeight].unit = YGUnitAuto
 		}
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -617,7 +617,7 @@ func YGNodeStyleSetMaxHeightPercent(node *YGNode, maxHeight float32) {
 
 // YGNodeStyleGetMaxHeight gets max height
 func YGNodeStyleGetMaxHeight(node *YGNode) YGValue {
-	return node.style.maxDimensions[YGDimensionHeight]
+	return node.style.maxDimensions[DimensionHeight]
 }
 
 // YGNodeStyleSetAspectRatio sets axpect ratio
@@ -655,12 +655,12 @@ func YGNodeLayoutGetBottom(node *YGNode) float32 {
 
 // YGNodeLayoutGetWidth gets width
 func YGNodeLayoutGetWidth(node *YGNode) float32 {
-	return node.layout.dimensions[YGDimensionWidth]
+	return node.layout.dimensions[DimensionWidth]
 }
 
 // YGNodeLayoutGetHeight gets height
 func YGNodeLayoutGetHeight(node *YGNode) float32 {
-	return node.layout.dimensions[YGDimensionHeight]
+	return node.layout.dimensions[DimensionHeight]
 }
 
 // YGNodeLayoutGetDirection gets direction
