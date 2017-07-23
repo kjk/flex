@@ -8,24 +8,24 @@ func _baseline(node *Node, width float32, height float32) float32 {
 }
 
 func TestAlign_baseline_customer_func(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNew()
+	rootChild1 := NewNode()
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	var baselineValue float32 = 10
-	rootChild1child0 := YGNodeNew()
+	rootChild1child0 := NewNode()
 	YGNodeSetContext(rootChild1child0, baselineValue)
 	YGNodeStyleSetWidth(rootChild1child0, 50)
 	YGNodeSetBaselineFunc(rootChild1child0, _baseline)

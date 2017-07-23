@@ -7,26 +7,26 @@ import (
 func TestWrap_column(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 30)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 30)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 30)
 	YGNodeInsertChild(root, rootChild3, 3)
@@ -88,27 +88,27 @@ func TestWrap_column(t *testing.T) {
 func TestWrap_row(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 30)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 30)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 30)
 	YGNodeInsertChild(root, rootChild3, 3)
@@ -170,28 +170,28 @@ func TestWrap_row(t *testing.T) {
 func TestWrap_row_align_items_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 30)
 	YGNodeInsertChild(root, rootChild3, 3)
@@ -253,28 +253,28 @@ func TestWrap_row_align_items_flex_end(t *testing.T) {
 func TestWrap_row_align_items_center(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 30)
 	YGNodeInsertChild(root, rootChild3, 3)
@@ -336,18 +336,18 @@ func TestWrap_row_align_items_center(t *testing.T) {
 func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexBasis(rootChild0, 50)
 	YGNodeStyleSetMinWidth(rootChild0, 55)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexBasis(rootChild1, 50)
 	YGNodeStyleSetMinWidth(rootChild1, 55)
 	YGNodeStyleSetHeight(rootChild1, 50)
@@ -390,24 +390,24 @@ func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(rootChild0, AlignFlexStart)
 	YGNodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0, 100)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0Child0_child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0_child0, 100)
 	YGNodeStyleSetHeight(rootChild0Child0_child0, 100)
 	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 100)
 	YGNodeStyleSetHeight(rootChild1, 100)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -469,17 +469,17 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 func TestFlex_wrap_align_stretch_fits_one_row(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -520,32 +520,32 @@ func TestFlex_wrap_align_stretch_fits_one_row(t *testing.T) {
 func TestWrap_reverse_row_align_content_flex_start(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 40)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild4, 30)
 	YGNodeStyleSetHeight(rootChild4, 50)
 	YGNodeInsertChild(root, rootChild4, 4)
@@ -617,33 +617,33 @@ func TestWrap_reverse_row_align_content_flex_start(t *testing.T) {
 func TestWrap_reverse_row_align_content_center(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignCenter)
 	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 40)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild4, 30)
 	YGNodeStyleSetHeight(rootChild4, 50)
 	YGNodeInsertChild(root, rootChild4, 4)
@@ -715,32 +715,32 @@ func TestWrap_reverse_row_align_content_center(t *testing.T) {
 func TestWrap_reverse_row_single_line_different_size(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 300)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 40)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild4, 30)
 	YGNodeStyleSetHeight(rootChild4, 50)
 	YGNodeInsertChild(root, rootChild4, 4)
@@ -812,33 +812,33 @@ func TestWrap_reverse_row_single_line_different_size(t *testing.T) {
 func TestWrap_reverse_row_align_content_stretch(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
 	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 40)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild4, 30)
 	YGNodeStyleSetHeight(rootChild4, 50)
 	YGNodeInsertChild(root, rootChild4, 4)
@@ -910,33 +910,33 @@ func TestWrap_reverse_row_align_content_stretch(t *testing.T) {
 func TestWrap_reverse_row_align_content_space_around(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignSpaceAround)
 	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 40)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild4, 30)
 	YGNodeStyleSetHeight(rootChild4, 50)
 	YGNodeInsertChild(root, rootChild4, 4)
@@ -1008,33 +1008,33 @@ func TestWrap_reverse_row_align_content_space_around(t *testing.T) {
 func TestWrap_reverse_column_fixed_size(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 30)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 30)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 30)
 	YGNodeStyleSetHeight(rootChild2, 30)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild3, 30)
 	YGNodeStyleSetHeight(rootChild3, 40)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild4, 30)
 	YGNodeStyleSetHeight(rootChild4, 50)
 	YGNodeInsertChild(root, rootChild4, 4)
@@ -1106,22 +1106,22 @@ func TestWrap_reverse_column_fixed_size(t *testing.T) {
 func TestWrapped_row_within_align_items_center(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0, 150)
 	YGNodeStyleSetHeight(rootChild0Child0, 80)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0child1, 80)
 	YGNodeStyleSetHeight(rootChild0child1, 80)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
@@ -1173,22 +1173,22 @@ func TestWrapped_row_within_align_items_center(t *testing.T) {
 func TestWrapped_row_within_align_items_flex_start(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0, 150)
 	YGNodeStyleSetHeight(rootChild0Child0, 80)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0child1, 80)
 	YGNodeStyleSetHeight(rootChild0child1, 80)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
@@ -1240,22 +1240,22 @@ func TestWrapped_row_within_align_items_flex_start(t *testing.T) {
 func TestWrapped_row_within_align_items_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0, 150)
 	YGNodeStyleSetHeight(rootChild0Child0, 80)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0child1, 80)
 	YGNodeStyleSetHeight(rootChild0child1, 80)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
@@ -1307,7 +1307,7 @@ func TestWrapped_row_within_align_items_flex_end(t *testing.T) {
 func TestWrapped_column_max_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignContent(root, AlignCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
@@ -1315,13 +1315,13 @@ func TestWrapped_column_max_height(t *testing.T) {
 	YGNodeStyleSetWidth(root, 700)
 	YGNodeStyleSetHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 500)
 	YGNodeStyleSetMaxHeight(rootChild0, 200)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(rootChild1, EdgeLeft, 20)
 	YGNodeStyleSetMargin(rootChild1, EdgeTop, 20)
 	YGNodeStyleSetMargin(rootChild1, EdgeRight, 20)
@@ -1330,7 +1330,7 @@ func TestWrapped_column_max_height(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild1, 200)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 100)
 	YGNodeStyleSetHeight(rootChild2, 100)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -1382,7 +1382,7 @@ func TestWrapped_column_max_height(t *testing.T) {
 func TestWrapped_column_max_height_flex(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetAlignContent(root, AlignCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
@@ -1390,7 +1390,7 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	YGNodeStyleSetWidth(root, 700)
 	YGNodeStyleSetHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild0, 0)
@@ -1399,7 +1399,7 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	YGNodeStyleSetMaxHeight(rootChild0, 200)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetFlexShrink(rootChild1, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild1, 0)
@@ -1411,7 +1411,7 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild1, 200)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 100)
 	YGNodeStyleSetHeight(rootChild2, 100)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -1463,29 +1463,29 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 500)
 	YGNodeStyleSetHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	YGNodeStyleSetWidth(rootChild0, 85)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0Child0_child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0_child0, 40)
 	YGNodeStyleSetHeight(rootChild0Child0_child0, 40)
 	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(rootChild0child1, EdgeRight, 10)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 
-	rootChild0child1_child0 := YGNodeNewWithConfig(config)
+	rootChild0child1_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0child1_child0, 40)
 	YGNodeStyleSetHeight(rootChild0child1_child0, 40)
 	YGNodeInsertChild(rootChild0child1, rootChild0child1_child0, 0)
@@ -1557,29 +1557,29 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 500)
 	YGNodeStyleSetHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	YGNodeStyleSetWidth(rootChild0, 70)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0Child0_child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0_child0, 40)
 	YGNodeStyleSetHeight(rootChild0Child0_child0, 40)
 	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(rootChild0child1, EdgeTop, 10)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 
-	rootChild0child1_child0 := YGNodeNewWithConfig(config)
+	rootChild0child1_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0child1_child0, 40)
 	YGNodeStyleSetHeight(rootChild0child1_child0, 40)
 	YGNodeInsertChild(rootChild0child1, rootChild0child1_child0, 0)

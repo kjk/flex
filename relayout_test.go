@@ -6,11 +6,11 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	config := YGConfigNew()
 	YGConfigSetExperimentalFeatureEnabled(config, ExperimentalFeatureWebFlexBasis, true)
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetHeightPercent(root, 100)
 	YGNodeStyleSetWidthPercent(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexBasisPercent(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -21,9 +21,9 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 }
 
 func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetMinHeight(rootChild0, 10)
 	YGNodeStyleSetMaxHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)

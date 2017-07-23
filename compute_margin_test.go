@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestComputed_layout_margin(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetMarginPercent(root, EdgeStart, 10)

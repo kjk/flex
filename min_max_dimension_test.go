@@ -5,11 +5,11 @@ import "testing"
 func TestMax_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetMaxWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -42,12 +42,12 @@ func TestMax_width(t *testing.T) {
 func TestMax_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 10)
 	YGNodeStyleSetMaxHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -80,16 +80,16 @@ func TestMax_height(t *testing.T) {
 func TestMin_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMinHeight(rootChild0, 60)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -131,17 +131,17 @@ func TestMin_height(t *testing.T) {
 func TestMin_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMinWidth(rootChild0, 60)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -183,13 +183,13 @@ func TestMin_width(t *testing.T) {
 func TestJustify_content_min_max(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 200)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 60)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -222,13 +222,13 @@ func TestJustify_content_min_max(t *testing.T) {
 func TestAlign_items_min_max(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetMinWidth(root, 100)
 	YGNodeStyleSetMaxWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 60)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -261,22 +261,22 @@ func TestAlign_items_min_max(t *testing.T) {
 func TestJustify_content_overflow_min_max(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 110)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 50)
 	YGNodeStyleSetHeight(rootChild2, 50)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -329,17 +329,17 @@ func TestJustify_content_overflow_min_max(t *testing.T) {
 func TestFlex_grow_to_min(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -381,17 +381,17 @@ func TestFlex_grow_to_min(t *testing.T) {
 func TestFlex_grow_in_at_most_container(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0Child0, 0)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
@@ -434,10 +434,10 @@ func TestFlex_grow_in_at_most_container(t *testing.T) {
 func TestFlex_grow_child(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 0)
 	YGNodeStyleSetHeight(rootChild0, 100)
@@ -471,15 +471,15 @@ func TestFlex_grow_child(t *testing.T) {
 func TestFlex_grow_within_constrained_min_max_column(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 200)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -521,16 +521,16 @@ func TestFlex_grow_within_constrained_min_max_column(t *testing.T) {
 func TestFlex_grow_within_max_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetMaxWidth(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetHeight(rootChild0Child0, 20)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
@@ -573,16 +573,16 @@ func TestFlex_grow_within_max_width(t *testing.T) {
 func TestFlex_grow_within_constrained_max_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetMaxWidth(rootChild0, 300)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetHeight(rootChild0Child0, 20)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
@@ -625,18 +625,18 @@ func TestFlex_grow_within_constrained_max_width(t *testing.T) {
 func TestFlex_root_ignored(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(root, 1)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 200)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild1, 100)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -678,23 +678,23 @@ func TestFlex_root_ignored(t *testing.T) {
 func TestFlex_grow_root_minimized(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeStyleSetMaxHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMinHeight(rootChild0, 100)
 	YGNodeStyleSetMaxHeight(rootChild0, 500)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0Child0, 200)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild0child1, 100)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -746,22 +746,22 @@ func TestFlex_grow_root_minimized(t *testing.T) {
 func TestFlex_grow_height_maximized(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 500)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMinHeight(rootChild0, 100)
 	YGNodeStyleSetMaxHeight(rootChild0, 500)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0Child0, 200)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild0child1, 100)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -813,16 +813,16 @@ func TestFlex_grow_height_maximized(t *testing.T) {
 func TestFlex_grow_within_constrained_min_row(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetMinWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -864,14 +864,14 @@ func TestFlex_grow_within_constrained_min_row(t *testing.T) {
 func TestFlex_grow_within_constrained_min_column(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMinHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -913,21 +913,21 @@ func TestFlex_grow_within_constrained_min_column(t *testing.T) {
 func TestFlex_grow_within_constrained_max_row(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetMaxWidth(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexShrink(rootChild0Child0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0Child0, 100)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0child1, 50)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -979,16 +979,16 @@ func TestFlex_grow_within_constrained_max_row(t *testing.T) {
 func TestFlex_grow_within_constrained_max_column(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetMaxHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -1030,18 +1030,18 @@ func TestFlex_grow_within_constrained_max_column(t *testing.T) {
 func TestChild_min_max_width_flexing(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 120)
 	YGNodeStyleSetHeight(root, 50)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 0)
 	YGNodeStyleSetMinWidth(rootChild0, 60)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild1, 50)
 	YGNodeStyleSetMaxWidth(rootChild1, 20)
@@ -1085,7 +1085,7 @@ func TestChild_min_max_width_flexing(t *testing.T) {
 func TestMin_width_overrides_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetMinWidth(root, 100)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -1107,7 +1107,7 @@ func TestMin_width_overrides_width(t *testing.T) {
 func TestMax_width_overrides_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetMaxWidth(root, 100)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -1129,7 +1129,7 @@ func TestMax_width_overrides_width(t *testing.T) {
 func TestMin_height_overrides_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(root, 50)
 	YGNodeStyleSetMinHeight(root, 100)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -1151,7 +1151,7 @@ func TestMin_height_overrides_height(t *testing.T) {
 func TestMax_height_overrides_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(root, 200)
 	YGNodeStyleSetMaxHeight(root, 100)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -1173,12 +1173,12 @@ func TestMax_height_overrides_height(t *testing.T) {
 func TestMin_max_percent_no_width_height(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetMinWidthPercent(rootChild0, 10)
 	YGNodeStyleSetMaxWidthPercent(rootChild0, 10)
 	YGNodeStyleSetMinHeightPercent(rootChild0, 10)

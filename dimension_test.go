@@ -4,9 +4,9 @@ import "testing"
 
 func TestWrap_child(t *testing.T) {
 	config := YGConfigNew()
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -38,12 +38,12 @@ func TestWrap_child(t *testing.T) {
 func TestWrap_grandchild(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0Child0, 100)
 	YGNodeStyleSetHeight(rootChild0Child0, 100)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)

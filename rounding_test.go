@@ -5,20 +5,20 @@ import "testing"
 func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeInsertChild(root, rootChild2, 2)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -69,28 +69,28 @@ func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 113)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeInsertChild(root, rootChild2, 2)
 
-	rootChild3 := YGNodeNewWithConfig(config)
+	rootChild3 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild3, 1)
 	YGNodeInsertChild(root, rootChild3, 3)
 
-	rootChild4 := YGNodeNewWithConfig(config)
+	rootChild4 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild4, 1)
 	YGNodeInsertChild(root, rootChild4, 4)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -161,21 +161,21 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 101)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexBasis(rootChild1, 25)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexBasis(rootChild2, 25)
 	YGNodeInsertChild(root, rootChild2, 2)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -226,22 +226,22 @@ func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -293,22 +293,22 @@ func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
 func TestRounding_total_fractial(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 87.4)
 	YGNodeStyleSetHeight(root, 113.4)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 0.7)
 	YGNodeStyleSetFlexBasis(rootChild0, 50.3)
 	YGNodeStyleSetHeight(rootChild0, 20.3)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1.6)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1.1)
 	YGNodeStyleSetHeight(rootChild2, 10.7)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -360,36 +360,36 @@ func TestRounding_total_fractial(t *testing.T) {
 func TestRounding_total_fractial_nested(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 87.4)
 	YGNodeStyleSetHeight(root, 113.4)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 0.7)
 	YGNodeStyleSetFlexBasis(rootChild0, 50.3)
 	YGNodeStyleSetHeight(rootChild0, 20.3)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild0Child0 := YGNodeNewWithConfig(config)
+	rootChild0Child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0Child0, 0.3)
 	YGNodeStyleSetPosition(rootChild0Child0, EdgeBottom, 13.3)
 	YGNodeStyleSetHeight(rootChild0Child0, 9.9)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0child1 := YGNodeNewWithConfig(config)
+	rootChild0child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0child1, 4)
 	YGNodeStyleSetFlexBasis(rootChild0child1, 0.3)
 	YGNodeStyleSetPosition(rootChild0child1, EdgeTop, 13.3)
 	YGNodeStyleSetHeight(rootChild0child1, 1.1)
 	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1.6)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1.1)
 	YGNodeStyleSetHeight(rootChild2, 10.7)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -461,22 +461,22 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 func TestRounding_fractial_input_1(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113.4)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -528,22 +528,22 @@ func TestRounding_fractial_input_1(t *testing.T) {
 func TestRounding_fractial_input_2(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113.6)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -595,23 +595,23 @@ func TestRounding_fractial_input_2(t *testing.T) {
 func TestRounding_fractial_input_3(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetPosition(root, EdgeTop, 0.3)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113.4)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -663,23 +663,23 @@ func TestRounding_fractial_input_3(t *testing.T) {
 func TestRounding_fractial_input_4(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetPosition(root, EdgeTop, 0.7)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113.4)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -731,26 +731,26 @@ func TestRounding_fractial_input_4(t *testing.T) {
 func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 320)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1child0 := YGNodeNewWithConfig(config)
+	rootChild1child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
 	YGNodeStyleSetHeight(rootChild1child0, 10)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -812,25 +812,25 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(root, 320)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetWidth(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1child0 := YGNodeNewWithConfig(config)
+	rootChild1child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
 	YGNodeStyleSetWidth(rootChild1child0, 10)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
@@ -892,42 +892,42 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 640)
 	YGNodeStyleSetHeight(root, 320)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetHeightPercent(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetHeightPercent(rootChild1, 100)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1child0 := YGNodeNewWithConfig(config)
+	rootChild1child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
 	YGNodeStyleSetWidthPercent(rootChild1child0, 100)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
-	rootChild1_child1 := YGNodeNewWithConfig(config)
+	rootChild1_child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1_child1, 1)
 	YGNodeStyleSetWidthPercent(rootChild1_child1, 100)
 	YGNodeInsertChild(rootChild1, rootChild1_child1, 1)
 
-	rootChild1_child1_child0 := YGNodeNewWithConfig(config)
+	rootChild1_child1_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1_child1_child0, 1)
 	YGNodeStyleSetWidthPercent(rootChild1_child1_child0, 100)
 	YGNodeInsertChild(rootChild1_child1, rootChild1_child1_child0, 0)
 
-	rootChild1_child2 := YGNodeNewWithConfig(config)
+	rootChild1_child2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1_child2, 1)
 	YGNodeStyleSetWidthPercent(rootChild1_child2, 100)
 	YGNodeInsertChild(rootChild1, rootChild1_child2, 2)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetHeightPercent(rootChild2, 100)
 	YGNodeInsertChild(root, rootChild2, 2)

@@ -283,8 +283,8 @@ func resolveValueMargin(value *Value, parentSize float32) float32 {
 	return resolveValue(value, parentSize)
 }
 
-// YGNodeNewWithConfig creates new node with config
-func YGNodeNewWithConfig(config *Config) *Node {
+// NewNodeWithConfig creates new node with config
+func NewNodeWithConfig(config *Config) *Node {
 	node := gYGNodeDefaults
 
 	if config.useWebDefaults {
@@ -295,9 +295,9 @@ func YGNodeNewWithConfig(config *Config) *Node {
 	return &node
 }
 
-// YGNodeNew creates a new node
-func YGNodeNew() *Node {
-	return YGNodeNewWithConfig(&gYGConfigDefaults)
+// NewNode creates a new node
+func NewNode() *Node {
+	return NewNodeWithConfig(&gYGConfigDefaults)
 }
 
 // YGNodeReset resets a node

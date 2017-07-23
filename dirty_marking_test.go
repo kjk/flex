@@ -7,17 +7,17 @@ import (
 )
 
 func TestDirty_propagation(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNew()
+	rootChild1 := NewNode()
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -39,17 +39,17 @@ func TestDirty_propagation(t *testing.T) {
 }
 
 func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNew()
+	rootChild1 := NewNode()
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -65,17 +65,17 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 }
 
 func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetHeight(root, 100)
 
-	child0 := YGNodeNew()
+	child0 := NewNode()
 	YGNodeStyleSetFlexGrow(child0, 1)
-	child1 := YGNodeNew()
+	child1 := NewNode()
 	YGNodeStyleSetFlexGrow(child1, 1)
 
-	child1_child0 := YGNodeNew()
-	child1_child0_child0 := YGNodeNew()
+	child1_child0 := NewNode()
+	child1_child0_child0 := NewNode()
 	YGNodeStyleSetWidth(child1_child0_child0, 8)
 	YGNodeStyleSetHeight(child1_child0_child0, 16)
 
@@ -111,19 +111,19 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 }
 
 func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
-	child0 := YGNodeNew()
+	child0 := NewNode()
 	YGNodeStyleSetWidth(child0, 50)
 	YGNodeStyleSetHeight(child0, 25)
 	YGNodeInsertChild(root, child0, 0)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	child1 := YGNodeNew()
+	child1 := NewNode()
 	YGNodeRemoveChild(root, child1)
 	assert.False(t, YGNodeIsDirty(root))
 

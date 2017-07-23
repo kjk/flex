@@ -3,12 +3,12 @@ package flex
 import "testing"
 
 func TestStart_overrides(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeStart, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
@@ -25,12 +25,12 @@ func TestStart_overrides(t *testing.T) {
 }
 
 func TestEnd_overrides(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
@@ -47,12 +47,12 @@ func TestEnd_overrides(t *testing.T) {
 }
 
 func TestHorizontal_overridden(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeHorizontal, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
@@ -64,12 +64,12 @@ func TestHorizontal_overridden(t *testing.T) {
 }
 
 func TestVertical_overridden(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeVertical, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeTop, 20)
@@ -81,12 +81,12 @@ func TestVertical_overridden(t *testing.T) {
 }
 
 func TestHorizontal_overrides_all(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeHorizontal, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeAll, 20)
@@ -101,12 +101,12 @@ func TestHorizontal_overrides_all(t *testing.T) {
 }
 
 func TestVertical_overrides_all(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeVertical, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeAll, 20)
@@ -120,12 +120,12 @@ func TestVertical_overrides_all(t *testing.T) {
 }
 
 func TestAll_overridden(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)

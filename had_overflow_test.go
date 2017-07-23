@@ -8,7 +8,7 @@ import (
 
 func newHadOverflowTests() (*Config, *Node) {
 	config := YGConfigNew()
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
@@ -18,13 +18,13 @@ func newHadOverflowTests() (*Config, *Node) {
 
 func TestChildren_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 	config, root := newHadOverflowTests()
-	child0 := YGNodeNewWithConfig(config)
+	child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child0, 80)
 	YGNodeStyleSetHeight(child0, 40)
 	YGNodeStyleSetMargin(child0, EdgeTop, 10)
 	YGNodeStyleSetMargin(child0, EdgeBottom, 15)
 	YGNodeInsertChild(root, child0, 0)
-	child1 := YGNodeNewWithConfig(config)
+	child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child1, 80)
 	YGNodeStyleSetHeight(child1, 40)
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
@@ -37,13 +37,13 @@ func TestChildren_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 
 func TestSpacing_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 	config, root := newHadOverflowTests()
-	child0 := YGNodeNewWithConfig(config)
+	child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child0, 80)
 	YGNodeStyleSetHeight(child0, 40)
 	YGNodeStyleSetMargin(child0, EdgeTop, 10)
 	YGNodeStyleSetMargin(child0, EdgeBottom, 10)
 	YGNodeInsertChild(root, child0, 0)
-	child1 := YGNodeNewWithConfig(config)
+	child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child1, 80)
 	YGNodeStyleSetHeight(child1, 40)
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
@@ -56,13 +56,13 @@ func TestSpacing_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 
 func TestNo_overflow_no_wrap_and_flex_children(t *testing.T) {
 	config, root := newHadOverflowTests()
-	child0 := YGNodeNewWithConfig(config)
+	child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child0, 80)
 	YGNodeStyleSetHeight(child0, 40)
 	YGNodeStyleSetMargin(child0, EdgeTop, 10)
 	YGNodeStyleSetMargin(child0, EdgeBottom, 10)
 	YGNodeInsertChild(root, child0, 0)
-	child1 := YGNodeNewWithConfig(config)
+	child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child1, 80)
 	YGNodeStyleSetHeight(child1, 40)
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
@@ -76,13 +76,13 @@ func TestNo_overflow_no_wrap_and_flex_children(t *testing.T) {
 
 func TestHadOverflow_gets_reset_if_not_logger_valid(t *testing.T) {
 	config, root := newHadOverflowTests()
-	child0 := YGNodeNewWithConfig(config)
+	child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child0, 80)
 	YGNodeStyleSetHeight(child0, 40)
 	YGNodeStyleSetMargin(child0, EdgeTop, 10)
 	YGNodeStyleSetMargin(child0, EdgeBottom, 10)
 	YGNodeInsertChild(root, child0, 0)
-	child1 := YGNodeNewWithConfig(config)
+	child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child1, 80)
 	YGNodeStyleSetHeight(child1, 40)
 	YGNodeStyleSetMargin(child1, EdgeBottom, 5)
@@ -101,17 +101,17 @@ func TestHadOverflow_gets_reset_if_not_logger_valid(t *testing.T) {
 
 func TestSpacing_overflow_in_nested_nodes(t *testing.T) {
 	config, root := newHadOverflowTests()
-	child0 := YGNodeNewWithConfig(config)
+	child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child0, 80)
 	YGNodeStyleSetHeight(child0, 40)
 	YGNodeStyleSetMargin(child0, EdgeTop, 10)
 	YGNodeStyleSetMargin(child0, EdgeBottom, 10)
 	YGNodeInsertChild(root, child0, 0)
-	child1 := YGNodeNewWithConfig(config)
+	child1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child1, 80)
 	YGNodeStyleSetHeight(child1, 40)
 	YGNodeInsertChild(root, child1, 1)
-	child1_1 := YGNodeNewWithConfig(config)
+	child1_1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(child1_1, 80)
 	YGNodeStyleSetHeight(child1_1, 40)
 	YGNodeStyleSetMargin(child1_1, EdgeBottom, 5)

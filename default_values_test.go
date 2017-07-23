@@ -7,7 +7,7 @@ import (
 )
 
 func TestAssert_default_values(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 
 	assert.Equal(t, 0, YGNodeGetChildCount(root))
 	var nilNode *Node
@@ -91,7 +91,7 @@ func TestAssert_default_values(t *testing.T) {
 func TestAssert_webdefault_values(t *testing.T) {
 	config := YGConfigNew()
 	YGConfigSetUseWebDefaults(config, true)
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 
 	assert.Equal(t, FlexDirectionRow, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignContent(root))
@@ -102,7 +102,7 @@ func TestAssert_webdefault_values(t *testing.T) {
 func TestAssert_webdefault_values_reset(t *testing.T) {
 	config := YGConfigNew()
 	YGConfigSetUseWebDefaults(config, true)
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeReset(root)
 
 	assert.Equal(t, FlexDirectionRow, YGNodeStyleGetFlexDirection(root))

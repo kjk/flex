@@ -5,16 +5,16 @@ import "testing"
 func TestDisplay_none(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetDisplay(rootChild1, DisplayNone)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -56,16 +56,16 @@ func TestDisplay_none(t *testing.T) {
 func TestDisplay_none_fixed_size(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(rootChild1, 20)
 	YGNodeStyleSetHeight(rootChild1, 20)
 	YGNodeStyleSetDisplay(rootChild1, DisplayNone)
@@ -108,12 +108,12 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 func TestDisplay_none_with_margin(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
@@ -123,7 +123,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 	YGNodeStyleSetDisplay(rootChild0, DisplayNone)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -164,25 +164,25 @@ func TestDisplay_none_with_margin(t *testing.T) {
 func TestDisplay_none_with_child(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild0, 0)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetFlexShrink(rootChild1, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild1, 0)
 	YGNodeStyleSetDisplay(rootChild1, DisplayNone)
 	YGNodeInsertChild(root, rootChild1, 1)
 
-	rootChild1child0 := YGNodeNewWithConfig(config)
+	rootChild1child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1child0, 1)
 	YGNodeStyleSetFlexShrink(rootChild1child0, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild1child0, 0)
@@ -191,7 +191,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 	YGNodeStyleSetMinHeight(rootChild1child0, 0)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 
-	rootChild2 := YGNodeNewWithConfig(config)
+	rootChild2 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild2, 1)
 	YGNodeStyleSetFlexShrink(rootChild2, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild2, 0)
@@ -254,16 +254,16 @@ func TestDisplay_none_with_child(t *testing.T) {
 func TestDisplay_none_with_position(t *testing.T) {
 	config := YGConfigNew()
 
-	root := YGNodeNewWithConfig(config)
+	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	rootChild0 := YGNodeNewWithConfig(config)
+	rootChild0 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	rootChild1 := YGNodeNewWithConfig(config)
+	rootChild1 := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetPosition(rootChild1, EdgeTop, 10)
 	YGNodeStyleSetDisplay(rootChild1, DisplayNone)

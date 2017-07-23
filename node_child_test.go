@@ -7,9 +7,9 @@ import (
 )
 
 func TestReset_layout_when_child_removed(t *testing.T) {
-	root := YGNodeNew()
+	root := NewNode()
 
-	rootChild0 := YGNodeNew()
+	rootChild0 := NewNode()
 	YGNodeStyleSetWidth(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
