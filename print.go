@@ -14,42 +14,42 @@ func YGPrintNumberIfNotUndefinedf(node *YGNode, str string, number float32) {
 	}
 }
 
-func YGPrintNumberIfNotUndefined(node *YGNode, str string, number *YGValue) {
-	if number.unit != UnitUndefined {
-		if number.unit == UnitAuto {
+func YGPrintNumberIfNotUndefined(node *YGNode, str string, number *Value) {
+	if number.Unit != UnitUndefined {
+		if number.Unit == UnitAuto {
 			YGLog(node, LogLevelDebug, "%s: auto; ", str)
 		} else {
 			unit := "%"
 
-			if number.unit == UnitPoint {
+			if number.Unit == UnitPoint {
 				unit = "px"
 			}
-			YGLog(node, LogLevelDebug, "%s: %g%s; ", str, number.value, unit)
+			YGLog(node, LogLevelDebug, "%s: %g%s; ", str, number.Value, unit)
 		}
 	}
 }
-func YGPrintNumberIfNotAuto(node *YGNode, str string, number *YGValue) {
-	if number.unit != UnitAuto {
+func YGPrintNumberIfNotAuto(node *YGNode, str string, number *Value) {
+	if number.Unit != UnitAuto {
 		YGPrintNumberIfNotUndefined(node, str, number)
 	}
 }
 
-func YGPrintEdgeIfNotUndefined(node *YGNode, str string, edges []YGValue, edge Edge) {
-	YGPrintNumberIfNotUndefined(node, str, YGComputedEdgeValue(edges, edge, &YGValueUndefined))
+func YGPrintEdgeIfNotUndefined(node *YGNode, str string, edges []Value, edge Edge) {
+	YGPrintNumberIfNotUndefined(node, str, YGComputedEdgeValue(edges, edge, &ValueUndefined))
 }
 
-func YGPrintNumberIfNotZero(node *YGNode, str string, number *YGValue) {
-	if !YGFloatsEqual(number.value, 0) {
+func YGPrintNumberIfNotZero(node *YGNode, str string, number *Value) {
+	if !YGFloatsEqual(number.Value, 0) {
 		YGPrintNumberIfNotUndefined(node, str, number)
 	}
 }
 
-func YGFourValuesEqual(four []YGValue) bool {
+func YGFourValuesEqual(four []Value) bool {
 	return YGValueEqual(four[0], four[1]) && YGValueEqual(four[0], four[2]) &&
 		YGValueEqual(four[0], four[3])
 }
 
-func YGPrintEdges(node *YGNode, str string, edges []YGValue) {
+func YGPrintEdges(node *YGNode, str string, edges []Value) {
 	if YGFourValuesEqual(edges) {
 		YGPrintNumberIfNotZero(node, str, &edges[EdgeLeft])
 	} else {

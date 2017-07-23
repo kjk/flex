@@ -5,33 +5,33 @@ var (
 	YGUndefined = NAN
 )
 
-// YGSize describes size
-type YGSize struct {
-	width  float32
-	height float32
+// Size describes size
+type Size struct {
+	Width  float32
+	Height float32
 }
 
-// YGValue describes value
-type YGValue struct {
-	value float32
-	unit  Unit
+// Value describes value
+type Value struct {
+	Value float32
+	Unit  Unit
 }
 
 var (
-	// YGValueUndefined defines undefined YGValue
-	YGValueUndefined = YGValue{YGUndefined, UnitUndefined}
-	// YGValueAuto defines auto YGValue
-	YGValueAuto = YGValue{YGUndefined, UnitAuto}
+	// ValueUndefined defines undefined YGValue
+	ValueUndefined = Value{YGUndefined, UnitUndefined}
+	// ValueAuto defines auto YGValue
+	ValueAuto = Value{YGUndefined, UnitAuto}
 )
 
-// YGMeasureFunc describes function for measuring
-type YGMeasureFunc func(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize
+// MeasureFunc describes function for measuring
+type MeasureFunc func(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size
 
-// YGBaselineFunc describes function for baseline
-type YGBaselineFunc func(node *YGNode, width float32, height float32) float32
+// BaselineFunc describes function for baseline
+type BaselineFunc func(node *YGNode, width float32, height float32) float32
 
-// YGPrintFunc defines function for printing
-type YGPrintFunc func(node *YGNode)
+// PrintFunc defines function for printing
+type PrintFunc func(node *YGNode)
 
-// YGLogger defines logging function
-type YGLogger func(config *YGConfig, node *YGNode, level LogLevel, format string, args ...interface{}) int
+// Logger defines logging function
+type Logger func(config *YGConfig, node *YGNode, level LogLevel, format string, args ...interface{}) int

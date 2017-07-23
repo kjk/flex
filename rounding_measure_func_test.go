@@ -2,21 +2,21 @@ package flex
 
 import "testing"
 
-func _measureFloor(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
-	return YGSize{
-		width: 10.2, height: 10.2,
+func _measureFloor(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+	return Size{
+		Width: 10.2, Height: 10.2,
 	}
 }
 
-func _measureCeil(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
-	return YGSize{
-		width: 10.5, height: 10.5,
+func _measureCeil(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+	return Size{
+		Width: 10.5, Height: 10.5,
 	}
 }
 
-func _measureFractial(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
-	return YGSize{
-		width: 0.5, height: 0.5,
+func _measureFractial(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+	return Size{
+		Width: 0.5, Height: 0.5,
 	}
 }
 

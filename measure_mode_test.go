@@ -22,7 +22,7 @@ func _measure2(node *YGNode,
 	width float32,
 	widthMode MeasureMode,
 	height float32,
-	heightMode MeasureMode) YGSize {
+	heightMode MeasureMode) Size {
 	constraintList := YGNodeGetContext(node).(*_MeasureConstraintList)
 	constraints := constraintList.constraints
 	currentIndex := constraintList.length
@@ -41,9 +41,9 @@ func _measure2(node *YGNode,
 	} else {
 		height = width // TODO:: is it a bug in tests ?
 	}
-	return YGSize{
-		width:  width,
-		height: height,
+	return Size{
+		Width:  width,
+		Height: height,
 	}
 }
 

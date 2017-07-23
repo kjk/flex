@@ -7,24 +7,24 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func _measure3(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
+func _measure3(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount, ok := YGNodeGetContext(node).(*int)
 	if ok {
 		(*measureCount)++
 	}
 
-	return YGSize{width: 10, height: 10}
+	return Size{Width: 10, Height: 10}
 }
 
-func _simulate_wrapping_text(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
+func _simulate_wrapping_text(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	if widthMode == MeasureModeUndefined || width >= 68 {
-		return YGSize{width: 68, height: 16}
+		return Size{Width: 68, Height: 16}
 	}
 
-	return YGSize{width: 50, height: 32}
+	return Size{Width: 50, Height: 32}
 }
 
-func _measure_assert_negative(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
+func _measure_assert_negative(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	if width < 0 {
 		panic(fmt.Sprintf("width is %.2f and should be >= 0", width))
 	}
@@ -34,8 +34,8 @@ func _measure_assert_negative(node *YGNode, width float32, widthMode MeasureMode
 	// EXPECT_GE(width, 0);
 	//EXPECT_GE(height, 0);
 
-	return YGSize{
-		width: 0, height: 0,
+	return Size{
+		Width: 0, Height: 0,
 	}
 }
 
