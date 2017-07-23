@@ -513,7 +513,7 @@ func YGNodeResolveFlexBasisPtr(node *Node) *Value {
 // see yoga_props.go
 
 var (
-	gCurrentGenerationCount = 0
+	currentGenerationCount = 0
 )
 
 // YGFloatIsUndefined returns true if value is undefined
@@ -1000,7 +1000,7 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 	if !YGFloatIsUndefined(resolvedFlexBasis) && !YGFloatIsUndefined(mainAxisSize) {
 		if YGFloatIsUndefined(child.Layout.computedFlexBasis) ||
 			(YGConfigIsExperimentalFeatureEnabled(child.Config, ExperimentalFeatureWebFlexBasis) &&
-				child.Layout.computedFlexBasisGeneration != gCurrentGenerationCount) {
+				child.Layout.computedFlexBasisGeneration != currentGenerationCount) {
 			child.Layout.computedFlexBasis =
 				fmaxf(resolvedFlexBasis, YGNodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
 		}
@@ -1109,7 +1109,7 @@ func YGNodeComputeFlexBasisForChild(node *Node,
 				YGNodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
 	}
 
-	child.Layout.computedFlexBasisGeneration = gCurrentGenerationCount
+	child.Layout.computedFlexBasisGeneration = currentGenerationCount
 }
 
 // YGNodeAbsoluteLayoutChild calculates absolute child layout
@@ -1666,7 +1666,7 @@ func YGNodelayoutImpl(node *Node, availableWidth float32, availableHeight float3
 			child.NextChild = nil
 		} else {
 			if child == singleFlexChild {
-				child.Layout.computedFlexBasisGeneration = gCurrentGenerationCount
+				child.Layout.computedFlexBasisGeneration = currentGenerationCount
 				child.Layout.computedFlexBasis = 0
 			} else {
 				YGNodeComputeFlexBasisForChild(node,
@@ -2759,7 +2759,7 @@ func YGLayoutNodeInternal(node *Node, availableWidth float32, availableHeight fl
 	gDepth++
 
 	needToVisitNode :=
-		(node.IsDirty && layout.generationCount != gCurrentGenerationCount) ||
+		(node.IsDirty && layout.generationCount != currentGenerationCount) ||
 			layout.lastParentDirection != parentDirection
 
 	if needToVisitNode {
@@ -2945,7 +2945,7 @@ func YGLayoutNodeInternal(node *Node, availableWidth float32, availableHeight fl
 	}
 
 	gDepth--
-	layout.generationCount = gCurrentGenerationCount
+	layout.generationCount = currentGenerationCount
 	return needToVisitNode || cachedResults == nil
 }
 
@@ -3058,7 +3058,7 @@ func YGNodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32
 	// all dirty nodes at least once. Subsequent visits will be skipped if the
 	// input
 	// parameters don't change.
-	gCurrentGenerationCount++
+	currentGenerationCount++
 
 	YGResolveDimensions(node)
 
