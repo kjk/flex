@@ -300,7 +300,7 @@ func YGNodeStyleGetAlignSelf(node *YGNode) Align {
 }
 
 // YGNodeStyleSetFlexWrap sets flex wrap
-func YGNodeStyleSetFlexWrap(node *YGNode, flexWrap YGWrap) {
+func YGNodeStyleSetFlexWrap(node *YGNode, flexWrap Wrap) {
 	if node.style.flexWrap != flexWrap {
 		node.style.flexWrap = flexWrap
 		YGNodeMarkDirtyInternal(node)
@@ -308,7 +308,7 @@ func YGNodeStyleSetFlexWrap(node *YGNode, flexWrap YGWrap) {
 }
 
 // YGNodeStyleGetFlexWrap gets flex wrap
-func YGNodeStyleGetFlexWrap(node *YGNode) YGWrap {
+func YGNodeStyleGetFlexWrap(node *YGNode) Wrap {
 	return node.style.flexWrap
 }
 

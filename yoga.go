@@ -55,7 +55,7 @@ type YGStyle struct {
 	alignItems     Align
 	alignSelf      Align
 	positionType   PositionType
-	flexWrap       YGWrap
+	flexWrap       Wrap
 	overflow       Overflow
 	display        Display
 	flex           float32
@@ -1290,7 +1290,7 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 				child.layout.measuredDimensions[dim[crossAxis]]) /
 				2.0
 	} else if !YGNodeIsLeadingPosDefined(child, crossAxis) &&
-		((YGNodeAlignItem(node, child) == AlignFlexEnd) != (node.style.flexWrap == YGWrapWrapReverse)) {
+		((YGNodeAlignItem(node, child) == AlignFlexEnd) != (node.style.flexWrap == WrapWrapReverse)) {
 		child.layout.position[leading[crossAxis]] = (node.layout.measuredDimensions[dim[crossAxis]] -
 			child.layout.measuredDimensions[dim[crossAxis]])
 	}
@@ -1560,7 +1560,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	crossAxis := YGFlexDirectionCross(mainAxis, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
 	justifyContent := node.style.justifyContent
-	isNodeFlexWrap := node.style.flexWrap != YGWrapNoWrap
+	isNodeFlexWrap := node.style.flexWrap != WrapNoWrap
 
 	mainAxisParentSize := parentHeight
 	crossAxisParentSize := parentWidth
@@ -2595,7 +2595,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 
 	// As we only wrapped in normal direction yet, we need to reverse the positions on wrap-reverse.
-	if performLayout && node.style.flexWrap == YGWrapWrapReverse {
+	if performLayout && node.style.flexWrap == WrapWrapReverse {
 		for i := 0; i < childCount; i++ {
 			child := YGNodeGetChild(node, i)
 			if child.style.positionType == PositionTypeRelative {

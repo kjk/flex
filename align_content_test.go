@@ -9,7 +9,7 @@ func TestAlignContentFlexStart(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 130)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -107,7 +107,7 @@ func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -201,7 +201,7 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 120)
 
@@ -302,7 +302,7 @@ func TestAlign_content_flex_end(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignFlexEnd)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -400,7 +400,7 @@ func TestAlign_content_stretch(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -494,7 +494,7 @@ func TestAlign_content_spacebetween(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignSpaceBetween)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 130)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -595,7 +595,7 @@ func TestAlign_content_spacearound(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignSpaceAround)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 140)
 	YGNodeStyleSetHeight(root, 120)
 
@@ -694,7 +694,7 @@ func TestAlign_content_stretch_row(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -788,7 +788,7 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -898,7 +898,7 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -998,7 +998,7 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1097,7 +1097,7 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1199,7 +1199,7 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1301,7 +1301,7 @@ func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1353,7 +1353,7 @@ func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1448,7 +1448,7 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1543,7 +1543,7 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -1637,7 +1637,7 @@ func TestAlign_content_stretch_column(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
+	YGNodeStyleSetFlexWrap(root, WrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 150)
 

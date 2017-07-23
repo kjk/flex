@@ -12,7 +12,7 @@ func newHadOverflowTests() (*YGConfig, *YGNode) {
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
-	YGNodeStyleSetFlexWrap(root, YGWrapNoWrap)
+	YGNodeStyleSetFlexWrap(root, WrapNoWrap)
 	return config, root
 }
 

@@ -209,15 +209,19 @@ const (
 	UnitAuto
 )
 
-type YGWrap int
+// Wrap is "wrap" property
+type Wrap int
 
 const (
-	YGWrapNoWrap YGWrap = iota
-	YGWrapWrap
-	YGWrapWrapReverse
+	// WrapNoWrap is "no-wrap"
+	WrapNoWrap Wrap = iota
+	// WrapWrap is "wrap"
+	WrapWrap
+	// WrapWrapReverse is "reverse"
+	WrapWrapReverse
 )
 
-func YGWrapToString(value YGWrap) string {
+func YGWrapToString(value Wrap) string {
 	return ""
 }
 

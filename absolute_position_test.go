@@ -762,7 +762,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
+	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -801,7 +801,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
+	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -839,7 +839,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T)
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
+	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -879,7 +879,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
+	YGNodeStyleSetFlexWrap(root, WrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 

@@ -21,7 +21,7 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignItems(root))
 	assert.Equal(t, AlignAuto, YGNodeStyleGetAlignSelf(root))
 	assert.Equal(t, PositionTypeRelative, YGNodeStyleGetPositionType(root))
-	assert.Equal(t, YGWrapNoWrap, YGNodeStyleGetFlexWrap(root))
+	assert.Equal(t, WrapNoWrap, YGNodeStyleGetFlexWrap(root))
 	assert.Equal(t, OverflowVisible, YGNodeStyleGetOverflow(root))
 	assertFloatEqual(t, 0, YGNodeStyleGetFlexGrow(root))
 	assertFloatEqual(t, 0, YGNodeStyleGetFlexShrink(root))
