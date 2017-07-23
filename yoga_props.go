@@ -64,7 +64,7 @@ func YGNodeStyleSetWidth(node *Node, width float32) {
 		if YGFloatIsUndefined(width) {
 			dim.Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -77,7 +77,7 @@ func YGNodeStyleSetWidthPercent(node *Node, width float32) {
 		if YGFloatIsUndefined(width) {
 			dim.Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -87,7 +87,7 @@ func YGNodeStyleSetWidthAuto(node *Node) {
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
 		dim.Unit = UnitAuto
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -105,7 +105,7 @@ func YGNodeStyleSetHeight(node *Node, height float32) {
 		if YGFloatIsUndefined(height) {
 			dim.Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -118,7 +118,7 @@ func YGNodeStyleSetHeightPercent(node *Node, height float32) {
 		if YGFloatIsUndefined(height) {
 			dim.Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -128,7 +128,7 @@ func YGNodeStyleSetHeightAuto(node *Node) {
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
 		dim.Unit = UnitAuto
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -141,7 +141,7 @@ func YGNodeStyleGetHeight(node *Node) Value {
 func YGNodeStyleSetPositionType(node *Node, positionType PositionType) {
 	if node.style.positionType != positionType {
 		node.style.positionType = positionType
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -159,7 +159,7 @@ func YGNodeStyleSetPosition(node *Node, edge Edge, position float32) {
 		if YGFloatIsUndefined(position) {
 			pos.Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -172,7 +172,7 @@ func YGNodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
 		if YGFloatIsUndefined(position) {
 			pos.Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -225,7 +225,7 @@ func YGNodeGetNodeType(node *Node) NodeType {
 func YGNodeStyleSetDirection(node *Node, direction Direction) {
 	if node.style.direction != direction {
 		node.style.direction = direction
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -238,7 +238,7 @@ func YGNodeStyleGetDirection(node *Node) Direction {
 func YGNodeStyleSetFlexDirection(node *Node, flexDirection FlexDirection) {
 	if node.style.flexDirection != flexDirection {
 		node.style.flexDirection = flexDirection
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -251,7 +251,7 @@ func YGNodeStyleGetFlexDirection(node *Node) FlexDirection {
 func YGNodeStyleSetJustifyContent(node *Node, justifyContent Justify) {
 	if node.style.justifyContent != justifyContent {
 		node.style.justifyContent = justifyContent
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -264,7 +264,7 @@ func YGNodeStyleGetJustifyContent(node *Node) Justify {
 func YGNodeStyleSetAlignContent(node *Node, alignContent Align) {
 	if node.style.alignContent != alignContent {
 		node.style.alignContent = alignContent
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -277,7 +277,7 @@ func YGNodeStyleGetAlignContent(node *Node) Align {
 func YGNodeStyleSetAlignItems(node *Node, alignItems Align) {
 	if node.style.alignItems != alignItems {
 		node.style.alignItems = alignItems
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -290,7 +290,7 @@ func YGNodeStyleGetAlignItems(node *Node) Align {
 func YGNodeStyleSetAlignSelf(node *Node, alignSelf Align) {
 	if node.style.alignSelf != alignSelf {
 		node.style.alignSelf = alignSelf
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -303,7 +303,7 @@ func YGNodeStyleGetAlignSelf(node *Node) Align {
 func YGNodeStyleSetFlexWrap(node *Node, flexWrap Wrap) {
 	if node.style.flexWrap != flexWrap {
 		node.style.flexWrap = flexWrap
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -316,7 +316,7 @@ func YGNodeStyleGetFlexWrap(node *Node) Wrap {
 func YGNodeStyleSetOverflow(node *Node, overflow Overflow) {
 	if node.style.overflow != overflow {
 		node.style.overflow = overflow
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -329,7 +329,7 @@ func YGNodeStyleGetOverflow(node *Node) Overflow {
 func YGNodeStyleSetDisplay(node *Node, display Display) {
 	if node.style.display != display {
 		node.style.display = display
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -342,7 +342,7 @@ func YGNodeStyleGetDisplay(node *Node) Display {
 func YGNodeStyleSetFlex(node *Node, flex float32) {
 	if node.style.flex != flex {
 		node.style.flex = flex
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -355,7 +355,7 @@ func YGNodeStyleGetFlex(node *Node) float32 {
 func YGNodeStyleSetFlexGrow(node *Node, flexGrow float32) {
 	if node.style.flexGrow != flexGrow {
 		node.style.flexGrow = flexGrow
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -363,7 +363,7 @@ func YGNodeStyleSetFlexGrow(node *Node, flexGrow float32) {
 func YGNodeStyleSetFlexShrink(node *Node, flexShrink float32) {
 	if node.style.flexShrink != flexShrink {
 		node.style.flexShrink = flexShrink
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -376,7 +376,7 @@ func YGNodeStyleSetFlexBasis(node *Node, flexBasis float32) {
 		if YGFloatIsUndefined(flexBasis) {
 			node.style.flexBasis.Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -389,7 +389,7 @@ func YGNodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
 		if YGFloatIsUndefined(flexBasis) {
 			node.style.flexBasis.Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -398,7 +398,7 @@ func YGNodeStyleSetFlexBasisAuto(node *Node) {
 	if node.style.flexBasis.Unit != UnitAuto {
 		node.style.flexBasis.Value = Undefined
 		node.style.flexBasis.Unit = UnitAuto
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -416,7 +416,7 @@ func YGNodeStyleSetMargin(node *Node, edge Edge, margin float32) {
 		if YGFloatIsUndefined(margin) {
 			node.style.margin[edge].Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -429,7 +429,7 @@ func YGNodeStyleSetMarginPercent(node *Node, edge Edge, margin float32) {
 		if YGFloatIsUndefined(margin) {
 			node.style.margin[edge].Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -443,7 +443,7 @@ func YGNodeStyleSetMarginAuto(node *Node, edge Edge) {
 	if node.style.margin[edge].Unit != UnitAuto {
 		node.style.margin[edge].Value = Undefined
 		node.style.margin[edge].Unit = UnitAuto
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -456,7 +456,7 @@ func YGNodeStyleSetPadding(node *Node, edge Edge, padding float32) {
 		if YGFloatIsUndefined(padding) {
 			node.style.padding[edge].Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -469,7 +469,7 @@ func YGNodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
 		if YGFloatIsUndefined(padding) {
 			node.style.padding[edge].Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -487,7 +487,7 @@ func YGNodeStyleSetBorder(node *Node, edge Edge, border float32) {
 		if YGFloatIsUndefined(border) {
 			node.style.border[edge].Unit = UnitUndefined
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -505,7 +505,7 @@ func YGNodeStyleSetMinWidth(node *Node, minWidth float32) {
 		if YGFloatIsUndefined(minWidth) {
 			node.style.minDimensions[DimensionWidth].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -518,7 +518,7 @@ func YGNodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
 		if YGFloatIsUndefined(minWidth) {
 			node.style.minDimensions[DimensionWidth].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -536,7 +536,7 @@ func YGNodeStyleSetMinHeight(node *Node, minHeight float32) {
 		if YGFloatIsUndefined(minHeight) {
 			node.style.minDimensions[DimensionHeight].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -549,7 +549,7 @@ func YGNodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
 		if YGFloatIsUndefined(minHeight) {
 			node.style.minDimensions[DimensionHeight].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -567,7 +567,7 @@ func YGNodeStyleSetMaxWidth(node *Node, maxWidth float32) {
 		if YGFloatIsUndefined(maxWidth) {
 			node.style.maxDimensions[DimensionWidth].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -580,7 +580,7 @@ func YGNodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
 		if YGFloatIsUndefined(maxWidth) {
 			node.style.maxDimensions[DimensionWidth].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -598,7 +598,7 @@ func YGNodeStyleSetMaxHeight(node *Node, maxHeight float32) {
 		if YGFloatIsUndefined(maxHeight) {
 			node.style.maxDimensions[DimensionHeight].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -611,7 +611,7 @@ func YGNodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
 		if YGFloatIsUndefined(maxHeight) {
 			node.style.maxDimensions[DimensionHeight].Unit = UnitAuto
 		}
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -624,7 +624,7 @@ func YGNodeStyleGetMaxHeight(node *Node) Value {
 func YGNodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
 	if node.style.aspectRatio != aspectRatio {
 		node.style.aspectRatio = aspectRatio
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -675,7 +675,7 @@ func YGNodeLayoutGetHadOverflow(node *Node) bool {
 
 // YGNodeLayoutGetMargin gets margin
 func YGNodeLayoutGetMargin(node *Node, edge Edge) float32 {
-	YGAssertWithNode(node, edge < EdgeEnd, "Cannot get layout properties of multi-edge shorthands")
+	assertWithNode(node, edge < EdgeEnd, "Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
 		if node.layout.direction == DirectionRTL {
 			return node.layout.margin[EdgeEnd]
@@ -693,7 +693,7 @@ func YGNodeLayoutGetMargin(node *Node, edge Edge) float32 {
 
 // YGNodeLayoutGetBorder gets border
 func YGNodeLayoutGetBorder(node *Node, edge Edge) float32 {
-	YGAssertWithNode(node, edge < EdgeEnd,
+	assertWithNode(node, edge < EdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
 		if node.layout.direction == DirectionRTL {
@@ -712,7 +712,7 @@ func YGNodeLayoutGetBorder(node *Node, edge Edge) float32 {
 
 // YGNodeLayoutGetPadding gets padding
 func YGNodeLayoutGetPadding(node *Node, edge Edge) float32 {
-	YGAssertWithNode(node, edge < EdgeEnd,
+	assertWithNode(node, edge < EdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
 		if node.layout.direction == DirectionRTL {

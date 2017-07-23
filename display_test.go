@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestDisplay_none(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -54,7 +54,7 @@ func TestDisplay_none(t *testing.T) {
 }
 
 func TestDisplay_none_fixed_size(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -106,7 +106,7 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 }
 
 func TestDisplay_none_with_margin(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -162,7 +162,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 }
 
 func TestDisplay_none_with_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -252,7 +252,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 }
 
 func TestDisplay_none_with_position(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)

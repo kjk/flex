@@ -89,7 +89,7 @@ func TestAssert_default_values(t *testing.T) {
 }
 
 func TestAssert_webdefault_values(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 	YGConfigSetUseWebDefaults(config, true)
 	root := NewNodeWithConfig(config)
 
@@ -100,10 +100,10 @@ func TestAssert_webdefault_values(t *testing.T) {
 }
 
 func TestAssert_webdefault_values_reset(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 	YGConfigSetUseWebDefaults(config, true)
 	root := NewNodeWithConfig(config)
-	YGNodeReset(root)
+	NodeReset(root)
 
 	assert.Equal(t, FlexDirectionRow, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignContent(root))

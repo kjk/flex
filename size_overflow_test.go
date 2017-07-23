@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestNested_overflowing_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -52,7 +52,7 @@ func TestNested_overflowing_child(t *testing.T) {
 }
 
 func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -103,7 +103,7 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 }
 
 func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)

@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestWrap_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
@@ -36,7 +36,7 @@ func TestWrap_child(t *testing.T) {
 }
 
 func TestWrap_grandchild(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 

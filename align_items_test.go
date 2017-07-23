@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestAlign_items_stretch(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -39,7 +39,7 @@ func TestAlign_items_stretch(t *testing.T) {
 }
 
 func TestAlign_items_center(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
@@ -77,7 +77,7 @@ func TestAlign_items_center(t *testing.T) {
 }
 
 func TestAlign_items_flex_start(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
@@ -115,7 +115,7 @@ func TestAlign_items_flex_start(t *testing.T) {
 }
 
 func TestAlign_items_flex_end(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
@@ -153,7 +153,7 @@ func TestAlign_items_flex_end(t *testing.T) {
 }
 
 func TestAlign_baseline(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -207,7 +207,7 @@ func TestAlign_baseline(t *testing.T) {
 }
 
 func TestAlign_baseline_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -276,7 +276,7 @@ func TestAlign_baseline_child(t *testing.T) {
 }
 
 func TestAlign_baseline_child_multiline(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -392,7 +392,7 @@ func TestAlign_baseline_child_multiline(t *testing.T) {
 }
 
 func TestAlign_baseline_child_multiline_override(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -510,7 +510,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 }
 
 func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -627,7 +627,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 }
 
 func TestAlign_baseline_child_top(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -697,7 +697,7 @@ func TestAlign_baseline_child_top(t *testing.T) {
 }
 
 func TestAlign_baseline_child_top2(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -767,7 +767,7 @@ func TestAlign_baseline_child_top2(t *testing.T) {
 }
 
 func TestAlign_baseline_double_nested_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -851,7 +851,7 @@ func TestAlign_baseline_double_nested_child(t *testing.T) {
 }
 
 func TestAlign_baseline_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
@@ -904,7 +904,7 @@ func TestAlign_baseline_column(t *testing.T) {
 }
 
 func TestAlign_baseline_child_margin(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -981,7 +981,7 @@ func TestAlign_baseline_child_margin(t *testing.T) {
 }
 
 func TestAlign_baseline_child_padding(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1058,7 +1058,7 @@ func TestAlign_baseline_child_padding(t *testing.T) {
 }
 
 func TestAlign_baseline_multiline(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1173,7 +1173,7 @@ func TestAlign_baseline_multiline(t *testing.T) {
 }
 
 func TestAlign_baseline_multiline_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
@@ -1287,7 +1287,7 @@ func TestAlign_baseline_multiline_column(t *testing.T) {
 }
 
 func TestAlign_baseline_multiline_column2(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
@@ -1401,7 +1401,7 @@ func TestAlign_baseline_multiline_column2(t *testing.T) {
 }
 
 func TestAlign_baseline_multiline_row_and_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1516,7 +1516,7 @@ func TestAlign_baseline_multiline_row_and_column(t *testing.T) {
 }
 
 func TestAlign_items_center_child_with_margin_bigger_than_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -1571,7 +1571,7 @@ func TestAlign_items_center_child_with_margin_bigger_than_parent(t *testing.T) {
 }
 
 func TestAlign_items_flex_end_child_with_margin_bigger_than_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -1626,7 +1626,7 @@ func TestAlign_items_flex_end_child_with_margin_bigger_than_parent(t *testing.T)
 }
 
 func TestAlign_items_center_child_without_margin_bigger_than_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -1679,7 +1679,7 @@ func TestAlign_items_center_child_without_margin_bigger_than_parent(t *testing.T
 }
 
 func TestAlign_items_flex_end_child_without_margin_bigger_than_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -1732,7 +1732,7 @@ func TestAlign_items_flex_end_child_without_margin_bigger_than_parent(t *testing
 }
 
 func TestAlign_center_should_size_based_on_content(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
@@ -1801,7 +1801,7 @@ func TestAlign_center_should_size_based_on_content(t *testing.T) {
 }
 
 func TestAlign_strech_should_size_based_on_parent(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)

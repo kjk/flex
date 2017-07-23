@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestAlign_self_center(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -40,7 +40,7 @@ func TestAlign_self_center(t *testing.T) {
 }
 
 func TestAlign_self_flex_end(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -77,7 +77,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 }
 
 func TestAlign_self_flex_start(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -114,7 +114,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 }
 
 func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
@@ -152,7 +152,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 }
 
 func TestAlign_self_baseline(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)

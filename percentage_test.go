@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestPercentage_width_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -40,7 +40,7 @@ func TestPercentage_width_height(t *testing.T) {
 }
 
 func TestPercentage_position_left_top(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -79,7 +79,7 @@ func TestPercentage_position_left_top(t *testing.T) {
 }
 
 func TestPercentage_position_bottom_right(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -118,7 +118,7 @@ func TestPercentage_position_bottom_right(t *testing.T) {
 }
 
 func TestPercentage_flex_basis(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -170,7 +170,7 @@ func TestPercentage_flex_basis(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_cross(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -221,7 +221,7 @@ func TestPercentage_flex_basis_cross(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_cross_min_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -272,7 +272,7 @@ func TestPercentage_flex_basis_cross_min_height(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_main_max_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -326,7 +326,7 @@ func TestPercentage_flex_basis_main_max_height(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_cross_max_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -379,7 +379,7 @@ func TestPercentage_flex_basis_cross_max_height(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_main_max_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -433,7 +433,7 @@ func TestPercentage_flex_basis_main_max_width(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_cross_max_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -486,7 +486,7 @@ func TestPercentage_flex_basis_cross_max_width(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_main_min_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -540,7 +540,7 @@ func TestPercentage_flex_basis_main_min_width(t *testing.T) {
 }
 
 func TestPercentage_flex_basis_cross_min_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -593,7 +593,7 @@ func TestPercentage_flex_basis_cross_min_width(t *testing.T) {
 }
 
 func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -698,7 +698,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 }
 
 func TestPercentage_margin_should_calculate_based_only_on_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -752,7 +752,7 @@ func TestPercentage_margin_should_calculate_based_only_on_width(t *testing.T) {
 }
 
 func TestPercentage_padding_should_calculate_based_only_on_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -806,7 +806,7 @@ func TestPercentage_padding_should_calculate_based_only_on_width(t *testing.T) {
 }
 
 func TestPercentage_absolute_position(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
@@ -845,7 +845,7 @@ func TestPercentage_absolute_position(t *testing.T) {
 }
 
 func TestPercentage_width_height_undefined_parent_size(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 
@@ -879,7 +879,7 @@ func TestPercentage_width_height_undefined_parent_size(t *testing.T) {
 }
 
 func TestPercent_within_flex_grow(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -957,7 +957,7 @@ func TestPercent_within_flex_grow(t *testing.T) {
 }
 
 func TestPercentage_container_in_wrapping_container(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -1039,7 +1039,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 }
 
 func TestPercent_absolute_position(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 60)

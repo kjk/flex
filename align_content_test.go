@@ -5,7 +5,7 @@ import (
 )
 
 func TestAlignContentFlexStart(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -104,7 +104,7 @@ func TestAlignContentFlexStart(t *testing.T) {
 
 func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
@@ -198,7 +198,7 @@ func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 }
 
 func TestAlign_content_flex_start_with_flex(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexWrap(root, WrapWrap)
@@ -298,7 +298,7 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 }
 
 func TestAlign_content_flex_end(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignFlexEnd)
@@ -396,7 +396,7 @@ func TestAlign_content_flex_end(t *testing.T) {
 }
 
 func TestAlign_content_stretch(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
@@ -489,7 +489,7 @@ func TestAlign_content_stretch(t *testing.T) {
 }
 
 func TestAlign_content_spacebetween(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -590,7 +590,7 @@ func TestAlign_content_spacebetween(t *testing.T) {
 
 func TestAlign_content_spacearound(t *testing.T) {
 
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -689,7 +689,7 @@ func TestAlign_content_spacearound(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -783,7 +783,7 @@ func TestAlign_content_stretch_row(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_children(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -893,7 +893,7 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_flex(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -993,7 +993,7 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1092,7 +1092,7 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_margin(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1194,7 +1194,7 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_padding(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1296,7 +1296,7 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1348,7 +1348,7 @@ func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1443,7 +1443,7 @@ func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1538,7 +1538,7 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 }
 
 func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -1633,7 +1633,7 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 }
 
 func TestAlign_content_stretch_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
@@ -1745,7 +1745,7 @@ func TestAlign_content_stretch_column(t *testing.T) {
 }
 
 func TestAlign_content_stretch_is_not_overriding_align_items(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetAlignContent(root, AlignStretch)

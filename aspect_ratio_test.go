@@ -395,7 +395,7 @@ func TestAspect_ratio_with_measure_func(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNode()
-	YGNodeSetMeasureFunc(rootChild0, _measure)
+	NodeSetMeasureFunc(rootChild0, _measure)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 

@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestBorder_no_size(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetBorder(root, EdgeLeft, 10)
@@ -26,7 +26,7 @@ func TestBorder_no_size(t *testing.T) {
 }
 
 func TestBorder_container_match_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetBorder(root, EdgeLeft, 10)
@@ -64,7 +64,7 @@ func TestBorder_container_match_child(t *testing.T) {
 }
 
 func TestBorder_flex_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetBorder(root, EdgeLeft, 10)
@@ -104,7 +104,7 @@ func TestBorder_flex_child(t *testing.T) {
 }
 
 func TestBorder_stretch_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetBorder(root, EdgeLeft, 10)
@@ -143,7 +143,7 @@ func TestBorder_stretch_child(t *testing.T) {
 }
 
 func TestBorder_center_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)

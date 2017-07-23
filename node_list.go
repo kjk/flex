@@ -12,7 +12,9 @@ func YGNodeListNew(initialCapacity int) *YGNodeList {
 
 // YGNodeListFree frees a node
 func YGNodeListFree(list *YGNodeList) {
-	// nothing to do
+	if list != nil {
+		list.items = nil
+	}
 }
 
 // YGNodeListCount returns list of nodes

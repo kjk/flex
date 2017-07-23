@@ -300,10 +300,10 @@ func NewNode() *Node {
 	return NewNodeWithConfig(&gYGConfigDefaults)
 }
 
-// YGNodeReset resets a node
-func YGNodeReset(node *Node) {
-	YGAssertWithNode(node, YGNodeGetChildCount(node) == 0, "Cannot reset a node which still has children attached")
-	YGAssertWithNode(node, node.parent == nil, "Cannot reset a node still attached to a parent")
+// NodeReset resets a node
+func NodeReset(node *Node) {
+	assertWithNode(node, YGNodeGetChildCount(node) == 0, "Cannot reset a node which still has children attached")
+	assertWithNode(node, node.parent == nil, "Cannot reset a node still attached to a parent")
 
 	YGNodeListFree(node.children)
 
@@ -316,13 +316,13 @@ func YGNodeReset(node *Node) {
 	node.config = config
 }
 
-// YGConfigGetDefault returns default config, only for C#
-func YGConfigGetDefault() *Config {
+// ConfigGetDefault returns default config, only for C#
+func ConfigGetDefault() *Config {
 	return &gYGConfigDefaults
 }
 
-// YGConfigNew creates new config
-func YGConfigNew() *Config {
+// NewConfig creates new config
+func NewConfig() *Config {
 	config := &Config{}
 	YGAssert(config != nil, "Could not allocate memory for config")
 
@@ -330,30 +330,30 @@ func YGConfigNew() *Config {
 	return config
 }
 
-// YGConfigCopy copies a config
-func YGConfigCopy(dest *Config, src *Config) {
+// ConfigCopy copies a config
+func ConfigCopy(dest *Config, src *Config) {
 	*dest = *src
 }
 
-// YGNodeMarkDirtyInternal marks the node as dirty, internally
-func YGNodeMarkDirtyInternal(node *Node) {
+// nodeMarkDirtyInternal marks the node as dirty, internally
+func nodeMarkDirtyInternal(node *Node) {
 	if !node.isDirty {
 		node.isDirty = true
 		node.layout.computedFlexBasis = Undefined
 		if node.parent != nil {
-			YGNodeMarkDirtyInternal(node.parent)
+			nodeMarkDirtyInternal(node.parent)
 		}
 	}
 }
 
-// YGNodeSetMeasureFunc sets measure function
-func YGNodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
+// NodeSetMeasureFunc sets measure function
+func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
 	if measureFunc == nil {
 		node.measure = nil
 		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
 		node.nodeType = NodeTypeDefault
 	} else {
-		YGAssertWithNode(
+		assertWithNode(
 			node,
 			YGNodeGetChildCount(node) == 0,
 			"Cannot set measure function: Nodes with measure functions cannot have children.")
@@ -380,12 +380,12 @@ func YGNodeGetBaselineFunc(node *Node) BaselineFunc {
 
 // YGNodeInsertChild inserts a child
 func YGNodeInsertChild(node *Node, child *Node, index int) {
-	YGAssertWithNode(node, child.parent == nil, "Child already has a parent, it must be removed first.")
-	YGAssertWithNode(node, node.measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
+	assertWithNode(node, child.parent == nil, "Child already has a parent, it must be removed first.")
+	assertWithNode(node, node.measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
 
 	YGNodeListInsert(&node.children, child, index)
 	child.parent = node
-	YGNodeMarkDirtyInternal(node)
+	nodeMarkDirtyInternal(node)
 }
 
 // YGNodeRemoveChild removes the child
@@ -393,7 +393,7 @@ func YGNodeRemoveChild(node *Node, child *Node) {
 	if YGNodeListDelete(node.children, child) != nil {
 		child.layout = gYGNodeDefaults.layout // layout is no longer valid
 		child.parent = nil
-		YGNodeMarkDirtyInternal(node)
+		nodeMarkDirtyInternal(node)
 	}
 }
 
@@ -414,9 +414,9 @@ func YGNodeGetChildCount(node *Node) int {
 
 // YGNodeMarkDirty marks node as dirty
 func YGNodeMarkDirty(node *Node) {
-	YGAssertWithNode(node, node.measure != nil,
+	assertWithNode(node, node.measure != nil,
 		"Only leaf nodes with custom measure functions should manually mark themselves as dirty")
-	YGNodeMarkDirtyInternal(node)
+	nodeMarkDirtyInternal(node)
 }
 
 // YGNodeIsDirty returns true if node is dirty
@@ -463,7 +463,7 @@ func styleEq(s1, s2 *Style) bool {
 func YGNodeCopyStyle(dstNode *Node, srcNode *Node) {
 	if !styleEq(&dstNode.style, &srcNode.style) {
 		dstNode.style = srcNode.style
-		YGNodeMarkDirtyInternal(dstNode)
+		nodeMarkDirtyInternal(dstNode)
 	}
 }
 
@@ -730,7 +730,7 @@ func YGNodeResolveDirection(node *Node, parentDirection Direction) Direction {
 func YGBaseline(node *Node) float32 {
 	if node.baseline != nil {
 		baseline := node.baseline(node, node.layout.measuredDimensions[DimensionWidth], node.layout.measuredDimensions[DimensionHeight])
-		YGAssertWithNode(node, !YGFloatIsUndefined(baseline), "Expect custom baseline function to not return NaN")
+		assertWithNode(node, !YGFloatIsUndefined(baseline), "Expect custom baseline function to not return NaN")
 		return baseline
 	}
 
@@ -1299,7 +1299,7 @@ func YGNodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode
 
 // YGNodeWithMeasureFuncSetMeasuredDimensions sets measure dimensions for node with measure func
 func YGNodeWithMeasureFuncSetMeasuredDimensions(node *Node, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
-	YGAssertWithNode(node, node.measure != nil, "Expected node to have custom measure function")
+	assertWithNode(node, node.measure != nil, "Expected node to have custom measure function")
 
 	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, FlexDirectionRow, availableWidth)
 	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, FlexDirectionColumn, availableWidth)
@@ -2976,7 +2976,7 @@ func YGLayoutNodeInternal(node *Node, availableWidth float32, availableHeight fl
 
 // YGConfigSetPointScaleFactor sets scale factor
 func YGConfigSetPointScaleFactor(config *Config, pixelsInPoint float32) {
-	YGAssertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
+	assertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
 
 	// We store points for Pixel as we will use it for rounding
 	if pixelsInPoint == 0 {
@@ -3137,8 +3137,8 @@ func YGConfigGetContext(config *Config) interface{} {
 	return config.context
 }
 
-// YGLog logs
-func YGLog(node *Node, level LogLevel, format string, args ...interface{}) {
+// log logs
+func log(node *Node, level LogLevel, format string, args ...interface{}) {
 	fmt.Printf(format, args...)
 }
 
@@ -3149,13 +3149,13 @@ func YGAssert(cond bool, format string, args ...interface{}) {
 	}
 }
 
-// YGAssertWithNode assert if cond is not true
-func YGAssertWithNode(node *Node, cond bool, format string, args ...interface{}) {
+// assertWithNode assert if cond is not true
+func assertWithNode(node *Node, cond bool, format string, args ...interface{}) {
 	YGAssert(cond, format, args...)
 }
 
-// YGAssertWithConfig asserts with config
-func YGAssertWithConfig(config *Config, condition bool, message string) {
+// assertWithConfig asserts with config
+func assertWithConfig(config *Config, condition bool, message string) {
 	if !condition {
 		panic(message)
 	}

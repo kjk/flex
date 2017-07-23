@@ -7,7 +7,7 @@ import (
 )
 
 func newHadOverflowTests() (*Config, *Node) {
-	config := YGConfigNew()
+	config := NewConfig()
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 100)

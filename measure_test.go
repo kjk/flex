@@ -48,7 +48,7 @@ func TestDont_measure_single_grow_shrink_child(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeSetContext(rootChild0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0, _measure)
+	NodeSetMeasureFunc(rootChild0, _measure)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -69,7 +69,7 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 	rootChild0Child0 := NewNode()
 	YGNodeStyleSetPositionType(rootChild0Child0, PositionTypeAbsolute)
 	YGNodeSetContext(rootChild0Child0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0Child0, _measure3)
+	NodeSetMeasureFunc(rootChild0Child0, _measure3)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -87,7 +87,7 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeSetContext(rootChild0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0, _measure3)
+	NodeSetMeasureFunc(rootChild0, _measure3)
 	YGNodeStyleSetMinWidth(rootChild0, 10)
 	YGNodeStyleSetMaxWidth(rootChild0, 10)
 	YGNodeStyleSetMinHeight(rootChild0, 10)
@@ -113,7 +113,7 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeSetContext(rootChild0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0, _measure3)
+	NodeSetMeasureFunc(rootChild0, _measure3)
 	YGNodeStyleSetMinWidthPercent(rootChild0, 10)
 	YGNodeStyleSetMaxWidthPercent(rootChild0, 10)
 	YGNodeStyleSetMinHeightPercent(rootChild0, 10)
@@ -139,7 +139,7 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeSetContext(rootChild0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0, _measure3)
+	NodeSetMeasureFunc(rootChild0, _measure3)
 	YGNodeStyleSetMinWidthPercent(rootChild0, 10)
 	YGNodeStyleSetMaxWidthPercent(rootChild0, 10)
 	YGNodeStyleSetMinHeight(rootChild0, 10)
@@ -165,7 +165,7 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeSetContext(rootChild0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0, _measure3)
+	NodeSetMeasureFunc(rootChild0, _measure3)
 	YGNodeStyleSetMinWidth(rootChild0, 10)
 	YGNodeStyleSetMaxWidth(rootChild0, 10)
 	YGNodeStyleSetMinHeightPercent(rootChild0, 10)
@@ -187,7 +187,7 @@ func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -203,7 +203,7 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 
 	rootChild0 := NewNode()
 	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -225,7 +225,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionColumn)
 	YGNodeStyleSetPadding(rootChild0, EdgeAll, 100)
 	YGNodeSetContext(rootChild0, &measureCount)
-	YGNodeSetMeasureFunc(rootChild0, _measure3)
+	NodeSetMeasureFunc(rootChild0, _measure3)
 
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -236,7 +236,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 }
 
 func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -248,7 +248,7 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -274,7 +274,7 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 }
 
 func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)
@@ -283,7 +283,7 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -309,7 +309,7 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 }
 
 func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -318,7 +318,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -344,7 +344,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 }
 
 func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -354,7 +354,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -380,7 +380,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 }
 
 func TestMeasure_with_fixed_size(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)
@@ -389,7 +389,7 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeStyleSetWidth(rootChild0, 10)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -417,7 +417,7 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 }
 
 func TestMeasure_with_flex_shrink(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)
@@ -426,7 +426,7 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -453,7 +453,7 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 }
 
 func TestMeasure_no_padding(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)
@@ -461,7 +461,7 @@ func TestMeasure_no_padding(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 	YGNodeStyleSetFlexShrink(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -514,12 +514,12 @@ func TestCan_nullify_measure_func_on_any_node(t *testing.T) {
 	root := NewNode()
 	YGNodeInsertChild(root, NewNode(), 0)
 
-	YGNodeSetMeasureFunc(root, nil)
+	NodeSetMeasureFunc(root, nil)
 	assert.True(t, YGNodeGetMeasureFunc(root) == nil)
 }
 
 func TestCant_call_negative_measure(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
@@ -527,7 +527,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 	YGNodeStyleSetHeight(root, 10)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _measure_assert_negative)
+	NodeSetMeasureFunc(rootChild0, _measure_assert_negative)
 	YGNodeStyleSetMargin(rootChild0, EdgeTop, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -535,7 +535,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 }
 
 func TestCant_call_negative_measure_horizontal(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -543,7 +543,7 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 	YGNodeStyleSetHeight(root, 20)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeSetMeasureFunc(rootChild0, _measure_assert_negative)
+	NodeSetMeasureFunc(rootChild0, _measure_assert_negative)
 	YGNodeStyleSetMargin(rootChild0, EdgeStart, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 

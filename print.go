@@ -4,27 +4,27 @@ import "fmt"
 
 func YGIndent(node *Node, n int) {
 	for i := 0; i < n; i++ {
-		YGLog(node, LogLevelDebug, "  ")
+		log(node, LogLevelDebug, "  ")
 	}
 }
 
 func YGPrintNumberIfNotUndefinedf(node *Node, str string, number float32) {
 	if !YGFloatIsUndefined(number) {
-		YGLog(node, LogLevelDebug, "%s: %g; ", str, number)
+		log(node, LogLevelDebug, "%s: %g; ", str, number)
 	}
 }
 
 func YGPrintNumberIfNotUndefined(node *Node, str string, number *Value) {
 	if number.Unit != UnitUndefined {
 		if number.Unit == UnitAuto {
-			YGLog(node, LogLevelDebug, "%s: auto; ", str)
+			log(node, LogLevelDebug, "%s: auto; ", str)
 		} else {
 			unit := "%"
 
 			if number.Unit == UnitPoint {
 				unit = "px"
 			}
-			YGLog(node, LogLevelDebug, "%s: %g%s; ", str, number.Value, unit)
+			log(node, LogLevelDebug, "%s: %g%s; ", str, number.Value, unit)
 		}
 	}
 }
@@ -62,43 +62,43 @@ func YGPrintEdges(node *Node, str string, edges []Value) {
 
 func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 	YGIndent(node, level)
-	YGLog(node, LogLevelDebug, "<div ")
+	log(node, LogLevelDebug, "<div ")
 
 	if node.print != nil {
 		node.print(node)
 	}
 
 	if options&PrintOptionsLayout != 0 {
-		YGLog(node, LogLevelDebug, "layout=\"")
-		YGLog(node, LogLevelDebug, "width: %g; ", node.layout.dimensions[DimensionWidth])
-		YGLog(node, LogLevelDebug, "height: %g; ", node.layout.dimensions[DimensionHeight])
-		YGLog(node, LogLevelDebug, "top: %g; ", node.layout.position[EdgeTop])
-		YGLog(node, LogLevelDebug, "left: %g;", node.layout.position[EdgeLeft])
-		YGLog(node, LogLevelDebug, "\" ")
+		log(node, LogLevelDebug, "layout=\"")
+		log(node, LogLevelDebug, "width: %g; ", node.layout.dimensions[DimensionWidth])
+		log(node, LogLevelDebug, "height: %g; ", node.layout.dimensions[DimensionHeight])
+		log(node, LogLevelDebug, "top: %g; ", node.layout.position[EdgeTop])
+		log(node, LogLevelDebug, "left: %g;", node.layout.position[EdgeLeft])
+		log(node, LogLevelDebug, "\" ")
 	}
 
 	if options&PrintOptionsStyle != 0 {
-		YGLog(node, LogLevelDebug, "style=\"")
+		log(node, LogLevelDebug, "style=\"")
 		if node.style.flexDirection != gYGNodeDefaults.style.flexDirection {
-			YGLog(node,
+			log(node,
 				LogLevelDebug,
 				"flex-direction: %s; ",
 				YGFlexDirectionToString(node.style.flexDirection))
 		}
 		if node.style.justifyContent != gYGNodeDefaults.style.justifyContent {
-			YGLog(node,
+			log(node,
 				LogLevelDebug,
 				"justify-content: %s; ",
 				YGJustifyToString(node.style.justifyContent))
 		}
 		if node.style.alignItems != gYGNodeDefaults.style.alignItems {
-			YGLog(node, LogLevelDebug, "align-items: %s; ", YGAlignToString(node.style.alignItems))
+			log(node, LogLevelDebug, "align-items: %s; ", YGAlignToString(node.style.alignItems))
 		}
 		if node.style.alignContent != gYGNodeDefaults.style.alignContent {
-			YGLog(node, LogLevelDebug, "align-content: %s; ", YGAlignToString(node.style.alignContent))
+			log(node, LogLevelDebug, "align-content: %s; ", YGAlignToString(node.style.alignContent))
 		}
 		if node.style.alignSelf != gYGNodeDefaults.style.alignSelf {
-			YGLog(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.style.alignSelf))
+			log(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.style.alignSelf))
 		}
 
 		YGPrintNumberIfNotUndefinedf(node, "flex-grow", node.style.flexGrow)
@@ -107,15 +107,15 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 		YGPrintNumberIfNotUndefinedf(node, "flex", node.style.flex)
 
 		if node.style.flexWrap != gYGNodeDefaults.style.flexWrap {
-			YGLog(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.style.flexWrap))
+			log(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.style.flexWrap))
 		}
 
 		if node.style.overflow != gYGNodeDefaults.style.overflow {
-			YGLog(node, LogLevelDebug, "overflow: %s; ", YGOverflowToString(node.style.overflow))
+			log(node, LogLevelDebug, "overflow: %s; ", YGOverflowToString(node.style.overflow))
 		}
 
 		if node.style.display != gYGNodeDefaults.style.display {
-			YGLog(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.style.display))
+			log(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.style.display))
 		}
 
 		YGPrintEdges(node, "margin", node.style.margin[:])
@@ -130,7 +130,7 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 		YGPrintNumberIfNotAuto(node, "min-height", &node.style.minDimensions[DimensionHeight])
 
 		if node.style.positionType != gYGNodeDefaults.style.positionType {
-			YGLog(node,
+			log(node,
 				LogLevelDebug,
 				"position: %s; ",
 				YGPositionTypeToString(node.style.positionType))
@@ -140,24 +140,24 @@ func YGNodePrintInternal(node *Node, options PrintOptions, level int) {
 		YGPrintEdgeIfNotUndefined(node, "right", node.style.position[:], EdgeRight)
 		YGPrintEdgeIfNotUndefined(node, "top", node.style.position[:], EdgeTop)
 		YGPrintEdgeIfNotUndefined(node, "bottom", node.style.position[:], EdgeBottom)
-		YGLog(node, LogLevelDebug, "\" ")
+		log(node, LogLevelDebug, "\" ")
 
 		if node.measure != nil {
-			YGLog(node, LogLevelDebug, "has-custom-measure=\"true\"")
+			log(node, LogLevelDebug, "has-custom-measure=\"true\"")
 		}
 	}
-	YGLog(node, LogLevelDebug, ">")
+	log(node, LogLevelDebug, ">")
 
 	childCount := YGNodeListCount(node.children)
 	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
-			YGLog(node, LogLevelDebug, "\n")
+			log(node, LogLevelDebug, "\n")
 			YGNodePrintInternal(YGNodeGetChild(node, i), options, level+1)
 		}
 		YGIndent(node, level)
-		YGLog(node, LogLevelDebug, "\n")
+		log(node, LogLevelDebug, "\n")
 	}
-	YGLog(node, LogLevelDebug, "</div>")
+	log(node, LogLevelDebug, "</div>")
 }
 
 func YGNodePrint(node *Node, options PrintOptions) {

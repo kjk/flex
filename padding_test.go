@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestPadding_no_size(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetPadding(root, EdgeLeft, 10)
@@ -26,7 +26,7 @@ func TestPadding_no_size(t *testing.T) {
 }
 
 func TestPadding_container_match_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetPadding(root, EdgeLeft, 10)
@@ -64,7 +64,7 @@ func TestPadding_container_match_child(t *testing.T) {
 }
 
 func TestPadding_flex_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetPadding(root, EdgeLeft, 10)
@@ -104,7 +104,7 @@ func TestPadding_flex_child(t *testing.T) {
 }
 
 func TestPadding_stretch_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetPadding(root, EdgeLeft, 10)
@@ -143,7 +143,7 @@ func TestPadding_stretch_child(t *testing.T) {
 }
 
 func TestPadding_center_child(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -184,7 +184,7 @@ func TestPadding_center_child(t *testing.T) {
 }
 
 func TestChild_with_padding_align_end(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)

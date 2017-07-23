@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 	YGConfigSetExperimentalFeatureEnabled(config, ExperimentalFeatureWebFlexBasis, true)
 
 	root := NewNodeWithConfig(config)

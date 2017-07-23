@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestFlex_direction_column_no_height(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
 
@@ -64,7 +64,7 @@ func TestFlex_direction_column_no_height(t *testing.T) {
 }
 
 func TestFlex_direction_row_no_width(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -127,7 +127,7 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 }
 
 func TestFlex_direction_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -190,7 +190,7 @@ func TestFlex_direction_column(t *testing.T) {
 }
 
 func TestFlex_direction_row(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -254,7 +254,7 @@ func TestFlex_direction_row(t *testing.T) {
 }
 
 func TestFlex_direction_column_reverse(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionColumnReverse)
@@ -318,7 +318,7 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 }
 
 func TestFlex_direction_row_reverse(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRowReverse)

@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestJustify_content_row_flex_start(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -67,7 +67,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 }
 
 func TestJustify_content_row_flex_end(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -132,7 +132,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 }
 
 func TestJustify_content_row_center(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -197,7 +197,7 @@ func TestJustify_content_row_center(t *testing.T) {
 }
 
 func TestJustify_content_row_space_between(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -262,7 +262,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 }
 
 func TestJustify_content_row_space_around(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -327,7 +327,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 }
 
 func TestJustify_content_column_flex_start(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 102)
@@ -389,7 +389,7 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 }
 
 func TestJustify_content_column_flex_end(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyFlexEnd)
@@ -453,7 +453,7 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 }
 
 func TestJustify_content_column_center(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifyCenter)
@@ -517,7 +517,7 @@ func TestJustify_content_column_center(t *testing.T) {
 }
 
 func TestJustify_content_column_space_between(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifySpaceBetween)
@@ -581,7 +581,7 @@ func TestJustify_content_column_space_between(t *testing.T) {
 }
 
 func TestJustify_content_column_space_around(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, JustifySpaceAround)

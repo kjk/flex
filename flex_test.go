@@ -3,7 +3,7 @@ package flex
 import "testing"
 
 func TestFlex_basis_flex_grow_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -53,7 +53,7 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 }
 
 func TestFlex_basis_flex_grow_row(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -104,7 +104,7 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 }
 
 func TestFlex_basis_flex_shrink_column(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -154,7 +154,7 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 }
 
 func TestFlex_basis_flex_shrink_row(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
@@ -205,7 +205,7 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 }
 
 func TestFlex_shrink_to_zero(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetHeight(root, 75)
@@ -271,7 +271,7 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 }
 
 func TestFlex_basis_overrides_main_size(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -338,7 +338,7 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 }
 
 func TestFlex_grow_shrink_at_most(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 100)
@@ -387,7 +387,7 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 }
 
 func TestFlex_grow_less_than_factor_one(t *testing.T) {
-	config := YGConfigNew()
+	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)
