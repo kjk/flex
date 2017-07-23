@@ -181,11 +181,6 @@ func YGNodeStyleGetPosition(node *Node, edge Edge) Value {
 	return node.Style.position[edge]
 }
 
-// YGNodeGetContext gets context
-func YGNodeGetContext(node *Node) interface{} {
-	return node.Context
-}
-
 // YGNodeSetPrintFunc sets print func
 func YGNodeSetPrintFunc(node *Node, printFunc PrintFunc) {
 	node.Print = printFunc

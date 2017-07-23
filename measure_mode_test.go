@@ -6,16 +6,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type _MeasureConstraint struct {
+type measureConstraint struct {
 	width      float32
 	widthMode  MeasureMode
 	height     float32
 	heightMode MeasureMode
 }
 
-type _MeasureConstraintList struct {
+type measureConstraintList struct {
 	length      int
-	constraints []_MeasureConstraint
+	constraints []measureConstraint
 }
 
 func _measure2(node *Node,
@@ -23,7 +23,7 @@ func _measure2(node *Node,
 	widthMode MeasureMode,
 	height float32,
 	heightMode MeasureMode) Size {
-	constraintList := YGNodeGetContext(node).(*_MeasureConstraintList)
+	constraintList := node.Context.(*measureConstraintList)
 	constraints := constraintList.constraints
 	currentIndex := constraintList.length
 	(&constraints[currentIndex]).width = width
@@ -48,9 +48,9 @@ func _measure2(node *Node,
 }
 
 func TestExactly_measure_stretched_child_column(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -72,9 +72,9 @@ func TestExactly_measure_stretched_child_column(t *testing.T) {
 }
 
 func TestExactly_measure_stretched_child_row(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -97,9 +97,9 @@ func TestExactly_measure_stretched_child_row(t *testing.T) {
 }
 
 func TestAt_most_main_axis_column(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -121,9 +121,9 @@ func TestAt_most_main_axis_column(t *testing.T) {
 }
 
 func TestAt_most_cross_axis_column(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -146,9 +146,9 @@ func TestAt_most_cross_axis_column(t *testing.T) {
 }
 
 func TestAt_most_main_axis_row(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -171,9 +171,9 @@ func TestAt_most_main_axis_row(t *testing.T) {
 }
 
 func TestAt_most_cross_axis_row(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -197,9 +197,9 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 }
 
 func TestFlex_child(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -224,9 +224,9 @@ func TestFlex_child(t *testing.T) {
 }
 
 func TestFlex_child_with_flex_basis(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -249,9 +249,9 @@ func TestFlex_child_with_flex_basis(t *testing.T) {
 }
 
 func TestOverflow_scroll_column(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()
@@ -278,9 +278,9 @@ func TestOverflow_scroll_column(t *testing.T) {
 }
 
 func TestOverflow_scroll_row(t *testing.T) {
-	constraintList := _MeasureConstraintList{
+	constraintList := measureConstraintList{
 		length:      0,
-		constraints: make([]_MeasureConstraint, 10, 10),
+		constraints: make([]measureConstraint, 10, 10),
 	}
 
 	root := NewNode()

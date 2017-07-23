@@ -8,7 +8,7 @@ import (
 )
 
 func _measure3(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
-	measureCount, ok := YGNodeGetContext(node).(*int)
+	measureCount, ok := node.Context.(*int)
 	if ok {
 		(*measureCount)++
 	}

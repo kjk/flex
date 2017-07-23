@@ -2,8 +2,8 @@ package flex
 
 import "testing"
 
-func _baseline(node *Node, width float32, height float32) float32 {
-	baseline := YGNodeGetContext(node).(float32)
+func baselineFunc(node *Node, width float32, height float32) float32 {
+	baseline := node.Context.(float32)
 	return baseline
 }
 
@@ -28,7 +28,7 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	rootChild1child0 := NewNode()
 	rootChild1child0.Context = baselineValue
 	NodeStyleSetWidth(rootChild1child0, 50)
-	rootChild1child0.Baseline = _baseline
+	rootChild1child0.Baseline = baselineFunc
 	NodeStyleSetHeight(rootChild1child0, 20)
 	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
