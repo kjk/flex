@@ -97,7 +97,6 @@ func TestHorizontal_overrides_all(t *testing.T) {
 	assertFloatEqual(t, 20, YGNodeLayoutGetTop(rootChild0))
 	assertFloatEqual(t, 10, YGNodeLayoutGetRight(rootChild0))
 	assertFloatEqual(t, 20, YGNodeLayoutGetBottom(rootChild0))
-
 }
 
 func TestVertical_overrides_all(t *testing.T) {

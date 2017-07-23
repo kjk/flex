@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func _measureMax(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+func measureMax(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount := YGNodeGetContext(node).(int)
 	measureCount++
 	YGNodeSetContext(node, measureCount)
@@ -23,7 +23,7 @@ func _measureMax(node *Node, width float32, widthMode MeasureMode, height float3
 	}
 }
 
-func _measureMin(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+func measureMin(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount := YGNodeGetContext(node).(int)
 	measureCount++
 	YGNodeSetContext(node, measureCount)
@@ -40,7 +40,7 @@ func _measureMin(node *Node, width float32, widthMode MeasureMode, height float3
 	}
 }
 
-func _measure_84_49(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+func measure8449(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount, ok := YGNodeGetContext(node).(int)
 	if ok {
 		measureCount++
@@ -63,7 +63,7 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 	rootChild0 := NewNode()
 	measureCount := 0
 	YGNodeSetContext(rootChild0, measureCount)
-	NodeSetMeasureFunc(rootChild0, _measureMax)
+	NodeSetMeasureFunc(rootChild0, measureMax)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -80,7 +80,7 @@ func TestRemeasure_with_same_exact_width_larger_than_needed_height(t *testing.T)
 	rootChild0 := NewNode()
 	measureCount := 0
 	YGNodeSetContext(rootChild0, measureCount)
-	NodeSetMeasureFunc(rootChild0, _measureMin)
+	NodeSetMeasureFunc(rootChild0, measureMin)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
@@ -98,7 +98,7 @@ func TestRemeasure_with_same_atmost_width_larger_than_needed_height(t *testing.T
 	rootChild0 := NewNode()
 	measureCount := 0
 	YGNodeSetContext(rootChild0, measureCount)
-	NodeSetMeasureFunc(rootChild0, _measureMin)
+	NodeSetMeasureFunc(rootChild0, measureMin)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
@@ -116,7 +116,7 @@ func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 	rootChild0 := NewNode()
 	measureCount := 0
 	YGNodeSetContext(rootChild0, measureCount)
-	NodeSetMeasureFunc(rootChild0, _measureMin)
+	NodeSetMeasureFunc(rootChild0, measureMin)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
@@ -135,7 +135,7 @@ func TestRemeasure_with_atmost_computed_width_undefined_height(t *testing.T) {
 	rootChild0 := NewNode()
 	measureCount := 0
 	YGNodeSetContext(rootChild0, measureCount)
-	NodeSetMeasureFunc(rootChild0, _measureMin)
+	NodeSetMeasureFunc(rootChild0, measureMin)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, 100, Undefined, DirectionLTR)
@@ -143,7 +143,6 @@ func TestRemeasure_with_atmost_computed_width_undefined_height(t *testing.T) {
 
 	measureCount = YGNodeGetContext(rootChild0).(int)
 	assert.Equal(t, 1, measureCount)
-
 }
 
 func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *testing.T) {
@@ -161,12 +160,11 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 
 	rootChild0Child0 := NewNode()
 	YGNodeSetContext(rootChild0Child0, measureCount)
-	NodeSetMeasureFunc(rootChild0Child0, _measure_84_49)
+	NodeSetMeasureFunc(rootChild0Child0, measure8449)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	measureCount = YGNodeGetContext(rootChild0Child0).(int)
 	assert.Equal(t, 1, measureCount)
-
 }

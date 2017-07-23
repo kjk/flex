@@ -74,40 +74,40 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	child1 := NewNode()
 	YGNodeStyleSetFlexGrow(child1, 1)
 
-	child1_child0 := NewNode()
-	child1_child0_child0 := NewNode()
-	YGNodeStyleSetWidth(child1_child0_child0, 8)
-	YGNodeStyleSetHeight(child1_child0_child0, 16)
+	child1Child0 := NewNode()
+	child1Child0Child0 := NewNode()
+	YGNodeStyleSetWidth(child1Child0Child0, 8)
+	YGNodeStyleSetHeight(child1Child0Child0, 16)
 
-	YGNodeInsertChild(child1_child0, child1_child0_child0, 0)
+	YGNodeInsertChild(child1Child0, child1Child0Child0, 0)
 
-	YGNodeInsertChild(child1, child1_child0, 0)
+	YGNodeInsertChild(child1, child1Child0, 0)
 	YGNodeInsertChild(root, child0, 0)
 	YGNodeInsertChild(root, child1, 0)
 
 	YGNodeStyleSetDisplay(child0, DisplayFlex)
 	YGNodeStyleSetDisplay(child1, DisplayNone)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
-	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1_child0_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1_child0_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1Child0Child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1Child0Child0))
 
 	YGNodeStyleSetDisplay(child0, DisplayNone)
 	YGNodeStyleSetDisplay(child1, DisplayFlex)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
-	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1_child0_child0))
-	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1_child0_child0))
+	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1Child0Child0))
+	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1Child0Child0))
 
 	YGNodeStyleSetDisplay(child0, DisplayFlex)
 	YGNodeStyleSetDisplay(child1, DisplayNone)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
-	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1_child0_child0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1_child0_child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1Child0Child0))
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1Child0Child0))
 
 	YGNodeStyleSetDisplay(child0, DisplayNone)
 	YGNodeStyleSetDisplay(child1, DisplayFlex)
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
-	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1_child0_child0))
-	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1_child0_child0))
+	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1Child0Child0))
+	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1Child0Child0))
 }
 
 func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
