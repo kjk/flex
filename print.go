@@ -9,7 +9,7 @@ func YGIndent(node *Node, n int) {
 }
 
 func YGPrintNumberIfNotUndefinedf(node *Node, str string, number float32) {
-	if !YGFloatIsUndefined(number) {
+	if !FloatIsUndefined(number) {
 		log(node, LogLevelDebug, "%s: %g; ", str, number)
 	}
 }
@@ -39,14 +39,14 @@ func YGPrintEdgeIfNotUndefined(node *Node, str string, edges []Value, edge Edge)
 }
 
 func YGPrintNumberIfNotZero(node *Node, str string, number *Value) {
-	if !YGFloatsEqual(number.Value, 0) {
+	if !FloatsEqual(number.Value, 0) {
 		YGPrintNumberIfNotUndefined(node, str, number)
 	}
 }
 
 func YGFourValuesEqual(four []Value) bool {
-	return YGValueEqual(four[0], four[1]) && YGValueEqual(four[0], four[2]) &&
-		YGValueEqual(four[0], four[3])
+	return ValueEqual(four[0], four[1]) && ValueEqual(four[0], four[2]) &&
+		ValueEqual(four[0], four[3])
 }
 
 func YGPrintEdges(node *Node, str string, edges []Value) {

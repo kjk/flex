@@ -11,7 +11,7 @@ func TestCopy_style_same(t *testing.T) {
 	node1 := NewNode()
 	assert.False(t, node0.IsDirty)
 
-	YGNodeCopyStyle(node0, node1)
+	NodeCopyStyle(node0, node1)
 	assert.False(t, node0.IsDirty)
 }
 
@@ -25,7 +25,7 @@ func TestCopy_style_modified(t *testing.T) {
 	YGNodeStyleSetFlexDirection(node1, FlexDirectionRow)
 	YGNodeStyleSetMaxHeight(node1, 10)
 
-	YGNodeCopyStyle(node0, node1)
+	NodeCopyStyle(node0, node1)
 	assert.True(t, node0.IsDirty)
 	assert.Equal(t, FlexDirectionRow, YGNodeStyleGetFlexDirection(node0))
 	assertFloatEqual(t, 10, YGNodeStyleGetMaxHeight(node0).Value)
@@ -42,6 +42,6 @@ func TestCopy_style_modified_same(t *testing.T) {
 	YGNodeStyleSetFlexDirection(node1, FlexDirectionRow)
 	YGNodeStyleSetMaxHeight(node1, 10)
 
-	YGNodeCopyStyle(node0, node1)
+	NodeCopyStyle(node0, node1)
 	assert.False(t, node0.IsDirty)
 }

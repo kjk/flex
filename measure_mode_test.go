@@ -272,7 +272,7 @@ func TestOverflow_scroll_column(t *testing.T) {
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
 	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].widthMode)
 
-	assert.True(t, YGFloatIsUndefined(constraintList.constraints[0].height))
+	assert.True(t, FloatIsUndefined(constraintList.constraints[0].height))
 	assert.Equal(t, MeasureModeUndefined, constraintList.constraints[0].heightMode)
 
 }
@@ -299,7 +299,7 @@ func TestOverflow_scroll_row(t *testing.T) {
 
 	assert.Equal(t, 1, constraintList.length)
 
-	assert.True(t, YGFloatIsUndefined(constraintList.constraints[0].width))
+	assert.True(t, FloatIsUndefined(constraintList.constraints[0].width))
 	assert.Equal(t, MeasureModeUndefined, constraintList.constraints[0].widthMode)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
