@@ -155,7 +155,7 @@ func TestAlign_self_baseline(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 

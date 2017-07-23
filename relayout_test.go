@@ -4,7 +4,7 @@ import "testing"
 
 func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	config := YGConfigNew()
-	YGConfigSetExperimentalFeatureEnabled(config, YGExperimentalFeatureWebFlexBasis, true)
+	YGConfigSetExperimentalFeatureEnabled(config, ExperimentalFeatureWebFlexBasis, true)
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetHeightPercent(root, 100)

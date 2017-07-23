@@ -235,7 +235,7 @@ func YGNodeStyleGetDirection(node *YGNode) Direction {
 }
 
 // YGNodeStyleSetFlexDirection sets flex directions
-func YGNodeStyleSetFlexDirection(node *YGNode, flexDirection YGFlexDirection) {
+func YGNodeStyleSetFlexDirection(node *YGNode, flexDirection FlexDirection) {
 	if node.style.flexDirection != flexDirection {
 		node.style.flexDirection = flexDirection
 		YGNodeMarkDirtyInternal(node)
@@ -243,7 +243,7 @@ func YGNodeStyleSetFlexDirection(node *YGNode, flexDirection YGFlexDirection) {
 }
 
 // YGNodeStyleGetFlexDirection gets flex direction
-func YGNodeStyleGetFlexDirection(node *YGNode) YGFlexDirection {
+func YGNodeStyleGetFlexDirection(node *YGNode) FlexDirection {
 	return node.style.flexDirection
 }
 

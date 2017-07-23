@@ -85,23 +85,30 @@ const (
 	EdgeCount = 9
 )
 
-type YGExperimentalFeature int
+// ExperimentalFeature defines experimental features
+type ExperimentalFeature int
 
 const (
-	YGExperimentalFeatureWebFlexBasis YGExperimentalFeature = iota
+	// ExperimentalFeatureWebFlexBasis is web flex basis
+	ExperimentalFeatureWebFlexBasis ExperimentalFeature = iota
 )
 
 const (
-	YGExperimentalFeatureCount = 1
+	experimentalFeatureCount = 1
 )
 
-type YGFlexDirection int
+// FlexDirection describes "flex-direction" property
+type FlexDirection int
 
 const (
-	YGFlexDirectionColumn YGFlexDirection = iota
-	YGFlexDirectionColumnReverse
-	YGFlexDirectionRow
-	YGFlexDirectionRowReverse
+	// FlexDirectionColumn is "column"
+	FlexDirectionColumn FlexDirection = iota
+	// FlexDirectionColumnReverse is "column-reverse"
+	FlexDirectionColumnReverse
+	// FlexDirectionRow is "row"
+	FlexDirectionRow
+	// FlexDirectionRowReverse is "row-reverse"
+	FlexDirectionRowReverse
 )
 
 type YGJustify int
@@ -207,11 +214,11 @@ func YGDisplayToString(value Display) string {
 func YGEdgeToString(value Edge) string {
 	return ""
 }
-func YGExperimentalFeatureToString(value YGExperimentalFeature) string {
+func YGExperimentalFeatureToString(value ExperimentalFeature) string {
 	return ""
 }
 
-func YGFlexDirectionToString(value YGFlexDirection) string {
+func YGFlexDirectionToString(value FlexDirection) string {
 	return ""
 }
 

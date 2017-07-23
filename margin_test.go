@@ -6,7 +6,7 @@ func TestMargin_start(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -81,7 +81,7 @@ func TestMargin_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -158,7 +158,7 @@ func TestMargin_and_flex_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -235,7 +235,7 @@ func TestMargin_and_stretch_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -312,7 +312,7 @@ func TestMargin_with_sibling_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -703,7 +703,7 @@ func TestMargin_auto_mutiple_children_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
@@ -774,7 +774,7 @@ func Testargin_auto_left_and_right_column(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
@@ -884,7 +884,7 @@ func TestMargin_auto_start_and_end_column(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
@@ -1157,7 +1157,7 @@ func TestMargin_auto_left_and_right_strech(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 

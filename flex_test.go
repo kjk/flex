@@ -56,7 +56,7 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -157,7 +157,7 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 

@@ -140,7 +140,7 @@ func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *test
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetOverflow(root, YGOverflowHidden)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
@@ -800,7 +800,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -878,7 +878,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)

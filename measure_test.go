@@ -216,13 +216,13 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 func TestMeasure_zero_space_should_grow(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetHeight(root, 200)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionColumn)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
 	YGNodeStyleSetFlexGrow(root, 0)
 
 	measureCount := 0
 
 	rootChild0 := YGNodeNew()
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionColumn)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionColumn)
 	YGNodeStyleSetPadding(rootChild0, EdgeAll, 100)
 	YGNodeSetContext(rootChild0, &measureCount)
 	YGNodeSetMeasureFunc(rootChild0, _measure3)
@@ -239,7 +239,7 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetPadding(root, EdgeLeft, 25)
 	YGNodeStyleSetPadding(root, EdgeTop, 25)
 	YGNodeStyleSetPadding(root, EdgeRight, 25)
@@ -312,7 +312,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
@@ -347,7 +347,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetMargin(root, EdgeTop, 20)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
@@ -522,7 +522,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionColumn)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionColumn)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 10)
 
@@ -538,7 +538,7 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 10)
 	YGNodeStyleSetHeight(root, 20)
 

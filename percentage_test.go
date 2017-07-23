@@ -6,7 +6,7 @@ func TestPercentage_width_height(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -43,7 +43,7 @@ func TestPercentage_position_left_top(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 400)
 	YGNodeStyleSetHeight(root, 400)
 
@@ -82,7 +82,7 @@ func TestPercentage_position_bottom_right(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 500)
 	YGNodeStyleSetHeight(root, 500)
 
@@ -121,7 +121,7 @@ func TestPercentage_flex_basis(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -275,7 +275,7 @@ func TestPercentage_flex_basis_main_max_height(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -382,7 +382,7 @@ func TestPercentage_flex_basis_main_max_width(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -489,7 +489,7 @@ func TestPercentage_flex_basis_main_min_width(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -882,7 +882,7 @@ func TestPercent_within_flex_grow(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 350)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -969,7 +969,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0Child0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0Child0, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(rootChild0Child0, YGJustifyCenter)
 	YGNodeStyleSetWidthPercent(rootChild0Child0, 100)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
@@ -1046,7 +1046,7 @@ func TestPercent_absolute_position(t *testing.T) {
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
 	YGNodeStyleSetPositionPercent(rootChild0, EdgeLeft, 50)
 	YGNodeStyleSetWidthPercent(rootChild0, 100)

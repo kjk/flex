@@ -55,7 +55,7 @@ func _measure_84_49(node *YGNode, width float32, widthMode YGMeasureMode, height
 
 func TestMeasure_once_single_flexible_child(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -152,11 +152,11 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	root := YGNodeNew()
 	YGNodeStyleSetWidth(root, 288)
 	YGNodeStyleSetHeight(root, 288)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetPadding(rootChild0, EdgeAll, 2.88)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := YGNodeNew()

@@ -66,7 +66,7 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 
 func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetHeight(root, 100)
 
 	child0 := YGNodeNew()

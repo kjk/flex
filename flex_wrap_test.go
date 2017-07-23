@@ -89,7 +89,7 @@ func TestWrap_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 
@@ -171,7 +171,7 @@ func TestWrap_row_align_items_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexEnd)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 100)
@@ -254,7 +254,7 @@ func TestWrap_row_align_items_center(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 100)
@@ -337,7 +337,7 @@ func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 100)
 
@@ -393,7 +393,7 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(rootChild0, AlignFlexStart)
 	YGNodeStyleSetFlexWrap(rootChild0, YGWrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -470,7 +470,7 @@ func TestFlex_wrap_align_stretch_fits_one_row(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 150)
 	YGNodeStyleSetHeight(root, 100)
@@ -521,7 +521,7 @@ func TestWrap_reverse_row_align_content_flex_start(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
 
@@ -618,7 +618,7 @@ func TestWrap_reverse_row_align_content_center(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignCenter)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
@@ -716,7 +716,7 @@ func TestWrap_reverse_row_single_line_different_size(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 300)
 
@@ -813,7 +813,7 @@ func TestWrap_reverse_row_align_content_stretch(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignStretch)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
@@ -911,7 +911,7 @@ func TestWrap_reverse_row_align_content_space_around(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignContent(root, AlignSpaceAround)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrapReverse)
 	YGNodeStyleSetWidth(root, 100)
@@ -1112,7 +1112,7 @@ func TestWrapped_row_within_align_items_center(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, YGWrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -1179,7 +1179,7 @@ func TestWrapped_row_within_align_items_flex_start(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, YGWrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -1246,7 +1246,7 @@ func TestWrapped_row_within_align_items_flex_end(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, YGWrapWrap)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -1468,7 +1468,7 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	YGNodeStyleSetHeight(root, 500)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, YGWrapWrap)
 	YGNodeStyleSetWidth(rootChild0, 85)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1562,7 +1562,7 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	YGNodeStyleSetHeight(root, 500)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild0, YGWrapWrap)
 	YGNodeStyleSetWidth(rootChild0, 70)
 	YGNodeInsertChild(root, rootChild0, 0)

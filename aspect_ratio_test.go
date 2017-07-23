@@ -59,7 +59,7 @@ func TestAspect_ratio_main_defined(t *testing.T) {
 
 func TestAspect_ratio_both_dimensions_defined_row(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -410,7 +410,7 @@ func TestAspect_ratio_with_measure_func(t *testing.T) {
 
 func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 200)
@@ -456,7 +456,7 @@ func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
 func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 200)
 	YGNodeStyleSetHeight(root, 200)
 
@@ -521,7 +521,7 @@ func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
 func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -607,7 +607,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 
 func TestAspect_ratio_width_overrides_align_stretch_row(t *testing.T) {
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 

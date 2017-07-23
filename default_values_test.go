@@ -15,7 +15,7 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, nilNode, YGNodeGetChild(root, 0))
 
 	assert.Equal(t, DirectionInherit, YGNodeStyleGetDirection(root))
-	assert.Equal(t, YGFlexDirectionColumn, YGNodeStyleGetFlexDirection(root))
+	assert.Equal(t, FlexDirectionColumn, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, YGJustifyFlexStart, YGNodeStyleGetJustifyContent(root))
 	assert.Equal(t, AlignFlexStart, YGNodeStyleGetAlignContent(root))
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignItems(root))
@@ -93,7 +93,7 @@ func TestAssert_webdefault_values(t *testing.T) {
 	YGConfigSetUseWebDefaults(config, true)
 	root := YGNodeNewWithConfig(config)
 
-	assert.Equal(t, YGFlexDirectionRow, YGNodeStyleGetFlexDirection(root))
+	assert.Equal(t, FlexDirectionRow, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignContent(root))
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
 
@@ -105,7 +105,7 @@ func TestAssert_webdefault_values_reset(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeReset(root)
 
-	assert.Equal(t, YGFlexDirectionRow, YGNodeStyleGetFlexDirection(root))
+	assert.Equal(t, FlexDirectionRow, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, AlignStretch, YGNodeStyleGetAlignContent(root))
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
 

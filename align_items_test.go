@@ -156,7 +156,7 @@ func TestAlign_baseline(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -210,7 +210,7 @@ func TestAlign_baseline_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -279,7 +279,7 @@ func TestAlign_baseline_child_multiline(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -290,7 +290,7 @@ func TestAlign_baseline_child_multiline(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild1, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild1, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild1, YGWrapWrap)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 25)
@@ -395,7 +395,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -406,7 +406,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild1, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild1, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild1, YGWrapWrap)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 25)
@@ -513,7 +513,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -524,7 +524,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(rootChild1, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(rootChild1, FlexDirectionRow)
 	YGNodeStyleSetFlexWrap(rootChild1, YGWrapWrap)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 25)
@@ -630,7 +630,7 @@ func TestAlign_baseline_child_top(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -700,7 +700,7 @@ func TestAlign_baseline_child_top2(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -770,7 +770,7 @@ func TestAlign_baseline_double_nested_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -907,7 +907,7 @@ func TestAlign_baseline_child_margin(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -984,7 +984,7 @@ func TestAlign_baseline_child_padding(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetPadding(root, EdgeLeft, 5)
 	YGNodeStyleSetPadding(root, EdgeTop, 5)
@@ -1061,7 +1061,7 @@ func TestAlign_baseline_multiline(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 100)
@@ -1404,7 +1404,7 @@ func TestAlign_baseline_multiline_row_and_column(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignBaseline)
 	YGNodeStyleSetFlexWrap(root, YGWrapWrap)
 	YGNodeStyleSetWidth(root, 100)

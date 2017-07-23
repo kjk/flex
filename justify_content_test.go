@@ -6,7 +6,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 102)
 	YGNodeStyleSetHeight(root, 102)
 
@@ -70,7 +70,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, YGJustifyFlexEnd)
 	YGNodeStyleSetWidth(root, 102)
 	YGNodeStyleSetHeight(root, 102)
@@ -135,7 +135,7 @@ func TestJustify_content_row_center(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
 	YGNodeStyleSetWidth(root, 102)
 	YGNodeStyleSetHeight(root, 102)
@@ -200,7 +200,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, YGJustifySpaceBetween)
 	YGNodeStyleSetWidth(root, 102)
 	YGNodeStyleSetHeight(root, 102)
@@ -265,7 +265,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetJustifyContent(root, YGJustifySpaceAround)
 	YGNodeStyleSetWidth(root, 102)
 	YGNodeStyleSetHeight(root, 102)

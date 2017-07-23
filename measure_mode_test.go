@@ -78,7 +78,7 @@ func TestExactly_measure_stretched_child_row(t *testing.T) {
 	}
 
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -152,7 +152,7 @@ func TestAt_most_main_axis_row(t *testing.T) {
 	}
 
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -177,7 +177,7 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 	}
 
 	root := YGNodeNew()
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
@@ -285,7 +285,7 @@ func TestOverflow_scroll_row(t *testing.T) {
 
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
-	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
+	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
 	YGNodeStyleSetOverflow(root, YGOverflowScroll)
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetWidth(root, 100)
