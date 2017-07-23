@@ -155,7 +155,7 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
 
 	rootChild0 := YGNodeNew()
-	YGNodeStyleSetPadding(rootChild0, YGEdgeAll, 2.88)
+	YGNodeStyleSetPadding(rootChild0, EdgeAll, 2.88)
 	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
 	YGNodeInsertChild(root, rootChild0, 0)
 

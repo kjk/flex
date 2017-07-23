@@ -34,7 +34,7 @@ func YGPrintNumberIfNotAuto(node *YGNode, str string, number *YGValue) {
 	}
 }
 
-func YGPrintEdgeIfNotUndefined(node *YGNode, str string, edges []YGValue, edge YGEdge) {
+func YGPrintEdgeIfNotUndefined(node *YGNode, str string, edges []YGValue, edge Edge) {
 	YGPrintNumberIfNotUndefined(node, str, YGComputedEdgeValue(edges, edge, &YGValueUndefined))
 }
 
@@ -51,9 +51,9 @@ func YGFourValuesEqual(four []YGValue) bool {
 
 func YGPrintEdges(node *YGNode, str string, edges []YGValue) {
 	if YGFourValuesEqual(edges) {
-		YGPrintNumberIfNotZero(node, str, &edges[YGEdgeLeft])
+		YGPrintNumberIfNotZero(node, str, &edges[EdgeLeft])
 	} else {
-		for edge := YGEdgeLeft; edge < YGEdgeCount; edge++ {
+		for edge := EdgeLeft; edge < EdgeCount; edge++ {
 			buf := fmt.Sprintf("%s-%s", str, YGEdgeToString(edge))
 			YGPrintNumberIfNotZero(node, buf, &edges[edge])
 		}
@@ -72,8 +72,8 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 		YGLog(node, YGLogLevelDebug, "layout=\"")
 		YGLog(node, YGLogLevelDebug, "width: %g; ", node.layout.dimensions[DimensionWidth])
 		YGLog(node, YGLogLevelDebug, "height: %g; ", node.layout.dimensions[DimensionHeight])
-		YGLog(node, YGLogLevelDebug, "top: %g; ", node.layout.position[YGEdgeTop])
-		YGLog(node, YGLogLevelDebug, "left: %g;", node.layout.position[YGEdgeLeft])
+		YGLog(node, YGLogLevelDebug, "top: %g; ", node.layout.position[EdgeTop])
+		YGLog(node, YGLogLevelDebug, "left: %g;", node.layout.position[EdgeLeft])
 		YGLog(node, YGLogLevelDebug, "\" ")
 	}
 
@@ -136,10 +136,10 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 				YGPositionTypeToString(node.style.positionType))
 		}
 
-		YGPrintEdgeIfNotUndefined(node, "left", node.style.position[:], YGEdgeLeft)
-		YGPrintEdgeIfNotUndefined(node, "right", node.style.position[:], YGEdgeRight)
-		YGPrintEdgeIfNotUndefined(node, "top", node.style.position[:], YGEdgeTop)
-		YGPrintEdgeIfNotUndefined(node, "bottom", node.style.position[:], YGEdgeBottom)
+		YGPrintEdgeIfNotUndefined(node, "left", node.style.position[:], EdgeLeft)
+		YGPrintEdgeIfNotUndefined(node, "right", node.style.position[:], EdgeRight)
+		YGPrintEdgeIfNotUndefined(node, "top", node.style.position[:], EdgeTop)
+		YGPrintEdgeIfNotUndefined(node, "bottom", node.style.position[:], EdgeBottom)
 		YGLog(node, YGLogLevelDebug, "\" ")
 
 		if node.measure != nil {

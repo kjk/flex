@@ -6,10 +6,10 @@ func TestBorder_no_size(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetBorder(root, YGEdgeLeft, 10)
-	YGNodeStyleSetBorder(root, YGEdgeTop, 10)
-	YGNodeStyleSetBorder(root, YGEdgeRight, 10)
-	YGNodeStyleSetBorder(root, YGEdgeBottom, 10)
+	YGNodeStyleSetBorder(root, EdgeLeft, 10)
+	YGNodeStyleSetBorder(root, EdgeTop, 10)
+	YGNodeStyleSetBorder(root, EdgeRight, 10)
+	YGNodeStyleSetBorder(root, EdgeBottom, 10)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
@@ -30,10 +30,10 @@ func TestBorder_container_match_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetBorder(root, YGEdgeLeft, 10)
-	YGNodeStyleSetBorder(root, YGEdgeTop, 10)
-	YGNodeStyleSetBorder(root, YGEdgeRight, 10)
-	YGNodeStyleSetBorder(root, YGEdgeBottom, 10)
+	YGNodeStyleSetBorder(root, EdgeLeft, 10)
+	YGNodeStyleSetBorder(root, EdgeTop, 10)
+	YGNodeStyleSetBorder(root, EdgeRight, 10)
+	YGNodeStyleSetBorder(root, EdgeBottom, 10)
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetWidth(rootChild0, 10)
@@ -69,10 +69,10 @@ func TestBorder_flex_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetBorder(root, YGEdgeLeft, 10)
-	YGNodeStyleSetBorder(root, YGEdgeTop, 10)
-	YGNodeStyleSetBorder(root, YGEdgeRight, 10)
-	YGNodeStyleSetBorder(root, YGEdgeBottom, 10)
+	YGNodeStyleSetBorder(root, EdgeLeft, 10)
+	YGNodeStyleSetBorder(root, EdgeTop, 10)
+	YGNodeStyleSetBorder(root, EdgeRight, 10)
+	YGNodeStyleSetBorder(root, EdgeBottom, 10)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -110,10 +110,10 @@ func TestBorder_stretch_child(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetBorder(root, YGEdgeLeft, 10)
-	YGNodeStyleSetBorder(root, YGEdgeTop, 10)
-	YGNodeStyleSetBorder(root, YGEdgeRight, 10)
-	YGNodeStyleSetBorder(root, YGEdgeBottom, 10)
+	YGNodeStyleSetBorder(root, EdgeLeft, 10)
+	YGNodeStyleSetBorder(root, EdgeTop, 10)
+	YGNodeStyleSetBorder(root, EdgeRight, 10)
+	YGNodeStyleSetBorder(root, EdgeBottom, 10)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
@@ -152,9 +152,9 @@ func TestBorder_center_child(t *testing.T) {
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetJustifyContent(root, YGJustifyCenter)
 	YGNodeStyleSetAlignItems(root, AlignCenter)
-	YGNodeStyleSetBorder(root, YGEdgeStart, 10)
-	YGNodeStyleSetBorder(root, YGEdgeEnd, 20)
-	YGNodeStyleSetBorder(root, YGEdgeBottom, 20)
+	YGNodeStyleSetBorder(root, EdgeStart, 10)
+	YGNodeStyleSetBorder(root, EdgeEnd, 20)
+	YGNodeStyleSetBorder(root, EdgeBottom, 20)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 

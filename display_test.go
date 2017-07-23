@@ -116,10 +116,10 @@ func TestDisplay_none_with_margin(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild0, 20)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeStyleSetDisplay(rootChild0, DisplayNone)
@@ -269,7 +269,7 @@ func TestDisplay_none_with_position(t *testing.T) {
 
 	rootChild1 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
-	YGNodeStyleSetPosition(rootChild1, YGEdgeTop, 10)
+	YGNodeStyleSetPosition(rootChild1, EdgeTop, 10)
 	YGNodeStyleSetDisplay(rootChild1, DisplayNone)
 	YGNodeInsertChild(root, rootChild1, 1)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)

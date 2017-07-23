@@ -10,9 +10,9 @@ func TestStart_overrides(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeStart, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 20)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeStart, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -33,9 +33,9 @@ func TestEnd_overrides(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeEnd, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 20)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeEnd, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -56,8 +56,8 @@ func TestHorizontal_overridden(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeHorizontal, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeHorizontal, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -74,8 +74,8 @@ func TestVertical_overridden(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeVertical, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeVertical, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -92,8 +92,8 @@ func TestHorizontal_overrides_all(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeHorizontal, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeAll, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeHorizontal, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeAll, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -112,8 +112,8 @@ func TestVertical_overrides_all(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeVertical, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeAll, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeVertical, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeAll, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -132,11 +132,11 @@ func TestAll_overridden(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeBottom, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeAll, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeAll, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)

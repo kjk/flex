@@ -56,22 +56,33 @@ const (
 	DisplayNone
 )
 
-type YGEdge int
+// Edge represents an edge
+type Edge int
 
 const (
-	YGEdgeLeft YGEdge = iota
-	YGEdgeTop
-	YGEdgeRight
-	YGEdgeBottom
-	YGEdgeStart
-	YGEdgeEnd
-	YGEdgeHorizontal
-	YGEdgeVertical
-	YGEdgeAll
+	// EdgeLeft is left edge
+	EdgeLeft Edge = iota
+	// EdgeTop is top edge
+	EdgeTop
+	// EdgeRight is right edge
+	EdgeRight
+	// EdgeBottom is bottom edge
+	EdgeBottom
+	// EdgeStart is start edge
+	EdgeStart
+	// EdgeEnd is end edge
+	EdgeEnd
+	// EdgeHorizontal is horizontal edge
+	EdgeHorizontal
+	// EdgeVertical is vertical edge
+	EdgeVertical
+	// EdgeAll is all edge
+	EdgeAll
 )
 
 const (
-	YGEdgeCount = 9
+	// EdgeCount is count of edges
+	EdgeCount = 9
 )
 
 type YGExperimentalFeature int
@@ -193,7 +204,7 @@ func YGDisplayToString(value Display) string {
 	return ""
 }
 
-func YGEdgeToString(value YGEdge) string {
+func YGEdgeToString(value Edge) string {
 	return ""
 }
 func YGExperimentalFeatureToString(value YGExperimentalFeature) string {

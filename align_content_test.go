@@ -1116,10 +1116,10 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeLeft, 10)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeTop, 10)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeRight, 10)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild1, EdgeLeft, 10)
+	YGNodeStyleSetMargin(rootChild1, EdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild1, EdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild1, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 
@@ -1128,10 +1128,10 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	YGNodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild3, YGEdgeLeft, 10)
-	YGNodeStyleSetMargin(rootChild3, YGEdgeTop, 10)
-	YGNodeStyleSetMargin(rootChild3, YGEdgeRight, 10)
-	YGNodeStyleSetMargin(rootChild3, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild3, EdgeLeft, 10)
+	YGNodeStyleSetMargin(rootChild3, EdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild3, EdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild3, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 
@@ -1219,10 +1219,10 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPadding(rootChild1, YGEdgeLeft, 10)
-	YGNodeStyleSetPadding(rootChild1, YGEdgeTop, 10)
-	YGNodeStyleSetPadding(rootChild1, YGEdgeRight, 10)
-	YGNodeStyleSetPadding(rootChild1, YGEdgeBottom, 10)
+	YGNodeStyleSetPadding(rootChild1, EdgeLeft, 10)
+	YGNodeStyleSetPadding(rootChild1, EdgeTop, 10)
+	YGNodeStyleSetPadding(rootChild1, EdgeRight, 10)
+	YGNodeStyleSetPadding(rootChild1, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
 
@@ -1231,10 +1231,10 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	YGNodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPadding(rootChild3, YGEdgeLeft, 10)
-	YGNodeStyleSetPadding(rootChild3, YGEdgeTop, 10)
-	YGNodeStyleSetPadding(rootChild3, YGEdgeRight, 10)
-	YGNodeStyleSetPadding(rootChild3, YGEdgeBottom, 10)
+	YGNodeStyleSetPadding(rootChild3, EdgeLeft, 10)
+	YGNodeStyleSetPadding(rootChild3, EdgeTop, 10)
+	YGNodeStyleSetPadding(rootChild3, EdgeRight, 10)
+	YGNodeStyleSetPadding(rootChild3, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild3, 50)
 	YGNodeInsertChild(root, rootChild3, 3)
 

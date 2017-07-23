@@ -236,7 +236,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionColumn)
-	YGNodeStyleSetPadding(rootChild0, YGEdgeAll, 100)
+	YGNodeStyleSetPadding(rootChild0, EdgeAll, 100)
 	YGNodeSetContext(rootChild0, &measureCount)
 	YGNodeSetMeasureFunc(rootChild0, _measure3)
 
@@ -254,10 +254,10 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
-	YGNodeStyleSetPadding(root, YGEdgeLeft, 25)
-	YGNodeStyleSetPadding(root, YGEdgeTop, 25)
-	YGNodeStyleSetPadding(root, YGEdgeRight, 25)
-	YGNodeStyleSetPadding(root, YGEdgeBottom, 25)
+	YGNodeStyleSetPadding(root, EdgeLeft, 25)
+	YGNodeStyleSetPadding(root, EdgeTop, 25)
+	YGNodeStyleSetPadding(root, EdgeRight, 25)
+	YGNodeStyleSetPadding(root, EdgeBottom, 25)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
@@ -292,8 +292,8 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(root, YGEdgeTop, 20)
-	YGNodeStyleSetPadding(root, YGEdgeAll, 25)
+	YGNodeStyleSetMargin(root, EdgeTop, 20)
+	YGNodeStyleSetPadding(root, EdgeAll, 25)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
@@ -329,7 +329,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
-	YGNodeStyleSetMargin(root, YGEdgeTop, 20)
+	YGNodeStyleSetMargin(root, EdgeTop, 20)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
@@ -365,7 +365,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
-	YGNodeStyleSetMargin(root, YGEdgeTop, 20)
+	YGNodeStyleSetMargin(root, EdgeTop, 20)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
@@ -401,8 +401,8 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(root, YGEdgeTop, 20)
-	YGNodeStyleSetPadding(root, YGEdgeAll, 25)
+	YGNodeStyleSetMargin(root, EdgeTop, 20)
+	YGNodeStyleSetPadding(root, EdgeAll, 25)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
@@ -439,8 +439,8 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(root, YGEdgeTop, 20)
-	YGNodeStyleSetPadding(root, YGEdgeAll, 25)
+	YGNodeStyleSetMargin(root, EdgeTop, 20)
+	YGNodeStyleSetPadding(root, EdgeAll, 25)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
@@ -476,7 +476,7 @@ func TestMeasure_no_padding(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(root, YGEdgeTop, 20)
+	YGNodeStyleSetMargin(root, EdgeTop, 20)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
@@ -550,7 +550,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeSetMeasureFunc(rootChild0, _measure_assert_negative)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -567,7 +567,7 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeSetMeasureFunc(rootChild0, _measure_assert_negative)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeStart, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeStart, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)

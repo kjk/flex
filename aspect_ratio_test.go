@@ -187,8 +187,8 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeLeft, 0)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeTop, 0)
+	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 0)
+	YGNodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -209,8 +209,8 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeLeft, 0)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeTop, 0)
+	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 0)
+	YGNodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -568,9 +568,9 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeTop, 10)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeRight, 10)
+	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
+	YGNodeStyleSetPosition(rootChild0, EdgeRight, 10)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -590,9 +590,9 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeTop, 10)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeBottom, 10)
+	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
+	YGNodeStyleSetPosition(rootChild0, EdgeBottom, 10)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
 	YGNodeInsertChild(root, rootChild0, 0)
 
@@ -674,8 +674,8 @@ func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -698,8 +698,8 @@ func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
 	rootChild0 := YGNodeNew()
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetAspectRatio(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)

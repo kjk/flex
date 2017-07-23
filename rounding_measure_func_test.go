@@ -87,7 +87,7 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 	root := YGNodeNewWithConfig(config)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPosition(rootChild0, YGEdgeLeft, 73.625)
+	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 73.625)
 	YGNodeSetMeasureFunc(rootChild0, _measureFractial)
 	YGNodeInsertChild(root, rootChild0, 0)
 

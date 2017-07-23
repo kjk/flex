@@ -11,7 +11,7 @@ func TestMargin_start(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeStart, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeStart, 10)
 	YGNodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -48,7 +48,7 @@ func TestMargin_top(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -87,7 +87,7 @@ func TestMargin_end(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeEnd, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	YGNodeStyleSetWidth(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -125,7 +125,7 @@ func TestMargin_bottom(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
@@ -164,8 +164,8 @@ func TestMargin_and_flex_row(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeStart, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeEnd, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeStart, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
@@ -202,8 +202,8 @@ func TestMargin_and_flex_column(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
@@ -241,8 +241,8 @@ func TestMargin_and_stretch_row(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
@@ -279,8 +279,8 @@ func TestMargin_and_stretch_column(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeStart, 10)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeEnd, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeStart, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
@@ -318,7 +318,7 @@ func TestMargin_with_sibling_row(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeEnd, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
@@ -369,7 +369,7 @@ func TestMargin_with_sibling_column(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeBottom, 10)
+	YGNodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
@@ -420,7 +420,7 @@ func TestMargin_auto_bottom(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeBottom)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeBottom)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -474,7 +474,7 @@ func TestMargin_auto_top(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeTop)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeTop)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -528,8 +528,8 @@ func TestMargin_auto_bottom_and_top(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeTop)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeBottom)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeTop)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeBottom)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -583,8 +583,8 @@ func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeTop)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeBottom)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeTop)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeBottom)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -638,13 +638,13 @@ func TestMargin_auto_mutiple_children_column(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeTop)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeTop)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild1, YGEdgeTop)
+	YGNodeStyleSetMarginAuto(rootChild1, EdgeTop)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -709,13 +709,13 @@ func TestMargin_auto_mutiple_children_row(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild1, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild1, EdgeRight)
 	YGNodeStyleSetWidth(rootChild1, 50)
 	YGNodeStyleSetHeight(rootChild1, 50)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -780,8 +780,8 @@ func Testargin_auto_left_and_right_column(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -834,8 +834,8 @@ func TestMargin_auto_left_and_right(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -890,8 +890,8 @@ func TestMargin_auto_start_and_end_column(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeStart)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeEnd)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeStart)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeEnd)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -944,8 +944,8 @@ func TestMargin_auto_start_and_end(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeStart)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeEnd)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeStart)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeEnd)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -999,8 +999,8 @@ func TestMargin_auto_left_and_right_column_and_center(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1054,7 +1054,7 @@ func TestMargin_auto_left(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1108,7 +1108,7 @@ func TestMargin_auto_right(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1162,8 +1162,8 @@ func TestMargin_auto_left_and_right_strech(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1216,8 +1216,8 @@ func TestMargin_auto_top_and_bottom_strech(t *testing.T) {
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeTop)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeBottom)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeTop)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeBottom)
 	YGNodeStyleSetWidth(rootChild0, 50)
 	YGNodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1270,7 +1270,7 @@ func TestMargin_should_not_be_part_of_max_height(t *testing.T) {
 	YGNodeStyleSetHeight(root, 250)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeTop, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeTop, 20)
 	YGNodeStyleSetWidth(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 100)
 	YGNodeStyleSetMaxHeight(rootChild0, 100)
@@ -1309,7 +1309,7 @@ func TestMargin_should_not_be_part_of_max_width(t *testing.T) {
 	YGNodeStyleSetHeight(root, 250)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 20)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 20)
 	YGNodeStyleSetWidth(rootChild0, 100)
 	YGNodeStyleSetMaxWidth(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 100)
@@ -1349,8 +1349,8 @@ func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
 	YGNodeStyleSetHeight(root, 52)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 72)
 	YGNodeStyleSetHeight(rootChild0, 72)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1389,7 +1389,7 @@ func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
 	YGNodeStyleSetHeight(root, 52)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
 	YGNodeStyleSetWidth(rootChild0, 72)
 	YGNodeStyleSetHeight(rootChild0, 72)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1428,8 +1428,8 @@ func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
 	YGNodeStyleSetHeight(root, 52)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeLeft, 10)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeRight)
+	YGNodeStyleSetMargin(rootChild0, EdgeLeft, 10)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeRight)
 	YGNodeStyleSetWidth(rootChild0, 72)
 	YGNodeStyleSetHeight(rootChild0, 72)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -1468,8 +1468,8 @@ func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
 	YGNodeStyleSetHeight(root, 52)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMarginAuto(rootChild0, YGEdgeLeft)
-	YGNodeStyleSetMargin(rootChild0, YGEdgeRight, 10)
+	YGNodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	YGNodeStyleSetMargin(rootChild0, EdgeRight, 10)
 	YGNodeStyleSetWidth(rootChild0, 72)
 	YGNodeStyleSetHeight(rootChild0, 72)
 	YGNodeInsertChild(root, rootChild0, 0)

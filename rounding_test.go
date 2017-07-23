@@ -378,14 +378,14 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	rootChild0Child0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0Child0, 1)
 	YGNodeStyleSetFlexBasis(rootChild0Child0, 0.3)
-	YGNodeStyleSetPosition(rootChild0Child0, YGEdgeBottom, 13.3)
+	YGNodeStyleSetPosition(rootChild0Child0, EdgeBottom, 13.3)
 	YGNodeStyleSetHeight(rootChild0Child0, 9.9)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0_child1 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexGrow(rootChild0_child1, 4)
 	YGNodeStyleSetFlexBasis(rootChild0_child1, 0.3)
-	YGNodeStyleSetPosition(rootChild0_child1, YGEdgeTop, 13.3)
+	YGNodeStyleSetPosition(rootChild0_child1, EdgeTop, 13.3)
 	YGNodeStyleSetHeight(rootChild0_child1, 1.1)
 	YGNodeInsertChild(rootChild0, rootChild0_child1, 1)
 
@@ -604,7 +604,7 @@ func TestRounding_fractial_input_3(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPosition(root, YGEdgeTop, 0.3)
+	YGNodeStyleSetPosition(root, EdgeTop, 0.3)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113.4)
 
@@ -673,7 +673,7 @@ func TestRounding_fractial_input_4(t *testing.T) {
 	config := YGConfigNew()
 
 	root := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPosition(root, YGEdgeTop, 0.7)
+	YGNodeStyleSetPosition(root, EdgeTop, 0.7)
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 113.4)
 

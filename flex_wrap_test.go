@@ -1338,10 +1338,10 @@ func TestWrapped_column_max_height(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeLeft, 20)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeTop, 20)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeRight, 20)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeBottom, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeLeft, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeTop, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeRight, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeBottom, 20)
 	YGNodeStyleSetWidth(rootChild1, 200)
 	YGNodeStyleSetHeight(rootChild1, 200)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -1420,10 +1420,10 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	YGNodeStyleSetFlexGrow(rootChild1, 1)
 	YGNodeStyleSetFlexShrink(rootChild1, 1)
 	YGNodeStyleSetFlexBasisPercent(rootChild1, 0)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeLeft, 20)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeTop, 20)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeRight, 20)
-	YGNodeStyleSetMargin(rootChild1, YGEdgeBottom, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeLeft, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeTop, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeRight, 20)
+	YGNodeStyleSetMargin(rootChild1, EdgeBottom, 20)
 	YGNodeStyleSetWidth(rootChild1, 200)
 	YGNodeStyleSetHeight(rootChild1, 200)
 	YGNodeInsertChild(root, rootChild1, 1)
@@ -1500,7 +1500,7 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
 	rootChild0_child1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0_child1, YGEdgeRight, 10)
+	YGNodeStyleSetMargin(rootChild0_child1, EdgeRight, 10)
 	YGNodeInsertChild(rootChild0, rootChild0_child1, 1)
 
 	rootChild0_child1_child0 := YGNodeNewWithConfig(config)
@@ -1595,7 +1595,7 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
 	rootChild0_child1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetMargin(rootChild0_child1, YGEdgeTop, 10)
+	YGNodeStyleSetMargin(rootChild0_child1, EdgeTop, 10)
 	YGNodeInsertChild(rootChild0, rootChild0_child1, 1)
 
 	rootChild0_child1_child0 := YGNodeNewWithConfig(config)
