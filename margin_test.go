@@ -40,7 +40,7 @@ func TestMargin_start(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_top(t *testing.T) {
@@ -80,7 +80,7 @@ func TestMargin_top(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_end(t *testing.T) {
@@ -122,7 +122,7 @@ func TestMargin_end(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_bottom(t *testing.T) {
@@ -163,7 +163,7 @@ func TestMargin_bottom(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_and_flex_row(t *testing.T) {
@@ -205,7 +205,7 @@ func TestMargin_and_flex_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_and_flex_column(t *testing.T) {
@@ -246,7 +246,7 @@ func TestMargin_and_flex_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_and_stretch_row(t *testing.T) {
@@ -288,7 +288,7 @@ func TestMargin_and_stretch_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_and_stretch_column(t *testing.T) {
@@ -329,7 +329,7 @@ func TestMargin_and_stretch_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_with_sibling_row(t *testing.T) {
@@ -384,7 +384,7 @@ func TestMargin_with_sibling_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_with_sibling_column(t *testing.T) {
@@ -438,7 +438,7 @@ func TestMargin_with_sibling_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_bottom(t *testing.T) {
@@ -495,7 +495,7 @@ func TestMargin_auto_bottom(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_top(t *testing.T) {
@@ -552,7 +552,7 @@ func TestMargin_auto_top(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_bottom_and_top(t *testing.T) {
@@ -610,7 +610,7 @@ func TestMargin_auto_bottom_and_top(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
@@ -668,7 +668,7 @@ func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_mutiple_children_column(t *testing.T) {
@@ -741,7 +741,7 @@ func TestMargin_auto_mutiple_children_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_mutiple_children_row(t *testing.T) {
@@ -815,7 +815,7 @@ func TestMargin_auto_mutiple_children_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func Testargin_auto_left_and_right_column(t *testing.T) {
@@ -874,7 +874,7 @@ func Testargin_auto_left_and_right_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left_and_right(t *testing.T) {
@@ -931,7 +931,7 @@ func TestMargin_auto_left_and_right(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_start_and_end_column(t *testing.T) {
@@ -990,7 +990,7 @@ func TestMargin_auto_start_and_end_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_start_and_end(t *testing.T) {
@@ -1047,7 +1047,7 @@ func TestMargin_auto_start_and_end(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left_and_right_column_and_center(t *testing.T) {
@@ -1105,7 +1105,7 @@ func TestMargin_auto_left_and_right_column_and_center(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left(t *testing.T) {
@@ -1162,7 +1162,7 @@ func TestMargin_auto_left(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_right(t *testing.T) {
@@ -1219,7 +1219,7 @@ func TestMargin_auto_right(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left_and_right_strech(t *testing.T) {
@@ -1277,7 +1277,7 @@ func TestMargin_auto_left_and_right_strech(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_top_and_bottom_strech(t *testing.T) {
@@ -1334,7 +1334,7 @@ func TestMargin_auto_top_and_bottom_strech(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_should_not_be_part_of_max_height(t *testing.T) {
@@ -1376,7 +1376,7 @@ func TestMargin_should_not_be_part_of_max_height(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_should_not_be_part_of_max_width(t *testing.T) {
@@ -1418,7 +1418,7 @@ func TestMargin_should_not_be_part_of_max_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
@@ -1461,7 +1461,7 @@ func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
@@ -1503,7 +1503,7 @@ func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
@@ -1546,7 +1546,7 @@ func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
@@ -1589,5 +1589,5 @@ func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

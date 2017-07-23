@@ -53,7 +53,7 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_basis_flex_grow_row(t *testing.T) {
@@ -108,7 +108,7 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_basis_flex_shrink_column(t *testing.T) {
@@ -162,7 +162,7 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_basis_flex_shrink_row(t *testing.T) {
@@ -217,7 +217,7 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_shrink_to_zero(t *testing.T) {
@@ -287,7 +287,7 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_basis_overrides_main_size(t *testing.T) {
@@ -358,7 +358,7 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_grow_shrink_at_most(t *testing.T) {
@@ -411,7 +411,7 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_grow_less_than_factor_one(t *testing.T) {
@@ -479,5 +479,5 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

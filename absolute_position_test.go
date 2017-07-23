@@ -61,7 +61,7 @@ func TestAbsoluteLayoutWidthHeightStartTop(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
 
 	YGNodeFreeRecursive(root)
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutStartTopEndBottom(t *testing.T) {
@@ -104,7 +104,7 @@ func TestAbsoluteLayoutStartTopEndBottom(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutWidthHeightStartTopEndBottom(t *testing.T) {
@@ -149,7 +149,7 @@ func TestAbsoluteLayoutWidthHeightStartTopEndBottom(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *testing.T) {
@@ -207,7 +207,7 @@ func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *test
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutWithinBorder(t *testing.T) {
@@ -324,7 +324,7 @@ func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
@@ -368,7 +368,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
@@ -412,7 +412,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
@@ -455,7 +455,7 @@ func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
@@ -498,7 +498,7 @@ func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
@@ -541,7 +541,7 @@ func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testing.T) {
@@ -586,7 +586,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testin
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *testing.T) {
@@ -631,7 +631,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *tes
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testing.T) {
@@ -676,7 +676,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testi
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsolute_layout_align_items_and_justify_content_center_and_right_position(t *testing.T) {
@@ -721,7 +721,7 @@ func TestAbsolute_layout_align_items_and_justify_content_center_and_right_positi
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPosition_root_with_rtl_should_position_withoutdirection(t *testing.T) {
@@ -747,7 +747,7 @@ func TestPosition_root_with_rtl_should_position_withoutdirection(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsolute_layout_percentage_bottom_based_on_parent_height(t *testing.T) {
@@ -823,7 +823,7 @@ func TestAbsolute_layout_percentage_bottom_based_on_parent_height(t *testing.T) 
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
@@ -865,7 +865,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
@@ -908,7 +908,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T) {
@@ -951,7 +951,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T)
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
@@ -995,5 +995,5 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

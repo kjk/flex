@@ -21,7 +21,7 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {

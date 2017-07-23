@@ -99,7 +99,7 @@ func TestAssert_webdefault_values(t *testing.T) {
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
 
 	YGNodeFreeRecursive(root)
-	YGConfigFree(config)
+
 }
 
 func TestAssert_webdefault_values_reset(t *testing.T) {
@@ -113,5 +113,5 @@ func TestAssert_webdefault_values_reset(t *testing.T) {
 	assertFloatEqual(t, 1, YGNodeStyleGetFlexShrink(root))
 
 	YGNodeFreeRecursive(root)
-	YGConfigFree(config)
+
 }

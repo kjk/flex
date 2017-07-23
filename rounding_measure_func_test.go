@@ -65,7 +65,7 @@ func TestRounding_feature_with_custom_measure_func_floor(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_feature_with_custom_measure_func_ceil(t *testing.T) {
@@ -85,7 +85,7 @@ func TestRounding_feature_with_custom_measure_func_ceil(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *testing.T) {
@@ -107,5 +107,5 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

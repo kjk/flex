@@ -52,7 +52,7 @@ func TestNested_overflowing_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
@@ -107,7 +107,7 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
@@ -161,5 +161,5 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

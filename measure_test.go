@@ -297,7 +297,7 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
@@ -336,7 +336,7 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
@@ -375,7 +375,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.T) {
@@ -415,7 +415,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMeasure_with_fixed_size(t *testing.T) {
@@ -456,7 +456,7 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMeasure_with_flex_shrink(t *testing.T) {
@@ -496,7 +496,7 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestMeasure_no_padding(t *testing.T) {
@@ -535,7 +535,7 @@ func TestMeasure_no_padding(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 /*
@@ -586,7 +586,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
 
 	YGNodeFreeRecursive(root)
-	YGConfigFree(config)
+
 }
 
 func TestCant_call_negative_measure_horizontal(t *testing.T) {
@@ -605,5 +605,5 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
 
 	YGNodeFreeRecursive(root)
-	YGConfigFree(config)
+
 }

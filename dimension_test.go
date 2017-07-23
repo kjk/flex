@@ -37,7 +37,7 @@ func TestWrap_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestWrap_grandchild(t *testing.T) {
@@ -88,5 +88,5 @@ func TestWrap_grandchild(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

@@ -54,7 +54,7 @@ func TestDisplay_none(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestDisplay_none_fixed_size(t *testing.T) {
@@ -110,7 +110,7 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestDisplay_none_with_margin(t *testing.T) {
@@ -170,7 +170,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestDisplay_none_with_child(t *testing.T) {
@@ -264,7 +264,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestDisplay_none_with_position(t *testing.T) {
@@ -320,5 +320,5 @@ func TestDisplay_none_with_position(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

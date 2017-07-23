@@ -26,7 +26,7 @@ func TestPadding_no_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPadding_container_match_child(t *testing.T) {
@@ -68,7 +68,7 @@ func TestPadding_container_match_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPadding_flex_child(t *testing.T) {
@@ -112,7 +112,7 @@ func TestPadding_flex_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPadding_stretch_child(t *testing.T) {
@@ -155,7 +155,7 @@ func TestPadding_stretch_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPadding_center_child(t *testing.T) {
@@ -200,7 +200,7 @@ func TestPadding_center_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestChild_with_padding_align_end(t *testing.T) {
@@ -246,5 +246,5 @@ func TestChild_with_padding_align_end(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

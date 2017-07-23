@@ -283,8 +283,7 @@ func YGResolveValueMargin(value *YGValue, parentSize float32) float32 {
 }
 
 var (
-	gNodeInstanceCount   = 0
-	gConfigInstanceCount = 0
+	gNodeInstanceCount = 0
 )
 
 // YGNodeNewWithConfig creates new node with config
@@ -354,11 +353,6 @@ func YGNodeGetInstanceCount() int {
 	return gNodeInstanceCount
 }
 
-// YGConfigGetInstanceCount returns config instance count
-func YGConfigGetInstanceCount() int {
-	return gConfigInstanceCount
-}
-
 // YGConfigGetDefault returns default config, only for C#
 func YGConfigGetDefault() *YGConfig {
 	return &gYGConfigDefaults
@@ -369,14 +363,8 @@ func YGConfigNew() *YGConfig {
 	config := &YGConfig{}
 	YGAssert(config != nil, "Could not allocate memory for config")
 
-	gConfigInstanceCount++
 	*config = gYGConfigDefaults
 	return config
-}
-
-// YGConfigFree frees a config
-func YGConfigFree(config *YGConfig) {
-	gConfigInstanceCount--
 }
 
 // YGConfigCopy copies a config

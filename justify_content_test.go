@@ -67,7 +67,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_row_flex_end(t *testing.T) {
@@ -136,7 +136,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_row_center(t *testing.T) {
@@ -205,7 +205,7 @@ func TestJustify_content_row_center(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_row_space_between(t *testing.T) {
@@ -274,7 +274,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_row_space_around(t *testing.T) {
@@ -343,7 +343,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_column_flex_start(t *testing.T) {
@@ -409,7 +409,7 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_column_flex_end(t *testing.T) {
@@ -477,7 +477,7 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_column_center(t *testing.T) {
@@ -545,7 +545,7 @@ func TestJustify_content_column_center(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_column_space_between(t *testing.T) {
@@ -613,7 +613,7 @@ func TestJustify_content_column_space_between(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestJustify_content_column_space_around(t *testing.T) {
@@ -681,5 +681,5 @@ func TestJustify_content_column_space_around(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

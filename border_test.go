@@ -26,7 +26,7 @@ func TestBorder_no_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestBorder_container_match_child(t *testing.T) {
@@ -68,7 +68,7 @@ func TestBorder_container_match_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestBorder_flex_child(t *testing.T) {
@@ -112,7 +112,7 @@ func TestBorder_flex_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestBorder_stretch_child(t *testing.T) {
@@ -155,7 +155,7 @@ func TestBorder_stretch_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestBorder_center_child(t *testing.T) {
@@ -200,5 +200,5 @@ func TestBorder_center_child(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

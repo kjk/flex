@@ -40,7 +40,7 @@ func TestPercentage_width_height(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_position_left_top(t *testing.T) {
@@ -83,7 +83,7 @@ func TestPercentage_position_left_top(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_position_bottom_right(t *testing.T) {
@@ -126,7 +126,7 @@ func TestPercentage_position_bottom_right(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis(t *testing.T) {
@@ -182,7 +182,7 @@ func TestPercentage_flex_basis(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_cross(t *testing.T) {
@@ -237,7 +237,7 @@ func TestPercentage_flex_basis_cross(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_cross_min_height(t *testing.T) {
@@ -292,7 +292,7 @@ func TestPercentage_flex_basis_cross_min_height(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_main_max_height(t *testing.T) {
@@ -350,7 +350,7 @@ func TestPercentage_flex_basis_main_max_height(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_cross_max_height(t *testing.T) {
@@ -407,7 +407,7 @@ func TestPercentage_flex_basis_cross_max_height(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_main_max_width(t *testing.T) {
@@ -465,7 +465,7 @@ func TestPercentage_flex_basis_main_max_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_cross_max_width(t *testing.T) {
@@ -522,7 +522,7 @@ func TestPercentage_flex_basis_cross_max_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_main_min_width(t *testing.T) {
@@ -580,7 +580,7 @@ func TestPercentage_flex_basis_main_min_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_flex_basis_cross_min_width(t *testing.T) {
@@ -637,7 +637,7 @@ func TestPercentage_flex_basis_cross_min_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t *testing.T) {
@@ -746,7 +746,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_margin_should_calculate_based_only_on_width(t *testing.T) {
@@ -804,7 +804,7 @@ func TestPercentage_margin_should_calculate_based_only_on_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_padding_should_calculate_based_only_on_width(t *testing.T) {
@@ -862,7 +862,7 @@ func TestPercentage_padding_should_calculate_based_only_on_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_absolute_position(t *testing.T) {
@@ -905,7 +905,7 @@ func TestPercentage_absolute_position(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_width_height_undefined_parent_size(t *testing.T) {
@@ -943,7 +943,7 @@ func TestPercentage_width_height_undefined_parent_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercent_within_flex_grow(t *testing.T) {
@@ -1025,7 +1025,7 @@ func TestPercent_within_flex_grow(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercentage_container_in_wrapping_container(t *testing.T) {
@@ -1111,7 +1111,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestPercent_absolute_position(t *testing.T) {
@@ -1182,5 +1182,5 @@ func TestPercent_absolute_position(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

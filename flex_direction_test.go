@@ -65,7 +65,7 @@ func TestFlex_direction_column_no_height(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_direction_row_no_width(t *testing.T) {
@@ -132,7 +132,7 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_direction_column(t *testing.T) {
@@ -199,7 +199,7 @@ func TestFlex_direction_column(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_direction_row(t *testing.T) {
@@ -267,7 +267,7 @@ func TestFlex_direction_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_direction_column_reverse(t *testing.T) {
@@ -335,7 +335,7 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestFlex_direction_row_reverse(t *testing.T) {
@@ -403,5 +403,5 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }

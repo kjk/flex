@@ -67,7 +67,7 @@ func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
@@ -163,7 +163,7 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
@@ -232,7 +232,7 @@ func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
@@ -303,7 +303,7 @@ func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_total_fractial(t *testing.T) {
@@ -374,7 +374,7 @@ func TestRounding_total_fractial(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_total_fractial_nested(t *testing.T) {
@@ -479,7 +479,7 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_fractial_input_1(t *testing.T) {
@@ -550,7 +550,7 @@ func TestRounding_fractial_input_1(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_fractial_input_2(t *testing.T) {
@@ -621,7 +621,7 @@ func TestRounding_fractial_input_2(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_fractial_input_3(t *testing.T) {
@@ -693,7 +693,7 @@ func TestRounding_fractial_input_3(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_fractial_input_4(t *testing.T) {
@@ -765,7 +765,7 @@ func TestRounding_fractial_input_4(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
@@ -850,7 +850,7 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_inner_node_controversy_vertical(t *testing.T) {
@@ -934,7 +934,7 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
 
 func TestRounding_inner_node_controversy_combined(t *testing.T) {
@@ -1065,5 +1065,5 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 
 	YGNodeFreeRecursive(root)
 
-	YGConfigFree(config)
+
 }
