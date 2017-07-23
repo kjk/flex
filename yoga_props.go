@@ -326,7 +326,7 @@ func YGNodeStyleGetOverflow(node *YGNode) YGOverflow {
 }
 
 // YGNodeStyleSetDisplay sets display
-func YGNodeStyleSetDisplay(node *YGNode, display YGDisplay) {
+func YGNodeStyleSetDisplay(node *YGNode, display Display) {
 	if node.style.display != display {
 		node.style.display = display
 		YGNodeMarkDirtyInternal(node)
@@ -334,7 +334,7 @@ func YGNodeStyleSetDisplay(node *YGNode, display YGDisplay) {
 }
 
 // YGNodeStyleGetDisplay gets display
-func YGNodeStyleGetDisplay(node *YGNode) YGDisplay {
+func YGNodeStyleGetDisplay(node *YGNode) Display {
 	return node.style.display
 }
 

@@ -46,11 +46,14 @@ const (
 	DirectionRTL
 )
 
-type YGDisplay int
+// Display is "display" property
+type Display int
 
 const (
-	YGDisplayFlex YGDisplay = iota
-	YGDisplayNone
+	// DisplayFlex is "flex"
+	DisplayFlex Display = iota
+	// DisplayNone is "none"
+	DisplayNone
 )
 
 type YGEdge int
@@ -186,7 +189,7 @@ func YGDirectionToString(value Direction) string {
 	return ""
 }
 
-func YGDisplayToString(value YGDisplay) string {
+func YGDisplayToString(value Display) string {
 	return ""
 }
 

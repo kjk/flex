@@ -57,7 +57,7 @@ type YGStyle struct {
 	positionType   YGPositionType
 	flexWrap       YGWrap
 	overflow       YGOverflow
-	display        YGDisplay
+	display        Display
 	flex           float32
 	flexGrow       float32
 	flexShrink     float32
@@ -172,7 +172,7 @@ var (
 			direction:      DirectionInherit,
 			flexDirection:  YGFlexDirectionColumn,
 			overflow:       YGOverflowVisible,
-			display:        YGDisplayFlex,
+			display:        DisplayFlex,
 			dimensions:     YG_DEFAULT_DIMENSION_VALUES_AUTO_UNIT,
 			minDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
 			maxDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
@@ -1658,7 +1658,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	// STEP 3: DETERMINE FLEX BASIS FOR EACH ITEM
 	for i := 0; i < childCount; i++ {
 		child := YGNodeListGet(node.children, i)
-		if child.style.display == YGDisplayNone {
+		if child.style.display == DisplayNone {
 			YGZeroOutLayoutRecursivly(child)
 			child.hasNewLayout = true
 			child.isDirty = false
@@ -1758,7 +1758,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		// Add items to the current line until it's full or we run out of items.
 		for i := startOfLineIndex; i < childCount; i++ {
 			child := YGNodeListGet(node.children, i)
-			if child.style.display == YGDisplayNone {
+			if child.style.display == DisplayNone {
 				endOfLineIndex++
 				continue
 			}
@@ -2188,7 +2188,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 		for i := startOfLineIndex; i < endOfLineIndex; i++ {
 			child := YGNodeListGet(node.children, i)
-			if child.style.display == YGDisplayNone {
+			if child.style.display == DisplayNone {
 				continue
 			}
 			if child.style.positionType == YGPositionTypeAbsolute &&
@@ -2273,7 +2273,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		if performLayout {
 			for i := startOfLineIndex; i < endOfLineIndex; i++ {
 				child := YGNodeListGet(node.children, i)
-				if child.style.display == YGDisplayNone {
+				if child.style.display == DisplayNone {
 					continue
 				}
 				if child.style.positionType == YGPositionTypeAbsolute {
@@ -2446,7 +2446,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			var maxDescentForCurrentLine float32
 			for ii = startIndex; ii < childCount; ii++ {
 				child := YGNodeListGet(node.children, ii)
-				if child.style.display == YGDisplayNone {
+				if child.style.display == DisplayNone {
 					continue
 				}
 				if child.style.positionType == YGPositionTypeRelative {
@@ -2473,7 +2473,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			if performLayout {
 				for ii = startIndex; ii < endIndex; ii++ {
 					child := YGNodeListGet(node.children, ii)
-					if child.style.display == YGDisplayNone {
+					if child.style.display == DisplayNone {
 						continue
 					}
 					if child.style.positionType == YGPositionTypeRelative {
@@ -2631,7 +2631,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		if needsMainTrailingPos || needsCrossTrailingPos {
 			for i := 0; i < childCount; i++ {
 				child := YGNodeListGet(node.children, i)
-				if child.style.display == YGDisplayNone {
+				if child.style.display == DisplayNone {
 					continue
 				}
 				if needsMainTrailingPos {
