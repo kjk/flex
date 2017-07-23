@@ -54,9 +54,9 @@ type YGStyle struct {
 	alignContent   Align
 	alignItems     Align
 	alignSelf      Align
-	positionType   YGPositionType
+	positionType   PositionType
 	flexWrap       YGWrap
-	overflow       YGOverflow
+	overflow       Overflow
 	display        Display
 	flex           float32
 	flexGrow       float32
@@ -103,7 +103,7 @@ type YGNode struct {
 
 	isDirty      bool
 	hasNewLayout bool
-	nodeType     YGNodeType
+	nodeType     NodeType
 
 	resolvedDimensions [2]*YGValue
 }
@@ -159,7 +159,7 @@ var (
 		children:           nil,
 		hasNewLayout:       true,
 		isDirty:            false,
-		nodeType:           YGNodeTypeDefault,
+		nodeType:           NodeTypeDefault,
 		resolvedDimensions: [2]*YGValue{&YGValueUndefined, &YGValueUndefined},
 		style: YGStyle{
 			flex:           YGUndefined,
@@ -171,7 +171,7 @@ var (
 			alignContent:   AlignFlexStart,
 			direction:      DirectionInherit,
 			flexDirection:  FlexDirectionColumn,
-			overflow:       YGOverflowVisible,
+			overflow:       OverflowVisible,
 			display:        DisplayFlex,
 			dimensions:     YG_DEFAULT_DIMENSION_VALUES_AUTO_UNIT,
 			minDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
@@ -350,7 +350,7 @@ func YGNodeSetMeasureFunc(node *YGNode, measureFunc YGMeasureFunc) {
 	if measureFunc == nil {
 		node.measure = nil
 		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
-		node.nodeType = YGNodeTypeDefault
+		node.nodeType = NodeTypeDefault
 	} else {
 		YGAssertWithNode(
 			node,
@@ -358,7 +358,7 @@ func YGNodeSetMeasureFunc(node *YGNode, measureFunc YGMeasureFunc) {
 			"Cannot set measure function: Nodes with measure functions cannot have children.")
 		node.measure = measureFunc
 		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
-		node.nodeType = YGNodeTypeText
+		node.nodeType = NodeTypeText
 	}
 }
 
@@ -740,7 +740,7 @@ func YGBaseline(node *YGNode) float32 {
 		if child.lineIndex > 0 {
 			break
 		}
-		if child.style.positionType == YGPositionTypeAbsolute {
+		if child.style.positionType == PositionTypeAbsolute {
 			continue
 		}
 		if YGNodeAlignItem(node, child) == AlignBaseline {
@@ -783,7 +783,7 @@ func YGFlexDirectionCross(flexDirection FlexDirection, direction Direction) Flex
 
 // YGNodeIsFlex returns true if node is flex
 func YGNodeIsFlex(node *YGNode) bool {
-	return (node.style.positionType == YGPositionTypeRelative &&
+	return (node.style.positionType == PositionTypeRelative &&
 		(YGResolveFlexGrow(node) != 0 || YGNodeResolveFlexShrink(node) != 0))
 }
 
@@ -798,7 +798,7 @@ func YGIsBaselineLayout(node *YGNode) bool {
 	childCount := YGNodeGetChildCount(node)
 	for i := 0; i < childCount; i++ {
 		child := YGNodeGetChild(node, i)
-		if child.style.positionType == YGPositionTypeRelative &&
+		if child.style.positionType == PositionTypeRelative &&
 			child.style.alignSelf == AlignBaseline {
 			return true
 		}
@@ -1062,16 +1062,16 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 
 		// The W3C spec doesn't say anything about the 'overflow' property,
 		// but all major browsers appear to implement the following logic.
-		if (!isMainAxisRow && node.style.overflow == YGOverflowScroll) ||
-			node.style.overflow != YGOverflowScroll {
+		if (!isMainAxisRow && node.style.overflow == OverflowScroll) ||
+			node.style.overflow != OverflowScroll {
 			if YGFloatIsUndefined(childWidth) && !YGFloatIsUndefined(width) {
 				childWidth = width
 				childWidthMeasureMode = MeasureModeAtMost
 			}
 		}
 
-		if (isMainAxisRow && node.style.overflow == YGOverflowScroll) ||
-			node.style.overflow != YGOverflowScroll {
+		if (isMainAxisRow && node.style.overflow == OverflowScroll) ||
+			node.style.overflow != OverflowScroll {
 			if YGFloatIsUndefined(childHeight) && !YGFloatIsUndefined(height) {
 				childHeight = height
 				childHeightMeasureMode = MeasureModeAtMost
@@ -1677,7 +1677,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 		// Absolute-positioned children don't participate in flex layout. Add them
 		// to a list that we can process later.
-		if child.style.positionType == YGPositionTypeAbsolute {
+		if child.style.positionType == PositionTypeAbsolute {
 			// Store a private linked list of absolutely positioned children
 			// so that we can efficiently traverse them later.
 			if firstAbsoluteChild == nil {
@@ -1764,7 +1764,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			}
 			child.lineIndex = lineCount
 
-			if child.style.positionType != YGPositionTypeAbsolute {
+			if child.style.positionType != PositionTypeAbsolute {
 				childMarginMainAxis := YGNodeMarginForAxis(child, mainAxis, availableInnerWidth)
 				flexBasisWithMaxConstraints := fminf(YGResolveValue(&child.style.maxDimensions[dim[mainAxis]], mainAxisParentSize), child.layout.computedFlexBasis)
 				flexBasisWithMinAndMaxConstraints := fmaxf(YGResolveValue(&child.style.minDimensions[dim[mainAxis]], mainAxisParentSize), flexBasisWithMaxConstraints)
@@ -2153,7 +2153,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		numberOfAutoMarginsOnCurrentLine := 0
 		for i := startOfLineIndex; i < endOfLineIndex; i++ {
 			child := YGNodeListGet(node.children, i)
-			if child.style.positionType == YGPositionTypeRelative {
+			if child.style.positionType == PositionTypeRelative {
 				if YGMarginLeadingValue(child, mainAxis).unit == YGUnitAuto {
 					numberOfAutoMarginsOnCurrentLine++
 				}
@@ -2191,7 +2191,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			if child.style.display == DisplayNone {
 				continue
 			}
-			if child.style.positionType == YGPositionTypeAbsolute &&
+			if child.style.positionType == PositionTypeAbsolute &&
 				YGNodeIsLeadingPosDefined(child, mainAxis) {
 				if performLayout {
 					// In case the child is position absolute and has left/top being
@@ -2206,7 +2206,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 				// Now that we placed the element, we need to update the variables.
 				// We need to do that only for relative elements. Absolute elements
 				// do not take part in that phase.
-				if child.style.positionType == YGPositionTypeRelative {
+				if child.style.positionType == PositionTypeRelative {
 					if YGMarginLeadingValue(child, mainAxis).unit == YGUnitAuto {
 						mainDim += remainingFreeSpace / float32(numberOfAutoMarginsOnCurrentLine)
 					}
@@ -2276,7 +2276,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 				if child.style.display == DisplayNone {
 					continue
 				}
-				if child.style.positionType == YGPositionTypeAbsolute {
+				if child.style.positionType == PositionTypeAbsolute {
 					// If the child is absolutely positioned and has a
 					// top/left/bottom/right
 					// set, override all the previously computed positions to set it
@@ -2449,7 +2449,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 				if child.style.display == DisplayNone {
 					continue
 				}
-				if child.style.positionType == YGPositionTypeRelative {
+				if child.style.positionType == PositionTypeRelative {
 					if child.lineIndex != i {
 						break
 					}
@@ -2476,7 +2476,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 					if child.style.display == DisplayNone {
 						continue
 					}
-					if child.style.positionType == YGPositionTypeRelative {
+					if child.style.positionType == PositionTypeRelative {
 						switch YGNodeAlignItem(node, child) {
 						case AlignFlexStart:
 							{
@@ -2560,13 +2560,13 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	// If the user didn't specify a width or height for the node, set the
 	// dimensions based on the children.
 	if measureModeMainDim == MeasureModeUndefined ||
-		(node.style.overflow != YGOverflowScroll && measureModeMainDim == MeasureModeAtMost) {
+		(node.style.overflow != OverflowScroll && measureModeMainDim == MeasureModeAtMost) {
 		// Clamp the size to the min/max size, if specified, and make sure it
 		// doesn't go below the padding and border amount.
 		node.layout.measuredDimensions[dim[mainAxis]] =
 			YGNodeBoundAxis(node, mainAxis, maxLineMainDim, mainAxisParentSize, parentWidth)
 	} else if measureModeMainDim == MeasureModeAtMost &&
-		node.style.overflow == YGOverflowScroll {
+		node.style.overflow == OverflowScroll {
 		node.layout.measuredDimensions[dim[mainAxis]] = fmaxf(
 			fminf(availableInnerMainDim+paddingAndBorderAxisMain,
 				YGNodeBoundAxisWithinMinAndMax(node, mainAxis, maxLineMainDim, mainAxisParentSize)),
@@ -2574,7 +2574,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 
 	if measureModeCrossDim == MeasureModeUndefined ||
-		(node.style.overflow != YGOverflowScroll && measureModeCrossDim == MeasureModeAtMost) {
+		(node.style.overflow != OverflowScroll && measureModeCrossDim == MeasureModeAtMost) {
 		// Clamp the size to the min/max size, if specified, and make sure it
 		// doesn't go below the padding and border amount.
 		node.layout.measuredDimensions[dim[crossAxis]] =
@@ -2584,7 +2584,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 				crossAxisParentSize,
 				parentWidth)
 	} else if measureModeCrossDim == MeasureModeAtMost &&
-		node.style.overflow == YGOverflowScroll {
+		node.style.overflow == OverflowScroll {
 		node.layout.measuredDimensions[dim[crossAxis]] =
 			fmaxf(fminf(availableInnerCrossDim+paddingAndBorderAxisCross,
 				YGNodeBoundAxisWithinMinAndMax(node,
@@ -2598,7 +2598,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	if performLayout && node.style.flexWrap == YGWrapWrapReverse {
 		for i := 0; i < childCount; i++ {
 			child := YGNodeGetChild(node, i)
-			if child.style.positionType == YGPositionTypeRelative {
+			if child.style.positionType == PositionTypeRelative {
 				child.layout.position[pos[crossAxis]] = node.layout.measuredDimensions[dim[crossAxis]] -
 					child.layout.position[pos[crossAxis]] -
 					child.layout.measuredDimensions[dim[crossAxis]]
@@ -3006,7 +3006,7 @@ func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft flo
 
 	// If a node has a custom measure function we never want to round down its size as this could
 	// lead to unwanted text truncation.
-	textRounding := node.nodeType == YGNodeTypeText
+	textRounding := node.nodeType == NodeTypeText
 
 	node.layout.position[EdgeLeft] = YGRoundValueToPixelGrid(nodeLeft, pointScaleFactor, false, textRounding)
 	node.layout.position[EdgeTop] = YGRoundValueToPixelGrid(nodeTop, pointScaleFactor, false, textRounding)
@@ -3096,7 +3096,7 @@ func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float
 		YGRoundToPixelGrid(node, node.config.pointScaleFactor, 0, 0)
 
 		if gPrintTree {
-			YGNodePrint(node, YGPrintOptionsLayout|YGPrintOptionsChildren|YGPrintOptionsStyle)
+			YGNodePrint(node, PrintOptionsLayout|PrintOptionsChildren|PrintOptionsStyle)
 		}
 	}
 }

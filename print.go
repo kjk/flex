@@ -60,7 +60,7 @@ func YGPrintEdges(node *YGNode, str string, edges []YGValue) {
 	}
 }
 
-func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
+func YGNodePrintInternal(node *YGNode, options PrintOptions, level int) {
 	YGIndent(node, level)
 	YGLog(node, LogLevelDebug, "<div ")
 
@@ -68,7 +68,7 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 		node.print(node)
 	}
 
-	if options&YGPrintOptionsLayout != 0 {
+	if options&PrintOptionsLayout != 0 {
 		YGLog(node, LogLevelDebug, "layout=\"")
 		YGLog(node, LogLevelDebug, "width: %g; ", node.layout.dimensions[DimensionWidth])
 		YGLog(node, LogLevelDebug, "height: %g; ", node.layout.dimensions[DimensionHeight])
@@ -77,7 +77,7 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 		YGLog(node, LogLevelDebug, "\" ")
 	}
 
-	if options&YGPrintOptionsStyle != 0 {
+	if options&PrintOptionsStyle != 0 {
 		YGLog(node, LogLevelDebug, "style=\"")
 		if node.style.flexDirection != gYGNodeDefaults.style.flexDirection {
 			YGLog(node,
@@ -149,7 +149,7 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 	YGLog(node, LogLevelDebug, ">")
 
 	childCount := YGNodeListCount(node.children)
-	if options&YGPrintOptionsChildren != 0 && childCount > 0 {
+	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
 			YGLog(node, LogLevelDebug, "\n")
 			YGNodePrintInternal(YGNodeGetChild(node, i), options, level+1)
@@ -160,6 +160,6 @@ func YGNodePrintInternal(node *YGNode, options YGPrintOptions, level int) {
 	YGLog(node, LogLevelDebug, "</div>")
 }
 
-func YGNodePrint(node *YGNode, options YGPrintOptions) {
+func YGNodePrint(node *YGNode, options PrintOptions) {
 	YGNodePrintInternal(node, options, 0)
 }

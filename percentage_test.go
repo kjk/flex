@@ -813,7 +813,7 @@ func TestPercentage_absolute_position(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPositionPercent(rootChild0, EdgeLeft, 30)
 	YGNodeStyleSetPositionPercent(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetWidth(rootChild0, 10)
@@ -1047,7 +1047,7 @@ func TestPercent_absolute_position(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPositionPercent(rootChild0, EdgeLeft, 50)
 	YGNodeStyleSetWidthPercent(rootChild0, 100)
 	YGNodeStyleSetHeight(rootChild0, 50)

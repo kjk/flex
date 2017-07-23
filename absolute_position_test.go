@@ -25,7 +25,7 @@ func TestAbsoluteLayoutWidthHeightStartTop(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeStart, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetWidth(rootChild0, 10)
@@ -64,7 +64,7 @@ func TestAbsoluteLayoutStartTopEndBottom(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeStart, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeEnd, 10)
@@ -103,7 +103,7 @@ func TestAbsoluteLayoutWidthHeightStartTopEndBottom(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeStart, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeEnd, 10)
@@ -141,12 +141,12 @@ func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *test
 
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetOverflow(root, YGOverflowHidden)
+	YGNodeStyleSetOverflow(root, OverflowHidden)
 	YGNodeStyleSetWidth(root, 50)
 	YGNodeStyleSetHeight(root, 50)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeStart, 0)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -210,7 +210,7 @@ func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 0)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	YGNodeStyleSetWidth(rootChild0, 50)
@@ -218,7 +218,7 @@ func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild1, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild1, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild1, EdgeRight, 0)
 	YGNodeStyleSetPosition(rootChild1, EdgeBottom, 0)
 	YGNodeStyleSetWidth(rootChild1, 50)
@@ -226,7 +226,7 @@ func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild2, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild2, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild2, EdgeLeft, 0)
 	YGNodeStyleSetPosition(rootChild2, EdgeTop, 0)
 	YGNodeStyleSetMargin(rootChild2, EdgeLeft, 10)
@@ -238,7 +238,7 @@ func TestAbsoluteLayoutWithinBorder(t *testing.T) {
 	YGNodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild3, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild3, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild3, EdgeRight, 0)
 	YGNodeStyleSetPosition(rootChild3, EdgeBottom, 0)
 	YGNodeStyleSetMargin(rootChild3, EdgeLeft, 10)
@@ -314,7 +314,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -354,7 +354,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -393,7 +393,7 @@ func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -432,7 +432,7 @@ func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -471,7 +471,7 @@ func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetAlignSelf(rootChild0, AlignCenter)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -511,7 +511,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testin
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
@@ -552,7 +552,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *tes
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
@@ -593,7 +593,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testi
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 5)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
@@ -634,7 +634,7 @@ func TestAbsolute_layout_align_items_and_justify_content_center_and_right_positi
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeRight, 5)
 	YGNodeStyleSetWidth(rootChild0, 60)
 	YGNodeStyleSetHeight(rootChild0, 40)
@@ -694,21 +694,21 @@ func TestAbsolute_layout_percentage_bottom_based_on_parent_height(t *testing.T) 
 	YGNodeStyleSetHeight(root, 200)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPositionPercent(rootChild0, EdgeTop, 50)
 	YGNodeStyleSetWidth(rootChild0, 10)
 	YGNodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild1, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild1, PositionTypeAbsolute)
 	YGNodeStyleSetPositionPercent(rootChild1, EdgeBottom, 50)
 	YGNodeStyleSetWidth(rootChild1, 10)
 	YGNodeStyleSetHeight(rootChild1, 10)
 	YGNodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild2, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild2, PositionTypeAbsolute)
 	YGNodeStyleSetPositionPercent(rootChild2, EdgeTop, 10)
 	YGNodeStyleSetPositionPercent(rootChild2, EdgeBottom, 10)
 	YGNodeStyleSetWidth(rootChild2, 10)
@@ -767,7 +767,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 20)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -806,7 +806,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 20)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -845,7 +845,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T)
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 20)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -885,7 +885,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 
 	rootChild0 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetWidth(rootChild0, 20)
 	YGNodeStyleSetHeight(rootChild0, 20)
 	YGNodeInsertChild(root, rootChild0, 0)

@@ -256,7 +256,7 @@ func TestOverflow_scroll_column(t *testing.T) {
 
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
-	YGNodeStyleSetOverflow(root, YGOverflowScroll)
+	YGNodeStyleSetOverflow(root, OverflowScroll)
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetWidth(root, 100)
 
@@ -286,7 +286,7 @@ func TestOverflow_scroll_row(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetOverflow(root, YGOverflowScroll)
+	YGNodeStyleSetOverflow(root, OverflowScroll)
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetWidth(root, 100)
 

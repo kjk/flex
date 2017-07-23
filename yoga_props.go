@@ -138,7 +138,7 @@ func YGNodeStyleGetHeight(node *YGNode) YGValue {
 }
 
 // YGNodeStyleSetPositionType sets position type
-func YGNodeStyleSetPositionType(node *YGNode, positionType YGPositionType) {
+func YGNodeStyleSetPositionType(node *YGNode, positionType PositionType) {
 	if node.style.positionType != positionType {
 		node.style.positionType = positionType
 		YGNodeMarkDirtyInternal(node)
@@ -146,7 +146,7 @@ func YGNodeStyleSetPositionType(node *YGNode, positionType YGPositionType) {
 }
 
 // YGNodeStyleGetPositionType gets position type
-func YGNodeStyleGetPositionType(node *YGNode) YGPositionType {
+func YGNodeStyleGetPositionType(node *YGNode) PositionType {
 	return node.style.positionType
 }
 
@@ -212,12 +212,12 @@ func YGNodeGetHasNewLayout(node *YGNode) bool {
 }
 
 // YGNodeSetNodeType sets node type
-func YGNodeSetNodeType(node *YGNode, nodeType YGNodeType) {
+func YGNodeSetNodeType(node *YGNode, nodeType NodeType) {
 	node.nodeType = nodeType
 }
 
 // YGNodeGetNodeType gets node type
-func YGNodeGetNodeType(node *YGNode) YGNodeType {
+func YGNodeGetNodeType(node *YGNode) NodeType {
 	return node.nodeType
 }
 
@@ -313,7 +313,7 @@ func YGNodeStyleGetFlexWrap(node *YGNode) YGWrap {
 }
 
 // YGNodeStyleSetOverflow sets overflow
-func YGNodeStyleSetOverflow(node *YGNode, overflow YGOverflow) {
+func YGNodeStyleSetOverflow(node *YGNode, overflow Overflow) {
 	if node.style.overflow != overflow {
 		node.style.overflow = overflow
 		YGNodeMarkDirtyInternal(node)
@@ -321,7 +321,7 @@ func YGNodeStyleSetOverflow(node *YGNode, overflow YGOverflow) {
 }
 
 // YGNodeStyleGetOverflow gets overflow
-func YGNodeStyleGetOverflow(node *YGNode) YGOverflow {
+func YGNodeStyleGetOverflow(node *YGNode) Overflow {
 	return node.style.overflow
 }
 

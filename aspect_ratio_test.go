@@ -186,7 +186,7 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNew()
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 0)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	YGNodeStyleSetWidth(rootChild0, 50)
@@ -208,7 +208,7 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNew()
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 0)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	YGNodeStyleSetHeight(rootChild0, 50)
@@ -567,7 +567,7 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNew()
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeRight, 10)
@@ -589,7 +589,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 
 	rootChild0 := YGNodeNew()
-	YGNodeStyleSetPositionType(rootChild0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
 	YGNodeStyleSetPosition(rootChild0, EdgeLeft, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetPosition(rootChild0, EdgeBottom, 10)

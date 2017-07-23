@@ -67,7 +67,7 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 	measureCount := 0
 
 	rootChild0Child0 := YGNodeNew()
-	YGNodeStyleSetPositionType(rootChild0Child0, YGPositionTypeAbsolute)
+	YGNodeStyleSetPositionType(rootChild0Child0, PositionTypeAbsolute)
 	YGNodeSetContext(rootChild0Child0, &measureCount)
 	YGNodeSetMeasureFunc(rootChild0Child0, _measure3)
 	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)

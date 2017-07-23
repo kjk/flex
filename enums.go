@@ -155,34 +155,44 @@ const (
 	measureModeCount = 3
 )
 
-type YGNodeType int
+// NodeType defines node type
+type NodeType int
 
 const (
-	YGNodeTypeDefault YGNodeType = iota
-	YGNodeTypeText
+	// NodeTypeDefault is default node
+	NodeTypeDefault NodeType = iota
+	// NodeTypeText is text node
+	NodeTypeText
 )
 
-type YGOverflow int
+// Overflow describes "overflow" property
+type Overflow int
 
 const (
-	YGOverflowVisible YGOverflow = iota
-	YGOverflowHidden
-	YGOverflowScroll
+	// OverflowVisible is "visible"
+	OverflowVisible Overflow = iota
+	// OverflowHidden is "hidden"
+	OverflowHidden
+	// OverflowScroll is "scroll"
+	OverflowScroll
 )
 
-type YGPositionType int
+// PositionType is "position" property
+type PositionType int
 
 const (
-	YGPositionTypeRelative YGPositionType = iota
-	YGPositionTypeAbsolute
+	// PositionTypeRelative is "relative"
+	PositionTypeRelative PositionType = iota
+	// PositionTypeAbsolute is "absolute"
+	PositionTypeAbsolute
 )
 
-type YGPrintOptions int
+type PrintOptions int
 
 const (
-	YGPrintOptionsLayout YGPrintOptions = 1 << iota
-	YGPrintOptionsStyle
-	YGPrintOptionsChildren
+	PrintOptionsLayout PrintOptions = 1 << iota
+	PrintOptionsStyle
+	PrintOptionsChildren
 )
 
 type YGUnit int
@@ -245,19 +255,19 @@ func YGMeasureModeToString(value MeasureMode) string {
 	return ""
 }
 
-func YGNodeTypeToString(value YGNodeType) string {
+func YGNodeTypeToString(value NodeType) string {
 	return ""
 }
 
-func YGOverflowToString(value YGOverflow) string {
+func YGOverflowToString(value Overflow) string {
 	return ""
 }
 
-func YGPositionTypeToString(value YGPositionType) string {
+func YGPositionTypeToString(value PositionType) string {
 	return ""
 }
 
-func YGPrintOptionsToString(value YGPrintOptions) string {
+func YGPrintOptionsToString(value PrintOptions) string {
 	return ""
 }
 
