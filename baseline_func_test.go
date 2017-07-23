@@ -9,8 +9,8 @@ func baselineFunc(node *Node, width float32, height float32) float32 {
 
 func TestAlign_baseline_customer_func(t *testing.T) {
 	root := NewNode()
-	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
-	YGNodeStyleSetAlignItems(root, AlignBaseline)
+	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	NodeStyleSetAlignItems(root, AlignBaseline)
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
 

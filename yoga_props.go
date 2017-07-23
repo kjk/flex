@@ -181,184 +181,174 @@ func YGNodeStyleGetPosition(node *Node, edge Edge) Value {
 	return node.Style.position[edge]
 }
 
-// YGNodeSetPrintFunc sets print func
-func YGNodeSetPrintFunc(node *Node, printFunc PrintFunc) {
+// NodeSetPrintFunc sets print func
+func NodeSetPrintFunc(node *Node, printFunc PrintFunc) {
 	node.Print = printFunc
 }
 
-// YGNodeGetPrintFunc gets print func
-func YGNodeGetPrintFunc(node *Node) PrintFunc {
-	return node.Print
-}
-
-// YGNodeSetHasNewLayout sets has new layout
-func YGNodeSetHasNewLayout(node *Node, hasNewLayout bool) {
-	node.hasNewLayout = hasNewLayout
-}
-
-// YGNodeGetHasNewLayout gets has new layout
-func YGNodeGetHasNewLayout(node *Node) bool {
+// NodeGetHasNewLayout gets has new layout
+func NodeGetHasNewLayout(node *Node) bool {
 	return node.hasNewLayout
 }
 
-// YGNodeSetNodeType sets node type
-func YGNodeSetNodeType(node *Node, nodeType NodeType) {
+// NodeSetNodeType sets node type
+func NodeSetNodeType(node *Node, nodeType NodeType) {
 	node.NodeType = nodeType
 }
 
-// YGNodeGetNodeType gets node type
-func YGNodeGetNodeType(node *Node) NodeType {
+// NodeGetNodeType gets node type
+func NodeGetNodeType(node *Node) NodeType {
 	return node.NodeType
 }
 
-// YGNodeStyleSetDirection sets direction
-func YGNodeStyleSetDirection(node *Node, direction Direction) {
+// NodeStyleSetDirection sets direction
+func NodeStyleSetDirection(node *Node, direction Direction) {
 	if node.Style.direction != direction {
 		node.Style.direction = direction
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetDirection gets direction
-func YGNodeStyleGetDirection(node *Node) Direction {
+// NodeStyleGetDirection gets direction
+func NodeStyleGetDirection(node *Node) Direction {
 	return node.Style.direction
 }
 
-// YGNodeStyleSetFlexDirection sets flex directions
-func YGNodeStyleSetFlexDirection(node *Node, flexDirection FlexDirection) {
+// NodeStyleSetFlexDirection sets flex directions
+func NodeStyleSetFlexDirection(node *Node, flexDirection FlexDirection) {
 	if node.Style.flexDirection != flexDirection {
 		node.Style.flexDirection = flexDirection
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetFlexDirection gets flex direction
-func YGNodeStyleGetFlexDirection(node *Node) FlexDirection {
+// NodeStyleGetFlexDirection gets flex direction
+func NodeStyleGetFlexDirection(node *Node) FlexDirection {
 	return node.Style.flexDirection
 }
 
-// YGNodeStyleSetJustifyContent sets justify content
-func YGNodeStyleSetJustifyContent(node *Node, justifyContent Justify) {
+// NodeStyleSetJustifyContent sets justify content
+func NodeStyleSetJustifyContent(node *Node, justifyContent Justify) {
 	if node.Style.justifyContent != justifyContent {
 		node.Style.justifyContent = justifyContent
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetJustifyContent gets justify content
-func YGNodeStyleGetJustifyContent(node *Node) Justify {
+// NodeStyleGetJustifyContent gets justify content
+func NodeStyleGetJustifyContent(node *Node) Justify {
 	return node.Style.justifyContent
 }
 
-// YGNodeStyleSetAlignContent sets align content
-func YGNodeStyleSetAlignContent(node *Node, alignContent Align) {
+// NodeStyleSetAlignContent sets align content
+func NodeStyleSetAlignContent(node *Node, alignContent Align) {
 	if node.Style.alignContent != alignContent {
 		node.Style.alignContent = alignContent
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetAlignContent gets align content
-func YGNodeStyleGetAlignContent(node *Node) Align {
+// NodeStyleGetAlignContent gets align content
+func NodeStyleGetAlignContent(node *Node) Align {
 	return node.Style.alignContent
 }
 
-// YGNodeStyleSetAlignItems sets align content
-func YGNodeStyleSetAlignItems(node *Node, alignItems Align) {
+// NodeStyleSetAlignItems sets align content
+func NodeStyleSetAlignItems(node *Node, alignItems Align) {
 	if node.Style.alignItems != alignItems {
 		node.Style.alignItems = alignItems
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetAlignItems gets align items
-func YGNodeStyleGetAlignItems(node *Node) Align {
+// NodeStyleGetAlignItems gets align items
+func NodeStyleGetAlignItems(node *Node) Align {
 	return node.Style.alignItems
 }
 
-// YGNodeStyleSetAlignSelf sets align self
-func YGNodeStyleSetAlignSelf(node *Node, alignSelf Align) {
+// NodeStyleSetAlignSelf sets align self
+func NodeStyleSetAlignSelf(node *Node, alignSelf Align) {
 	if node.Style.alignSelf != alignSelf {
 		node.Style.alignSelf = alignSelf
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetAlignSelf gets align self
-func YGNodeStyleGetAlignSelf(node *Node) Align {
+// NodeStyleGetAlignSelf gets align self
+func NodeStyleGetAlignSelf(node *Node) Align {
 	return node.Style.alignSelf
 }
 
-// YGNodeStyleSetFlexWrap sets flex wrap
-func YGNodeStyleSetFlexWrap(node *Node, flexWrap Wrap) {
+// NodeStyleSetFlexWrap sets flex wrap
+func NodeStyleSetFlexWrap(node *Node, flexWrap Wrap) {
 	if node.Style.flexWrap != flexWrap {
 		node.Style.flexWrap = flexWrap
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetFlexWrap gets flex wrap
-func YGNodeStyleGetFlexWrap(node *Node) Wrap {
+// NodeStyleGetFlexWrap gets flex wrap
+func NodeStyleGetFlexWrap(node *Node) Wrap {
 	return node.Style.flexWrap
 }
 
-// YGNodeStyleSetOverflow sets overflow
-func YGNodeStyleSetOverflow(node *Node, overflow Overflow) {
+// NodeStyleSetOverflow sets overflow
+func NodeStyleSetOverflow(node *Node, overflow Overflow) {
 	if node.Style.overflow != overflow {
 		node.Style.overflow = overflow
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetOverflow gets overflow
-func YGNodeStyleGetOverflow(node *Node) Overflow {
+// NodeStyleGetOverflow gets overflow
+func NodeStyleGetOverflow(node *Node) Overflow {
 	return node.Style.overflow
 }
 
-// YGNodeStyleSetDisplay sets display
-func YGNodeStyleSetDisplay(node *Node, display Display) {
+// NodeStyleSetDisplay sets display
+func NodeStyleSetDisplay(node *Node, display Display) {
 	if node.Style.display != display {
 		node.Style.display = display
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetDisplay gets display
-func YGNodeStyleGetDisplay(node *Node) Display {
+// NodeStyleGetDisplay gets display
+func NodeStyleGetDisplay(node *Node) Display {
 	return node.Style.display
 }
 
-// YGNodeStyleSetFlex sets flex
-func YGNodeStyleSetFlex(node *Node, flex float32) {
+// NodeStyleSetFlex sets flex
+func NodeStyleSetFlex(node *Node, flex float32) {
 	if node.Style.flex != flex {
 		node.Style.flex = flex
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleGetFlex gets flex
-func YGNodeStyleGetFlex(node *Node) float32 {
+// NodeStyleGetFlex gets flex
+func NodeStyleGetFlex(node *Node) float32 {
 	return node.Style.flex
 }
 
-// YGNodeStyleSetFlexGrow sets flex grow
-func YGNodeStyleSetFlexGrow(node *Node, flexGrow float32) {
+// NodeStyleSetFlexGrow sets flex grow
+func NodeStyleSetFlexGrow(node *Node, flexGrow float32) {
 	if node.Style.flexGrow != flexGrow {
 		node.Style.flexGrow = flexGrow
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleSetFlexShrink sets flex shrink
-func YGNodeStyleSetFlexShrink(node *Node, flexShrink float32) {
+// NodeStyleSetFlexShrink sets flex shrink
+func NodeStyleSetFlexShrink(node *Node, flexShrink float32) {
 	if node.Style.flexShrink != flexShrink {
 		node.Style.flexShrink = flexShrink
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeStyleSetFlexBasis sets flex basis
-func YGNodeStyleSetFlexBasis(node *Node, flexBasis float32) {
+// NodeStyleSetFlexBasis sets flex basis
+func NodeStyleSetFlexBasis(node *Node, flexBasis float32) {
 	if node.Style.flexBasis.Value != flexBasis ||
 		node.Style.flexBasis.Unit != UnitPoint {
 		node.Style.flexBasis.Value = flexBasis
@@ -370,8 +360,8 @@ func YGNodeStyleSetFlexBasis(node *Node, flexBasis float32) {
 	}
 }
 
-// YGNodeStyleSetFlexBasisPercent sets flex basis percent
-func YGNodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
+// NodeStyleSetFlexBasisPercent sets flex basis percent
+func NodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
 	if node.Style.flexBasis.Value != flexBasis ||
 		node.Style.flexBasis.Unit != UnitPercent {
 		node.Style.flexBasis.Value = flexBasis
@@ -383,8 +373,8 @@ func YGNodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
 	}
 }
 
-// YGNodeStyleSetFlexBasisAuto sets flex basis auto
-func YGNodeStyleSetFlexBasisAuto(node *Node) {
+// NodeStyleSetFlexBasisAuto sets flex basis auto
+func NodeStyleSetFlexBasisAuto(node *Node) {
 	if node.Style.flexBasis.Unit != UnitAuto {
 		node.Style.flexBasis.Value = Undefined
 		node.Style.flexBasis.Unit = UnitAuto
@@ -392,13 +382,13 @@ func YGNodeStyleSetFlexBasisAuto(node *Node) {
 	}
 }
 
-// YGNodeStyleGetFlexBasis gets flex basis
-func YGNodeStyleGetFlexBasis(node *Node) Value {
+// NodeStyleGetFlexBasis gets flex basis
+func NodeStyleGetFlexBasis(node *Node) Value {
 	return node.Style.flexBasis
 }
 
-// YGNodeStyleSetMargin sets margin
-func YGNodeStyleSetMargin(node *Node, edge Edge, margin float32) {
+// NodeStyleSetMargin sets margin
+func NodeStyleSetMargin(node *Node, edge Edge, margin float32) {
 	if node.Style.margin[edge].Value != margin ||
 		node.Style.margin[edge].Unit != UnitPoint {
 		node.Style.margin[edge].Value = margin
@@ -423,13 +413,13 @@ func YGNodeStyleSetMarginPercent(node *Node, edge Edge, margin float32) {
 	}
 }
 
-// YGNodeStyleGetMargin gets margin
-func YGNodeStyleGetMargin(node *Node, edge Edge) Value {
+// NodeStyleGetMargin gets margin
+func NodeStyleGetMargin(node *Node, edge Edge) Value {
 	return node.Style.margin[edge]
 }
 
-// YGNodeStyleSetMarginAuto sets margin auto
-func YGNodeStyleSetMarginAuto(node *Node, edge Edge) {
+// NodeStyleSetMarginAuto sets margin auto
+func NodeStyleSetMarginAuto(node *Node, edge Edge) {
 	if node.Style.margin[edge].Unit != UnitAuto {
 		node.Style.margin[edge].Value = Undefined
 		node.Style.margin[edge].Unit = UnitAuto
@@ -437,8 +427,8 @@ func YGNodeStyleSetMarginAuto(node *Node, edge Edge) {
 	}
 }
 
-// YGNodeStyleSetPadding sets padding
-func YGNodeStyleSetPadding(node *Node, edge Edge, padding float32) {
+// NodeStyleSetPadding sets padding
+func NodeStyleSetPadding(node *Node, edge Edge, padding float32) {
 	if node.Style.padding[edge].Value != padding ||
 		node.Style.padding[edge].Unit != UnitPoint {
 		node.Style.padding[edge].Value = padding
@@ -450,8 +440,8 @@ func YGNodeStyleSetPadding(node *Node, edge Edge, padding float32) {
 	}
 }
 
-// YGNodeStyleSetPaddingPercent sets padding percent
-func YGNodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
+// NodeStyleSetPaddingPercent sets padding percent
+func NodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
 	if node.Style.padding[edge].Value != padding ||
 		node.Style.padding[edge].Unit != UnitPercent {
 		node.Style.padding[edge].Value = padding
@@ -463,13 +453,13 @@ func YGNodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
 	}
 }
 
-// YGNodeStyleGetPadding gets padding
-func YGNodeStyleGetPadding(node *Node, edge Edge) Value {
+// NodeStyleGetPadding gets padding
+func NodeStyleGetPadding(node *Node, edge Edge) Value {
 	return node.Style.padding[edge]
 }
 
-// YGNodeStyleSetBorder sets border
-func YGNodeStyleSetBorder(node *Node, edge Edge, border float32) {
+// NodeStyleSetBorder sets border
+func NodeStyleSetBorder(node *Node, edge Edge, border float32) {
 	if node.Style.border[edge].Value != border ||
 		node.Style.border[edge].Unit != UnitPoint {
 		node.Style.border[edge].Value = border
@@ -481,13 +471,13 @@ func YGNodeStyleSetBorder(node *Node, edge Edge, border float32) {
 	}
 }
 
-// YGNodeStyleGetBorder gets border
-func YGNodeStyleGetBorder(node *Node, edge Edge) float32 {
+// NodeStyleGetBorder gets border
+func NodeStyleGetBorder(node *Node, edge Edge) float32 {
 	return node.Style.border[edge].Value
 }
 
-// YGNodeStyleSetMinWidth sets min width
-func YGNodeStyleSetMinWidth(node *Node, minWidth float32) {
+// NodeStyleSetMinWidth sets min width
+func NodeStyleSetMinWidth(node *Node, minWidth float32) {
 	if node.Style.minDimensions[DimensionWidth].Value != minWidth ||
 		node.Style.minDimensions[DimensionWidth].Unit != UnitPoint {
 		node.Style.minDimensions[DimensionWidth].Value = minWidth
@@ -499,8 +489,8 @@ func YGNodeStyleSetMinWidth(node *Node, minWidth float32) {
 	}
 }
 
-// YGNodeStyleSetMinWidthPercent sets width percent
-func YGNodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
+// NodeStyleSetMinWidthPercent sets width percent
+func NodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
 	if node.Style.minDimensions[DimensionWidth].Value != minWidth ||
 		node.Style.minDimensions[DimensionWidth].Unit != UnitPercent {
 		node.Style.minDimensions[DimensionWidth].Value = minWidth
@@ -512,13 +502,13 @@ func YGNodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
 	}
 }
 
-// YGNodeStyleGetMinWidth gets min width
-func YGNodeStyleGetMinWidth(node *Node) Value {
+// NodeStyleGetMinWidth gets min width
+func NodeStyleGetMinWidth(node *Node) Value {
 	return node.Style.minDimensions[DimensionWidth]
 }
 
-// YGNodeStyleSetMinHeight sets min width
-func YGNodeStyleSetMinHeight(node *Node, minHeight float32) {
+// NodeStyleSetMinHeight sets min width
+func NodeStyleSetMinHeight(node *Node, minHeight float32) {
 	if node.Style.minDimensions[DimensionHeight].Value != minHeight ||
 		node.Style.minDimensions[DimensionHeight].Unit != UnitPoint {
 		node.Style.minDimensions[DimensionHeight].Value = minHeight
@@ -530,8 +520,8 @@ func YGNodeStyleSetMinHeight(node *Node, minHeight float32) {
 	}
 }
 
-// YGNodeStyleSetMinHeightPercent sets min height percent
-func YGNodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
+// NodeStyleSetMinHeightPercent sets min height percent
+func NodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
 	if node.Style.minDimensions[DimensionHeight].Value != minHeight ||
 		node.Style.minDimensions[DimensionHeight].Unit != UnitPercent {
 		node.Style.minDimensions[DimensionHeight].Value = minHeight
@@ -543,13 +533,13 @@ func YGNodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
 	}
 }
 
-// YGNodeStyleGetMinHeight gets min height
-func YGNodeStyleGetMinHeight(node *Node) Value {
+// NodeStyleGetMinHeight gets min height
+func NodeStyleGetMinHeight(node *Node) Value {
 	return node.Style.minDimensions[DimensionHeight]
 }
 
-// YGNodeStyleSetMaxWidth sets max width
-func YGNodeStyleSetMaxWidth(node *Node, maxWidth float32) {
+// NodeStyleSetMaxWidth sets max width
+func NodeStyleSetMaxWidth(node *Node, maxWidth float32) {
 	if node.Style.maxDimensions[DimensionWidth].Value != maxWidth ||
 		node.Style.maxDimensions[DimensionWidth].Unit != UnitPoint {
 		node.Style.maxDimensions[DimensionWidth].Value = maxWidth
@@ -561,8 +551,8 @@ func YGNodeStyleSetMaxWidth(node *Node, maxWidth float32) {
 	}
 }
 
-// YGNodeStyleSetMaxWidthPercent sets max width percent
-func YGNodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
+// NodeStyleSetMaxWidthPercent sets max width percent
+func NodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
 	if node.Style.maxDimensions[DimensionWidth].Value != maxWidth ||
 		node.Style.maxDimensions[DimensionWidth].Unit != UnitPercent {
 		node.Style.maxDimensions[DimensionWidth].Value = maxWidth
@@ -574,13 +564,13 @@ func YGNodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
 	}
 }
 
-// YGNodeStyleGetMaxWidth gets max width
-func YGNodeStyleGetMaxWidth(node *Node) Value {
+// NodeStyleGetMaxWidth gets max width
+func NodeStyleGetMaxWidth(node *Node) Value {
 	return node.Style.maxDimensions[DimensionWidth]
 }
 
-// YGNodeStyleSetMaxHeight sets max width
-func YGNodeStyleSetMaxHeight(node *Node, maxHeight float32) {
+// NodeStyleSetMaxHeight sets max width
+func NodeStyleSetMaxHeight(node *Node, maxHeight float32) {
 	if node.Style.maxDimensions[DimensionHeight].Value != maxHeight ||
 		node.Style.maxDimensions[DimensionHeight].Unit != UnitPoint {
 		node.Style.maxDimensions[DimensionHeight].Value = maxHeight
@@ -592,8 +582,8 @@ func YGNodeStyleSetMaxHeight(node *Node, maxHeight float32) {
 	}
 }
 
-// YGNodeStyleSetMaxHeightPercent sets max height percent
-func YGNodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
+// NodeStyleSetMaxHeightPercent sets max height percent
+func NodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
 	if node.Style.maxDimensions[DimensionHeight].Value != maxHeight ||
 		node.Style.maxDimensions[DimensionHeight].Unit != UnitPercent {
 		node.Style.maxDimensions[DimensionHeight].Value = maxHeight

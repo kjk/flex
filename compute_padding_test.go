@@ -6,7 +6,7 @@ func TestComputed_layout_padding(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
-	YGNodeStyleSetPaddingPercent(root, EdgeStart, 10)
+	NodeStyleSetPaddingPercent(root, EdgeStart, 10)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 

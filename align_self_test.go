@@ -10,7 +10,7 @@ func TestAlign_self_center(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignSelf(rootChild0, AlignCenter)
+	NodeStyleSetAlignSelf(rootChild0, AlignCenter)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -47,7 +47,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
+	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -84,7 +84,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
+	NodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -117,12 +117,12 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignItems(root, AlignFlexStart)
+	NodeStyleSetAlignItems(root, AlignFlexStart)
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
+	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
@@ -155,18 +155,18 @@ func TestAlign_self_baseline(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
+	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignSelf(rootChild0, AlignBaseline)
+	NodeStyleSetAlignSelf(rootChild0, AlignBaseline)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 50)
 	YGNodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	YGNodeStyleSetAlignSelf(rootChild1, AlignBaseline)
+	NodeStyleSetAlignSelf(rootChild1, AlignBaseline)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 20)
 	YGNodeInsertChild(root, rootChild1, 1)

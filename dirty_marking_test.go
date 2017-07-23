@@ -8,7 +8,7 @@ import (
 
 func TestDirty_propagation(t *testing.T) {
 	root := NewNode()
-	YGNodeStyleSetAlignItems(root, AlignFlexStart)
+	NodeStyleSetAlignItems(root, AlignFlexStart)
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
 
@@ -40,7 +40,7 @@ func TestDirty_propagation(t *testing.T) {
 
 func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	root := NewNode()
-	YGNodeStyleSetAlignItems(root, AlignFlexStart)
+	NodeStyleSetAlignItems(root, AlignFlexStart)
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
 
@@ -66,13 +66,13 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 
 func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	root := NewNode()
-	YGNodeStyleSetFlexDirection(root, FlexDirectionRow)
+	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetHeight(root, 100)
 
 	child0 := NewNode()
-	YGNodeStyleSetFlexGrow(child0, 1)
+	NodeStyleSetFlexGrow(child0, 1)
 	child1 := NewNode()
-	YGNodeStyleSetFlexGrow(child1, 1)
+	NodeStyleSetFlexGrow(child1, 1)
 
 	child1Child0 := NewNode()
 	child1Child0Child0 := NewNode()
@@ -85,26 +85,26 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	YGNodeInsertChild(root, child0, 0)
 	YGNodeInsertChild(root, child1, 0)
 
-	YGNodeStyleSetDisplay(child0, DisplayFlex)
-	YGNodeStyleSetDisplay(child1, DisplayNone)
+	NodeStyleSetDisplay(child0, DisplayFlex)
+	NodeStyleSetDisplay(child1, DisplayNone)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1Child0Child0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1Child0Child0))
 
-	YGNodeStyleSetDisplay(child0, DisplayNone)
-	YGNodeStyleSetDisplay(child1, DisplayFlex)
+	NodeStyleSetDisplay(child0, DisplayNone)
+	NodeStyleSetDisplay(child1, DisplayFlex)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1Child0Child0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1Child0Child0))
 
-	YGNodeStyleSetDisplay(child0, DisplayFlex)
-	YGNodeStyleSetDisplay(child1, DisplayNone)
+	NodeStyleSetDisplay(child0, DisplayFlex)
+	NodeStyleSetDisplay(child1, DisplayNone)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1Child0Child0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1Child0Child0))
 
-	YGNodeStyleSetDisplay(child0, DisplayNone)
-	YGNodeStyleSetDisplay(child1, DisplayFlex)
+	NodeStyleSetDisplay(child0, DisplayNone)
+	NodeStyleSetDisplay(child1, DisplayFlex)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1Child0Child0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1Child0Child0))
@@ -112,7 +112,7 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 
 func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	root := NewNode()
-	YGNodeStyleSetAlignItems(root, AlignFlexStart)
+	NodeStyleSetAlignItems(root, AlignFlexStart)
 	NodeStyleSetWidth(root, 50)
 	NodeStyleSetHeight(root, 50)
 
