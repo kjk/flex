@@ -25,7 +25,7 @@ var (
 )
 
 // YGMeasureFunc describes function for measuring
-type YGMeasureFunc func(node *YGNode, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize
+type YGMeasureFunc func(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize
 
 // YGBaselineFunc describes function for baseline
 type YGBaselineFunc func(node *YGNode, width float32, height float32) float32

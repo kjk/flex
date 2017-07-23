@@ -6,15 +6,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func _measureMax(node *YGNode, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize {
+func _measureMax(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
 	measureCount := YGNodeGetContext(node).(int)
 	measureCount++
 	YGNodeSetContext(node, measureCount)
 
-	if widthMode == YGMeasureModeUndefined {
+	if widthMode == MeasureModeUndefined {
 		width = 10
 	}
-	if heightMode == YGMeasureModeUndefined {
+	if heightMode == MeasureModeUndefined {
 		height = 10
 	}
 	return YGSize{
@@ -23,15 +23,15 @@ func _measureMax(node *YGNode, width float32, widthMode YGMeasureMode, height fl
 	}
 }
 
-func _measureMin(node *YGNode, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize {
+func _measureMin(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
 	measureCount := YGNodeGetContext(node).(int)
 	measureCount++
 	YGNodeSetContext(node, measureCount)
 
-	if widthMode == YGMeasureModeUndefined || (widthMode == YGMeasureModeAtMost && width > 10) {
+	if widthMode == MeasureModeUndefined || (widthMode == MeasureModeAtMost && width > 10) {
 		width = 10
 	}
-	if heightMode == YGMeasureModeUndefined || (heightMode == YGMeasureModeAtMost && height > 10) {
+	if heightMode == MeasureModeUndefined || (heightMode == MeasureModeAtMost && height > 10) {
 		height = 10
 	}
 	return YGSize{
@@ -40,7 +40,7 @@ func _measureMin(node *YGNode, width float32, widthMode YGMeasureMode, height fl
 	}
 }
 
-func _measure_84_49(node *YGNode, width float32, widthMode YGMeasureMode, height float32, heightMode YGMeasureMode) YGSize {
+func _measure_84_49(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) YGSize {
 	measureCount, ok := YGNodeGetContext(node).(int)
 	if ok {
 		measureCount++

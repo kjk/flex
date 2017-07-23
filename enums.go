@@ -139,16 +139,20 @@ const (
 	LogLevelFatal
 )
 
-type YGMeasureMode int
+// MeasureMode defines measurement mode
+type MeasureMode int
 
 const (
-	YGMeasureModeUndefined YGMeasureMode = iota
-	YGMeasureModeExactly
-	YGMeasureModeAtMost
+	// MeasureModeUndefined is undefined
+	MeasureModeUndefined MeasureMode = iota
+	// MeasureModeExactly is exactly
+	MeasureModeExactly
+	// MeasureModeAtMost is at-most
+	MeasureModeAtMost
 )
 
 const (
-	YGMeasureModeCount = 3
+	measureModeCount = 3
 )
 
 type YGNodeType int
@@ -237,7 +241,7 @@ func YGLogLevelToString(value LogLevel) string {
 	return ""
 }
 
-func YGMeasureModeToString(value YGMeasureMode) string {
+func YGMeasureModeToString(value MeasureMode) string {
 	return ""
 }
 

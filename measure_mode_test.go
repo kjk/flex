@@ -8,9 +8,9 @@ import (
 
 type _MeasureConstraint struct {
 	width      float32
-	widthMode  YGMeasureMode
+	widthMode  MeasureMode
 	height     float32
-	heightMode YGMeasureMode
+	heightMode MeasureMode
 }
 
 type _MeasureConstraintList struct {
@@ -20,9 +20,9 @@ type _MeasureConstraintList struct {
 
 func _measure2(node *YGNode,
 	width float32,
-	widthMode YGMeasureMode,
+	widthMode MeasureMode,
 	height float32,
-	heightMode YGMeasureMode) YGSize {
+	heightMode MeasureMode) YGSize {
 	constraintList := YGNodeGetContext(node).(*_MeasureConstraintList)
 	constraints := constraintList.constraints
 	currentIndex := constraintList.length
@@ -32,11 +32,11 @@ func _measure2(node *YGNode,
 	(&constraints[currentIndex]).heightMode = heightMode
 	constraintList.length = currentIndex + 1
 
-	if widthMode == YGMeasureModeUndefined {
+	if widthMode == MeasureModeUndefined {
 		width = 10
 	}
 
-	if heightMode == YGMeasureModeUndefined {
+	if heightMode == MeasureModeUndefined {
 		height = 10
 	} else {
 		height = width // TODO:: is it a bug in tests ?
@@ -67,7 +67,7 @@ func TestExactly_measure_stretched_child_column(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
-	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[0].widthMode)
+	assert.Equal(t, MeasureModeExactly, constraintList.constraints[0].widthMode)
 
 }
 
@@ -92,7 +92,7 @@ func TestExactly_measure_stretched_child_row(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
-	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeExactly, constraintList.constraints[0].heightMode)
 
 }
 
@@ -116,7 +116,7 @@ func TestAt_most_main_axis_column(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].heightMode)
 
 }
 
@@ -141,7 +141,7 @@ func TestAt_most_cross_axis_column(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].widthMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].widthMode)
 
 }
 
@@ -166,7 +166,7 @@ func TestAt_most_main_axis_row(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].widthMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].widthMode)
 
 }
 
@@ -192,7 +192,7 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].heightMode)
 
 }
 
@@ -216,10 +216,10 @@ func TestFlex_child(t *testing.T) {
 	assert.Equal(t, 2, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].heightMode)
 
 	assertFloatEqual(t, 100, constraintList.constraints[1].height)
-	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[1].heightMode)
+	assert.Equal(t, MeasureModeExactly, constraintList.constraints[1].heightMode)
 
 }
 
@@ -244,7 +244,7 @@ func TestFlex_child_with_flex_basis(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
-	assert.Equal(t, YGMeasureModeExactly, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeExactly, constraintList.constraints[0].heightMode)
 
 }
 
@@ -270,10 +270,10 @@ func TestOverflow_scroll_column(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].width)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].widthMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].widthMode)
 
 	assert.True(t, YGFloatIsUndefined(constraintList.constraints[0].height))
-	assert.Equal(t, YGMeasureModeUndefined, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeUndefined, constraintList.constraints[0].heightMode)
 
 }
 
@@ -300,9 +300,9 @@ func TestOverflow_scroll_row(t *testing.T) {
 	assert.Equal(t, 1, constraintList.length)
 
 	assert.True(t, YGFloatIsUndefined(constraintList.constraints[0].width))
-	assert.Equal(t, YGMeasureModeUndefined, constraintList.constraints[0].widthMode)
+	assert.Equal(t, MeasureModeUndefined, constraintList.constraints[0].widthMode)
 
 	assertFloatEqual(t, 100, constraintList.constraints[0].height)
-	assert.Equal(t, YGMeasureModeAtMost, constraintList.constraints[0].heightMode)
+	assert.Equal(t, MeasureModeAtMost, constraintList.constraints[0].heightMode)
 
 }

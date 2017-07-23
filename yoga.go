@@ -9,8 +9,8 @@ import (
 type YGCachedMeasurement struct {
 	availableWidth    float32
 	availableHeight   float32
-	widthMeasureMode  YGMeasureMode
-	heightMeasureMode YGMeasureMode
+	widthMeasureMode  MeasureMode
+	heightMeasureMode MeasureMode
 
 	computedWidth  float32
 	computedHeight float32
@@ -190,8 +190,8 @@ var (
 			hadOverflow:                 false,
 			measuredDimensions:          YG_DEFAULT_DIMENSION_VALUES,
 			cachedLayout: YGCachedMeasurement{
-				widthMeasureMode:  YGMeasureMode(-1),
-				heightMeasureMode: YGMeasureMode(-1),
+				widthMeasureMode:  MeasureMode(-1),
+				heightMeasureMode: MeasureMode(-1),
 				computedWidth:     -1,
 				computedHeight:    -1,
 			},
@@ -949,11 +949,11 @@ func YGNodeRelativePosition(node *YGNode, axis FlexDirection, axisSize float32) 
 }
 
 // YGConstrainMaxSizeForMode contrains max size for node
-func YGConstrainMaxSizeForMode(node *YGNode, axis FlexDirection, parentAxisSize float32, parentWidth float32, mode *YGMeasureMode, size *float32) {
+func YGConstrainMaxSizeForMode(node *YGNode, axis FlexDirection, parentAxisSize float32, parentWidth float32, mode *MeasureMode, size *float32) {
 	maxSize := YGResolveValue(&node.style.maxDimensions[dim[axis]], parentAxisSize) +
 		YGNodeMarginForAxis(node, axis, parentWidth)
 	switch *mode {
-	case YGMeasureModeExactly, YGMeasureModeAtMost:
+	case MeasureModeExactly, MeasureModeAtMost:
 		if YGFloatIsUndefined(maxSize) || *size < maxSize {
 			// TODO: this is redundant, but what is in original code
 			//*size = *size
@@ -962,9 +962,9 @@ func YGConstrainMaxSizeForMode(node *YGNode, axis FlexDirection, parentAxisSize 
 		}
 
 		break
-	case YGMeasureModeUndefined:
+	case MeasureModeUndefined:
 		if !YGFloatIsUndefined(maxSize) {
-			*mode = YGMeasureModeAtMost
+			*mode = MeasureModeAtMost
 			*size = maxSize
 		}
 		break
@@ -996,11 +996,11 @@ func YGNodeSetPosition(node *YGNode, direction Direction, mainSize float32, cros
 func YGNodeComputeFlexBasisForChild(node *YGNode,
 	child *YGNode,
 	width float32,
-	widthMode YGMeasureMode,
+	widthMode MeasureMode,
 	height float32,
 	parentWidth float32,
 	parentHeight float32,
-	heightMode YGMeasureMode,
+	heightMode MeasureMode,
 	direction Direction,
 	config *YGConfig) {
 	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
@@ -1014,8 +1014,8 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 
 	var childWidth float32
 	var childHeight float32
-	var childWidthMeasureMode YGMeasureMode
-	var childHeightMeasureMode YGMeasureMode
+	var childWidthMeasureMode MeasureMode
+	var childHeightMeasureMode MeasureMode
 
 	resolvedFlexBasis := YGResolveValue(YGNodeResolveFlexBasisPtr(child), mainAxisParentSize)
 	isRowStyleDimDefined := YGNodeIsStyleDimDefined(child, FlexDirectionRow, parentWidth)
@@ -1043,8 +1043,8 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 		// flex basis).
 		childWidth = YGUndefined
 		childHeight = YGUndefined
-		childWidthMeasureMode = YGMeasureModeUndefined
-		childHeightMeasureMode = YGMeasureModeUndefined
+		childWidthMeasureMode = MeasureModeUndefined
+		childHeightMeasureMode = MeasureModeUndefined
 
 		marginRow := YGNodeMarginForAxis(child, FlexDirectionRow, parentWidth)
 		marginColumn := YGNodeMarginForAxis(child, FlexDirectionColumn, parentWidth)
@@ -1052,12 +1052,12 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 		if isRowStyleDimDefined {
 			childWidth =
 				YGResolveValue(child.resolvedDimensions[DimensionWidth], parentWidth) + marginRow
-			childWidthMeasureMode = YGMeasureModeExactly
+			childWidthMeasureMode = MeasureModeExactly
 		}
 		if isColumnStyleDimDefined {
 			childHeight =
 				YGResolveValue(child.resolvedDimensions[DimensionHeight], parentHeight) + marginColumn
-			childHeightMeasureMode = YGMeasureModeExactly
+			childHeightMeasureMode = MeasureModeExactly
 		}
 
 		// The W3C spec doesn't say anything about the 'overflow' property,
@@ -1066,7 +1066,7 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 			node.style.overflow != YGOverflowScroll {
 			if YGFloatIsUndefined(childWidth) && !YGFloatIsUndefined(width) {
 				childWidth = width
-				childWidthMeasureMode = YGMeasureModeAtMost
+				childWidthMeasureMode = MeasureModeAtMost
 			}
 		}
 
@@ -1074,7 +1074,7 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 			node.style.overflow != YGOverflowScroll {
 			if YGFloatIsUndefined(childHeight) && !YGFloatIsUndefined(height) {
 				childHeight = height
-				childHeightMeasureMode = YGMeasureModeAtMost
+				childHeightMeasureMode = MeasureModeAtMost
 			}
 		}
 
@@ -1082,23 +1082,23 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 		// set the cross
 		// axis to be measured exactly with the available inner width
 		if !isMainAxisRow && !YGFloatIsUndefined(width) && !isRowStyleDimDefined &&
-			widthMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
+			widthMode == MeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
 			childWidth = width
-			childWidthMeasureMode = YGMeasureModeExactly
+			childWidthMeasureMode = MeasureModeExactly
 		}
 		if isMainAxisRow && !YGFloatIsUndefined(height) && !isColumnStyleDimDefined &&
-			heightMode == YGMeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
+			heightMode == MeasureModeExactly && YGNodeAlignItem(node, child) == AlignStretch {
 			childHeight = height
-			childHeightMeasureMode = YGMeasureModeExactly
+			childHeightMeasureMode = MeasureModeExactly
 		}
 
 		if !YGFloatIsUndefined(child.style.aspectRatio) {
-			if !isMainAxisRow && childWidthMeasureMode == YGMeasureModeExactly {
+			if !isMainAxisRow && childWidthMeasureMode == MeasureModeExactly {
 				child.layout.computedFlexBasis =
 					fmaxf((childWidth-marginRow)/child.style.aspectRatio,
 						YGNodePaddingAndBorderForAxis(child, FlexDirectionColumn, parentWidth))
 				return
-			} else if isMainAxisRow && childHeightMeasureMode == YGMeasureModeExactly {
+			} else if isMainAxisRow && childHeightMeasureMode == MeasureModeExactly {
 				child.layout.computedFlexBasis =
 					fmaxf((childHeight-marginColumn)*child.style.aspectRatio,
 						YGNodePaddingAndBorderForAxis(child, FlexDirectionRow, parentWidth))
@@ -1137,15 +1137,15 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 }
 
 // YGNodeAbsoluteLayoutChild calculates absolute child layout
-func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode YGMeasureMode, height float32, direction Direction, config *YGConfig) {
+func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode MeasureMode, height float32, direction Direction, config *YGConfig) {
 	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
 	crossAxis := YGFlexDirectionCross(mainAxis, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
 
 	childWidth := YGUndefined
 	childHeight := YGUndefined
-	childWidthMeasureMode := YGMeasureModeUndefined
-	childHeightMeasureMode := YGMeasureModeUndefined
+	childWidthMeasureMode := MeasureModeUndefined
+	childHeightMeasureMode := MeasureModeUndefined
 
 	marginRow := YGNodeMarginForAxis(child, FlexDirectionRow, width)
 	marginColumn := YGNodeMarginForAxis(child, FlexDirectionColumn, width)
@@ -1203,22 +1203,22 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 
 	// If we're still missing one or the other dimension, measure the content.
 	if YGFloatIsUndefined(childWidth) || YGFloatIsUndefined(childHeight) {
-		childWidthMeasureMode = YGMeasureModeExactly
+		childWidthMeasureMode = MeasureModeExactly
 		if YGFloatIsUndefined(childWidth) {
-			childWidthMeasureMode = YGMeasureModeUndefined
+			childWidthMeasureMode = MeasureModeUndefined
 		}
-		childHeightMeasureMode = YGMeasureModeExactly
+		childHeightMeasureMode = MeasureModeExactly
 		if YGFloatIsUndefined(childHeight) {
-			childHeightMeasureMode = YGMeasureModeUndefined
+			childHeightMeasureMode = MeasureModeUndefined
 		}
 
 		// If the size of the parent is defined then try to rain the absolute child to that size
 		// as well. This allows text within the absolute child to wrap to the size of its parent.
 		// This is the same behavior as many browsers implement.
-		if !isMainAxisRow && YGFloatIsUndefined(childWidth) && widthMode != YGMeasureModeUndefined &&
+		if !isMainAxisRow && YGFloatIsUndefined(childWidth) && widthMode != MeasureModeUndefined &&
 			width > 0 {
 			childWidth = width
-			childWidthMeasureMode = YGMeasureModeAtMost
+			childWidthMeasureMode = MeasureModeAtMost
 		}
 
 		YGLayoutNodeInternal(child,
@@ -1242,8 +1242,8 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 		childWidth,
 		childHeight,
 		direction,
-		YGMeasureModeExactly,
-		YGMeasureModeExactly,
+		MeasureModeExactly,
+		MeasureModeExactly,
 		childWidth,
 		childHeight,
 		true,
@@ -1297,7 +1297,7 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 }
 
 // YGNodeWithMeasureFuncSetMeasuredDimensions sets measure dimensions for node with measure func
-func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
+func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
 	YGAssertWithNode(node, node.measure != nil, "Expected node to have custom measure function")
 
 	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, FlexDirectionRow, availableWidth)
@@ -1315,7 +1315,7 @@ func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth flo
 		innerHeight = availableHeight
 	}
 
-	if widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly {
+	if widthMeasureMode == MeasureModeExactly && heightMeasureMode == MeasureModeExactly {
 		// Don't bother sizing the text if both dimensions are already defined.
 		node.layout.measuredDimensions[DimensionWidth] = YGNodeBoundAxis(
 			node, FlexDirectionRow, availableWidth-marginAxisRow, parentWidth, parentWidth)
@@ -1326,8 +1326,8 @@ func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth flo
 		measuredSize := node.measure(node, innerWidth, widthMeasureMode, innerHeight, heightMeasureMode)
 
 		width := availableWidth - marginAxisRow
-		if widthMeasureMode == YGMeasureModeUndefined ||
-			widthMeasureMode == YGMeasureModeAtMost {
+		if widthMeasureMode == MeasureModeUndefined ||
+			widthMeasureMode == MeasureModeAtMost {
 			width = measuredSize.width + paddingAndBorderAxisRow
 
 		}
@@ -1335,8 +1335,8 @@ func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth flo
 		node.layout.measuredDimensions[DimensionWidth] = YGNodeBoundAxis(node, FlexDirectionRow, width, availableWidth, availableWidth)
 
 		height := availableHeight - marginAxisColumn
-		if heightMeasureMode == YGMeasureModeUndefined ||
-			heightMeasureMode == YGMeasureModeAtMost {
+		if heightMeasureMode == MeasureModeUndefined ||
+			heightMeasureMode == MeasureModeAtMost {
 			height = measuredSize.height + paddingAndBorderAxisColumn
 		}
 
@@ -1347,20 +1347,20 @@ func YGNodeWithMeasureFuncSetMeasuredDimensions(node *YGNode, availableWidth flo
 // YGNodeEmptyContainerSetMeasuredDimensions sets measure dimensions for empty container
 // For nodes with no children, use the available values if they were provided,
 // or the minimum size as indicated by the padding and border sizes.
-func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode YGMeasureMode, heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32) {
+func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
 	paddingAndBorderAxisRow := YGNodePaddingAndBorderForAxis(node, FlexDirectionRow, parentWidth)
 	paddingAndBorderAxisColumn := YGNodePaddingAndBorderForAxis(node, FlexDirectionColumn, parentWidth)
 	marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
 	marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 
 	width := availableWidth - marginAxisRow
-	if widthMeasureMode == YGMeasureModeUndefined || widthMeasureMode == YGMeasureModeAtMost {
+	if widthMeasureMode == MeasureModeUndefined || widthMeasureMode == MeasureModeAtMost {
 		width = paddingAndBorderAxisRow
 	}
 	node.layout.measuredDimensions[DimensionWidth] = YGNodeBoundAxis(node, FlexDirectionRow, width, parentWidth, parentWidth)
 
 	height := availableHeight - marginAxisColumn
-	if heightMeasureMode == YGMeasureModeUndefined || heightMeasureMode == YGMeasureModeAtMost {
+	if heightMeasureMode == MeasureModeUndefined || heightMeasureMode == MeasureModeAtMost {
 		height = paddingAndBorderAxisColumn
 	}
 	node.layout.measuredDimensions[DimensionHeight] = YGNodeBoundAxis(node, FlexDirectionColumn, height, parentHeight, parentWidth)
@@ -1370,25 +1370,25 @@ func YGNodeEmptyContainerSetMeasuredDimensions(node *YGNode, availableWidth floa
 func YGNodeFixedSizeSetMeasuredDimensions(node *YGNode,
 	availableWidth float32,
 	availableHeight float32,
-	widthMeasureMode YGMeasureMode,
-	heightMeasureMode YGMeasureMode,
+	widthMeasureMode MeasureMode,
+	heightMeasureMode MeasureMode,
 	parentWidth float32,
 	parentHeight float32) bool {
-	if (widthMeasureMode == YGMeasureModeAtMost && availableWidth <= 0) ||
-		(heightMeasureMode == YGMeasureModeAtMost && availableHeight <= 0) ||
-		(widthMeasureMode == YGMeasureModeExactly && heightMeasureMode == YGMeasureModeExactly) {
+	if (widthMeasureMode == MeasureModeAtMost && availableWidth <= 0) ||
+		(heightMeasureMode == MeasureModeAtMost && availableHeight <= 0) ||
+		(widthMeasureMode == MeasureModeExactly && heightMeasureMode == MeasureModeExactly) {
 		marginAxisColumn := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 		marginAxisRow := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
 
 		width := availableWidth - marginAxisRow
-		if YGFloatIsUndefined(availableWidth) || (widthMeasureMode == YGMeasureModeAtMost && availableWidth < 0) {
+		if YGFloatIsUndefined(availableWidth) || (widthMeasureMode == MeasureModeAtMost && availableWidth < 0) {
 			width = 0
 		}
 		node.layout.measuredDimensions[DimensionWidth] =
 			YGNodeBoundAxis(node, FlexDirectionRow, width, parentWidth, parentWidth)
 
 		height := availableHeight - marginAxisColumn
-		if YGFloatIsUndefined(availableHeight) || (heightMeasureMode == YGMeasureModeAtMost && availableHeight < 0) {
+		if YGFloatIsUndefined(availableHeight) || (heightMeasureMode == MeasureModeAtMost && availableHeight < 0) {
 			height = 0
 		}
 		node.layout.measuredDimensions[DimensionHeight] =
@@ -1410,8 +1410,8 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 	node.layout.position[EdgeRight] = 0
 	node.layout.cachedLayout.availableHeight = 0
 	node.layout.cachedLayout.availableWidth = 0
-	node.layout.cachedLayout.heightMeasureMode = YGMeasureModeExactly
-	node.layout.cachedLayout.widthMeasureMode = YGMeasureModeExactly
+	node.layout.cachedLayout.heightMeasureMode = MeasureModeExactly
+	node.layout.cachedLayout.widthMeasureMode = MeasureModeExactly
 	node.layout.cachedLayout.computedWidth = 0
 	node.layout.cachedLayout.computedHeight = 0
 	node.hasNewLayout = true
@@ -1507,8 +1507,8 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 //    undefined then it must also pass a measure mode of YGMeasureModeUndefined
 //    in that dimension.
 func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight float32,
-	parentDirection Direction, widthMeasureMode YGMeasureMode,
-	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
+	parentDirection Direction, widthMeasureMode MeasureMode,
+	heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32,
 	performLayout bool, config *YGConfig) {
 	// YGAssertWithNode(node, YGFloatIsUndefined(availableWidth) ? widthMeasureMode == YGMeasureModeUndefined : true, "availableWidth is indefinite so widthMeasureMode must be YGMeasureModeUndefined");
 	//YGAssertWithNode(node, YGFloatIsUndefined(availableHeight) ? heightMeasureMode == YGMeasureModeUndefined : true, "availableHeight is indefinite so heightMeasureMode must be YGMeasureModeUndefined");
@@ -1638,7 +1638,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	// computedFlexBasis to 0 instead of measuring and shrinking / flexing the child to exactly
 	// match the remaining space
 	var singleFlexChild *YGNode
-	if measureModeMainDim == YGMeasureModeExactly {
+	if measureModeMainDim == MeasureModeExactly {
 		for i := 0; i < childCount; i++ {
 			child := YGNodeGetChild(node, i)
 			if singleFlexChild != nil {
@@ -1712,11 +1712,11 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 	}
 
 	flexBasisOverflows := totalOuterFlexBasis > availableInnerMainDim
-	if measureModeMainDim == YGMeasureModeUndefined {
+	if measureModeMainDim == MeasureModeUndefined {
 		flexBasisOverflows = false
 	}
-	if isNodeFlexWrap && flexBasisOverflows && measureModeMainDim == YGMeasureModeAtMost {
-		measureModeMainDim = YGMeasureModeExactly
+	if isNodeFlexWrap && flexBasisOverflows && measureModeMainDim == MeasureModeAtMost {
+		measureModeMainDim = MeasureModeExactly
 	}
 
 	// STEP 4: COLLECT FLEX ITEMS INTO FLEX LINES
@@ -1818,7 +1818,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 		// If we don't need to measure the cross axis, we can skip the entire flex
 		// step.
-		canSkipFlex := !performLayout && measureModeCrossDim == YGMeasureModeExactly
+		canSkipFlex := !performLayout && measureModeCrossDim == MeasureModeExactly
 
 		// In order to position the elements in the main axis, we have two
 		// controls. The space between the beginning and the first element
@@ -1832,7 +1832,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		// the line length, so there's no more space left to distribute.
 
 		// If we don't measure with exact main dimension we want to ensure we don't violate min and max
-		if measureModeMainDim != YGMeasureModeExactly {
+		if measureModeMainDim != MeasureModeExactly {
 			if !YGFloatIsUndefined(minInnerMainDim) && sizeConsumedOnCurrentLine < minInnerMainDim {
 				availableInnerMainDim = minInnerMainDim
 			} else if !YGFloatIsUndefined(maxInnerMainDim) &&
@@ -2014,33 +2014,33 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 				var childCrossSize float32
 				childMainSize := updatedMainSize + marginMain
-				var childCrossMeasureMode YGMeasureMode
-				childMainMeasureMode := YGMeasureModeExactly
+				var childCrossMeasureMode MeasureMode
+				childMainMeasureMode := MeasureModeExactly
 
 				if !YGFloatIsUndefined(availableInnerCrossDim) &&
 					!YGNodeIsStyleDimDefined(currentRelativeChild, crossAxis, availableInnerCrossDim) &&
-					measureModeCrossDim == YGMeasureModeExactly &&
+					measureModeCrossDim == MeasureModeExactly &&
 					!(isNodeFlexWrap && flexBasisOverflows) &&
 					YGNodeAlignItem(node, currentRelativeChild) == AlignStretch {
 					childCrossSize = availableInnerCrossDim
-					childCrossMeasureMode = YGMeasureModeExactly
+					childCrossMeasureMode = MeasureModeExactly
 				} else if !YGNodeIsStyleDimDefined(currentRelativeChild,
 					crossAxis,
 					availableInnerCrossDim) {
 					childCrossSize = availableInnerCrossDim
-					childCrossMeasureMode = YGMeasureModeAtMost
+					childCrossMeasureMode = MeasureModeAtMost
 					if YGFloatIsUndefined(childCrossSize) {
-						childCrossMeasureMode = YGMeasureModeUndefined
+						childCrossMeasureMode = MeasureModeUndefined
 					}
 				} else {
 					childCrossSize = YGResolveValue(currentRelativeChild.resolvedDimensions[dim[crossAxis]],
 						availableInnerCrossDim) +
 						marginCross
 					isLoosePercentageMeasurement := currentRelativeChild.resolvedDimensions[dim[crossAxis]].unit == YGUnitPercent &&
-						measureModeCrossDim != YGMeasureModeExactly
-					childCrossMeasureMode = YGMeasureModeExactly
+						measureModeCrossDim != MeasureModeExactly
+					childCrossMeasureMode = MeasureModeExactly
 					if YGFloatIsUndefined(childCrossSize) || isLoosePercentageMeasurement {
-						childCrossMeasureMode = YGMeasureModeUndefined
+						childCrossMeasureMode = MeasureModeUndefined
 					}
 				}
 
@@ -2050,7 +2050,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 						v = (childMainSize - marginMain) / currentRelativeChild.style.aspectRatio
 					}
 					childCrossSize = fmaxf(v, YGNodePaddingAndBorderForAxis(currentRelativeChild, crossAxis, availableInnerWidth))
-					childCrossMeasureMode = YGMeasureModeExactly
+					childCrossMeasureMode = MeasureModeExactly
 
 					// Parent size raint should have higher priority than flex
 					if YGNodeIsFlex(currentRelativeChild) {
@@ -2138,7 +2138,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		// If we are using "at most" rules in the main axis. Calculate the remaining space when
 		// raint by the min size defined for the main axis.
 
-		if measureModeMainDim == YGMeasureModeAtMost && remainingFreeSpace > 0 {
+		if measureModeMainDim == MeasureModeAtMost && remainingFreeSpace > 0 {
 			if node.style.minDimensions[dim[mainAxis]].unit != YGUnitUndefined &&
 				YGResolveValue(&node.style.minDimensions[dim[mainAxis]], mainAxisParentSize) >= 0 {
 				remainingFreeSpace =
@@ -2244,8 +2244,8 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		mainDim += trailingPaddingAndBorderMain
 
 		containerCrossAxis := availableInnerCrossDim
-		if measureModeCrossDim == YGMeasureModeUndefined ||
-			measureModeCrossDim == YGMeasureModeAtMost {
+		if measureModeCrossDim == MeasureModeUndefined ||
+			measureModeCrossDim == MeasureModeAtMost {
 			// Compute the cross axis from the max cross dimension of the children.
 			containerCrossAxis = YGNodeBoundAxis(node,
 				crossAxis,
@@ -2256,7 +2256,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 		}
 
 		// If there's no flex wrap, the cross dimension is defined by the container.
-		if !isNodeFlexWrap && measureModeCrossDim == YGMeasureModeExactly {
+		if !isNodeFlexWrap && measureModeCrossDim == MeasureModeExactly {
 			crossDim = availableInnerCrossDim
 		}
 
@@ -2322,8 +2322,8 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 							childMainSize += YGNodeMarginForAxis(child, mainAxis, availableInnerWidth)
 
-							childMainMeasureMode := YGMeasureModeExactly
-							childCrossMeasureMode := YGMeasureModeExactly
+							childMainMeasureMode := MeasureModeExactly
+							childCrossMeasureMode := MeasureModeExactly
 							YGConstrainMaxSizeForMode(child,
 								mainAxis,
 								availableInnerMainDim,
@@ -2346,14 +2346,14 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 								childHeight = childMainSize
 							}
 
-							childWidthMeasureMode := YGMeasureModeExactly
+							childWidthMeasureMode := MeasureModeExactly
 							if YGFloatIsUndefined(childWidth) {
-								childWidthMeasureMode = YGMeasureModeUndefined
+								childWidthMeasureMode = MeasureModeUndefined
 							}
 
-							childHeightMeasureMode := YGMeasureModeExactly
+							childHeightMeasureMode := MeasureModeExactly
 							if YGFloatIsUndefined(childHeight) {
-								childHeightMeasureMode = YGMeasureModeUndefined
+								childHeightMeasureMode = MeasureModeUndefined
 							}
 
 							YGLayoutNodeInternal(child,
@@ -2523,8 +2523,8 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 											childWidth,
 											childHeight,
 											direction,
-											YGMeasureModeExactly,
-											YGMeasureModeExactly,
+											MeasureModeExactly,
+											MeasureModeExactly,
 											availableInnerWidth,
 											availableInnerHeight,
 											true,
@@ -2559,13 +2559,13 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 
 	// If the user didn't specify a width or height for the node, set the
 	// dimensions based on the children.
-	if measureModeMainDim == YGMeasureModeUndefined ||
-		(node.style.overflow != YGOverflowScroll && measureModeMainDim == YGMeasureModeAtMost) {
+	if measureModeMainDim == MeasureModeUndefined ||
+		(node.style.overflow != YGOverflowScroll && measureModeMainDim == MeasureModeAtMost) {
 		// Clamp the size to the min/max size, if specified, and make sure it
 		// doesn't go below the padding and border amount.
 		node.layout.measuredDimensions[dim[mainAxis]] =
 			YGNodeBoundAxis(node, mainAxis, maxLineMainDim, mainAxisParentSize, parentWidth)
-	} else if measureModeMainDim == YGMeasureModeAtMost &&
+	} else if measureModeMainDim == MeasureModeAtMost &&
 		node.style.overflow == YGOverflowScroll {
 		node.layout.measuredDimensions[dim[mainAxis]] = fmaxf(
 			fminf(availableInnerMainDim+paddingAndBorderAxisMain,
@@ -2573,8 +2573,8 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 			paddingAndBorderAxisMain)
 	}
 
-	if measureModeCrossDim == YGMeasureModeUndefined ||
-		(node.style.overflow != YGOverflowScroll && measureModeCrossDim == YGMeasureModeAtMost) {
+	if measureModeCrossDim == MeasureModeUndefined ||
+		(node.style.overflow != YGOverflowScroll && measureModeCrossDim == MeasureModeAtMost) {
 		// Clamp the size to the min/max size, if specified, and make sure it
 		// doesn't go below the padding and border amount.
 		node.layout.measuredDimensions[dim[crossAxis]] =
@@ -2583,7 +2583,7 @@ func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight floa
 				totalLineCrossDim+paddingAndBorderAxisCross,
 				crossAxisParentSize,
 				parentWidth)
-	} else if measureModeCrossDim == YGMeasureModeAtMost &&
+	} else if measureModeCrossDim == MeasureModeAtMost &&
 		node.style.overflow == YGOverflowScroll {
 		node.layout.measuredDimensions[dim[crossAxis]] =
 			fmaxf(fminf(availableInnerCrossDim+paddingAndBorderAxisCross,
@@ -2667,14 +2667,14 @@ func YGSpacer(level int) string {
 }
 
 var (
-	kMeasureModeNames = [YGMeasureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
-	kLayoutModeNames  = [YGMeasureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
+	kMeasureModeNames = [measureModeCount]string{"UNDEFINED", "EXACTLY", "AT_MOST"}
+	kLayoutModeNames  = [measureModeCount]string{"LAY_UNDEFINED", "LAY_EXACTLY", "LAY_AT_MOST"}
 )
 
 // YGMeasureModeName returns name of measure mode
-func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
+func YGMeasureModeName(mode MeasureMode, performLayout bool) string {
 
-	if mode >= YGMeasureModeCount {
+	if mode >= measureModeCount {
 		return ""
 	}
 
@@ -2685,19 +2685,19 @@ func YGMeasureModeName(mode YGMeasureMode, performLayout bool) string {
 }
 
 // YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize retruns true if is exact
-func YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(sizeMode YGMeasureMode, size float32, lastComputedSize float32) bool {
-	return sizeMode == YGMeasureModeExactly && YGFloatsEqual(size, lastComputedSize)
+func YGMeasureModeSizeIsExactAndMatchesOldMeasuredSize(sizeMode MeasureMode, size float32, lastComputedSize float32) bool {
+	return sizeMode == MeasureModeExactly && YGFloatsEqual(size, lastComputedSize)
 }
 
 // YGMeasureModeOldSizeIsUnspecifiedAndStillFits returns true if fits
-func YGMeasureModeOldSizeIsUnspecifiedAndStillFits(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastComputedSize float32) bool {
-	return sizeMode == YGMeasureModeAtMost && lastSizeMode == YGMeasureModeUndefined &&
+func YGMeasureModeOldSizeIsUnspecifiedAndStillFits(sizeMode MeasureMode, size float32, lastSizeMode MeasureMode, lastComputedSize float32) bool {
+	return sizeMode == MeasureModeAtMost && lastSizeMode == MeasureModeUndefined &&
 		(size >= lastComputedSize || YGFloatsEqual(size, lastComputedSize))
 }
 
 // YGMeasureModeNewMeasureSizeIsStricterAndStillValid returns true if is strict and valid
-func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode YGMeasureMode, size float32, lastSizeMode YGMeasureMode, lastSize float32, lastComputedSize float32) bool {
-	return lastSizeMode == YGMeasureModeAtMost && sizeMode == YGMeasureModeAtMost &&
+func YGMeasureModeNewMeasureSizeIsStricterAndStillValid(sizeMode MeasureMode, size float32, lastSizeMode MeasureMode, lastSize float32, lastComputedSize float32) bool {
+	return lastSizeMode == MeasureModeAtMost && sizeMode == MeasureModeAtMost &&
 		lastSize > size && (lastComputedSize <= size || YGFloatsEqual(size, lastComputedSize))
 }
 
@@ -2723,7 +2723,7 @@ func YGRoundValueToPixelGrid(value float32, pointScaleFactor float32, forceCeil 
 }
 
 // YGNodeCanUseCachedMeasurement returns true if can use cached measurement
-func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heightMode YGMeasureMode, height float32, lastWidthMode YGMeasureMode, lastWidth float32, lastHeightMode YGMeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
+func YGNodeCanUseCachedMeasurement(widthMode MeasureMode, width float32, heightMode MeasureMode, height float32, lastWidthMode MeasureMode, lastWidth float32, lastHeightMode MeasureMode, lastHeight float32, lastComputedWidth float32, lastComputedHeight float32, marginRow float32, marginColumn float32, config *YGConfig) bool {
 	if lastComputedHeight < 0 || lastComputedWidth < 0 {
 		return false
 	}
@@ -2775,8 +2775,8 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 //  Input parameters are the same as YGNodelayoutImpl (see above)
 //  Return parameter is true if layout was performed, false if skipped
 func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight float32,
-	parentDirection Direction, widthMeasureMode YGMeasureMode,
-	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
+	parentDirection Direction, widthMeasureMode MeasureMode,
+	heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32,
 	performLayout bool, reason string, config *YGConfig) bool {
 	layout := &node.layout
 
@@ -2789,8 +2789,8 @@ func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight 
 	if needToVisitNode {
 		// Invalidate the cached results.
 		layout.nextCachedMeasurementsIndex = 0
-		layout.cachedLayout.widthMeasureMode = YGMeasureMode(-1)
-		layout.cachedLayout.heightMeasureMode = YGMeasureMode(-1)
+		layout.cachedLayout.widthMeasureMode = MeasureMode(-1)
+		layout.cachedLayout.heightMeasureMode = MeasureMode(-1)
 		layout.cachedLayout.computedWidth = -1
 		layout.cachedLayout.computedHeight = -1
 	}
@@ -3039,38 +3039,38 @@ func YGRoundToPixelGrid(node *YGNode, pointScaleFactor float32, absoluteLeft flo
 	}
 }
 
-func calcStartWidth(node *YGNode, parentWidth float32) (float32, YGMeasureMode) {
+func calcStartWidth(node *YGNode, parentWidth float32) (float32, MeasureMode) {
 	if YGNodeIsStyleDimDefined(node, FlexDirectionRow, parentWidth) {
 		width := YGResolveValue(node.resolvedDimensions[dim[FlexDirectionRow]], parentWidth)
 		margin := YGNodeMarginForAxis(node, FlexDirectionRow, parentWidth)
-		return width + margin, YGMeasureModeExactly
+		return width + margin, MeasureModeExactly
 	}
 	if YGResolveValue(&node.style.maxDimensions[DimensionWidth], parentWidth) >= 0.0 {
 		width := YGResolveValue(&node.style.maxDimensions[DimensionWidth], parentWidth)
-		return width, YGMeasureModeAtMost
+		return width, MeasureModeAtMost
 	}
 
 	width := parentWidth
-	widthMeasureMode := YGMeasureModeExactly
+	widthMeasureMode := MeasureModeExactly
 	if YGFloatIsUndefined(width) {
-		widthMeasureMode = YGMeasureModeUndefined
+		widthMeasureMode = MeasureModeUndefined
 	}
 	return width, widthMeasureMode
 }
-func calcStartHeight(node *YGNode, parentWidth, parentHeight float32) (float32, YGMeasureMode) {
+func calcStartHeight(node *YGNode, parentWidth, parentHeight float32) (float32, MeasureMode) {
 	if YGNodeIsStyleDimDefined(node, FlexDirectionColumn, parentHeight) {
 		height := YGResolveValue(node.resolvedDimensions[dim[FlexDirectionColumn]], parentHeight)
 		margin := YGNodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
-		return height + margin, YGMeasureModeExactly
+		return height + margin, MeasureModeExactly
 	}
 	if YGResolveValue(&node.style.maxDimensions[DimensionHeight], parentHeight) >= 0 {
 		height := YGResolveValue(&node.style.maxDimensions[DimensionHeight], parentHeight)
-		return height, YGMeasureModeAtMost
+		return height, MeasureModeAtMost
 	}
 	height := parentHeight
-	heightMeasureMode := YGMeasureModeExactly
+	heightMeasureMode := MeasureModeExactly
 	if YGFloatIsUndefined(height) {
-		heightMeasureMode = YGMeasureModeUndefined
+		heightMeasureMode = MeasureModeUndefined
 	}
 	return height, heightMeasureMode
 }

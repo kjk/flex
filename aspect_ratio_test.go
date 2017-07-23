@@ -2,13 +2,13 @@ package flex
 
 import "testing"
 
-func _measure(node *YGNode, width float32, widthMode YGMeasureMode,
-	height float32, heightMode YGMeasureMode) YGSize {
+func _measure(node *YGNode, width float32, widthMode MeasureMode,
+	height float32, heightMode MeasureMode) YGSize {
 
-	if widthMode != YGMeasureModeExactly {
+	if widthMode != MeasureModeExactly {
 		width = 50
 	}
-	if heightMode != YGMeasureModeExactly {
+	if heightMode != MeasureModeExactly {
 		height = 50
 	}
 	return YGSize{
