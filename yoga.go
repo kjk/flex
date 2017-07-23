@@ -110,12 +110,12 @@ type YGNode struct {
 
 var (
 	YG_UNDEFINED_VALUES = Value{
-		Value: YGUndefined,
+		Value: Undefined,
 		Unit:  UnitUndefined,
 	}
 
 	YG_AUTO_VALUES = Value{
-		Value: YGUndefined,
+		Value: Undefined,
 		Unit:  UnitAuto,
 	}
 
@@ -132,8 +132,8 @@ var (
 	}
 
 	YG_DEFAULT_DIMENSION_VALUES = [2]float32{
-		YGUndefined,
-		YGUndefined,
+		Undefined,
+		Undefined,
 	}
 
 	YG_DEFAULT_DIMENSION_VALUES_UNIT = [2]Value{
@@ -162,9 +162,9 @@ var (
 		nodeType:           NodeTypeDefault,
 		resolvedDimensions: [2]*Value{&ValueUndefined, &ValueUndefined},
 		style: YGStyle{
-			flex:           YGUndefined,
-			flexGrow:       YGUndefined,
-			flexShrink:     YGUndefined,
+			flex:           Undefined,
+			flexGrow:       Undefined,
+			flexShrink:     Undefined,
 			flexBasis:      YG_AUTO_VALUES,
 			justifyContent: JustifyFlexStart,
 			alignItems:     AlignStretch,
@@ -180,13 +180,13 @@ var (
 			margin:         YG_DEFAULT_EDGE_VALUES_UNIT,
 			padding:        YG_DEFAULT_EDGE_VALUES_UNIT,
 			border:         YG_DEFAULT_EDGE_VALUES_UNIT,
-			aspectRatio:    YGUndefined,
+			aspectRatio:    Undefined,
 		},
 		layout: YGLayout{
 			dimensions:                  YG_DEFAULT_DIMENSION_VALUES,
 			lastParentDirection:         Direction(-1),
 			nextCachedMeasurementsIndex: 0,
-			computedFlexBasis:           YGUndefined,
+			computedFlexBasis:           Undefined,
 			hadOverflow:                 false,
 			measuredDimensions:          YG_DEFAULT_DIMENSION_VALUES,
 			cachedLayout: YGCachedMeasurement{
@@ -265,13 +265,13 @@ func YGComputedEdgeValue(edges []Value, edge Edge, defaultValue *Value) *Value {
 func YGResolveValue(value *Value, parentSize float32) float32 {
 	switch value.Unit {
 	case UnitUndefined, UnitAuto:
-		return YGUndefined
+		return Undefined
 	case UnitPoint:
 		return value.Value
 	case UnitPercent:
 		return value.Value * parentSize / 100
 	}
-	return YGUndefined
+	return Undefined
 }
 
 // YGResolveValueMargin resolves margin value
@@ -338,7 +338,7 @@ func YGConfigCopy(dest *YGConfig, src *YGConfig) {
 func YGNodeMarkDirtyInternal(node *YGNode) {
 	if !node.isDirty {
 		node.isDirty = true
-		node.layout.computedFlexBasis = YGUndefined
+		node.layout.computedFlexBasis = Undefined
 		if node.parent != nil {
 			YGNodeMarkDirtyInternal(node.parent)
 		}
@@ -883,8 +883,8 @@ func YGNodeTrailingPosition(node *YGNode, axis FlexDirection, axisSize float32) 
 
 // YGNodeBoundAxisWithinMinAndMax returns bounds axis
 func YGNodeBoundAxisWithinMinAndMax(node *YGNode, axis FlexDirection, value float32, axisSize float32) float32 {
-	min := YGUndefined
-	max := YGUndefined
+	min := Undefined
+	max := Undefined
 
 	if YGFlexDirectionIsColumn(axis) {
 		min = YGResolveValue(&node.style.minDimensions[DimensionHeight], axisSize)
@@ -1041,8 +1041,8 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 	} else {
 		// Compute the flex basis and hypothetical main size (i.e. the clamped
 		// flex basis).
-		childWidth = YGUndefined
-		childHeight = YGUndefined
+		childWidth = Undefined
+		childHeight = Undefined
 		childWidthMeasureMode = MeasureModeUndefined
 		childHeightMeasureMode = MeasureModeUndefined
 
@@ -1142,8 +1142,8 @@ func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, width
 	crossAxis := YGFlexDirectionCross(mainAxis, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
 
-	childWidth := YGUndefined
-	childHeight := YGUndefined
+	childWidth := Undefined
+	childHeight := Undefined
 	childWidthMeasureMode := MeasureModeUndefined
 	childHeightMeasureMode := MeasureModeUndefined
 
@@ -1461,7 +1461,7 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 //    - node: current node to be sized and layed out
 //    - availableWidth & availableHeight: available size to be used for sizing
 //    the node
-//      or YGUndefined if the size is not available; interpretation depends on
+//      or Undefined if the size is not available; interpretation depends on
 //      layout
 //      flags
 //    - parentDirection: the inline (text) direction within the parent

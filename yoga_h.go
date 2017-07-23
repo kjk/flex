@@ -1,8 +1,8 @@
 package flex
 
 var (
-	// YGUndefined defines undefined value
-	YGUndefined = NAN
+	// Undefined defines undefined value
+	Undefined = NAN
 )
 
 // Size describes size
@@ -19,9 +19,9 @@ type Value struct {
 
 var (
 	// ValueUndefined defines undefined YGValue
-	ValueUndefined = Value{YGUndefined, UnitUndefined}
+	ValueUndefined = Value{Undefined, UnitUndefined}
 	// ValueAuto defines auto YGValue
-	ValueAuto = Value{YGUndefined, UnitAuto}
+	ValueAuto = Value{Undefined, UnitAuto}
 )
 
 // MeasureFunc describes function for measuring

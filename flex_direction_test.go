@@ -18,7 +18,7 @@ func TestFlex_direction_column_no_height(t *testing.T) {
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -40,7 +40,7 @@ func TestFlex_direction_column_no_height(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -81,7 +81,7 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -103,7 +103,7 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -144,7 +144,7 @@ func TestFlex_direction_column(t *testing.T) {
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -166,7 +166,7 @@ func TestFlex_direction_column(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -208,7 +208,7 @@ func TestFlex_direction_row(t *testing.T) {
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -230,7 +230,7 @@ func TestFlex_direction_row(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -272,7 +272,7 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetHeight(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -294,7 +294,7 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -336,7 +336,7 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 	rootChild2 := YGNodeNewWithConfig(config)
 	YGNodeStyleSetWidth(rootChild2, 10)
 	YGNodeInsertChild(root, rootChild2, 2)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
@@ -358,7 +358,7 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild2))
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild2))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionRTL)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))

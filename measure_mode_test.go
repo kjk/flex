@@ -62,7 +62,7 @@ func TestExactly_measure_stretched_child_column(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -87,7 +87,7 @@ func TestExactly_measure_stretched_child_row(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -111,7 +111,7 @@ func TestAt_most_main_axis_column(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -136,7 +136,7 @@ func TestAt_most_cross_axis_column(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -161,7 +161,7 @@ func TestAt_most_main_axis_row(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -187,7 +187,7 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -211,7 +211,7 @@ func TestFlex_child(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 2, constraintList.length)
 
@@ -239,7 +239,7 @@ func TestFlex_child_with_flex_basis(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -265,7 +265,7 @@ func TestOverflow_scroll_column(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 
@@ -295,7 +295,7 @@ func TestOverflow_scroll_row(t *testing.T) {
 	YGNodeSetMeasureFunc(rootChild0, _measure2)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.Equal(t, 1, constraintList.length)
 

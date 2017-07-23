@@ -14,7 +14,7 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	YGNodeStyleSetFlexBasisPercent(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, 100, Undefined, DirectionLTR)
 	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
 
 	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0))
@@ -28,11 +28,11 @@ func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
 	YGNodeStyleSetMaxHeight(rootChild0, 10)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
 
-	YGNodeStyleSetMinHeight(rootChild0, YGUndefined)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeStyleSetMinHeight(rootChild0, Undefined)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild0))
 }

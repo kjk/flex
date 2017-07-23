@@ -85,7 +85,7 @@ func YGNodeStyleSetWidthPercent(node *YGNode, width float32) {
 func YGNodeStyleSetWidthAuto(node *YGNode) {
 	dim := &node.style.dimensions[DimensionWidth]
 	if dim.Unit != UnitAuto {
-		dim.Value = YGUndefined
+		dim.Value = Undefined
 		dim.Unit = UnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -126,7 +126,7 @@ func YGNodeStyleSetHeightPercent(node *YGNode, height float32) {
 func YGNodeStyleSetHeightAuto(node *YGNode) {
 	dim := &node.style.dimensions[DimensionHeight]
 	if dim.Unit != UnitAuto {
-		dim.Value = YGUndefined
+		dim.Value = Undefined
 		dim.Unit = UnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -396,7 +396,7 @@ func YGNodeStyleSetFlexBasisPercent(node *YGNode, flexBasis float32) {
 // YGNodeStyleSetFlexBasisAuto sets flex basis auto
 func YGNodeStyleSetFlexBasisAuto(node *YGNode) {
 	if node.style.flexBasis.Unit != UnitAuto {
-		node.style.flexBasis.Value = YGUndefined
+		node.style.flexBasis.Value = Undefined
 		node.style.flexBasis.Unit = UnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}
@@ -441,7 +441,7 @@ func YGNodeStyleGetMargin(node *YGNode, edge Edge) Value {
 // YGNodeStyleSetMarginAuto sets margin auto
 func YGNodeStyleSetMarginAuto(node *YGNode, edge Edge) {
 	if node.style.margin[edge].Unit != UnitAuto {
-		node.style.margin[edge].Value = YGUndefined
+		node.style.margin[edge].Value = Undefined
 		node.style.margin[edge].Unit = UnitAuto
 		YGNodeMarkDirtyInternal(node)
 	}

@@ -14,7 +14,7 @@ func TestReset_layout_when_child_removed(t *testing.T) {
 	YGNodeStyleSetHeight(rootChild0, 100)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
