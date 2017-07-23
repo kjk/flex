@@ -28,35 +28,35 @@ func TestRounding_feature_with_custom_measure_func_floor(t *testing.T) {
 	NodeSetMeasureFunc(rootChild0, _measureFloor)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGConfigSetPointScaleFactor(config, 0)
+	ConfigSetPointScaleFactor(config, 0)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 10.2, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10.2, YGNodeLayoutGetHeight(rootChild0))
 
-	YGConfigSetPointScaleFactor(config, 1)
+	ConfigSetPointScaleFactor(config, 1)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 11, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 11, YGNodeLayoutGetHeight(rootChild0))
 
-	YGConfigSetPointScaleFactor(config, 2)
+	ConfigSetPointScaleFactor(config, 2)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 10.5, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10.5, YGNodeLayoutGetHeight(rootChild0))
 
-	YGConfigSetPointScaleFactor(config, 4)
+	ConfigSetPointScaleFactor(config, 4)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 10.25, YGNodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 10.25, YGNodeLayoutGetHeight(rootChild0))
 
-	YGConfigSetPointScaleFactor(config, float32(1)/float32(3))
+	ConfigSetPointScaleFactor(config, float32(1)/float32(3))
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
@@ -72,7 +72,7 @@ func TestRounding_feature_with_custom_measure_func_ceil(t *testing.T) {
 	NodeSetMeasureFunc(rootChild0, _measureCeil)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGConfigSetPointScaleFactor(config, 1)
+	ConfigSetPointScaleFactor(config, 1)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -89,7 +89,7 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 	NodeSetMeasureFunc(rootChild0, _measureFractial)
 	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGConfigSetPointScaleFactor(config, 2)
+	ConfigSetPointScaleFactor(config, 2)
 
 	YGNodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
