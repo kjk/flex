@@ -14,7 +14,7 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, nilNode, YGNodeGetChild(root, 1))
 	assert.Equal(t, nilNode, YGNodeGetChild(root, 0))
 
-	assert.Equal(t, YGDirectionInherit, YGNodeStyleGetDirection(root))
+	assert.Equal(t, DirectionInherit, YGNodeStyleGetDirection(root))
 	assert.Equal(t, YGFlexDirectionColumn, YGNodeStyleGetFlexDirection(root))
 	assert.Equal(t, YGJustifyFlexStart, YGNodeStyleGetJustifyContent(root))
 	assert.Equal(t, AlignFlexStart, YGNodeStyleGetAlignContent(root))
@@ -84,7 +84,7 @@ func TestAssert_default_values(t *testing.T) {
 
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetWidth(root)))
 	assert.True(t, YGFloatIsUndefined(YGNodeLayoutGetHeight(root)))
-	assert.Equal(t, YGDirectionInherit, YGNodeLayoutGetDirection(root))
+	assert.Equal(t, DirectionInherit, YGNodeLayoutGetDirection(root))
 
 }
 

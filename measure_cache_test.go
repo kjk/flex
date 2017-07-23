@@ -60,16 +60,16 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	root_child0 := YGNodeNew()
+	rootChild0 := YGNodeNew()
 	measureCount := 0
-	YGNodeSetContext(root_child0, measureCount)
-	YGNodeSetMeasureFunc(root_child0, _measureMax)
-	YGNodeStyleSetFlexGrow(root_child0, 1)
-	YGNodeInsertChild(root, root_child0, 0)
+	YGNodeSetContext(rootChild0, measureCount)
+	YGNodeSetMeasureFunc(rootChild0, _measureMax)
+	YGNodeStyleSetFlexGrow(rootChild0, 1)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
-	measureCount = YGNodeGetContext(root_child0).(int)
+	measureCount = YGNodeGetContext(rootChild0).(int)
 	assert.Equal(t, 1, measureCount)
 
 }
@@ -77,16 +77,16 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 func TestRemeasure_with_same_exact_width_larger_than_needed_height(t *testing.T) {
 	root := YGNodeNew()
 
-	root_child0 := YGNodeNew()
+	rootChild0 := YGNodeNew()
 	measureCount := 0
-	YGNodeSetContext(root_child0, measureCount)
-	YGNodeSetMeasureFunc(root_child0, _measureMin)
-	YGNodeInsertChild(root, root_child0, 0)
+	YGNodeSetContext(rootChild0, measureCount)
+	YGNodeSetMeasureFunc(rootChild0, _measureMin)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, 100, YGDirectionLTR)
-	YGNodeCalculateLayout(root, 100, 50, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
+	YGNodeCalculateLayout(root, 100, 50, DirectionLTR)
 
-	measureCount = YGNodeGetContext(root_child0).(int)
+	measureCount = YGNodeGetContext(rootChild0).(int)
 	assert.Equal(t, 1, measureCount)
 
 }
@@ -95,16 +95,16 @@ func TestRemeasure_with_same_atmost_width_larger_than_needed_height(t *testing.T
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 
-	root_child0 := YGNodeNew()
+	rootChild0 := YGNodeNew()
 	measureCount := 0
-	YGNodeSetContext(root_child0, measureCount)
-	YGNodeSetMeasureFunc(root_child0, _measureMin)
-	YGNodeInsertChild(root, root_child0, 0)
+	YGNodeSetContext(rootChild0, measureCount)
+	YGNodeSetMeasureFunc(rootChild0, _measureMin)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, 100, YGDirectionLTR)
-	YGNodeCalculateLayout(root, 100, 50, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
+	YGNodeCalculateLayout(root, 100, 50, DirectionLTR)
 
-	measureCount = YGNodeGetContext(root_child0).(int)
+	measureCount = YGNodeGetContext(rootChild0).(int)
 	assert.Equal(t, 1, measureCount)
 
 }
@@ -113,17 +113,17 @@ func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 
-	root_child0 := YGNodeNew()
+	rootChild0 := YGNodeNew()
 	measureCount := 0
-	YGNodeSetContext(root_child0, measureCount)
-	YGNodeSetMeasureFunc(root_child0, _measureMin)
-	YGNodeInsertChild(root, root_child0, 0)
+	YGNodeSetContext(rootChild0, measureCount)
+	YGNodeSetMeasureFunc(rootChild0, _measureMin)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, 100, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
 	YGNodeStyleSetAlignItems(root, AlignStretch)
-	YGNodeCalculateLayout(root, 10, 50, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 10, 50, DirectionLTR)
 
-	measureCount = YGNodeGetContext(root_child0).(int)
+	measureCount = YGNodeGetContext(rootChild0).(int)
 	assert.Equal(t, 1, measureCount)
 
 }
@@ -132,16 +132,16 @@ func TestRemeasure_with_atmost_computed_width_undefined_height(t *testing.T) {
 	root := YGNodeNew()
 	YGNodeStyleSetAlignItems(root, AlignFlexStart)
 
-	root_child0 := YGNodeNew()
+	rootChild0 := YGNodeNew()
 	measureCount := 0
-	YGNodeSetContext(root_child0, measureCount)
-	YGNodeSetMeasureFunc(root_child0, _measureMin)
-	YGNodeInsertChild(root, root_child0, 0)
+	YGNodeSetContext(rootChild0, measureCount)
+	YGNodeSetMeasureFunc(rootChild0, _measureMin)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, YGUndefined, YGDirectionLTR)
-	YGNodeCalculateLayout(root, 10, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 100, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, 10, YGUndefined, DirectionLTR)
 
-	measureCount = YGNodeGetContext(root_child0).(int)
+	measureCount = YGNodeGetContext(rootChild0).(int)
 	assert.Equal(t, 1, measureCount)
 
 }
@@ -154,19 +154,19 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	YGNodeStyleSetHeight(root, 288)
 	YGNodeStyleSetFlexDirection(root, YGFlexDirectionRow)
 
-	root_child0 := YGNodeNew()
-	YGNodeStyleSetPadding(root_child0, YGEdgeAll, 2.88)
-	YGNodeStyleSetFlexDirection(root_child0, YGFlexDirectionRow)
-	YGNodeInsertChild(root, root_child0, 0)
+	rootChild0 := YGNodeNew()
+	YGNodeStyleSetPadding(rootChild0, YGEdgeAll, 2.88)
+	YGNodeStyleSetFlexDirection(rootChild0, YGFlexDirectionRow)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	root_child0_child0 := YGNodeNew()
-	YGNodeSetContext(root_child0_child0, measureCount)
-	YGNodeSetMeasureFunc(root_child0_child0, _measure_84_49)
-	YGNodeInsertChild(root_child0, root_child0_child0, 0)
+	rootChild0Child0 := YGNodeNew()
+	YGNodeSetContext(rootChild0Child0, measureCount)
+	YGNodeSetMeasureFunc(rootChild0Child0, _measure_84_49)
+	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
-	measureCount = YGNodeGetContext(root_child0_child0).(int)
+	measureCount = YGNodeGetContext(rootChild0Child0).(int)
 	assert.Equal(t, 1, measureCount)
 
 }

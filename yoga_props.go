@@ -222,7 +222,7 @@ func YGNodeGetNodeType(node *YGNode) YGNodeType {
 }
 
 // YGNodeStyleSetDirection sets direction
-func YGNodeStyleSetDirection(node *YGNode, direction YGDirection) {
+func YGNodeStyleSetDirection(node *YGNode, direction Direction) {
 	if node.style.direction != direction {
 		node.style.direction = direction
 		YGNodeMarkDirtyInternal(node)
@@ -230,7 +230,7 @@ func YGNodeStyleSetDirection(node *YGNode, direction YGDirection) {
 }
 
 // YGNodeStyleGetDirection gets direction
-func YGNodeStyleGetDirection(node *YGNode) YGDirection {
+func YGNodeStyleGetDirection(node *YGNode) Direction {
 	return node.style.direction
 }
 
@@ -664,7 +664,7 @@ func YGNodeLayoutGetHeight(node *YGNode) float32 {
 }
 
 // YGNodeLayoutGetDirection gets direction
-func YGNodeLayoutGetDirection(node *YGNode) YGDirection {
+func YGNodeLayoutGetDirection(node *YGNode) Direction {
 	return node.layout.direction
 }
 
@@ -677,13 +677,13 @@ func YGNodeLayoutGetHadOverflow(node *YGNode) bool {
 func YGNodeLayoutGetMargin(node *YGNode, edge YGEdge) float32 {
 	YGAssertWithNode(node, edge < YGEdgeEnd, "Cannot get layout properties of multi-edge shorthands")
 	if edge == YGEdgeLeft {
-		if node.layout.direction == YGDirectionRTL {
+		if node.layout.direction == DirectionRTL {
 			return node.layout.margin[YGEdgeEnd]
 		}
 		return node.layout.margin[YGEdgeStart]
 	}
 	if edge == YGEdgeRight {
-		if node.layout.direction == YGDirectionRTL {
+		if node.layout.direction == DirectionRTL {
 			return node.layout.margin[YGEdgeStart]
 		}
 		return node.layout.margin[YGEdgeEnd]
@@ -696,13 +696,13 @@ func YGNodeLayoutGetBorder(node *YGNode, edge YGEdge) float32 {
 	YGAssertWithNode(node, edge < YGEdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == YGEdgeLeft {
-		if node.layout.direction == YGDirectionRTL {
+		if node.layout.direction == DirectionRTL {
 			return node.layout.border[YGEdgeEnd]
 		}
 		return node.layout.border[YGEdgeStart]
 	}
 	if edge == YGEdgeRight {
-		if node.layout.direction == YGDirectionRTL {
+		if node.layout.direction == DirectionRTL {
 			return node.layout.border[YGEdgeStart]
 		}
 		return node.layout.border[YGEdgeEnd]
@@ -715,13 +715,13 @@ func YGNodeLayoutGetPadding(node *YGNode, edge YGEdge) float32 {
 	YGAssertWithNode(node, edge < YGEdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == YGEdgeLeft {
-		if node.layout.direction == YGDirectionRTL {
+		if node.layout.direction == DirectionRTL {
 			return node.layout.padding[YGEdgeEnd]
 		}
 		return node.layout.padding[YGEdgeStart]
 	}
 	if edge == YGEdgeRight {
-		if node.layout.direction == YGDirectionRTL {
+		if node.layout.direction == DirectionRTL {
 			return node.layout.padding[YGEdgeStart]
 		}
 		return node.layout.padding[YGEdgeEnd]

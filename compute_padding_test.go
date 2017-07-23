@@ -8,15 +8,14 @@ func TestComputed_layout_padding(t *testing.T) {
 	YGNodeStyleSetHeight(root, 100)
 	YGNodeStyleSetPaddingPercent(root, YGEdgeStart, 10)
 
-	YGNodeCalculateLayout(root, 100, 100, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
 
 	assertFloatEqual(t, 10, YGNodeLayoutGetPadding(root, YGEdgeLeft))
 	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, YGEdgeRight))
 
-	YGNodeCalculateLayout(root, 100, 100, YGDirectionRTL)
+	YGNodeCalculateLayout(root, 100, 100, DirectionRTL)
 
 	assertFloatEqual(t, 0, YGNodeLayoutGetPadding(root, YGEdgeLeft))
 	assertFloatEqual(t, 10, YGNodeLayoutGetPadding(root, YGEdgeRight))
-
 
 }

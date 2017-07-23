@@ -10,35 +10,31 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	YGNodeStyleSetHeightPercent(root, 100)
 	YGNodeStyleSetWidthPercent(root, 100)
 
-	root_child0 := YGNodeNewWithConfig(config)
-	YGNodeStyleSetFlexBasisPercent(root_child0, 100)
-	YGNodeInsertChild(root, root_child0, 0)
+	rootChild0 := YGNodeNewWithConfig(config)
+	YGNodeStyleSetFlexBasisPercent(rootChild0, 100)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, 100, YGUndefined, YGDirectionLTR)
-	YGNodeCalculateLayout(root, 100, 100, YGDirectionLTR)
+	YGNodeCalculateLayout(root, 100, YGUndefined, DirectionLTR)
+	YGNodeCalculateLayout(root, 100, 100, DirectionLTR)
 
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root_child0))
-
-
-
+	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0))
 
 }
 
 func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
 	root := YGNodeNew()
 
-	root_child0 := YGNodeNew()
-	YGNodeStyleSetMinHeight(root_child0, 10)
-	YGNodeStyleSetMaxHeight(root_child0, 10)
-	YGNodeInsertChild(root, root_child0, 0)
+	rootChild0 := YGNodeNew()
+	YGNodeStyleSetMinHeight(rootChild0, 10)
+	YGNodeStyleSetMaxHeight(rootChild0, 10)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(root_child0))
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
+	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
 
-	YGNodeStyleSetMinHeight(root_child0, YGUndefined)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeStyleSetMinHeight(rootChild0, YGUndefined)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(root_child0))
-
+	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(rootChild0))
 
 }

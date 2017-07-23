@@ -12,28 +12,28 @@ func TestDirty_propagation(t *testing.T) {
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	root_child0 := YGNodeNew()
-	YGNodeStyleSetWidth(root_child0, 50)
-	YGNodeStyleSetHeight(root_child0, 20)
-	YGNodeInsertChild(root, root_child0, 0)
+	rootChild0 := YGNodeNew()
+	YGNodeStyleSetWidth(rootChild0, 50)
+	YGNodeStyleSetHeight(rootChild0, 20)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	root_child1 := YGNodeNew()
-	YGNodeStyleSetWidth(root_child1, 50)
-	YGNodeStyleSetHeight(root_child1, 20)
-	YGNodeInsertChild(root, root_child1, 1)
+	rootChild1 := YGNodeNew()
+	YGNodeStyleSetWidth(rootChild1, 50)
+	YGNodeStyleSetHeight(rootChild1, 20)
+	YGNodeInsertChild(root, rootChild1, 1)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
-	YGNodeStyleSetWidth(root_child0, 20)
+	YGNodeStyleSetWidth(rootChild0, 20)
 
-	assert.True(t, YGNodeIsDirty(root_child0))
-	assert.False(t, YGNodeIsDirty(root_child1))
+	assert.True(t, YGNodeIsDirty(rootChild0))
+	assert.False(t, YGNodeIsDirty(rootChild1))
 	assert.True(t, YGNodeIsDirty(root))
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
-	assert.False(t, YGNodeIsDirty(root_child0))
-	assert.False(t, YGNodeIsDirty(root_child1))
+	assert.False(t, YGNodeIsDirty(rootChild0))
+	assert.False(t, YGNodeIsDirty(rootChild1))
 	assert.False(t, YGNodeIsDirty(root))
 
 }
@@ -44,22 +44,22 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	YGNodeStyleSetWidth(root, 100)
 	YGNodeStyleSetHeight(root, 100)
 
-	root_child0 := YGNodeNew()
-	YGNodeStyleSetWidth(root_child0, 50)
-	YGNodeStyleSetHeight(root_child0, 20)
-	YGNodeInsertChild(root, root_child0, 0)
+	rootChild0 := YGNodeNew()
+	YGNodeStyleSetWidth(rootChild0, 50)
+	YGNodeStyleSetHeight(rootChild0, 20)
+	YGNodeInsertChild(root, rootChild0, 0)
 
-	root_child1 := YGNodeNew()
-	YGNodeStyleSetWidth(root_child1, 50)
-	YGNodeStyleSetHeight(root_child1, 20)
-	YGNodeInsertChild(root, root_child1, 1)
+	rootChild1 := YGNodeNew()
+	YGNodeStyleSetWidth(rootChild1, 50)
+	YGNodeStyleSetHeight(rootChild1, 20)
+	YGNodeInsertChild(root, rootChild1, 1)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
-	YGNodeStyleSetWidth(root_child0, 50)
+	YGNodeStyleSetWidth(rootChild0, 50)
 
-	assert.False(t, YGNodeIsDirty(root_child0))
-	assert.False(t, YGNodeIsDirty(root_child1))
+	assert.False(t, YGNodeIsDirty(rootChild0))
+	assert.False(t, YGNodeIsDirty(rootChild1))
 	assert.False(t, YGNodeIsDirty(root))
 
 }
@@ -87,25 +87,25 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 
 	YGNodeStyleSetDisplay(child0, YGDisplayFlex)
 	YGNodeStyleSetDisplay(child1, YGDisplayNone)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1_child0_child0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1_child0_child0))
 
 	YGNodeStyleSetDisplay(child0, YGDisplayNone)
 	YGNodeStyleSetDisplay(child1, YGDisplayFlex)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1_child0_child0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1_child0_child0))
 
 	YGNodeStyleSetDisplay(child0, YGDisplayFlex)
 	YGNodeStyleSetDisplay(child1, YGDisplayNone)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 	assertFloatEqual(t, 0, YGNodeLayoutGetWidth(child1_child0_child0))
 	assertFloatEqual(t, 0, YGNodeLayoutGetHeight(child1_child0_child0))
 
 	YGNodeStyleSetDisplay(child0, YGDisplayNone)
 	YGNodeStyleSetDisplay(child1, YGDisplayFlex)
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 	assertFloatEqual(t, 8, YGNodeLayoutGetWidth(child1_child0_child0))
 	assertFloatEqual(t, 16, YGNodeLayoutGetHeight(child1_child0_child0))
 }
@@ -121,7 +121,7 @@ func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	YGNodeStyleSetHeight(child0, 25)
 	YGNodeInsertChild(root, child0, 0)
 
-	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(root, YGUndefined, YGUndefined, DirectionLTR)
 
 	child1 := YGNodeNew()
 	YGNodeRemoveChild(root, child1)

@@ -34,12 +34,16 @@ const (
 	DimensionHeight
 )
 
-type YGDirection int
+// Direction represents right-to-left or left-to-right direction
+type Direction int
 
 const (
-	YGDirectionInherit YGDirection = iota
-	YGDirectionLTR
-	YGDirectionRTL
+	// DirectionInherit is "inherit"
+	DirectionInherit Direction = iota
+	// DirectionLTR is "ltr"
+	DirectionLTR
+	// DirectionRTL is "rtl"
+	DirectionRTL
 )
 
 type YGDisplay int
@@ -178,7 +182,7 @@ func YGDimensionToString(value Dimension) string {
 	return ""
 }
 
-func YGDirectionToString(value YGDirection) string {
+func YGDirectionToString(value Direction) string {
 	return ""
 }
 

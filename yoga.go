@@ -27,7 +27,7 @@ type YGLayout struct {
 	margin     [6]float32
 	border     [6]float32
 	padding    [6]float32
-	direction  YGDirection
+	direction  Direction
 
 	computedFlexBasisGeneration int
 	computedFlexBasis           float32
@@ -36,7 +36,7 @@ type YGLayout struct {
 	// Instead of recomputing the entire layout every single time, we
 	// cache some information to break early when nothing changed
 	generationCount     int
-	lastParentDirection YGDirection
+	lastParentDirection Direction
 
 	nextCachedMeasurementsIndex int
 	cachedMeasurements          [YG_MAX_CACHED_RESULT_COUNT]YGCachedMeasurement
@@ -48,7 +48,7 @@ type YGLayout struct {
 
 // YGStyle describes a style
 type YGStyle struct {
-	direction      YGDirection
+	direction      Direction
 	flexDirection  YGFlexDirection
 	justifyContent YGJustify
 	alignContent   Align
@@ -169,7 +169,7 @@ var (
 			justifyContent: YGJustifyFlexStart,
 			alignItems:     AlignStretch,
 			alignContent:   AlignFlexStart,
-			direction:      YGDirectionInherit,
+			direction:      DirectionInherit,
 			flexDirection:  YGFlexDirectionColumn,
 			overflow:       YGOverflowVisible,
 			display:        YGDisplayFlex,
@@ -184,7 +184,7 @@ var (
 		},
 		layout: YGLayout{
 			dimensions:                  YG_DEFAULT_DIMENSION_VALUES,
-			lastParentDirection:         YGDirection(-1),
+			lastParentDirection:         Direction(-1),
 			nextCachedMeasurementsIndex: 0,
 			computedFlexBasis:           YGUndefined,
 			hadOverflow:                 false,
@@ -715,12 +715,12 @@ func YGNodeAlignItem(node *YGNode, child *YGNode) Align {
 }
 
 // YGNodeResolveDirection resolves direction
-func YGNodeResolveDirection(node *YGNode, parentDirection YGDirection) YGDirection {
-	if node.style.direction == YGDirectionInherit {
-		if parentDirection > YGDirectionInherit {
+func YGNodeResolveDirection(node *YGNode, parentDirection Direction) Direction {
+	if node.style.direction == DirectionInherit {
+		if parentDirection > DirectionInherit {
 			return parentDirection
 		}
-		return YGDirectionLTR
+		return DirectionLTR
 	}
 	return node.style.direction
 }
@@ -762,8 +762,8 @@ func YGBaseline(node *YGNode) float32 {
 }
 
 // YGResolveFlexDirection resolves flex direction
-func YGResolveFlexDirection(flexDirection YGFlexDirection, direction YGDirection) YGFlexDirection {
-	if direction == YGDirectionRTL {
+func YGResolveFlexDirection(flexDirection YGFlexDirection, direction Direction) YGFlexDirection {
+	if direction == DirectionRTL {
 		if flexDirection == YGFlexDirectionRow {
 			return YGFlexDirectionRowReverse
 		} else if flexDirection == YGFlexDirectionRowReverse {
@@ -774,7 +774,7 @@ func YGResolveFlexDirection(flexDirection YGFlexDirection, direction YGDirection
 }
 
 // YGFlexDirectionCross gets flex direction cross
-func YGFlexDirectionCross(flexDirection YGFlexDirection, direction YGDirection) YGFlexDirection {
+func YGFlexDirectionCross(flexDirection YGFlexDirection, direction Direction) YGFlexDirection {
 	if YGFlexDirectionIsColumn(flexDirection) {
 		return YGResolveFlexDirection(YGFlexDirectionRow, direction)
 	}
@@ -972,9 +972,9 @@ func YGConstrainMaxSizeForMode(node *YGNode, axis YGFlexDirection, parentAxisSiz
 }
 
 // YGNodeSetPosition sets position
-func YGNodeSetPosition(node *YGNode, direction YGDirection, mainSize float32, crossSize float32, parentWidth float32) {
+func YGNodeSetPosition(node *YGNode, direction Direction, mainSize float32, crossSize float32, parentWidth float32) {
 	/* Root nodes should be always layouted as LTR, so we don't return negative values. */
-	directionRespectingRoot := YGDirectionLTR
+	directionRespectingRoot := DirectionLTR
 	if node.parent != nil {
 		directionRespectingRoot = direction
 	}
@@ -1001,7 +1001,7 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 	parentWidth float32,
 	parentHeight float32,
 	heightMode YGMeasureMode,
-	direction YGDirection,
+	direction Direction,
 	config *YGConfig) {
 	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
@@ -1137,7 +1137,7 @@ func YGNodeComputeFlexBasisForChild(node *YGNode,
 }
 
 // YGNodeAbsoluteLayoutChild calculates absolute child layout
-func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode YGMeasureMode, height float32, direction YGDirection, config *YGConfig) {
+func YGNodeAbsoluteLayoutChild(node *YGNode, child *YGNode, width float32, widthMode YGMeasureMode, height float32, direction Direction, config *YGConfig) {
 	mainAxis := YGResolveFlexDirection(node.style.flexDirection, direction)
 	crossAxis := YGFlexDirectionCross(mainAxis, direction)
 	isMainAxisRow := YGFlexDirectionIsRow(mainAxis)
@@ -1507,7 +1507,7 @@ func YGZeroOutLayoutRecursivly(node *YGNode) {
 //    undefined then it must also pass a measure mode of YGMeasureModeUndefined
 //    in that dimension.
 func YGNodelayoutImpl(node *YGNode, availableWidth float32, availableHeight float32,
-	parentDirection YGDirection, widthMeasureMode YGMeasureMode,
+	parentDirection Direction, widthMeasureMode YGMeasureMode,
 	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
 	performLayout bool, config *YGConfig) {
 	// YGAssertWithNode(node, YGFloatIsUndefined(availableWidth) ? widthMeasureMode == YGMeasureModeUndefined : true, "availableWidth is indefinite so widthMeasureMode must be YGMeasureModeUndefined");
@@ -2775,7 +2775,7 @@ func YGNodeCanUseCachedMeasurement(widthMode YGMeasureMode, width float32, heigh
 //  Input parameters are the same as YGNodelayoutImpl (see above)
 //  Return parameter is true if layout was performed, false if skipped
 func YGLayoutNodeInternal(node *YGNode, availableWidth float32, availableHeight float32,
-	parentDirection YGDirection, widthMeasureMode YGMeasureMode,
+	parentDirection Direction, widthMeasureMode YGMeasureMode,
 	heightMeasureMode YGMeasureMode, parentWidth float32, parentHeight float32,
 	performLayout bool, reason string, config *YGConfig) bool {
 	layout := &node.layout
@@ -3076,7 +3076,7 @@ func calcStartHeight(node *YGNode, parentWidth, parentHeight float32) (float32, 
 }
 
 // YGNodeCalculateLayout sets
-func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float32, parentDirection YGDirection) {
+func YGNodeCalculateLayout(node *YGNode, parentWidth float32, parentHeight float32, parentDirection Direction) {
 	// Increment the generation count. This will force the recursive routine to
 	// visit
 	// all dirty nodes at least once. Subsequent visits will be skipped if the

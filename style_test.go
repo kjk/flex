@@ -35,7 +35,7 @@ func TestCopy_style_modified_same(t *testing.T) {
 	node0 := YGNodeNew()
 	YGNodeStyleSetFlexDirection(node0, YGFlexDirectionRow)
 	YGNodeStyleSetMaxHeight(node0, 10)
-	YGNodeCalculateLayout(node0, YGUndefined, YGUndefined, YGDirectionLTR)
+	YGNodeCalculateLayout(node0, YGUndefined, YGUndefined, DirectionLTR)
 	assert.False(t, YGNodeIsDirty(node0))
 
 	node1 := YGNodeNew()
