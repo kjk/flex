@@ -35,7 +35,7 @@ func YGPrintNumberIfNotAuto(node *Node, str string, number *Value) {
 }
 
 func YGPrintEdgeIfNotUndefined(node *Node, str string, edges []Value, edge Edge) {
-	YGPrintNumberIfNotUndefined(node, str, YGComputedEdgeValue(edges, edge, &ValueUndefined))
+	YGPrintNumberIfNotUndefined(node, str, computedEdgeValue(edges, edge, &ValueUndefined))
 }
 
 func YGPrintNumberIfNotZero(node *Node, str string, number *Value) {
