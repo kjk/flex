@@ -2,7 +2,7 @@ package flex
 
 // YGNodeList is a list of nodes
 type YGNodeList struct {
-	items []*YGNode
+	items []*Node
 }
 
 // YGNodeListNew creates  a new node
@@ -24,7 +24,7 @@ func YGNodeListCount(list *YGNodeList) int {
 }
 
 // YGNodeListAdd adds a node
-func YGNodeListAdd(listp **YGNodeList, node *YGNode) {
+func YGNodeListAdd(listp **YGNodeList, node *Node) {
 	if *listp == nil {
 		*listp = YGNodeListNew(4)
 	}
@@ -32,18 +32,18 @@ func YGNodeListAdd(listp **YGNodeList, node *YGNode) {
 }
 
 // YGNodeListInsert insertes a node
-func YGNodeListInsert(listp **YGNodeList, node *YGNode, i int) {
+func YGNodeListInsert(listp **YGNodeList, node *Node, i int) {
 	if *listp == nil {
 		*listp = YGNodeListNew(4)
 	}
 	list := *listp
 	a := list.items
 	// https://github.com/golang/go/wiki/SliceTricks
-	list.items = append(a[:i], append([]*YGNode{node}, a[i:]...)...)
+	list.items = append(a[:i], append([]*Node{node}, a[i:]...)...)
 }
 
 // YGNodeListRemove removes a node from list
-func YGNodeListRemove(list *YGNodeList, index int) *YGNode {
+func YGNodeListRemove(list *YGNodeList, index int) *Node {
 	removed := list.items[index]
 	list.items[index] = nil
 
@@ -58,7 +58,7 @@ func YGNodeListRemove(list *YGNodeList, index int) *YGNode {
 }
 
 // YGNodeListDelete deletes a node
-func YGNodeListDelete(list *YGNodeList, node *YGNode) *YGNode {
+func YGNodeListDelete(list *YGNodeList, node *Node) *Node {
 	n := len(list.items)
 	for i := 0; i < n; i++ {
 		if list.items[i] == node {
@@ -70,7 +70,7 @@ func YGNodeListDelete(list *YGNodeList, node *YGNode) *YGNode {
 }
 
 // YGNodeListGet retruns a node at a given position
-func YGNodeListGet(list *YGNodeList, index int) *YGNode {
+func YGNodeListGet(list *YGNodeList, index int) *Node {
 	n := YGNodeListCount(list)
 	if index < n {
 		return list.items[index]

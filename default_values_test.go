@@ -10,7 +10,7 @@ func TestAssert_default_values(t *testing.T) {
 	root := YGNodeNew()
 
 	assert.Equal(t, 0, YGNodeGetChildCount(root))
-	var nilNode *YGNode
+	var nilNode *Node
 	assert.Equal(t, nilNode, YGNodeGetChild(root, 1))
 	assert.Equal(t, nilNode, YGNodeGetChild(root, 0))
 

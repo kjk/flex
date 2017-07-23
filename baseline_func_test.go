@@ -2,7 +2,7 @@ package flex
 
 import "testing"
 
-func _baseline(node *YGNode, width float32, height float32) float32 {
+func _baseline(node *Node, width float32, height float32) float32 {
 	baseline := YGNodeGetContext(node).(float32)
 	return baseline
 }

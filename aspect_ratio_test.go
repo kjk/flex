@@ -2,7 +2,7 @@ package flex
 
 import "testing"
 
-func _measure(node *YGNode, width float32, widthMode MeasureMode,
+func _measure(node *Node, width float32, widthMode MeasureMode,
 	height float32, heightMode MeasureMode) Size {
 
 	if widthMode != MeasureModeExactly {

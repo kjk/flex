@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func newHadOverflowTests() (*YGConfig, *YGNode) {
+func newHadOverflowTests() (*Config, *Node) {
 	config := YGConfigNew()
 	root := YGNodeNewWithConfig(config)
 	YGNodeStyleSetWidth(root, 200)

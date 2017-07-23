@@ -25,13 +25,13 @@ var (
 )
 
 // MeasureFunc describes function for measuring
-type MeasureFunc func(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size
+type MeasureFunc func(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size
 
 // BaselineFunc describes function for baseline
-type BaselineFunc func(node *YGNode, width float32, height float32) float32
+type BaselineFunc func(node *Node, width float32, height float32) float32
 
 // PrintFunc defines function for printing
-type PrintFunc func(node *YGNode)
+type PrintFunc func(node *Node)
 
 // Logger defines logging function
-type Logger func(config *YGConfig, node *YGNode, level LogLevel, format string, args ...interface{}) int
+type Logger func(config *Config, node *Node, level LogLevel, format string, args ...interface{}) int

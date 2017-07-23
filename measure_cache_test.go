@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func _measureMax(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+func _measureMax(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount := YGNodeGetContext(node).(int)
 	measureCount++
 	YGNodeSetContext(node, measureCount)
@@ -23,7 +23,7 @@ func _measureMax(node *YGNode, width float32, widthMode MeasureMode, height floa
 	}
 }
 
-func _measureMin(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+func _measureMin(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount := YGNodeGetContext(node).(int)
 	measureCount++
 	YGNodeSetContext(node, measureCount)
@@ -40,7 +40,7 @@ func _measureMin(node *YGNode, width float32, widthMode MeasureMode, height floa
 	}
 }
 
-func _measure_84_49(node *YGNode, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
+func _measure_84_49(node *Node, width float32, widthMode MeasureMode, height float32, heightMode MeasureMode) Size {
 	measureCount, ok := YGNodeGetContext(node).(int)
 	if ok {
 		measureCount++

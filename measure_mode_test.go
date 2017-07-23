@@ -18,7 +18,7 @@ type _MeasureConstraintList struct {
 	constraints []_MeasureConstraint
 }
 
-func _measure2(node *YGNode,
+func _measure2(node *Node,
 	width float32,
 	widthMode MeasureMode,
 	height float32,
