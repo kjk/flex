@@ -48,30 +48,30 @@ type Layout struct {
 
 // Style describes a style
 type Style struct {
-	direction      Direction
-	flexDirection  FlexDirection
-	justifyContent Justify
-	alignContent   Align
-	alignItems     Align
-	alignSelf      Align
-	positionType   PositionType
-	flexWrap       Wrap
-	overflow       Overflow
-	display        Display
-	flex           float32
-	flexGrow       float32
-	flexShrink     float32
-	flexBasis      Value
-	margin         [EdgeCount]Value
-	position       [EdgeCount]Value
-	padding        [EdgeCount]Value
-	border         [EdgeCount]Value
-	dimensions     [2]Value
-	minDimensions  [2]Value
-	maxDimensions  [2]Value
+	Direction      Direction
+	FlexDirection  FlexDirection
+	JustifyContent Justify
+	AlignContent   Align
+	AlignItems     Align
+	AlignSelf      Align
+	PositionType   PositionType
+	FlexWrap       Wrap
+	Overflow       Overflow
+	Display        Display
+	Flex           float32
+	FlexGrow       float32
+	FlexShrink     float32
+	FlexBasis      Value
+	Margin         [EdgeCount]Value
+	Position       [EdgeCount]Value
+	Padding        [EdgeCount]Value
+	Border         [EdgeCount]Value
+	Dimensions     [2]Value
+	MinDimensions  [2]Value
+	MaxDimensions  [2]Value
 
 	// Yoga specific properties, not compatible with flexbox specification
-	aspectRatio float32
+	AspectRatio float32
 }
 
 // Config describes a configuration
@@ -162,25 +162,25 @@ var (
 		NodeType:           NodeTypeDefault,
 		resolvedDimensions: [2]*Value{&ValueUndefined, &ValueUndefined},
 		Style: Style{
-			flex:           Undefined,
-			flexGrow:       Undefined,
-			flexShrink:     Undefined,
-			flexBasis:      YG_AUTO_VALUES,
-			justifyContent: JustifyFlexStart,
-			alignItems:     AlignStretch,
-			alignContent:   AlignFlexStart,
-			direction:      DirectionInherit,
-			flexDirection:  FlexDirectionColumn,
-			overflow:       OverflowVisible,
-			display:        DisplayFlex,
-			dimensions:     YG_DEFAULT_DIMENSION_VALUES_AUTO_UNIT,
-			minDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
-			maxDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
-			position:       YG_DEFAULT_EDGE_VALUES_UNIT,
-			margin:         YG_DEFAULT_EDGE_VALUES_UNIT,
-			padding:        YG_DEFAULT_EDGE_VALUES_UNIT,
-			border:         YG_DEFAULT_EDGE_VALUES_UNIT,
-			aspectRatio:    Undefined,
+			Flex:           Undefined,
+			FlexGrow:       Undefined,
+			FlexShrink:     Undefined,
+			FlexBasis:      YG_AUTO_VALUES,
+			JustifyContent: JustifyFlexStart,
+			AlignItems:     AlignStretch,
+			AlignContent:   AlignFlexStart,
+			Direction:      DirectionInherit,
+			FlexDirection:  FlexDirectionColumn,
+			Overflow:       OverflowVisible,
+			Display:        DisplayFlex,
+			Dimensions:     YG_DEFAULT_DIMENSION_VALUES_AUTO_UNIT,
+			MinDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
+			MaxDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
+			Position:       YG_DEFAULT_EDGE_VALUES_UNIT,
+			Margin:         YG_DEFAULT_EDGE_VALUES_UNIT,
+			Padding:        YG_DEFAULT_EDGE_VALUES_UNIT,
+			Border:         YG_DEFAULT_EDGE_VALUES_UNIT,
+			AspectRatio:    Undefined,
 		},
 		Layout: Layout{
 			dimensions:                  YG_DEFAULT_DIMENSION_VALUES,
@@ -285,8 +285,8 @@ func NewNodeWithConfig(config *Config) *Node {
 	node := gYGNodeDefaults
 
 	if config.UseWebDefaults {
-		node.Style.flexDirection = FlexDirectionRow
-		node.Style.alignContent = AlignStretch
+		node.Style.FlexDirection = FlexDirectionRow
+		node.Style.AlignContent = AlignStretch
 	}
 	node.Config = config
 	return &node
@@ -307,8 +307,8 @@ func NodeReset(node *Node) {
 	config := node.Config
 	*node = gYGNodeDefaults
 	if config.UseWebDefaults {
-		node.Style.flexDirection = FlexDirectionRow
-		node.Style.alignContent = AlignStretch
+		node.Style.FlexDirection = FlexDirectionRow
+		node.Style.AlignContent = AlignStretch
 	}
 	node.Config = config
 }
@@ -396,34 +396,34 @@ func NodeMarkDirty(node *Node) {
 }
 
 func styleEq(s1, s2 *Style) bool {
-	if s1.direction != s2.direction ||
-		s1.flexDirection != s2.flexDirection ||
-		s1.justifyContent != s2.justifyContent ||
-		s1.alignContent != s2.alignContent ||
-		s1.alignItems != s2.alignItems ||
-		s1.alignSelf != s2.alignSelf ||
-		s1.positionType != s2.positionType ||
-		s1.flexWrap != s2.flexWrap ||
-		s1.overflow != s2.overflow ||
-		s1.display != s2.display ||
-		!feq(s1.flex, s2.flex) ||
-		!feq(s1.flexGrow, s2.flexGrow) ||
-		!feq(s1.flexShrink, s2.flexShrink) ||
-		!valueEq(s1.flexBasis, s2.flexBasis) {
+	if s1.Direction != s2.Direction ||
+		s1.FlexDirection != s2.FlexDirection ||
+		s1.JustifyContent != s2.JustifyContent ||
+		s1.AlignContent != s2.AlignContent ||
+		s1.AlignItems != s2.AlignItems ||
+		s1.AlignSelf != s2.AlignSelf ||
+		s1.PositionType != s2.PositionType ||
+		s1.FlexWrap != s2.FlexWrap ||
+		s1.Overflow != s2.Overflow ||
+		s1.Display != s2.Display ||
+		!feq(s1.Flex, s2.Flex) ||
+		!feq(s1.FlexGrow, s2.FlexGrow) ||
+		!feq(s1.FlexShrink, s2.FlexShrink) ||
+		!valueEq(s1.FlexBasis, s2.FlexBasis) {
 		return false
 	}
 	for i := 0; i < EdgeCount; i++ {
-		if !valueEq(s1.margin[i], s2.margin[i]) ||
-			!valueEq(s1.position[i], s2.position[i]) ||
-			!valueEq(s1.padding[i], s2.padding[i]) ||
-			!valueEq(s1.border[i], s2.border[i]) {
+		if !valueEq(s1.Margin[i], s2.Margin[i]) ||
+			!valueEq(s1.Position[i], s2.Position[i]) ||
+			!valueEq(s1.Padding[i], s2.Padding[i]) ||
+			!valueEq(s1.Border[i], s2.Border[i]) {
 			return false
 		}
 	}
 	for i := 0; i < 2; i++ {
-		if !valueEq(s1.dimensions[i], s2.dimensions[i]) ||
-			!valueEq(s1.minDimensions[i], s2.minDimensions[i]) ||
-			!valueEq(s1.maxDimensions[i], s2.maxDimensions[i]) {
+		if !valueEq(s1.Dimensions[i], s2.Dimensions[i]) ||
+			!valueEq(s1.MinDimensions[i], s2.MinDimensions[i]) ||
+			!valueEq(s1.MaxDimensions[i], s2.MaxDimensions[i]) {
 			return false
 		}
 	}
@@ -443,32 +443,32 @@ func resolveFlexGrow(node *Node) float32 {
 	if node.Parent == nil {
 		return 0
 	}
-	if !FloatIsUndefined(node.Style.flexGrow) {
-		return node.Style.flexGrow
+	if !FloatIsUndefined(node.Style.FlexGrow) {
+		return node.Style.FlexGrow
 	}
-	if !FloatIsUndefined(node.Style.flex) && node.Style.flex > 0 {
-		return node.Style.flex
+	if !FloatIsUndefined(node.Style.Flex) && node.Style.Flex > 0 {
+		return node.Style.Flex
 	}
 	return defaultFlexGrow
 }
 
 // NodeStyleGetFlexGrow gets flex grow
 func NodeStyleGetFlexGrow(node *Node) float32 {
-	if FloatIsUndefined(node.Style.flexGrow) {
+	if FloatIsUndefined(node.Style.FlexGrow) {
 		return defaultFlexGrow
 	}
-	return node.Style.flexGrow
+	return node.Style.FlexGrow
 }
 
 // NodeStyleGetFlexShrink gets flex shrink
 func NodeStyleGetFlexShrink(node *Node) float32 {
-	if FloatIsUndefined(node.Style.flexShrink) {
+	if FloatIsUndefined(node.Style.FlexShrink) {
 		if node.Config.UseWebDefaults {
 			return webDefaultFlexShrink
 		}
 		return defaultFlexShrink
 	}
-	return node.Style.flexShrink
+	return node.Style.FlexShrink
 }
 
 func nodeResolveFlexShrink(node *Node) float32 {
@@ -476,12 +476,12 @@ func nodeResolveFlexShrink(node *Node) float32 {
 	if node.Parent == nil {
 		return 0
 	}
-	if !FloatIsUndefined(node.Style.flexShrink) {
-		return node.Style.flexShrink
+	if !FloatIsUndefined(node.Style.FlexShrink) {
+		return node.Style.FlexShrink
 	}
-	if !node.Config.UseWebDefaults && !FloatIsUndefined(node.Style.flex) &&
-		node.Style.flex < 0 {
-		return -node.Style.flex
+	if !node.Config.UseWebDefaults && !FloatIsUndefined(node.Style.Flex) &&
+		node.Style.Flex < 0 {
+		return -node.Style.Flex
 	}
 	if node.Config.UseWebDefaults {
 		return webDefaultFlexShrink
@@ -491,10 +491,10 @@ func nodeResolveFlexShrink(node *Node) float32 {
 
 func nodeResolveFlexBasisPtr(node *Node) *Value {
 	style := &node.Style
-	if style.flexBasis.Unit != UnitAuto && style.flexBasis.Unit != UnitUndefined {
-		return &style.flexBasis
+	if style.FlexBasis.Unit != UnitAuto && style.FlexBasis.Unit != UnitUndefined {
+		return &style.FlexBasis
 	}
-	if !FloatIsUndefined(style.flex) && style.flex > 0 {
+	if !FloatIsUndefined(style.Flex) && style.Flex > 0 {
 		if node.Config.UseWebDefaults {
 			return &ValueAuto
 		}
@@ -529,11 +529,11 @@ func ValueEqual(a Value, b Value) bool {
 
 func resolveDimensions(node *Node) {
 	for dim := DimensionWidth; dim <= DimensionHeight; dim++ {
-		if node.Style.maxDimensions[dim].Unit != UnitUndefined &&
-			ValueEqual(node.Style.maxDimensions[dim], node.Style.minDimensions[dim]) {
-			node.resolvedDimensions[dim] = &node.Style.maxDimensions[dim]
+		if node.Style.MaxDimensions[dim].Unit != UnitUndefined &&
+			ValueEqual(node.Style.MaxDimensions[dim], node.Style.MinDimensions[dim]) {
+			node.resolvedDimensions[dim] = &node.Style.MaxDimensions[dim]
 		} else {
-			node.resolvedDimensions[dim] = &node.Style.dimensions[dim]
+			node.resolvedDimensions[dim] = &node.Style.Dimensions[dim]
 		}
 	}
 }
@@ -586,57 +586,57 @@ func flexDirectionIsColumn(flexDirection FlexDirection) bool {
 }
 
 func nodeLeadingMargin(node *Node, axis FlexDirection, widthSize float32) float32 {
-	if flexDirectionIsRow(axis) && node.Style.margin[EdgeStart].Unit != UnitUndefined {
-		return resolveValueMargin(&node.Style.margin[EdgeStart], widthSize)
+	if flexDirectionIsRow(axis) && node.Style.Margin[EdgeStart].Unit != UnitUndefined {
+		return resolveValueMargin(&node.Style.Margin[EdgeStart], widthSize)
 	}
 
-	v := computedEdgeValue(node.Style.margin[:], leading[axis], &ValueZero)
+	v := computedEdgeValue(node.Style.Margin[:], leading[axis], &ValueZero)
 	return resolveValueMargin(v, widthSize)
 }
 
 func nodeTrailingMargin(node *Node, axis FlexDirection, widthSize float32) float32 {
-	if flexDirectionIsRow(axis) && node.Style.margin[EdgeEnd].Unit != UnitUndefined {
-		return resolveValueMargin(&node.Style.margin[EdgeEnd], widthSize)
+	if flexDirectionIsRow(axis) && node.Style.Margin[EdgeEnd].Unit != UnitUndefined {
+		return resolveValueMargin(&node.Style.Margin[EdgeEnd], widthSize)
 	}
 
-	return resolveValueMargin(computedEdgeValue(node.Style.margin[:], trailing[axis], &ValueZero),
+	return resolveValueMargin(computedEdgeValue(node.Style.Margin[:], trailing[axis], &ValueZero),
 		widthSize)
 }
 
 func nodeLeadingPadding(node *Node, axis FlexDirection, widthSize float32) float32 {
-	if flexDirectionIsRow(axis) && node.Style.padding[EdgeStart].Unit != UnitUndefined &&
-		resolveValue(&node.Style.padding[EdgeStart], widthSize) >= 0 {
-		return resolveValue(&node.Style.padding[EdgeStart], widthSize)
+	if flexDirectionIsRow(axis) && node.Style.Padding[EdgeStart].Unit != UnitUndefined &&
+		resolveValue(&node.Style.Padding[EdgeStart], widthSize) >= 0 {
+		return resolveValue(&node.Style.Padding[EdgeStart], widthSize)
 	}
 
-	return fmaxf(resolveValue(computedEdgeValue(node.Style.padding[:], leading[axis], &ValueZero), widthSize), 0)
+	return fmaxf(resolveValue(computedEdgeValue(node.Style.Padding[:], leading[axis], &ValueZero), widthSize), 0)
 }
 
 func nodeTrailingPadding(node *Node, axis FlexDirection, widthSize float32) float32 {
-	if flexDirectionIsRow(axis) && node.Style.padding[EdgeEnd].Unit != UnitUndefined &&
-		resolveValue(&node.Style.padding[EdgeEnd], widthSize) >= 0 {
-		return resolveValue(&node.Style.padding[EdgeEnd], widthSize)
+	if flexDirectionIsRow(axis) && node.Style.Padding[EdgeEnd].Unit != UnitUndefined &&
+		resolveValue(&node.Style.Padding[EdgeEnd], widthSize) >= 0 {
+		return resolveValue(&node.Style.Padding[EdgeEnd], widthSize)
 	}
 
-	return fmaxf(resolveValue(computedEdgeValue(node.Style.padding[:], trailing[axis], &ValueZero), widthSize), 0)
+	return fmaxf(resolveValue(computedEdgeValue(node.Style.Padding[:], trailing[axis], &ValueZero), widthSize), 0)
 }
 
 func nodeLeadingBorder(node *Node, axis FlexDirection) float32 {
-	if flexDirectionIsRow(axis) && node.Style.border[EdgeStart].Unit != UnitUndefined &&
-		node.Style.border[EdgeStart].Value >= 0 {
-		return node.Style.border[EdgeStart].Value
+	if flexDirectionIsRow(axis) && node.Style.Border[EdgeStart].Unit != UnitUndefined &&
+		node.Style.Border[EdgeStart].Value >= 0 {
+		return node.Style.Border[EdgeStart].Value
 	}
 
-	return fmaxf(computedEdgeValue(node.Style.border[:], leading[axis], &ValueZero).Value, 0)
+	return fmaxf(computedEdgeValue(node.Style.Border[:], leading[axis], &ValueZero).Value, 0)
 }
 
 func nodeTrailingBorder(node *Node, axis FlexDirection) float32 {
-	if flexDirectionIsRow(axis) && node.Style.border[EdgeEnd].Unit != UnitUndefined &&
-		node.Style.border[EdgeEnd].Value >= 0 {
-		return node.Style.border[EdgeEnd].Value
+	if flexDirectionIsRow(axis) && node.Style.Border[EdgeEnd].Unit != UnitUndefined &&
+		node.Style.Border[EdgeEnd].Value >= 0 {
+		return node.Style.Border[EdgeEnd].Value
 	}
 
-	return fmaxf(computedEdgeValue(node.Style.border[:], trailing[axis], &ValueZero).Value, 0)
+	return fmaxf(computedEdgeValue(node.Style.Border[:], trailing[axis], &ValueZero).Value, 0)
 }
 
 func nodeLeadingPaddingAndBorder(node *Node, axis FlexDirection, widthSize float32) float32 {
@@ -659,24 +659,24 @@ func nodePaddingAndBorderForAxis(node *Node, axis FlexDirection, widthSize float
 }
 
 func nodeAlignItem(node *Node, child *Node) Align {
-	align := child.Style.alignSelf
-	if child.Style.alignSelf == AlignAuto {
-		align = node.Style.alignItems
+	align := child.Style.AlignSelf
+	if child.Style.AlignSelf == AlignAuto {
+		align = node.Style.AlignItems
 	}
-	if align == AlignBaseline && flexDirectionIsColumn(node.Style.flexDirection) {
+	if align == AlignBaseline && flexDirectionIsColumn(node.Style.FlexDirection) {
 		return AlignFlexStart
 	}
 	return align
 }
 
 func nodeResolveDirection(node *Node, parentDirection Direction) Direction {
-	if node.Style.direction == DirectionInherit {
+	if node.Style.Direction == DirectionInherit {
 		if parentDirection > DirectionInherit {
 			return parentDirection
 		}
 		return DirectionLTR
 	}
-	return node.Style.direction
+	return node.Style.Direction
 }
 
 // YGBaseline retuns baseline
@@ -694,7 +694,7 @@ func YGBaseline(node *Node) float32 {
 		if child.lineIndex > 0 {
 			break
 		}
-		if child.Style.positionType == PositionTypeAbsolute {
+		if child.Style.PositionType == PositionTypeAbsolute {
 			continue
 		}
 		if nodeAlignItem(node, child) == AlignBaseline {
@@ -735,23 +735,23 @@ func flexDirectionCross(flexDirection FlexDirection, direction Direction) FlexDi
 
 // NodeIsFlex returns true if node is flex
 func NodeIsFlex(node *Node) bool {
-	return (node.Style.positionType == PositionTypeRelative &&
+	return (node.Style.PositionType == PositionTypeRelative &&
 		(resolveFlexGrow(node) != 0 || nodeResolveFlexShrink(node) != 0))
 }
 
 // IsBaselineLayout returns true if it's baseline layout
 func IsBaselineLayout(node *Node) bool {
-	if flexDirectionIsColumn(node.Style.flexDirection) {
+	if flexDirectionIsColumn(node.Style.FlexDirection) {
 		return false
 	}
-	if node.Style.alignItems == AlignBaseline {
+	if node.Style.AlignItems == AlignBaseline {
 		return true
 	}
 	childCount := YGNodeGetChildCount(node)
 	for i := 0; i < childCount; i++ {
 		child := YGNodeGetChild(node, i)
-		if child.Style.positionType == PositionTypeRelative &&
-			child.Style.alignSelf == AlignBaseline {
+		if child.Style.PositionType == PositionTypeRelative &&
+			child.Style.AlignSelf == AlignBaseline {
 			return true
 		}
 	}
@@ -780,29 +780,29 @@ func nodeIsLayoutDimDefined(node *Node, axis FlexDirection) bool {
 
 func nodeIsLeadingPosDefined(node *Node, axis FlexDirection) bool {
 	return (flexDirectionIsRow(axis) &&
-		computedEdgeValue(node.Style.position[:], EdgeStart, &ValueUndefined).Unit !=
+		computedEdgeValue(node.Style.Position[:], EdgeStart, &ValueUndefined).Unit !=
 			UnitUndefined) ||
-		computedEdgeValue(node.Style.position[:], leading[axis], &ValueUndefined).Unit !=
+		computedEdgeValue(node.Style.Position[:], leading[axis], &ValueUndefined).Unit !=
 			UnitUndefined
 }
 
 func nodeIsTrailingPosDefined(node *Node, axis FlexDirection) bool {
 	return (flexDirectionIsRow(axis) &&
-		computedEdgeValue(node.Style.position[:], EdgeEnd, &ValueUndefined).Unit !=
+		computedEdgeValue(node.Style.Position[:], EdgeEnd, &ValueUndefined).Unit !=
 			UnitUndefined) ||
-		computedEdgeValue(node.Style.position[:], trailing[axis], &ValueUndefined).Unit !=
+		computedEdgeValue(node.Style.Position[:], trailing[axis], &ValueUndefined).Unit !=
 			UnitUndefined
 }
 
 func nodeLeadingPosition(node *Node, axis FlexDirection, axisSize float32) float32 {
 	if flexDirectionIsRow(axis) {
-		leadingPosition := computedEdgeValue(node.Style.position[:], EdgeStart, &ValueUndefined)
+		leadingPosition := computedEdgeValue(node.Style.Position[:], EdgeStart, &ValueUndefined)
 		if leadingPosition.Unit != UnitUndefined {
 			return resolveValue(leadingPosition, axisSize)
 		}
 	}
 
-	leadingPosition := computedEdgeValue(node.Style.position[:], leading[axis], &ValueUndefined)
+	leadingPosition := computedEdgeValue(node.Style.Position[:], leading[axis], &ValueUndefined)
 
 	if leadingPosition.Unit == UnitUndefined {
 		return 0
@@ -812,13 +812,13 @@ func nodeLeadingPosition(node *Node, axis FlexDirection, axisSize float32) float
 
 func nodeTrailingPosition(node *Node, axis FlexDirection, axisSize float32) float32 {
 	if flexDirectionIsRow(axis) {
-		trailingPosition := computedEdgeValue(node.Style.position[:], EdgeEnd, &ValueUndefined)
+		trailingPosition := computedEdgeValue(node.Style.Position[:], EdgeEnd, &ValueUndefined)
 		if trailingPosition.Unit != UnitUndefined {
 			return resolveValue(trailingPosition, axisSize)
 		}
 	}
 
-	trailingPosition := computedEdgeValue(node.Style.position[:], trailing[axis], &ValueUndefined)
+	trailingPosition := computedEdgeValue(node.Style.Position[:], trailing[axis], &ValueUndefined)
 
 	if trailingPosition.Unit == UnitUndefined {
 		return 0
@@ -831,11 +831,11 @@ func nodeBoundAxisWithinMinAndMax(node *Node, axis FlexDirection, value float32,
 	max := Undefined
 
 	if flexDirectionIsColumn(axis) {
-		min = resolveValue(&node.Style.minDimensions[DimensionHeight], axisSize)
-		max = resolveValue(&node.Style.maxDimensions[DimensionHeight], axisSize)
+		min = resolveValue(&node.Style.MinDimensions[DimensionHeight], axisSize)
+		max = resolveValue(&node.Style.MaxDimensions[DimensionHeight], axisSize)
 	} else if flexDirectionIsRow(axis) {
-		min = resolveValue(&node.Style.minDimensions[DimensionWidth], axisSize)
-		max = resolveValue(&node.Style.maxDimensions[DimensionWidth], axisSize)
+		min = resolveValue(&node.Style.MinDimensions[DimensionWidth], axisSize)
+		max = resolveValue(&node.Style.MaxDimensions[DimensionWidth], axisSize)
 	}
 
 	boundValue := value
@@ -852,17 +852,17 @@ func nodeBoundAxisWithinMinAndMax(node *Node, axis FlexDirection, value float32,
 }
 
 func marginLeadingValue(node *Node, axis FlexDirection) *Value {
-	if flexDirectionIsRow(axis) && node.Style.margin[EdgeStart].Unit != UnitUndefined {
-		return &node.Style.margin[EdgeStart]
+	if flexDirectionIsRow(axis) && node.Style.Margin[EdgeStart].Unit != UnitUndefined {
+		return &node.Style.Margin[EdgeStart]
 	}
-	return &node.Style.margin[leading[axis]]
+	return &node.Style.Margin[leading[axis]]
 }
 
 func marginTrailingValue(node *Node, axis FlexDirection) *Value {
-	if flexDirectionIsRow(axis) && node.Style.margin[EdgeEnd].Unit != UnitUndefined {
-		return &node.Style.margin[EdgeEnd]
+	if flexDirectionIsRow(axis) && node.Style.Margin[EdgeEnd].Unit != UnitUndefined {
+		return &node.Style.Margin[EdgeEnd]
 	}
-	return &node.Style.margin[trailing[axis]]
+	return &node.Style.Margin[trailing[axis]]
 
 }
 
@@ -891,7 +891,7 @@ func nodeRelativePosition(node *Node, axis FlexDirection, axisSize float32) floa
 }
 
 func constrainMaxSizeForMode(node *Node, axis FlexDirection, parentAxisSize float32, parentWidth float32, mode *MeasureMode, size *float32) {
-	maxSize := resolveValue(&node.Style.maxDimensions[dim[axis]], parentAxisSize) +
+	maxSize := resolveValue(&node.Style.MaxDimensions[dim[axis]], parentAxisSize) +
 		nodeMarginForAxis(node, axis, parentWidth)
 	switch *mode {
 	case MeasureModeExactly, MeasureModeAtMost:
@@ -920,7 +920,7 @@ func NodeSetPosition(node *Node, direction Direction, mainSize float32, crossSiz
 		directionRespectingRoot = direction
 	}
 
-	mainAxis := resolveFlexDirection(node.Style.flexDirection, directionRespectingRoot)
+	mainAxis := resolveFlexDirection(node.Style.FlexDirection, directionRespectingRoot)
 	crossAxis := flexDirectionCross(mainAxis, directionRespectingRoot)
 
 	relativePositionMain := nodeRelativePosition(node, mainAxis, mainSize)
@@ -943,7 +943,7 @@ func nodeComputeFlexBasisForChild(node *Node,
 	heightMode MeasureMode,
 	direction Direction,
 	config *Config) {
-	mainAxis := resolveFlexDirection(node.Style.flexDirection, direction)
+	mainAxis := resolveFlexDirection(node.Style.FlexDirection, direction)
 	isMainAxisRow := flexDirectionIsRow(mainAxis)
 	mainAxisSize := height
 	mainAxisParentSize := parentHeight
@@ -1002,16 +1002,16 @@ func nodeComputeFlexBasisForChild(node *Node,
 
 		// The W3C spec doesn't say anything about the 'overflow' property,
 		// but all major browsers appear to implement the following logic.
-		if (!isMainAxisRow && node.Style.overflow == OverflowScroll) ||
-			node.Style.overflow != OverflowScroll {
+		if (!isMainAxisRow && node.Style.Overflow == OverflowScroll) ||
+			node.Style.Overflow != OverflowScroll {
 			if FloatIsUndefined(childWidth) && !FloatIsUndefined(width) {
 				childWidth = width
 				childWidthMeasureMode = MeasureModeAtMost
 			}
 		}
 
-		if (isMainAxisRow && node.Style.overflow == OverflowScroll) ||
-			node.Style.overflow != OverflowScroll {
+		if (isMainAxisRow && node.Style.Overflow == OverflowScroll) ||
+			node.Style.Overflow != OverflowScroll {
 			if FloatIsUndefined(childHeight) && !FloatIsUndefined(height) {
 				childHeight = height
 				childHeightMeasureMode = MeasureModeAtMost
@@ -1032,15 +1032,15 @@ func nodeComputeFlexBasisForChild(node *Node,
 			childHeightMeasureMode = MeasureModeExactly
 		}
 
-		if !FloatIsUndefined(child.Style.aspectRatio) {
+		if !FloatIsUndefined(child.Style.AspectRatio) {
 			if !isMainAxisRow && childWidthMeasureMode == MeasureModeExactly {
 				child.Layout.computedFlexBasis =
-					fmaxf((childWidth-marginRow)/child.Style.aspectRatio,
+					fmaxf((childWidth-marginRow)/child.Style.AspectRatio,
 						nodePaddingAndBorderForAxis(child, FlexDirectionColumn, parentWidth))
 				return
 			} else if isMainAxisRow && childHeightMeasureMode == MeasureModeExactly {
 				child.Layout.computedFlexBasis =
-					fmaxf((childHeight-marginColumn)*child.Style.aspectRatio,
+					fmaxf((childHeight-marginColumn)*child.Style.AspectRatio,
 						nodePaddingAndBorderForAxis(child, FlexDirectionRow, parentWidth))
 				return
 			}
@@ -1077,7 +1077,7 @@ func nodeComputeFlexBasisForChild(node *Node,
 }
 
 func nodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode MeasureMode, height float32, direction Direction, config *Config) {
-	mainAxis := resolveFlexDirection(node.Style.flexDirection, direction)
+	mainAxis := resolveFlexDirection(node.Style.FlexDirection, direction)
 	crossAxis := flexDirectionCross(mainAxis, direction)
 	isMainAxisRow := flexDirectionIsRow(mainAxis)
 
@@ -1127,14 +1127,14 @@ func nodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode M
 	// Exactly one dimension needs to be defined for us to be able to do aspect ratio
 	// calculation. One dimension being the anchor and the other being flexible.
 	if FloatIsUndefined(childWidth) != FloatIsUndefined(childHeight) {
-		if !FloatIsUndefined(child.Style.aspectRatio) {
+		if !FloatIsUndefined(child.Style.AspectRatio) {
 			if FloatIsUndefined(childWidth) {
 				childWidth =
-					marginRow + fmaxf((childHeight-marginColumn)*child.Style.aspectRatio,
+					marginRow + fmaxf((childHeight-marginColumn)*child.Style.AspectRatio,
 						nodePaddingAndBorderForAxis(child, FlexDirectionColumn, width))
 			} else if FloatIsUndefined(childHeight) {
 				childHeight =
-					marginColumn + fmaxf((childWidth-marginRow)/child.Style.aspectRatio,
+					marginColumn + fmaxf((childWidth-marginRow)/child.Style.AspectRatio,
 						nodePaddingAndBorderForAxis(child, FlexDirectionRow, width))
 			}
 		}
@@ -1200,12 +1200,12 @@ func nodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode M
 			nodeTrailingMargin(child, mainAxis, width) -
 			nodeTrailingPosition(child, mainAxis, axisSize)
 	} else if !nodeIsLeadingPosDefined(child, mainAxis) &&
-		node.Style.justifyContent == JustifyCenter {
+		node.Style.JustifyContent == JustifyCenter {
 		child.Layout.Position[leading[mainAxis]] = (node.Layout.measuredDimensions[dim[mainAxis]] -
 			child.Layout.measuredDimensions[dim[mainAxis]]) /
 			2.0
 	} else if !nodeIsLeadingPosDefined(child, mainAxis) &&
-		node.Style.justifyContent == JustifyFlexEnd {
+		node.Style.JustifyContent == JustifyFlexEnd {
 		child.Layout.Position[leading[mainAxis]] = (node.Layout.measuredDimensions[dim[mainAxis]] -
 			child.Layout.measuredDimensions[dim[mainAxis]])
 	}
@@ -1229,7 +1229,7 @@ func nodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode M
 				child.Layout.measuredDimensions[dim[crossAxis]]) /
 				2.0
 	} else if !nodeIsLeadingPosDefined(child, crossAxis) &&
-		((nodeAlignItem(node, child) == AlignFlexEnd) != (node.Style.flexWrap == WrapWrapReverse)) {
+		((nodeAlignItem(node, child) == AlignFlexEnd) != (node.Style.FlexWrap == WrapWrapReverse)) {
 		child.Layout.Position[leading[crossAxis]] = (node.Layout.measuredDimensions[dim[crossAxis]] -
 			child.Layout.measuredDimensions[dim[crossAxis]])
 	}
@@ -1494,11 +1494,11 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	node.Layout.HadOverflow = false
 
 	// STEP 1: CALCULATE VALUES FOR REMAINDER OF ALGORITHM
-	mainAxis := resolveFlexDirection(node.Style.flexDirection, direction)
+	mainAxis := resolveFlexDirection(node.Style.FlexDirection, direction)
 	crossAxis := flexDirectionCross(mainAxis, direction)
 	isMainAxisRow := flexDirectionIsRow(mainAxis)
-	justifyContent := node.Style.justifyContent
-	isNodeFlexWrap := node.Style.flexWrap != WrapNoWrap
+	justifyContent := node.Style.JustifyContent
+	isNodeFlexWrap := node.Style.FlexWrap != WrapNoWrap
 
 	mainAxisParentSize := parentHeight
 	crossAxisParentSize := parentWidth
@@ -1535,13 +1535,13 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	marginAxisColumn := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 
 	// STEP 2: DETERMINE AVAILABLE SIZE IN MAIN AND CROSS DIRECTIONS
-	minInnerWidth := resolveValue(&node.Style.minDimensions[DimensionWidth], parentWidth) - marginAxisRow -
+	minInnerWidth := resolveValue(&node.Style.MinDimensions[DimensionWidth], parentWidth) - marginAxisRow -
 		paddingAndBorderAxisRow
-	maxInnerWidth := resolveValue(&node.Style.maxDimensions[DimensionWidth], parentWidth) - marginAxisRow -
+	maxInnerWidth := resolveValue(&node.Style.MaxDimensions[DimensionWidth], parentWidth) - marginAxisRow -
 		paddingAndBorderAxisRow
-	minInnerHeight := resolveValue(&node.Style.minDimensions[DimensionHeight], parentHeight) -
+	minInnerHeight := resolveValue(&node.Style.MinDimensions[DimensionHeight], parentHeight) -
 		marginAxisColumn - paddingAndBorderAxisColumn
-	maxInnerHeight := resolveValue(&node.Style.maxDimensions[DimensionHeight], parentHeight) -
+	maxInnerHeight := resolveValue(&node.Style.MaxDimensions[DimensionHeight], parentHeight) -
 		marginAxisColumn - paddingAndBorderAxisColumn
 
 	minInnerMainDim := minInnerHeight
@@ -1596,7 +1596,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	// STEP 3: DETERMINE FLEX BASIS FOR EACH ITEM
 	for i := 0; i < childCount; i++ {
 		child := YGNodeListGet(node.Children, i)
-		if child.Style.display == DisplayNone {
+		if child.Style.Display == DisplayNone {
 			zeroOutLayoutRecursivly(child)
 			child.hasNewLayout = true
 			child.IsDirty = false
@@ -1615,7 +1615,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 
 		// Absolute-positioned children don't participate in flex layout. Add them
 		// to a list that we can process later.
-		if child.Style.positionType == PositionTypeAbsolute {
+		if child.Style.PositionType == PositionTypeAbsolute {
 			// Store a private linked list of absolutely positioned children
 			// so that we can efficiently traverse them later.
 			if firstAbsoluteChild == nil {
@@ -1696,16 +1696,16 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		// Add items to the current line until it's full or we run out of items.
 		for i := startOfLineIndex; i < childCount; i++ {
 			child := YGNodeListGet(node.Children, i)
-			if child.Style.display == DisplayNone {
+			if child.Style.Display == DisplayNone {
 				endOfLineIndex++
 				continue
 			}
 			child.lineIndex = lineCount
 
-			if child.Style.positionType != PositionTypeAbsolute {
+			if child.Style.PositionType != PositionTypeAbsolute {
 				childMarginMainAxis := nodeMarginForAxis(child, mainAxis, availableInnerWidth)
-				flexBasisWithMaxConstraints := fminf(resolveValue(&child.Style.maxDimensions[dim[mainAxis]], mainAxisParentSize), child.Layout.computedFlexBasis)
-				flexBasisWithMinAndMaxConstraints := fmaxf(resolveValue(&child.Style.minDimensions[dim[mainAxis]], mainAxisParentSize), flexBasisWithMaxConstraints)
+				flexBasisWithMaxConstraints := fminf(resolveValue(&child.Style.MaxDimensions[dim[mainAxis]], mainAxisParentSize), child.Layout.computedFlexBasis)
+				flexBasisWithMinAndMaxConstraints := fmaxf(resolveValue(&child.Style.MinDimensions[dim[mainAxis]], mainAxisParentSize), flexBasisWithMaxConstraints)
 
 				// If this is a multi-line flow and this item pushes us over the
 				// available size, we've
@@ -1835,9 +1835,9 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 			currentRelativeChild = firstRelativeChild
 			for currentRelativeChild != nil {
 				childFlexBasis =
-					fminf(resolveValue(&currentRelativeChild.Style.maxDimensions[dim[mainAxis]],
+					fminf(resolveValue(&currentRelativeChild.Style.MaxDimensions[dim[mainAxis]],
 						mainAxisParentSize),
-						fmaxf(resolveValue(&currentRelativeChild.Style.minDimensions[dim[mainAxis]],
+						fmaxf(resolveValue(&currentRelativeChild.Style.MinDimensions[dim[mainAxis]],
 							mainAxisParentSize),
 							currentRelativeChild.Layout.computedFlexBasis))
 
@@ -1903,9 +1903,9 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 			currentRelativeChild = firstRelativeChild
 			for currentRelativeChild != nil {
 				childFlexBasis =
-					fminf(resolveValue(&currentRelativeChild.Style.maxDimensions[dim[mainAxis]],
+					fminf(resolveValue(&currentRelativeChild.Style.MaxDimensions[dim[mainAxis]],
 						mainAxisParentSize),
-						fmaxf(resolveValue(&currentRelativeChild.Style.minDimensions[dim[mainAxis]],
+						fmaxf(resolveValue(&currentRelativeChild.Style.MinDimensions[dim[mainAxis]],
 							mainAxisParentSize),
 							currentRelativeChild.Layout.computedFlexBasis))
 				updatedMainSize := childFlexBasis
@@ -1982,10 +1982,10 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 					}
 				}
 
-				if !FloatIsUndefined(currentRelativeChild.Style.aspectRatio) {
-					v := (childMainSize - marginMain) * currentRelativeChild.Style.aspectRatio
+				if !FloatIsUndefined(currentRelativeChild.Style.AspectRatio) {
+					v := (childMainSize - marginMain) * currentRelativeChild.Style.AspectRatio
 					if isMainAxisRow {
-						v = (childMainSize - marginMain) / currentRelativeChild.Style.aspectRatio
+						v = (childMainSize - marginMain) / currentRelativeChild.Style.AspectRatio
 					}
 					childCrossSize = fmaxf(v, nodePaddingAndBorderForAxis(currentRelativeChild, crossAxis, availableInnerWidth))
 					childCrossMeasureMode = MeasureModeExactly
@@ -1995,9 +1995,9 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 						childCrossSize = fminf(childCrossSize-marginCross, availableInnerCrossDim)
 						childMainSize = marginMain
 						if isMainAxisRow {
-							childMainSize += childCrossSize * currentRelativeChild.Style.aspectRatio
+							childMainSize += childCrossSize * currentRelativeChild.Style.AspectRatio
 						} else {
-							childMainSize += childCrossSize / currentRelativeChild.Style.aspectRatio
+							childMainSize += childCrossSize / currentRelativeChild.Style.AspectRatio
 						}
 					}
 
@@ -2077,11 +2077,11 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		// raint by the min size defined for the main axis.
 
 		if measureModeMainDim == MeasureModeAtMost && remainingFreeSpace > 0 {
-			if node.Style.minDimensions[dim[mainAxis]].Unit != UnitUndefined &&
-				resolveValue(&node.Style.minDimensions[dim[mainAxis]], mainAxisParentSize) >= 0 {
+			if node.Style.MinDimensions[dim[mainAxis]].Unit != UnitUndefined &&
+				resolveValue(&node.Style.MinDimensions[dim[mainAxis]], mainAxisParentSize) >= 0 {
 				remainingFreeSpace =
 					fmaxf(0,
-						resolveValue(&node.Style.minDimensions[dim[mainAxis]], mainAxisParentSize)-
+						resolveValue(&node.Style.MinDimensions[dim[mainAxis]], mainAxisParentSize)-
 							(availableInnerMainDim-remainingFreeSpace))
 			} else {
 				remainingFreeSpace = 0
@@ -2091,7 +2091,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		numberOfAutoMarginsOnCurrentLine := 0
 		for i := startOfLineIndex; i < endOfLineIndex; i++ {
 			child := YGNodeListGet(node.Children, i)
-			if child.Style.positionType == PositionTypeRelative {
+			if child.Style.PositionType == PositionTypeRelative {
 				if marginLeadingValue(child, mainAxis).Unit == UnitAuto {
 					numberOfAutoMarginsOnCurrentLine++
 				}
@@ -2126,10 +2126,10 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 
 		for i := startOfLineIndex; i < endOfLineIndex; i++ {
 			child := YGNodeListGet(node.Children, i)
-			if child.Style.display == DisplayNone {
+			if child.Style.Display == DisplayNone {
 				continue
 			}
-			if child.Style.positionType == PositionTypeAbsolute &&
+			if child.Style.PositionType == PositionTypeAbsolute &&
 				nodeIsLeadingPosDefined(child, mainAxis) {
 				if performLayout {
 					// In case the child is position absolute and has left/top being
@@ -2144,7 +2144,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 				// Now that we placed the element, we need to update the variables.
 				// We need to do that only for relative elements. Absolute elements
 				// do not take part in that phase.
-				if child.Style.positionType == PositionTypeRelative {
+				if child.Style.PositionType == PositionTypeRelative {
 					if marginLeadingValue(child, mainAxis).Unit == UnitAuto {
 						mainDim += remainingFreeSpace / float32(numberOfAutoMarginsOnCurrentLine)
 					}
@@ -2211,10 +2211,10 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		if performLayout {
 			for i := startOfLineIndex; i < endOfLineIndex; i++ {
 				child := YGNodeListGet(node.Children, i)
-				if child.Style.display == DisplayNone {
+				if child.Style.Display == DisplayNone {
 					continue
 				}
-				if child.Style.positionType == PositionTypeAbsolute {
+				if child.Style.PositionType == PositionTypeAbsolute {
 					// If the child is absolutely positioned and has a
 					// top/left/bottom/right
 					// set, override all the previously computed positions to set it
@@ -2249,12 +2249,12 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 						if !nodeIsStyleDimDefined(child, crossAxis, availableInnerCrossDim) {
 							childMainSize := child.Layout.measuredDimensions[dim[mainAxis]]
 							childCrossSize := crossDim
-							if !FloatIsUndefined(child.Style.aspectRatio) {
+							if !FloatIsUndefined(child.Style.AspectRatio) {
 								childCrossSize = nodeMarginForAxis(child, crossAxis, availableInnerWidth)
 								if isMainAxisRow {
-									childCrossSize += childMainSize / child.Style.aspectRatio
+									childCrossSize += childMainSize / child.Style.AspectRatio
 								} else {
-									childCrossSize += childMainSize * child.Style.aspectRatio
+									childCrossSize += childMainSize * child.Style.AspectRatio
 								}
 							}
 
@@ -2346,7 +2346,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		var crossDimLead float32
 		currentLead := leadingPaddingAndBorderCross
 
-		switch node.Style.alignContent {
+		switch node.Style.AlignContent {
 		case AlignFlexEnd:
 			currentLead += remainingAlignContentDim
 		case AlignCenter:
@@ -2384,10 +2384,10 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 			var maxDescentForCurrentLine float32
 			for ii = startIndex; ii < childCount; ii++ {
 				child := YGNodeListGet(node.Children, ii)
-				if child.Style.display == DisplayNone {
+				if child.Style.Display == DisplayNone {
 					continue
 				}
-				if child.Style.positionType == PositionTypeRelative {
+				if child.Style.PositionType == PositionTypeRelative {
 					if child.lineIndex != i {
 						break
 					}
@@ -2411,10 +2411,10 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 			if performLayout {
 				for ii = startIndex; ii < endIndex; ii++ {
 					child := YGNodeListGet(node.Children, ii)
-					if child.Style.display == DisplayNone {
+					if child.Style.Display == DisplayNone {
 						continue
 					}
-					if child.Style.positionType == PositionTypeRelative {
+					if child.Style.PositionType == PositionTypeRelative {
 						switch nodeAlignItem(node, child) {
 						case AlignFlexStart:
 							{
@@ -2498,13 +2498,13 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	// If the user didn't specify a width or height for the node, set the
 	// dimensions based on the children.
 	if measureModeMainDim == MeasureModeUndefined ||
-		(node.Style.overflow != OverflowScroll && measureModeMainDim == MeasureModeAtMost) {
+		(node.Style.Overflow != OverflowScroll && measureModeMainDim == MeasureModeAtMost) {
 		// Clamp the size to the min/max size, if specified, and make sure it
 		// doesn't go below the padding and border amount.
 		node.Layout.measuredDimensions[dim[mainAxis]] =
 			nodeBoundAxis(node, mainAxis, maxLineMainDim, mainAxisParentSize, parentWidth)
 	} else if measureModeMainDim == MeasureModeAtMost &&
-		node.Style.overflow == OverflowScroll {
+		node.Style.Overflow == OverflowScroll {
 		node.Layout.measuredDimensions[dim[mainAxis]] = fmaxf(
 			fminf(availableInnerMainDim+paddingAndBorderAxisMain,
 				nodeBoundAxisWithinMinAndMax(node, mainAxis, maxLineMainDim, mainAxisParentSize)),
@@ -2512,7 +2512,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	}
 
 	if measureModeCrossDim == MeasureModeUndefined ||
-		(node.Style.overflow != OverflowScroll && measureModeCrossDim == MeasureModeAtMost) {
+		(node.Style.Overflow != OverflowScroll && measureModeCrossDim == MeasureModeAtMost) {
 		// Clamp the size to the min/max size, if specified, and make sure it
 		// doesn't go below the padding and border amount.
 		node.Layout.measuredDimensions[dim[crossAxis]] =
@@ -2522,7 +2522,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 				crossAxisParentSize,
 				parentWidth)
 	} else if measureModeCrossDim == MeasureModeAtMost &&
-		node.Style.overflow == OverflowScroll {
+		node.Style.Overflow == OverflowScroll {
 		node.Layout.measuredDimensions[dim[crossAxis]] =
 			fmaxf(fminf(availableInnerCrossDim+paddingAndBorderAxisCross,
 				nodeBoundAxisWithinMinAndMax(node,
@@ -2533,10 +2533,10 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	}
 
 	// As we only wrapped in normal direction yet, we need to reverse the positions on wrap-reverse.
-	if performLayout && node.Style.flexWrap == WrapWrapReverse {
+	if performLayout && node.Style.FlexWrap == WrapWrapReverse {
 		for i := 0; i < childCount; i++ {
 			child := YGNodeGetChild(node, i)
-			if child.Style.positionType == PositionTypeRelative {
+			if child.Style.PositionType == PositionTypeRelative {
 				child.Layout.Position[pos[crossAxis]] = node.Layout.measuredDimensions[dim[crossAxis]] -
 					child.Layout.Position[pos[crossAxis]] -
 					child.Layout.measuredDimensions[dim[crossAxis]]
@@ -2569,7 +2569,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		if needsMainTrailingPos || needsCrossTrailingPos {
 			for i := 0; i < childCount; i++ {
 				child := YGNodeListGet(node.Children, i)
-				if child.Style.display == DisplayNone {
+				if child.Style.Display == DisplayNone {
 					continue
 				}
 				if needsMainTrailingPos {
@@ -2979,8 +2979,8 @@ func calcStartWidth(node *Node, parentWidth float32) (float32, MeasureMode) {
 		margin := nodeMarginForAxis(node, FlexDirectionRow, parentWidth)
 		return width + margin, MeasureModeExactly
 	}
-	if resolveValue(&node.Style.maxDimensions[DimensionWidth], parentWidth) >= 0.0 {
-		width := resolveValue(&node.Style.maxDimensions[DimensionWidth], parentWidth)
+	if resolveValue(&node.Style.MaxDimensions[DimensionWidth], parentWidth) >= 0.0 {
+		width := resolveValue(&node.Style.MaxDimensions[DimensionWidth], parentWidth)
 		return width, MeasureModeAtMost
 	}
 
@@ -2997,8 +2997,8 @@ func calcStartHeight(node *Node, parentWidth, parentHeight float32) (float32, Me
 		margin := nodeMarginForAxis(node, FlexDirectionColumn, parentWidth)
 		return height + margin, MeasureModeExactly
 	}
-	if resolveValue(&node.Style.maxDimensions[DimensionHeight], parentHeight) >= 0 {
-		height := resolveValue(&node.Style.maxDimensions[DimensionHeight], parentHeight)
+	if resolveValue(&node.Style.MaxDimensions[DimensionHeight], parentHeight) >= 0 {
+		height := resolveValue(&node.Style.MaxDimensions[DimensionHeight], parentHeight)
 		return height, MeasureModeAtMost
 	}
 	height := parentHeight

@@ -57,7 +57,7 @@ YG_NODE_LAYOUT_RESOLVED_PROPERTY_IMPL(float, Padding, padding);
 
 // NodeStyleSetWidth sets width
 func NodeStyleSetWidth(node *Node, width float32) {
-	dim := &node.Style.dimensions[DimensionWidth]
+	dim := &node.Style.Dimensions[DimensionWidth]
 	if dim.Value != width || dim.Unit != UnitPoint {
 		dim.Value = width
 		dim.Unit = UnitPoint
@@ -70,7 +70,7 @@ func NodeStyleSetWidth(node *Node, width float32) {
 
 // NodeStyleSetWidthPercent sets width percent
 func NodeStyleSetWidthPercent(node *Node, width float32) {
-	dim := &node.Style.dimensions[DimensionWidth]
+	dim := &node.Style.Dimensions[DimensionWidth]
 	if dim.Value != width || dim.Unit != UnitPercent {
 		dim.Value = width
 		dim.Unit = UnitPercent
@@ -83,7 +83,7 @@ func NodeStyleSetWidthPercent(node *Node, width float32) {
 
 // NodeStyleSetWidthAuto sets width auto
 func NodeStyleSetWidthAuto(node *Node) {
-	dim := &node.Style.dimensions[DimensionWidth]
+	dim := &node.Style.Dimensions[DimensionWidth]
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
 		dim.Unit = UnitAuto
@@ -93,12 +93,12 @@ func NodeStyleSetWidthAuto(node *Node) {
 
 // NodeStyleGetWidth gets width
 func NodeStyleGetWidth(node *Node) Value {
-	return node.Style.dimensions[DimensionWidth]
+	return node.Style.Dimensions[DimensionWidth]
 }
 
 // NodeStyleSetHeight sets height
 func NodeStyleSetHeight(node *Node, height float32) {
-	dim := &node.Style.dimensions[DimensionHeight]
+	dim := &node.Style.Dimensions[DimensionHeight]
 	if dim.Value != height || dim.Unit != UnitPoint {
 		dim.Value = height
 		dim.Unit = UnitPoint
@@ -111,7 +111,7 @@ func NodeStyleSetHeight(node *Node, height float32) {
 
 // NodeStyleSetHeightPercent sets height percent
 func NodeStyleSetHeightPercent(node *Node, height float32) {
-	dim := &node.Style.dimensions[DimensionHeight]
+	dim := &node.Style.Dimensions[DimensionHeight]
 	if dim.Value != height || dim.Unit != UnitPercent {
 		dim.Value = height
 		dim.Unit = UnitPercent
@@ -124,7 +124,7 @@ func NodeStyleSetHeightPercent(node *Node, height float32) {
 
 // NodeStyleSetHeightAuto sets height auto
 func NodeStyleSetHeightAuto(node *Node) {
-	dim := &node.Style.dimensions[DimensionHeight]
+	dim := &node.Style.Dimensions[DimensionHeight]
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
 		dim.Unit = UnitAuto
@@ -134,25 +134,25 @@ func NodeStyleSetHeightAuto(node *Node) {
 
 // NodeStyleGetHeight gets height
 func NodeStyleGetHeight(node *Node) Value {
-	return node.Style.dimensions[DimensionHeight]
+	return node.Style.Dimensions[DimensionHeight]
 }
 
 // NodeStyleSetPositionType sets position type
 func NodeStyleSetPositionType(node *Node, positionType PositionType) {
-	if node.Style.positionType != positionType {
-		node.Style.positionType = positionType
+	if node.Style.PositionType != positionType {
+		node.Style.PositionType = positionType
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetPositionType gets position type
 func NodeStyleGetPositionType(node *Node) PositionType {
-	return node.Style.positionType
+	return node.Style.PositionType
 }
 
 // NodeStyleSetPosition sets position
 func NodeStyleSetPosition(node *Node, edge Edge, position float32) {
-	pos := &node.Style.position[edge]
+	pos := &node.Style.Position[edge]
 	if pos.Value != position || pos.Unit != UnitPoint {
 		pos.Value = position
 		pos.Unit = UnitPoint
@@ -165,7 +165,7 @@ func NodeStyleSetPosition(node *Node, edge Edge, position float32) {
 
 // NodeStyleSetPositionPercent sets position percent
 func NodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
-	pos := &node.Style.position[edge]
+	pos := &node.Style.Position[edge]
 	if pos.Value != position || pos.Unit != UnitPercent {
 		pos.Value = position
 		pos.Unit = UnitPercent
@@ -178,7 +178,7 @@ func NodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
 
 // YGNodeStyleGetPosition gets position
 func YGNodeStyleGetPosition(node *Node, edge Edge) Value {
-	return node.Style.position[edge]
+	return node.Style.Position[edge]
 }
 
 // NodeSetPrintFunc sets print func
@@ -203,158 +203,158 @@ func NodeGetNodeType(node *Node) NodeType {
 
 // NodeStyleSetDirection sets direction
 func NodeStyleSetDirection(node *Node, direction Direction) {
-	if node.Style.direction != direction {
-		node.Style.direction = direction
+	if node.Style.Direction != direction {
+		node.Style.Direction = direction
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetDirection gets direction
 func NodeStyleGetDirection(node *Node) Direction {
-	return node.Style.direction
+	return node.Style.Direction
 }
 
 // NodeStyleSetFlexDirection sets flex directions
 func NodeStyleSetFlexDirection(node *Node, flexDirection FlexDirection) {
-	if node.Style.flexDirection != flexDirection {
-		node.Style.flexDirection = flexDirection
+	if node.Style.FlexDirection != flexDirection {
+		node.Style.FlexDirection = flexDirection
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetFlexDirection gets flex direction
 func NodeStyleGetFlexDirection(node *Node) FlexDirection {
-	return node.Style.flexDirection
+	return node.Style.FlexDirection
 }
 
 // NodeStyleSetJustifyContent sets justify content
 func NodeStyleSetJustifyContent(node *Node, justifyContent Justify) {
-	if node.Style.justifyContent != justifyContent {
-		node.Style.justifyContent = justifyContent
+	if node.Style.JustifyContent != justifyContent {
+		node.Style.JustifyContent = justifyContent
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetJustifyContent gets justify content
 func NodeStyleGetJustifyContent(node *Node) Justify {
-	return node.Style.justifyContent
+	return node.Style.JustifyContent
 }
 
 // NodeStyleSetAlignContent sets align content
 func NodeStyleSetAlignContent(node *Node, alignContent Align) {
-	if node.Style.alignContent != alignContent {
-		node.Style.alignContent = alignContent
+	if node.Style.AlignContent != alignContent {
+		node.Style.AlignContent = alignContent
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetAlignContent gets align content
 func NodeStyleGetAlignContent(node *Node) Align {
-	return node.Style.alignContent
+	return node.Style.AlignContent
 }
 
 // NodeStyleSetAlignItems sets align content
 func NodeStyleSetAlignItems(node *Node, alignItems Align) {
-	if node.Style.alignItems != alignItems {
-		node.Style.alignItems = alignItems
+	if node.Style.AlignItems != alignItems {
+		node.Style.AlignItems = alignItems
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetAlignItems gets align items
 func NodeStyleGetAlignItems(node *Node) Align {
-	return node.Style.alignItems
+	return node.Style.AlignItems
 }
 
 // NodeStyleSetAlignSelf sets align self
 func NodeStyleSetAlignSelf(node *Node, alignSelf Align) {
-	if node.Style.alignSelf != alignSelf {
-		node.Style.alignSelf = alignSelf
+	if node.Style.AlignSelf != alignSelf {
+		node.Style.AlignSelf = alignSelf
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetAlignSelf gets align self
 func NodeStyleGetAlignSelf(node *Node) Align {
-	return node.Style.alignSelf
+	return node.Style.AlignSelf
 }
 
 // NodeStyleSetFlexWrap sets flex wrap
 func NodeStyleSetFlexWrap(node *Node, flexWrap Wrap) {
-	if node.Style.flexWrap != flexWrap {
-		node.Style.flexWrap = flexWrap
+	if node.Style.FlexWrap != flexWrap {
+		node.Style.FlexWrap = flexWrap
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetFlexWrap gets flex wrap
 func NodeStyleGetFlexWrap(node *Node) Wrap {
-	return node.Style.flexWrap
+	return node.Style.FlexWrap
 }
 
 // NodeStyleSetOverflow sets overflow
 func NodeStyleSetOverflow(node *Node, overflow Overflow) {
-	if node.Style.overflow != overflow {
-		node.Style.overflow = overflow
+	if node.Style.Overflow != overflow {
+		node.Style.Overflow = overflow
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetOverflow gets overflow
 func NodeStyleGetOverflow(node *Node) Overflow {
-	return node.Style.overflow
+	return node.Style.Overflow
 }
 
 // NodeStyleSetDisplay sets display
 func NodeStyleSetDisplay(node *Node, display Display) {
-	if node.Style.display != display {
-		node.Style.display = display
+	if node.Style.Display != display {
+		node.Style.Display = display
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetDisplay gets display
 func NodeStyleGetDisplay(node *Node) Display {
-	return node.Style.display
+	return node.Style.Display
 }
 
 // NodeStyleSetFlex sets flex
 func NodeStyleSetFlex(node *Node, flex float32) {
-	if node.Style.flex != flex {
-		node.Style.flex = flex
+	if node.Style.Flex != flex {
+		node.Style.Flex = flex
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetFlex gets flex
 func NodeStyleGetFlex(node *Node) float32 {
-	return node.Style.flex
+	return node.Style.Flex
 }
 
 // NodeStyleSetFlexGrow sets flex grow
 func NodeStyleSetFlexGrow(node *Node, flexGrow float32) {
-	if node.Style.flexGrow != flexGrow {
-		node.Style.flexGrow = flexGrow
+	if node.Style.FlexGrow != flexGrow {
+		node.Style.FlexGrow = flexGrow
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleSetFlexShrink sets flex shrink
 func NodeStyleSetFlexShrink(node *Node, flexShrink float32) {
-	if node.Style.flexShrink != flexShrink {
-		node.Style.flexShrink = flexShrink
+	if node.Style.FlexShrink != flexShrink {
+		node.Style.FlexShrink = flexShrink
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleSetFlexBasis sets flex basis
 func NodeStyleSetFlexBasis(node *Node, flexBasis float32) {
-	if node.Style.flexBasis.Value != flexBasis ||
-		node.Style.flexBasis.Unit != UnitPoint {
-		node.Style.flexBasis.Value = flexBasis
-		node.Style.flexBasis.Unit = UnitPoint
+	if node.Style.FlexBasis.Value != flexBasis ||
+		node.Style.FlexBasis.Unit != UnitPoint {
+		node.Style.FlexBasis.Value = flexBasis
+		node.Style.FlexBasis.Unit = UnitPoint
 		if FloatIsUndefined(flexBasis) {
-			node.Style.flexBasis.Unit = UnitAuto
+			node.Style.FlexBasis.Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -362,12 +362,12 @@ func NodeStyleSetFlexBasis(node *Node, flexBasis float32) {
 
 // NodeStyleSetFlexBasisPercent sets flex basis percent
 func NodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
-	if node.Style.flexBasis.Value != flexBasis ||
-		node.Style.flexBasis.Unit != UnitPercent {
-		node.Style.flexBasis.Value = flexBasis
-		node.Style.flexBasis.Unit = UnitPercent
+	if node.Style.FlexBasis.Value != flexBasis ||
+		node.Style.FlexBasis.Unit != UnitPercent {
+		node.Style.FlexBasis.Value = flexBasis
+		node.Style.FlexBasis.Unit = UnitPercent
 		if FloatIsUndefined(flexBasis) {
-			node.Style.flexBasis.Unit = UnitAuto
+			node.Style.FlexBasis.Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -375,26 +375,26 @@ func NodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
 
 // NodeStyleSetFlexBasisAuto sets flex basis auto
 func NodeStyleSetFlexBasisAuto(node *Node) {
-	if node.Style.flexBasis.Unit != UnitAuto {
-		node.Style.flexBasis.Value = Undefined
-		node.Style.flexBasis.Unit = UnitAuto
+	if node.Style.FlexBasis.Unit != UnitAuto {
+		node.Style.FlexBasis.Value = Undefined
+		node.Style.FlexBasis.Unit = UnitAuto
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetFlexBasis gets flex basis
 func NodeStyleGetFlexBasis(node *Node) Value {
-	return node.Style.flexBasis
+	return node.Style.FlexBasis
 }
 
 // NodeStyleSetMargin sets margin
 func NodeStyleSetMargin(node *Node, edge Edge, margin float32) {
-	if node.Style.margin[edge].Value != margin ||
-		node.Style.margin[edge].Unit != UnitPoint {
-		node.Style.margin[edge].Value = margin
-		node.Style.margin[edge].Unit = UnitPoint
+	if node.Style.Margin[edge].Value != margin ||
+		node.Style.Margin[edge].Unit != UnitPoint {
+		node.Style.Margin[edge].Value = margin
+		node.Style.Margin[edge].Unit = UnitPoint
 		if FloatIsUndefined(margin) {
-			node.Style.margin[edge].Unit = UnitUndefined
+			node.Style.Margin[edge].Unit = UnitUndefined
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -402,12 +402,12 @@ func NodeStyleSetMargin(node *Node, edge Edge, margin float32) {
 
 // YGNodeStyleSetMarginPercent sets margin percent
 func YGNodeStyleSetMarginPercent(node *Node, edge Edge, margin float32) {
-	if node.Style.margin[edge].Value != margin ||
-		node.Style.margin[edge].Unit != UnitPercent {
-		node.Style.margin[edge].Value = margin
-		node.Style.margin[edge].Unit = UnitPercent
+	if node.Style.Margin[edge].Value != margin ||
+		node.Style.Margin[edge].Unit != UnitPercent {
+		node.Style.Margin[edge].Value = margin
+		node.Style.Margin[edge].Unit = UnitPercent
 		if FloatIsUndefined(margin) {
-			node.Style.margin[edge].Unit = UnitUndefined
+			node.Style.Margin[edge].Unit = UnitUndefined
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -415,26 +415,26 @@ func YGNodeStyleSetMarginPercent(node *Node, edge Edge, margin float32) {
 
 // NodeStyleGetMargin gets margin
 func NodeStyleGetMargin(node *Node, edge Edge) Value {
-	return node.Style.margin[edge]
+	return node.Style.Margin[edge]
 }
 
 // NodeStyleSetMarginAuto sets margin auto
 func NodeStyleSetMarginAuto(node *Node, edge Edge) {
-	if node.Style.margin[edge].Unit != UnitAuto {
-		node.Style.margin[edge].Value = Undefined
-		node.Style.margin[edge].Unit = UnitAuto
+	if node.Style.Margin[edge].Unit != UnitAuto {
+		node.Style.Margin[edge].Value = Undefined
+		node.Style.Margin[edge].Unit = UnitAuto
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleSetPadding sets padding
 func NodeStyleSetPadding(node *Node, edge Edge, padding float32) {
-	if node.Style.padding[edge].Value != padding ||
-		node.Style.padding[edge].Unit != UnitPoint {
-		node.Style.padding[edge].Value = padding
-		node.Style.padding[edge].Unit = UnitPoint
+	if node.Style.Padding[edge].Value != padding ||
+		node.Style.Padding[edge].Unit != UnitPoint {
+		node.Style.Padding[edge].Value = padding
+		node.Style.Padding[edge].Unit = UnitPoint
 		if FloatIsUndefined(padding) {
-			node.Style.padding[edge].Unit = UnitUndefined
+			node.Style.Padding[edge].Unit = UnitUndefined
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -442,12 +442,12 @@ func NodeStyleSetPadding(node *Node, edge Edge, padding float32) {
 
 // NodeStyleSetPaddingPercent sets padding percent
 func NodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
-	if node.Style.padding[edge].Value != padding ||
-		node.Style.padding[edge].Unit != UnitPercent {
-		node.Style.padding[edge].Value = padding
-		node.Style.padding[edge].Unit = UnitPercent
+	if node.Style.Padding[edge].Value != padding ||
+		node.Style.Padding[edge].Unit != UnitPercent {
+		node.Style.Padding[edge].Value = padding
+		node.Style.Padding[edge].Unit = UnitPercent
 		if FloatIsUndefined(padding) {
-			node.Style.padding[edge].Unit = UnitUndefined
+			node.Style.Padding[edge].Unit = UnitUndefined
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -455,17 +455,17 @@ func NodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
 
 // NodeStyleGetPadding gets padding
 func NodeStyleGetPadding(node *Node, edge Edge) Value {
-	return node.Style.padding[edge]
+	return node.Style.Padding[edge]
 }
 
 // NodeStyleSetBorder sets border
 func NodeStyleSetBorder(node *Node, edge Edge, border float32) {
-	if node.Style.border[edge].Value != border ||
-		node.Style.border[edge].Unit != UnitPoint {
-		node.Style.border[edge].Value = border
-		node.Style.border[edge].Unit = UnitPoint
+	if node.Style.Border[edge].Value != border ||
+		node.Style.Border[edge].Unit != UnitPoint {
+		node.Style.Border[edge].Value = border
+		node.Style.Border[edge].Unit = UnitPoint
 		if FloatIsUndefined(border) {
-			node.Style.border[edge].Unit = UnitUndefined
+			node.Style.Border[edge].Unit = UnitUndefined
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -473,17 +473,17 @@ func NodeStyleSetBorder(node *Node, edge Edge, border float32) {
 
 // NodeStyleGetBorder gets border
 func NodeStyleGetBorder(node *Node, edge Edge) float32 {
-	return node.Style.border[edge].Value
+	return node.Style.Border[edge].Value
 }
 
 // NodeStyleSetMinWidth sets min width
 func NodeStyleSetMinWidth(node *Node, minWidth float32) {
-	if node.Style.minDimensions[DimensionWidth].Value != minWidth ||
-		node.Style.minDimensions[DimensionWidth].Unit != UnitPoint {
-		node.Style.minDimensions[DimensionWidth].Value = minWidth
-		node.Style.minDimensions[DimensionWidth].Unit = UnitPoint
+	if node.Style.MinDimensions[DimensionWidth].Value != minWidth ||
+		node.Style.MinDimensions[DimensionWidth].Unit != UnitPoint {
+		node.Style.MinDimensions[DimensionWidth].Value = minWidth
+		node.Style.MinDimensions[DimensionWidth].Unit = UnitPoint
 		if FloatIsUndefined(minWidth) {
-			node.Style.minDimensions[DimensionWidth].Unit = UnitAuto
+			node.Style.MinDimensions[DimensionWidth].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -491,12 +491,12 @@ func NodeStyleSetMinWidth(node *Node, minWidth float32) {
 
 // NodeStyleSetMinWidthPercent sets width percent
 func NodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
-	if node.Style.minDimensions[DimensionWidth].Value != minWidth ||
-		node.Style.minDimensions[DimensionWidth].Unit != UnitPercent {
-		node.Style.minDimensions[DimensionWidth].Value = minWidth
-		node.Style.minDimensions[DimensionWidth].Unit = UnitPercent
+	if node.Style.MinDimensions[DimensionWidth].Value != minWidth ||
+		node.Style.MinDimensions[DimensionWidth].Unit != UnitPercent {
+		node.Style.MinDimensions[DimensionWidth].Value = minWidth
+		node.Style.MinDimensions[DimensionWidth].Unit = UnitPercent
 		if FloatIsUndefined(minWidth) {
-			node.Style.minDimensions[DimensionWidth].Unit = UnitAuto
+			node.Style.MinDimensions[DimensionWidth].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -504,17 +504,17 @@ func NodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
 
 // NodeStyleGetMinWidth gets min width
 func NodeStyleGetMinWidth(node *Node) Value {
-	return node.Style.minDimensions[DimensionWidth]
+	return node.Style.MinDimensions[DimensionWidth]
 }
 
 // NodeStyleSetMinHeight sets min width
 func NodeStyleSetMinHeight(node *Node, minHeight float32) {
-	if node.Style.minDimensions[DimensionHeight].Value != minHeight ||
-		node.Style.minDimensions[DimensionHeight].Unit != UnitPoint {
-		node.Style.minDimensions[DimensionHeight].Value = minHeight
-		node.Style.minDimensions[DimensionHeight].Unit = UnitPoint
+	if node.Style.MinDimensions[DimensionHeight].Value != minHeight ||
+		node.Style.MinDimensions[DimensionHeight].Unit != UnitPoint {
+		node.Style.MinDimensions[DimensionHeight].Value = minHeight
+		node.Style.MinDimensions[DimensionHeight].Unit = UnitPoint
 		if FloatIsUndefined(minHeight) {
-			node.Style.minDimensions[DimensionHeight].Unit = UnitAuto
+			node.Style.MinDimensions[DimensionHeight].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -522,12 +522,12 @@ func NodeStyleSetMinHeight(node *Node, minHeight float32) {
 
 // NodeStyleSetMinHeightPercent sets min height percent
 func NodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
-	if node.Style.minDimensions[DimensionHeight].Value != minHeight ||
-		node.Style.minDimensions[DimensionHeight].Unit != UnitPercent {
-		node.Style.minDimensions[DimensionHeight].Value = minHeight
-		node.Style.minDimensions[DimensionHeight].Unit = UnitPercent
+	if node.Style.MinDimensions[DimensionHeight].Value != minHeight ||
+		node.Style.MinDimensions[DimensionHeight].Unit != UnitPercent {
+		node.Style.MinDimensions[DimensionHeight].Value = minHeight
+		node.Style.MinDimensions[DimensionHeight].Unit = UnitPercent
 		if FloatIsUndefined(minHeight) {
-			node.Style.minDimensions[DimensionHeight].Unit = UnitAuto
+			node.Style.MinDimensions[DimensionHeight].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -535,17 +535,17 @@ func NodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
 
 // NodeStyleGetMinHeight gets min height
 func NodeStyleGetMinHeight(node *Node) Value {
-	return node.Style.minDimensions[DimensionHeight]
+	return node.Style.MinDimensions[DimensionHeight]
 }
 
 // NodeStyleSetMaxWidth sets max width
 func NodeStyleSetMaxWidth(node *Node, maxWidth float32) {
-	if node.Style.maxDimensions[DimensionWidth].Value != maxWidth ||
-		node.Style.maxDimensions[DimensionWidth].Unit != UnitPoint {
-		node.Style.maxDimensions[DimensionWidth].Value = maxWidth
-		node.Style.maxDimensions[DimensionWidth].Unit = UnitPoint
+	if node.Style.MaxDimensions[DimensionWidth].Value != maxWidth ||
+		node.Style.MaxDimensions[DimensionWidth].Unit != UnitPoint {
+		node.Style.MaxDimensions[DimensionWidth].Value = maxWidth
+		node.Style.MaxDimensions[DimensionWidth].Unit = UnitPoint
 		if FloatIsUndefined(maxWidth) {
-			node.Style.maxDimensions[DimensionWidth].Unit = UnitAuto
+			node.Style.MaxDimensions[DimensionWidth].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -553,12 +553,12 @@ func NodeStyleSetMaxWidth(node *Node, maxWidth float32) {
 
 // NodeStyleSetMaxWidthPercent sets max width percent
 func NodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
-	if node.Style.maxDimensions[DimensionWidth].Value != maxWidth ||
-		node.Style.maxDimensions[DimensionWidth].Unit != UnitPercent {
-		node.Style.maxDimensions[DimensionWidth].Value = maxWidth
-		node.Style.maxDimensions[DimensionWidth].Unit = UnitPercent
+	if node.Style.MaxDimensions[DimensionWidth].Value != maxWidth ||
+		node.Style.MaxDimensions[DimensionWidth].Unit != UnitPercent {
+		node.Style.MaxDimensions[DimensionWidth].Value = maxWidth
+		node.Style.MaxDimensions[DimensionWidth].Unit = UnitPercent
 		if FloatIsUndefined(maxWidth) {
-			node.Style.maxDimensions[DimensionWidth].Unit = UnitAuto
+			node.Style.MaxDimensions[DimensionWidth].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -566,17 +566,17 @@ func NodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
 
 // NodeStyleGetMaxWidth gets max width
 func NodeStyleGetMaxWidth(node *Node) Value {
-	return node.Style.maxDimensions[DimensionWidth]
+	return node.Style.MaxDimensions[DimensionWidth]
 }
 
 // NodeStyleSetMaxHeight sets max width
 func NodeStyleSetMaxHeight(node *Node, maxHeight float32) {
-	if node.Style.maxDimensions[DimensionHeight].Value != maxHeight ||
-		node.Style.maxDimensions[DimensionHeight].Unit != UnitPoint {
-		node.Style.maxDimensions[DimensionHeight].Value = maxHeight
-		node.Style.maxDimensions[DimensionHeight].Unit = UnitPoint
+	if node.Style.MaxDimensions[DimensionHeight].Value != maxHeight ||
+		node.Style.MaxDimensions[DimensionHeight].Unit != UnitPoint {
+		node.Style.MaxDimensions[DimensionHeight].Value = maxHeight
+		node.Style.MaxDimensions[DimensionHeight].Unit = UnitPoint
 		if FloatIsUndefined(maxHeight) {
-			node.Style.maxDimensions[DimensionHeight].Unit = UnitAuto
+			node.Style.MaxDimensions[DimensionHeight].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -584,12 +584,12 @@ func NodeStyleSetMaxHeight(node *Node, maxHeight float32) {
 
 // NodeStyleSetMaxHeightPercent sets max height percent
 func NodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
-	if node.Style.maxDimensions[DimensionHeight].Value != maxHeight ||
-		node.Style.maxDimensions[DimensionHeight].Unit != UnitPercent {
-		node.Style.maxDimensions[DimensionHeight].Value = maxHeight
-		node.Style.maxDimensions[DimensionHeight].Unit = UnitPercent
+	if node.Style.MaxDimensions[DimensionHeight].Value != maxHeight ||
+		node.Style.MaxDimensions[DimensionHeight].Unit != UnitPercent {
+		node.Style.MaxDimensions[DimensionHeight].Value = maxHeight
+		node.Style.MaxDimensions[DimensionHeight].Unit = UnitPercent
 		if FloatIsUndefined(maxHeight) {
-			node.Style.maxDimensions[DimensionHeight].Unit = UnitAuto
+			node.Style.MaxDimensions[DimensionHeight].Unit = UnitAuto
 		}
 		nodeMarkDirtyInternal(node)
 	}
@@ -597,20 +597,20 @@ func NodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
 
 // NodeStyleGetMaxHeight gets max height
 func NodeStyleGetMaxHeight(node *Node) Value {
-	return node.Style.maxDimensions[DimensionHeight]
+	return node.Style.MaxDimensions[DimensionHeight]
 }
 
 // NodeStyleSetAspectRatio sets axpect ratio
 func NodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
-	if node.Style.aspectRatio != aspectRatio {
-		node.Style.aspectRatio = aspectRatio
+	if node.Style.AspectRatio != aspectRatio {
+		node.Style.AspectRatio = aspectRatio
 		nodeMarkDirtyInternal(node)
 	}
 }
 
 // NodeStyleGetAspectRatio gets aspect ratio
 func NodeStyleGetAspectRatio(node *Node) float32 {
-	return node.Style.aspectRatio
+	return node.Style.AspectRatio
 }
 
 // NodeLayoutGetLeft gets left
