@@ -223,7 +223,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexDirection(FlexDirectionColumn)
-	NodeStyleSetPadding(rootChild0, EdgeAll, 100)
+	rootChild0.StyleSetPadding(EdgeAll, 100)
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
 
@@ -240,10 +240,10 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetPadding(root, EdgeLeft, 25)
-	NodeStyleSetPadding(root, EdgeTop, 25)
-	NodeStyleSetPadding(root, EdgeRight, 25)
-	NodeStyleSetPadding(root, EdgeBottom, 25)
+	root.StyleSetPadding(EdgeLeft, 25)
+	root.StyleSetPadding(EdgeTop, 25)
+	root.StyleSetPadding(EdgeRight, 25)
+	root.StyleSetPadding(EdgeBottom, 25)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -277,8 +277,8 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetMargin(root, EdgeTop, 20)
-	NodeStyleSetPadding(root, EdgeAll, 25)
+	root.StyleSetMargin(EdgeTop, 20)
+	root.StyleSetPadding(EdgeAll, 25)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -313,7 +313,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetMargin(root, EdgeTop, 20)
+	root.StyleSetMargin(EdgeTop, 20)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -348,7 +348,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetMargin(root, EdgeTop, 20)
+	root.StyleSetMargin(EdgeTop, 20)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 	root.StyleSetAlignItems(AlignFlexStart)
@@ -383,8 +383,8 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetMargin(root, EdgeTop, 20)
-	NodeStyleSetPadding(root, EdgeAll, 25)
+	root.StyleSetMargin(EdgeTop, 20)
+	root.StyleSetPadding(EdgeAll, 25)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -420,8 +420,8 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetMargin(root, EdgeTop, 20)
-	NodeStyleSetPadding(root, EdgeAll, 25)
+	root.StyleSetMargin(EdgeTop, 20)
+	root.StyleSetPadding(EdgeAll, 25)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -456,7 +456,7 @@ func TestMeasure_no_padding(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetMargin(root, EdgeTop, 20)
+	root.StyleSetMargin(EdgeTop, 20)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -528,7 +528,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeSetMeasureFunc(rootChild0, _measure_assert_negative)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 20)
+	rootChild0.StyleSetMargin(EdgeTop, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -544,7 +544,7 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeSetMeasureFunc(rootChild0, _measure_assert_negative)
-	NodeStyleSetMargin(rootChild0, EdgeStart, 20)
+	rootChild0.StyleSetMargin(EdgeStart, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

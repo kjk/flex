@@ -154,7 +154,7 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	root.StyleSetFlexDirection(FlexDirectionRow)
 
 	rootChild0 := NewNode()
-	NodeStyleSetPadding(rootChild0, EdgeAll, 2.88)
+	rootChild0.StyleSetPadding(EdgeAll, 2.88)
 	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeInsertChild(root, rootChild0, 0)
 

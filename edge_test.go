@@ -10,9 +10,9 @@ func TestStart_overrides(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeStart, 10)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 20)
-	NodeStyleSetMargin(rootChild0, EdgeRight, 20)
+	rootChild0.StyleSetMargin(EdgeStart, 10)
+	rootChild0.StyleSetMargin(EdgeLeft, 20)
+	rootChild0.StyleSetMargin(EdgeRight, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -32,9 +32,9 @@ func TestEnd_overrides(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 20)
-	NodeStyleSetMargin(rootChild0, EdgeRight, 20)
+	rootChild0.StyleSetMargin(EdgeEnd, 10)
+	rootChild0.StyleSetMargin(EdgeLeft, 20)
+	rootChild0.StyleSetMargin(EdgeRight, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -54,8 +54,8 @@ func TestHorizontal_overridden(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeHorizontal, 10)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 20)
+	rootChild0.StyleSetMargin(EdgeHorizontal, 10)
+	rootChild0.StyleSetMargin(EdgeLeft, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -71,8 +71,8 @@ func TestVertical_overridden(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeVertical, 10)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 20)
+	rootChild0.StyleSetMargin(EdgeVertical, 10)
+	rootChild0.StyleSetMargin(EdgeTop, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -88,8 +88,8 @@ func TestHorizontal_overrides_all(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeHorizontal, 10)
-	NodeStyleSetMargin(rootChild0, EdgeAll, 20)
+	rootChild0.StyleSetMargin(EdgeHorizontal, 10)
+	rootChild0.StyleSetMargin(EdgeAll, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -107,8 +107,8 @@ func TestVertical_overrides_all(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeVertical, 10)
-	NodeStyleSetMargin(rootChild0, EdgeAll, 20)
+	rootChild0.StyleSetMargin(EdgeVertical, 10)
+	rootChild0.StyleSetMargin(EdgeAll, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -126,11 +126,11 @@ func TestAll_overridden(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 10)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 10)
-	NodeStyleSetMargin(rootChild0, EdgeRight, 10)
-	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
-	NodeStyleSetMargin(rootChild0, EdgeAll, 20)
+	rootChild0.StyleSetMargin(EdgeLeft, 10)
+	rootChild0.StyleSetMargin(EdgeTop, 10)
+	rootChild0.StyleSetMargin(EdgeRight, 10)
+	rootChild0.StyleSetMargin(EdgeBottom, 10)
+	rootChild0.StyleSetMargin(EdgeAll, 20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

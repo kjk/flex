@@ -11,7 +11,7 @@ func TestMargin_start(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeStart, 10)
+	rootChild0.StyleSetMargin(EdgeStart, 10)
 	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -48,7 +48,7 @@ func TestMargin_top(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 10)
+	rootChild0.StyleSetMargin(EdgeTop, 10)
 	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -87,7 +87,7 @@ func TestMargin_end(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
+	rootChild0.StyleSetMargin(EdgeEnd, 10)
 	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -125,7 +125,7 @@ func TestMargin_bottom(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
+	rootChild0.StyleSetMargin(EdgeBottom, 10)
 	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -164,8 +164,8 @@ func TestMargin_and_flex_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeStart, 10)
-	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
+	rootChild0.StyleSetMargin(EdgeStart, 10)
+	rootChild0.StyleSetMargin(EdgeEnd, 10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -202,8 +202,8 @@ func TestMargin_and_flex_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 10)
-	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
+	rootChild0.StyleSetMargin(EdgeTop, 10)
+	rootChild0.StyleSetMargin(EdgeBottom, 10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -241,8 +241,8 @@ func TestMargin_and_stretch_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 10)
-	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
+	rootChild0.StyleSetMargin(EdgeTop, 10)
+	rootChild0.StyleSetMargin(EdgeBottom, 10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -279,8 +279,8 @@ func TestMargin_and_stretch_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeStart, 10)
-	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
+	rootChild0.StyleSetMargin(EdgeStart, 10)
+	rootChild0.StyleSetMargin(EdgeEnd, 10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -318,7 +318,7 @@ func TestMargin_with_sibling_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
+	rootChild0.StyleSetMargin(EdgeEnd, 10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -369,7 +369,7 @@ func TestMargin_with_sibling_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
+	rootChild0.StyleSetMargin(EdgeBottom, 10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -420,7 +420,7 @@ func TestMargin_auto_bottom(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeBottom)
+	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -474,7 +474,7 @@ func TestMargin_auto_top(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeTop)
+	rootChild0.StyleSetMarginAuto(EdgeTop)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -528,8 +528,8 @@ func TestMargin_auto_bottom_and_top(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeTop)
-	NodeStyleSetMarginAuto(rootChild0, EdgeBottom)
+	rootChild0.StyleSetMarginAuto(EdgeTop)
+	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -583,8 +583,8 @@ func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeTop)
-	NodeStyleSetMarginAuto(rootChild0, EdgeBottom)
+	rootChild0.StyleSetMarginAuto(EdgeTop)
+	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -638,13 +638,13 @@ func TestMargin_auto_mutiple_children_column(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeTop)
+	rootChild0.StyleSetMarginAuto(EdgeTop)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild1, EdgeTop)
+	rootChild1.StyleSetMarginAuto(EdgeTop)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)
@@ -709,13 +709,13 @@ func TestMargin_auto_mutiple_children_row(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild1, EdgeRight)
+	rootChild1.StyleSetMarginAuto(EdgeRight)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)
@@ -780,8 +780,8 @@ func Testargin_auto_left_and_right_column(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -834,8 +834,8 @@ func TestMargin_auto_left_and_right(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -890,8 +890,8 @@ func TestMargin_auto_start_and_end_column(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeStart)
-	NodeStyleSetMarginAuto(rootChild0, EdgeEnd)
+	rootChild0.StyleSetMarginAuto(EdgeStart)
+	rootChild0.StyleSetMarginAuto(EdgeEnd)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -944,8 +944,8 @@ func TestMargin_auto_start_and_end(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeStart)
-	NodeStyleSetMarginAuto(rootChild0, EdgeEnd)
+	rootChild0.StyleSetMarginAuto(EdgeStart)
+	rootChild0.StyleSetMarginAuto(EdgeEnd)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -999,8 +999,8 @@ func TestMargin_auto_left_and_right_column_and_center(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1054,7 +1054,7 @@ func TestMargin_auto_left(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1108,7 +1108,7 @@ func TestMargin_auto_right(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1162,8 +1162,8 @@ func TestMargin_auto_left_and_right_strech(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1216,8 +1216,8 @@ func TestMargin_auto_top_and_bottom_strech(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeTop)
-	NodeStyleSetMarginAuto(rootChild0, EdgeBottom)
+	rootChild0.StyleSetMarginAuto(EdgeTop)
+	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1270,7 +1270,7 @@ func TestMargin_should_not_be_part_of_max_height(t *testing.T) {
 	root.StyleSetHeight(250)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeTop, 20)
+	rootChild0.StyleSetMargin(EdgeTop, 20)
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(100)
 	NodeStyleSetMaxHeight(rootChild0, 100)
@@ -1309,7 +1309,7 @@ func TestMargin_should_not_be_part_of_max_width(t *testing.T) {
 	root.StyleSetHeight(250)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 20)
+	rootChild0.StyleSetMargin(EdgeLeft, 20)
 	rootChild0.StyleSetWidth(100)
 	NodeStyleSetMaxWidth(rootChild0, 100)
 	rootChild0.StyleSetHeight(100)
@@ -1349,8 +1349,8 @@ func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1389,7 +1389,7 @@ func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1428,8 +1428,8 @@ func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 10)
-	NodeStyleSetMarginAuto(rootChild0, EdgeRight)
+	rootChild0.StyleSetMargin(EdgeLeft, 10)
+	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1468,8 +1468,8 @@ func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMarginAuto(rootChild0, EdgeLeft)
-	NodeStyleSetMargin(rootChild0, EdgeRight, 10)
+	rootChild0.StyleSetMarginAuto(EdgeLeft)
+	rootChild0.StyleSetMargin(EdgeRight, 10)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
 	NodeInsertChild(root, rootChild0, 0)

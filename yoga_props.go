@@ -312,8 +312,8 @@ func NodeStyleSetFlexBasisAuto(node *Node) {
 	}
 }
 
-// NodeStyleSetMargin sets margin
-func NodeStyleSetMargin(node *Node, edge Edge, margin float32) {
+// StyleSetMargin sets margin
+func (node *Node) StyleSetMargin(edge Edge, margin float32) {
 	if node.Style.Margin[edge].Value != margin ||
 		node.Style.Margin[edge].Unit != UnitPoint {
 		node.Style.Margin[edge].Value = margin
@@ -343,8 +343,8 @@ func (node *Node) StyleGetMargin(edge Edge) Value {
 	return node.Style.Margin[edge]
 }
 
-// NodeStyleSetMarginAuto sets margin auto
-func NodeStyleSetMarginAuto(node *Node, edge Edge) {
+// StyleSetMarginAuto sets margin auto
+func (node *Node) StyleSetMarginAuto(edge Edge) {
 	if node.Style.Margin[edge].Unit != UnitAuto {
 		node.Style.Margin[edge].Value = Undefined
 		node.Style.Margin[edge].Unit = UnitAuto
@@ -352,8 +352,8 @@ func NodeStyleSetMarginAuto(node *Node, edge Edge) {
 	}
 }
 
-// NodeStyleSetPadding sets padding
-func NodeStyleSetPadding(node *Node, edge Edge, padding float32) {
+// StyleSetPadding sets padding
+func (node *Node) StyleSetPadding(edge Edge, padding float32) {
 	if node.Style.Padding[edge].Value != padding ||
 		node.Style.Padding[edge].Unit != UnitPoint {
 		node.Style.Padding[edge].Value = padding
@@ -365,8 +365,8 @@ func NodeStyleSetPadding(node *Node, edge Edge, padding float32) {
 	}
 }
 
-// NodeStyleSetPaddingPercent sets padding percent
-func NodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
+// StyleSetPaddingPercent sets padding percent
+func (node *Node) StyleSetPaddingPercent(edge Edge, padding float32) {
 	if node.Style.Padding[edge].Value != padding ||
 		node.Style.Padding[edge].Unit != UnitPercent {
 		node.Style.Padding[edge].Value = padding

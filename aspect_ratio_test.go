@@ -644,8 +644,8 @@ func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetHeight(50)
 	NodeStyleSetAspectRatio(rootChild0, 1)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 10)
-	NodeStyleSetMargin(rootChild0, EdgeRight, 10)
+	rootChild0.StyleSetMargin(EdgeLeft, 10)
+	rootChild0.StyleSetMargin(EdgeRight, 10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -667,8 +667,8 @@ func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
 	NodeStyleSetAspectRatio(rootChild0, 1)
-	NodeStyleSetMargin(rootChild0, EdgeLeft, 10)
-	NodeStyleSetMargin(rootChild0, EdgeRight, 10)
+	rootChild0.StyleSetMargin(EdgeLeft, 10)
+	rootChild0.StyleSetMargin(EdgeRight, 10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

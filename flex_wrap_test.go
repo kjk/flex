@@ -1322,10 +1322,10 @@ func TestWrapped_column_max_height(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild1, EdgeLeft, 20)
-	NodeStyleSetMargin(rootChild1, EdgeTop, 20)
-	NodeStyleSetMargin(rootChild1, EdgeRight, 20)
-	NodeStyleSetMargin(rootChild1, EdgeBottom, 20)
+	rootChild1.StyleSetMargin(EdgeLeft, 20)
+	rootChild1.StyleSetMargin(EdgeTop, 20)
+	rootChild1.StyleSetMargin(EdgeRight, 20)
+	rootChild1.StyleSetMargin(EdgeBottom, 20)
 	rootChild1.StyleSetWidth(200)
 	rootChild1.StyleSetHeight(200)
 	NodeInsertChild(root, rootChild1, 1)
@@ -1403,10 +1403,10 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	rootChild1.StyleSetFlexGrow(1)
 	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetFlexBasisPercent(0)
-	NodeStyleSetMargin(rootChild1, EdgeLeft, 20)
-	NodeStyleSetMargin(rootChild1, EdgeTop, 20)
-	NodeStyleSetMargin(rootChild1, EdgeRight, 20)
-	NodeStyleSetMargin(rootChild1, EdgeBottom, 20)
+	rootChild1.StyleSetMargin(EdgeLeft, 20)
+	rootChild1.StyleSetMargin(EdgeTop, 20)
+	rootChild1.StyleSetMargin(EdgeRight, 20)
+	rootChild1.StyleSetMargin(EdgeBottom, 20)
 	rootChild1.StyleSetWidth(200)
 	rootChild1.StyleSetHeight(200)
 	NodeInsertChild(root, rootChild1, 1)
@@ -1482,7 +1482,7 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	NodeInsertChild(rootChild0Child0, rootChild0Child0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0child1, EdgeRight, 10)
+	rootChild0child1.StyleSetMargin(EdgeRight, 10)
 	NodeInsertChild(rootChild0, rootChild0child1, 1)
 
 	rootChild0child1Child0 := NewNodeWithConfig(config)
@@ -1576,7 +1576,7 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	NodeInsertChild(rootChild0Child0, rootChild0Child0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild0child1, EdgeTop, 10)
+	rootChild0child1.StyleSetMargin(EdgeTop, 10)
 	NodeInsertChild(rootChild0, rootChild0child1, 1)
 
 	rootChild0child1Child0 := NewNodeWithConfig(config)

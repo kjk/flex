@@ -1106,10 +1106,10 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild1, EdgeLeft, 10)
-	NodeStyleSetMargin(rootChild1, EdgeTop, 10)
-	NodeStyleSetMargin(rootChild1, EdgeRight, 10)
-	NodeStyleSetMargin(rootChild1, EdgeBottom, 10)
+	rootChild1.StyleSetMargin(EdgeLeft, 10)
+	rootChild1.StyleSetMargin(EdgeTop, 10)
+	rootChild1.StyleSetMargin(EdgeRight, 10)
+	rootChild1.StyleSetMargin(EdgeBottom, 10)
 	rootChild1.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild1, 1)
 
@@ -1118,10 +1118,10 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
-	NodeStyleSetMargin(rootChild3, EdgeLeft, 10)
-	NodeStyleSetMargin(rootChild3, EdgeTop, 10)
-	NodeStyleSetMargin(rootChild3, EdgeRight, 10)
-	NodeStyleSetMargin(rootChild3, EdgeBottom, 10)
+	rootChild3.StyleSetMargin(EdgeLeft, 10)
+	rootChild3.StyleSetMargin(EdgeTop, 10)
+	rootChild3.StyleSetMargin(EdgeRight, 10)
+	rootChild3.StyleSetMargin(EdgeBottom, 10)
 	rootChild3.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild3, 3)
 
@@ -1208,10 +1208,10 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetPadding(rootChild1, EdgeLeft, 10)
-	NodeStyleSetPadding(rootChild1, EdgeTop, 10)
-	NodeStyleSetPadding(rootChild1, EdgeRight, 10)
-	NodeStyleSetPadding(rootChild1, EdgeBottom, 10)
+	rootChild1.StyleSetPadding(EdgeLeft, 10)
+	rootChild1.StyleSetPadding(EdgeTop, 10)
+	rootChild1.StyleSetPadding(EdgeRight, 10)
+	rootChild1.StyleSetPadding(EdgeBottom, 10)
 	rootChild1.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild1, 1)
 
@@ -1220,10 +1220,10 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
-	NodeStyleSetPadding(rootChild3, EdgeLeft, 10)
-	NodeStyleSetPadding(rootChild3, EdgeTop, 10)
-	NodeStyleSetPadding(rootChild3, EdgeRight, 10)
-	NodeStyleSetPadding(rootChild3, EdgeBottom, 10)
+	rootChild3.StyleSetPadding(EdgeLeft, 10)
+	rootChild3.StyleSetPadding(EdgeTop, 10)
+	rootChild3.StyleSetPadding(EdgeRight, 10)
+	rootChild3.StyleSetPadding(EdgeBottom, 10)
 	rootChild3.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild3, 3)
 
