@@ -187,7 +187,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 	rootChild1child0.StyleSetFlexShrink(1)
 	rootChild1child0.StyleSetFlexBasisPercent(0)
 	rootChild1child0.StyleSetWidth(20)
-	NodeStyleSetMinWidth(rootChild1child0, 0)
+	rootChild1child0.StyleSetMinWidth(0)
 	NodeStyleSetMinHeight(rootChild1child0, 0)
 	NodeInsertChild(rootChild1, rootChild1child0, 0)
 

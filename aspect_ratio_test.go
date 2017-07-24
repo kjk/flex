@@ -262,7 +262,7 @@ func TestAspect_ratio_with_min_cross_defined(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetHeight(30)
-	NodeStyleSetMinWidth(rootChild0, 40)
+	rootChild0.StyleSetMinWidth(40)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 

@@ -343,13 +343,13 @@ func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexBasis(50)
-	NodeStyleSetMinWidth(rootChild0, 55)
+	rootChild0.StyleSetMinWidth(55)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexBasis(50)
-	NodeStyleSetMinWidth(rootChild1, 55)
+	rootChild1.StyleSetMinWidth(55)
 	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

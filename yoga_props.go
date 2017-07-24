@@ -383,8 +383,8 @@ func (node *Node) StyleGetPadding(edge Edge) Value {
 	return node.Style.Padding[edge]
 }
 
-// NodeStyleSetBorder sets border
-func NodeStyleSetBorder(node *Node, edge Edge, border float32) {
+// StyleSetBorder sets border
+func (node *Node) StyleSetBorder(edge Edge, border float32) {
 	if node.Style.Border[edge].Value != border ||
 		node.Style.Border[edge].Unit != UnitPoint {
 		node.Style.Border[edge].Value = border
@@ -401,8 +401,8 @@ func (node *Node) StyleGetBorder(edge Edge) float32 {
 	return node.Style.Border[edge].Value
 }
 
-// NodeStyleSetMinWidth sets min width
-func NodeStyleSetMinWidth(node *Node, minWidth float32) {
+// StyleSetMinWidth sets min width
+func (node *Node) StyleSetMinWidth(minWidth float32) {
 	if node.Style.MinDimensions[DimensionWidth].Value != minWidth ||
 		node.Style.MinDimensions[DimensionWidth].Unit != UnitPoint {
 		node.Style.MinDimensions[DimensionWidth].Value = minWidth
@@ -414,8 +414,8 @@ func NodeStyleSetMinWidth(node *Node, minWidth float32) {
 	}
 }
 
-// NodeStyleSetMinWidthPercent sets width percent
-func NodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
+// StyleSetMinWidthPercent sets width percent
+func (node *Node) StyleSetMinWidthPercent(minWidth float32) {
 	if node.Style.MinDimensions[DimensionWidth].Value != minWidth ||
 		node.Style.MinDimensions[DimensionWidth].Unit != UnitPercent {
 		node.Style.MinDimensions[DimensionWidth].Value = minWidth

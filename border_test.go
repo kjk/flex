@@ -6,10 +6,10 @@ func TestBorder_no_size(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetBorder(root, EdgeLeft, 10)
-	NodeStyleSetBorder(root, EdgeTop, 10)
-	NodeStyleSetBorder(root, EdgeRight, 10)
-	NodeStyleSetBorder(root, EdgeBottom, 10)
+	root.StyleSetBorder(EdgeLeft, 10)
+	root.StyleSetBorder(EdgeTop, 10)
+	root.StyleSetBorder(EdgeRight, 10)
+	root.StyleSetBorder(EdgeBottom, 10)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -29,10 +29,10 @@ func TestBorder_container_match_child(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetBorder(root, EdgeLeft, 10)
-	NodeStyleSetBorder(root, EdgeTop, 10)
-	NodeStyleSetBorder(root, EdgeRight, 10)
-	NodeStyleSetBorder(root, EdgeBottom, 10)
+	root.StyleSetBorder(EdgeLeft, 10)
+	root.StyleSetBorder(EdgeTop, 10)
+	root.StyleSetBorder(EdgeRight, 10)
+	root.StyleSetBorder(EdgeBottom, 10)
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(10)
@@ -67,10 +67,10 @@ func TestBorder_flex_child(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetBorder(root, EdgeLeft, 10)
-	NodeStyleSetBorder(root, EdgeTop, 10)
-	NodeStyleSetBorder(root, EdgeRight, 10)
-	NodeStyleSetBorder(root, EdgeBottom, 10)
+	root.StyleSetBorder(EdgeLeft, 10)
+	root.StyleSetBorder(EdgeTop, 10)
+	root.StyleSetBorder(EdgeRight, 10)
+	root.StyleSetBorder(EdgeBottom, 10)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -107,10 +107,10 @@ func TestBorder_stretch_child(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetBorder(root, EdgeLeft, 10)
-	NodeStyleSetBorder(root, EdgeTop, 10)
-	NodeStyleSetBorder(root, EdgeRight, 10)
-	NodeStyleSetBorder(root, EdgeBottom, 10)
+	root.StyleSetBorder(EdgeLeft, 10)
+	root.StyleSetBorder(EdgeTop, 10)
+	root.StyleSetBorder(EdgeRight, 10)
+	root.StyleSetBorder(EdgeBottom, 10)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -148,9 +148,9 @@ func TestBorder_center_child(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetBorder(root, EdgeStart, 10)
-	NodeStyleSetBorder(root, EdgeEnd, 20)
-	NodeStyleSetBorder(root, EdgeBottom, 20)
+	root.StyleSetBorder(EdgeStart, 10)
+	root.StyleSetBorder(EdgeEnd, 20)
+	root.StyleSetBorder(EdgeBottom, 20)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

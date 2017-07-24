@@ -138,7 +138,7 @@ func TestMin_width(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeStyleSetMinWidth(rootChild0, 60)
+	rootChild0.StyleSetMinWidth(60)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -224,7 +224,7 @@ func TestAlign_items_min_max(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetMinWidth(root, 100)
+	root.StyleSetMinWidth(100)
 	NodeStyleSetMaxWidth(root, 200)
 	root.StyleSetHeight(100)
 
@@ -815,7 +815,7 @@ func TestFlex_grow_within_constrained_min_row(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetMinWidth(root, 100)
+	root.StyleSetMinWidth(100)
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
@@ -1038,7 +1038,7 @@ func TestChild_min_max_width_flexing(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasis(0)
-	NodeStyleSetMinWidth(rootChild0, 60)
+	rootChild0.StyleSetMinWidth(60)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -1087,7 +1087,7 @@ func TestMin_width_overrides_width(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetWidth(50)
-	NodeStyleSetMinWidth(root, 100)
+	root.StyleSetMinWidth(100)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1179,7 +1179,7 @@ func TestMin_max_percent_no_width_height(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetMinWidthPercent(rootChild0, 10)
+	rootChild0.StyleSetMinWidthPercent(10)
 	NodeStyleSetMaxWidthPercent(rootChild0, 10)
 	NodeStyleSetMinHeightPercent(rootChild0, 10)
 	NodeStyleSetMaxHeightPercent(rootChild0, 10)

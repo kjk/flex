@@ -496,13 +496,13 @@ func TestPercentage_flex_basis_main_min_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasisPercent(15)
-	NodeStyleSetMinWidthPercent(rootChild0, 60)
+	rootChild0.StyleSetMinWidthPercent(60)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(4)
 	rootChild1.StyleSetFlexBasisPercent(10)
-	NodeStyleSetMinWidthPercent(rootChild1, 20)
+	rootChild1.StyleSetMinWidthPercent(20)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -549,13 +549,13 @@ func TestPercentage_flex_basis_cross_min_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasisPercent(10)
-	NodeStyleSetMinWidthPercent(rootChild0, 60)
+	rootChild0.StyleSetMinWidthPercent(60)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(4)
 	rootChild1.StyleSetFlexBasisPercent(15)
-	NodeStyleSetMinWidthPercent(rootChild1, 20)
+	rootChild1.StyleSetMinWidthPercent(20)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -610,7 +610,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	rootChild0.StyleSetPadding(EdgeTop, 3)
 	rootChild0.StyleSetPadding(EdgeRight, 3)
 	rootChild0.StyleSetPadding(EdgeBottom, 3)
-	NodeStyleSetMinWidthPercent(rootChild0, 60)
+	rootChild0.StyleSetMinWidthPercent(60)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
@@ -640,7 +640,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(4)
 	rootChild1.StyleSetFlexBasisPercent(15)
-	NodeStyleSetMinWidthPercent(rootChild1, 20)
+	rootChild1.StyleSetMinWidthPercent(20)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

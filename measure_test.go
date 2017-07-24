@@ -88,7 +88,7 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
-	NodeStyleSetMinWidth(rootChild0, 10)
+	rootChild0.StyleSetMinWidth(10)
 	NodeStyleSetMaxWidth(rootChild0, 10)
 	NodeStyleSetMinHeight(rootChild0, 10)
 	NodeStyleSetMaxHeight(rootChild0, 10)
@@ -114,7 +114,7 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
-	NodeStyleSetMinWidthPercent(rootChild0, 10)
+	rootChild0.StyleSetMinWidthPercent(10)
 	NodeStyleSetMaxWidthPercent(rootChild0, 10)
 	NodeStyleSetMinHeightPercent(rootChild0, 10)
 	NodeStyleSetMaxHeightPercent(rootChild0, 10)
@@ -140,7 +140,7 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
-	NodeStyleSetMinWidthPercent(rootChild0, 10)
+	rootChild0.StyleSetMinWidthPercent(10)
 	NodeStyleSetMaxWidthPercent(rootChild0, 10)
 	NodeStyleSetMinHeight(rootChild0, 10)
 	NodeStyleSetMaxHeight(rootChild0, 10)
@@ -166,7 +166,7 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
-	NodeStyleSetMinWidth(rootChild0, 10)
+	rootChild0.StyleSetMinWidth(10)
 	NodeStyleSetMaxWidth(rootChild0, 10)
 	NodeStyleSetMinHeightPercent(rootChild0, 10)
 	NodeStyleSetMaxHeightPercent(rootChild0, 10)
