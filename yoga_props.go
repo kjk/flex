@@ -543,23 +543,23 @@ func (node *Node) LayoutGetTop() float32 {
 	return node.Layout.Position[EdgeTop]
 }
 
-// NodeLayoutGetRight gets right
-func NodeLayoutGetRight(node *Node) float32 {
+// LayoutGetRight gets right
+func (node *Node) LayoutGetRight() float32 {
 	return node.Layout.Position[EdgeRight]
 }
 
 // NodeLayoutGetBottom gets bottom
-func NodeLayoutGetBottom(node *Node) float32 {
+func (node *Node) LayoutGetBottom() float32 {
 	return node.Layout.Position[EdgeBottom]
 }
 
-// NodeLayoutGetWidth gets width
-func NodeLayoutGetWidth(node *Node) float32 {
+// LayoutGetWidth gets width
+func (node *Node) LayoutGetWidth() float32 {
 	return node.Layout.Dimensions[DimensionWidth]
 }
 
-// NodeLayoutGetHeight gets height
-func NodeLayoutGetHeight(node *Node) float32 {
+// LayoutGetHeight gets height
+func (node *Node) LayoutGetHeight() float32 {
 	return node.Layout.Dimensions[DimensionHeight]
 }
 

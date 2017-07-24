@@ -64,8 +64,8 @@ func TestAssert_default_values(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
-	assertFloatEqual(t, 0, NodeLayoutGetRight(root))
-	assertFloatEqual(t, 0, NodeLayoutGetBottom(root))
+	assertFloatEqual(t, 0, root.LayoutGetRight())
+	assertFloatEqual(t, 0, root.LayoutGetBottom())
 
 	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeLeft))
 	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeTop))
@@ -82,8 +82,8 @@ func TestAssert_default_values(t *testing.T) {
 	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeRight))
 	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeBottom))
 
-	assert.True(t, FloatIsUndefined(NodeLayoutGetWidth(root)))
-	assert.True(t, FloatIsUndefined(NodeLayoutGetHeight(root)))
+	assert.True(t, FloatIsUndefined(root.LayoutGetWidth()))
+	assert.True(t, FloatIsUndefined(root.LayoutGetHeight()))
 	assert.Equal(t, DirectionInherit, root.Layout.Direction)
 
 }

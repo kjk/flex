@@ -35,21 +35,21 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
-	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 100, root.LayoutGetWidth())
+	assertFloatEqual(t, 100, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 50, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 50, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 40, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 20, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 50, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 20, rootChild1.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild1child0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild1child0.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild1child0))
-	assertFloatEqual(t, 20, NodeLayoutGetHeight(rootChild1child0))
+	assertFloatEqual(t, 50, rootChild1child0.LayoutGetWidth())
+	assertFloatEqual(t, 20, rootChild1child0.LayoutGetHeight())
 }

@@ -99,8 +99,8 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 	assert.Equal(t, 0, measureCount)
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 }
 
 func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
@@ -125,8 +125,8 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 	assert.Equal(t, 0, measureCount)
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 }
 
 func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
@@ -151,8 +151,8 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 	assert.Equal(t, 0, measureCount)
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 }
 
 func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
@@ -177,8 +177,8 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 	assert.Equal(t, 0, measureCount)
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 }
 
 func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
@@ -193,8 +193,8 @@ func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 68, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 16, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 68, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 16, rootChild0.LayoutGetHeight())
 }
 
 func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
@@ -209,8 +209,8 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 32, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 32, rootChild0.LayoutGetHeight())
 }
 
 func TestMeasure_zero_space_should_grow(t *testing.T) {
@@ -231,7 +231,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 
 	NodeCalculateLayout(root, 282, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 282, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 282, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
 }
 
@@ -259,18 +259,18 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 25, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 0, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 0, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 75, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 25, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
@@ -294,18 +294,18 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 20, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 25, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 0, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 32, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 0, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 32, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 57, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
@@ -329,18 +329,18 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 20, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 50, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 50, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.T) {
@@ -365,18 +365,18 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 20, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 32, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 32, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 50, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 func TestMeasure_with_fixed_size(t *testing.T) {
@@ -402,18 +402,18 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 20, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 25, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 35, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 func TestMeasure_with_flex_shrink(t *testing.T) {
@@ -438,18 +438,18 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 20, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 25, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 0, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 0, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 0, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 0, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 25, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 25, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 func TestMeasure_no_padding(t *testing.T) {
@@ -473,18 +473,18 @@ func TestMeasure_no_padding(t *testing.T) {
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 20, root.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(root))
-	assertFloatEqual(t, 50, NodeLayoutGetHeight(root))
+	assertFloatEqual(t, 50, root.LayoutGetWidth())
+	assertFloatEqual(t, 50, root.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
-	assertFloatEqual(t, 50, NodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 32, NodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, rootChild0.LayoutGetWidth())
+	assertFloatEqual(t, 32, rootChild0.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 32, rootChild1.LayoutGetTop())
-	assertFloatEqual(t, 5, NodeLayoutGetWidth(rootChild1))
-	assertFloatEqual(t, 5, NodeLayoutGetHeight(rootChild1))
+	assertFloatEqual(t, 5, rootChild1.LayoutGetWidth())
+	assertFloatEqual(t, 5, rootChild1.LayoutGetHeight())
 }
 
 /*
