@@ -184,7 +184,7 @@ func TestJustify_content_min_max(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(100)
 	NodeStyleSetMinHeight(root, 100)
 	NodeStyleSetMaxHeight(root, 200)
@@ -223,7 +223,7 @@ func TestAlign_items_min_max(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetMinWidth(root, 100)
 	NodeStyleSetMaxWidth(root, 200)
 	root.StyleSetHeight(100)
@@ -262,7 +262,7 @@ func TestJustify_content_overflow_min_max(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	NodeStyleSetMinHeight(root, 100)
 	NodeStyleSetMaxHeight(root, 110)
 
@@ -383,7 +383,7 @@ func TestFlex_grow_in_at_most_container(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -1174,7 +1174,7 @@ func TestMin_max_percent_no_width_height(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

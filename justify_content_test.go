@@ -71,7 +71,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
+	root.StyleSetJustifyContent(JustifyFlexEnd)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -136,7 +136,7 @@ func TestJustify_content_row_center(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -201,7 +201,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetJustifyContent(root, JustifySpaceBetween)
+	root.StyleSetJustifyContent(JustifySpaceBetween)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -266,7 +266,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetJustifyContent(root, JustifySpaceAround)
+	root.StyleSetJustifyContent(JustifySpaceAround)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -392,7 +392,7 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
+	root.StyleSetJustifyContent(JustifyFlexEnd)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -456,7 +456,7 @@ func TestJustify_content_column_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -520,7 +520,7 @@ func TestJustify_content_column_space_between(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifySpaceBetween)
+	root.StyleSetJustifyContent(JustifySpaceBetween)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -584,7 +584,7 @@ func TestJustify_content_column_space_around(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifySpaceAround)
+	root.StyleSetJustifyContent(JustifySpaceAround)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 

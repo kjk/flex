@@ -146,8 +146,8 @@ func TestBorder_center_child(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetBorder(root, EdgeStart, 10)
 	NodeStyleSetBorder(root, EdgeEnd, 20)
 	NodeStyleSetBorder(root, EdgeBottom, 20)

@@ -172,7 +172,7 @@ func TestWrap_row_align_items_flex_end(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignFlexEnd)
+	root.StyleSetAlignItems(AlignFlexEnd)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 
@@ -255,7 +255,7 @@ func TestWrap_row_align_items_center(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 
@@ -394,7 +394,7 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(rootChild0, AlignFlexStart)
+	rootChild0.StyleSetAlignItems(AlignFlexStart)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -619,7 +619,7 @@ func TestWrap_reverse_row_align_content_center(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignContent(root, AlignCenter)
+	root.StyleSetAlignContent(AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
 
@@ -814,7 +814,7 @@ func TestWrap_reverse_row_align_content_stretch(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignContent(root, AlignStretch)
+	root.StyleSetAlignContent(AlignStretch)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
 
@@ -912,7 +912,7 @@ func TestWrap_reverse_row_align_content_space_around(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignContent(root, AlignSpaceAround)
+	root.StyleSetAlignContent(AlignSpaceAround)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
 
@@ -1009,7 +1009,7 @@ func TestWrap_reverse_column_fixed_size(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(100)
@@ -1107,7 +1107,7 @@ func TestWrapped_row_within_align_items_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -1174,7 +1174,7 @@ func TestWrapped_row_within_align_items_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -1241,7 +1241,7 @@ func TestWrapped_row_within_align_items_flex_end(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignFlexEnd)
+	root.StyleSetAlignItems(AlignFlexEnd)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -1308,9 +1308,9 @@ func TestWrapped_column_max_height(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignContent(root, AlignCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignContent(AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(700)
 	root.StyleSetHeight(500)
@@ -1383,9 +1383,9 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignContent(root, AlignCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignContent(AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(700)
 	root.StyleSetHeight(500)

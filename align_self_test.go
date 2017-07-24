@@ -117,7 +117,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

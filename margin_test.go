@@ -82,7 +82,7 @@ func TestMargin_end(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
+	root.StyleSetJustifyContent(JustifyFlexEnd)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -120,7 +120,7 @@ func TestMargin_bottom(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
+	root.StyleSetJustifyContent(JustifyFlexEnd)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -415,7 +415,7 @@ func TestMargin_auto_bottom(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -469,7 +469,7 @@ func TestMargin_auto_top(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -523,7 +523,7 @@ func TestMargin_auto_bottom_and_top(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -578,7 +578,7 @@ func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -633,7 +633,7 @@ func TestMargin_auto_mutiple_children_column(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -704,7 +704,7 @@ func TestMargin_auto_mutiple_children_row(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -775,7 +775,7 @@ func Testargin_auto_left_and_right_column(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -885,7 +885,7 @@ func TestMargin_auto_start_and_end_column(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -994,7 +994,7 @@ func TestMargin_auto_left_and_right_column_and_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -1049,7 +1049,7 @@ func TestMargin_auto_left(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -1103,7 +1103,7 @@ func TestMargin_auto_right(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -1344,7 +1344,7 @@ func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
@@ -1384,7 +1384,7 @@ func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
@@ -1423,7 +1423,7 @@ func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
@@ -1463,7 +1463,7 @@ func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 

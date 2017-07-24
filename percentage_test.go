@@ -960,8 +960,8 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -970,7 +970,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	rootChild0Child0.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetJustifyContent(rootChild0Child0, JustifyCenter)
+	rootChild0Child0.StyleSetJustifyContent(JustifyCenter)
 	rootChild0Child0.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 

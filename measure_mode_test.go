@@ -127,7 +127,7 @@ func TestAt_most_cross_axis_column(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -178,7 +178,7 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 
 	root := NewNode()
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -255,7 +255,7 @@ func TestOverflow_scroll_column(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	NodeStyleSetOverflow(root, OverflowScroll)
 	root.StyleSetHeight(100)
 	root.StyleSetWidth(100)
@@ -284,7 +284,7 @@ func TestOverflow_scroll_row(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetOverflow(root, OverflowScroll)
 	root.StyleSetHeight(100)

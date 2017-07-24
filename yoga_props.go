@@ -192,24 +192,24 @@ func (node *Node) StyleSetFlexDirection(flexDirection FlexDirection) {
 	}
 }
 
-// NodeStyleSetJustifyContent sets justify content
-func NodeStyleSetJustifyContent(node *Node, justifyContent Justify) {
+// StyleSetJustifyContent sets justify content
+func (node *Node) StyleSetJustifyContent(justifyContent Justify) {
 	if node.Style.JustifyContent != justifyContent {
 		node.Style.JustifyContent = justifyContent
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetAlignContent sets align content
-func NodeStyleSetAlignContent(node *Node, alignContent Align) {
+// StyleSetAlignContent sets align content
+func (node *Node) StyleSetAlignContent(alignContent Align) {
 	if node.Style.AlignContent != alignContent {
 		node.Style.AlignContent = alignContent
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetAlignItems sets align content
-func NodeStyleSetAlignItems(node *Node, alignItems Align) {
+// StyleSetAlignItems sets align content
+func (node *Node) StyleSetAlignItems(alignItems Align) {
 	if node.Style.AlignItems != alignItems {
 		node.Style.AlignItems = alignItems
 		nodeMarkDirtyInternal(node)

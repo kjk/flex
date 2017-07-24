@@ -79,7 +79,7 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 
 func TestDont_measure_when_min_equals_max(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -105,7 +105,7 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 
 func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -131,7 +131,7 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 
 func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -157,7 +157,7 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 
 func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -351,7 +351,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	NodeStyleSetMargin(root, EdgeTop, 20)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)

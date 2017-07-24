@@ -42,7 +42,7 @@ func TestAlign_items_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -80,7 +80,7 @@ func TestAlign_items_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -118,7 +118,7 @@ func TestAlign_items_flex_end(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignFlexEnd)
+	root.StyleSetAlignItems(AlignFlexEnd)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -157,7 +157,7 @@ func TestAlign_baseline(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -211,7 +211,7 @@ func TestAlign_baseline_child(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -280,7 +280,7 @@ func TestAlign_baseline_child_multiline(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -396,7 +396,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -514,7 +514,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -631,7 +631,7 @@ func TestAlign_baseline_child_top(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -701,7 +701,7 @@ func TestAlign_baseline_child_top2(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -771,7 +771,7 @@ func TestAlign_baseline_double_nested_child(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -854,7 +854,7 @@ func TestAlign_baseline_column(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -908,7 +908,7 @@ func TestAlign_baseline_child_margin(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -985,7 +985,7 @@ func TestAlign_baseline_child_padding(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	NodeStyleSetPadding(root, EdgeLeft, 5)
 	NodeStyleSetPadding(root, EdgeTop, 5)
 	NodeStyleSetPadding(root, EdgeRight, 5)
@@ -1062,7 +1062,7 @@ func TestAlign_baseline_multiline(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
@@ -1176,7 +1176,7 @@ func TestAlign_baseline_multiline_column(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
@@ -1290,7 +1290,7 @@ func TestAlign_baseline_multiline_column2(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
@@ -1405,7 +1405,7 @@ func TestAlign_baseline_multiline_row_and_column(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignBaseline)
+	root.StyleSetAlignItems(AlignBaseline)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
@@ -1519,13 +1519,13 @@ func TestAlign_items_center_child_with_margin_bigger_than_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(rootChild0, AlignCenter)
+	rootChild0.StyleSetAlignItems(AlignCenter)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
@@ -1574,13 +1574,13 @@ func TestAlign_items_flex_end_child_with_margin_bigger_than_parent(t *testing.T)
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(rootChild0, AlignFlexEnd)
+	rootChild0.StyleSetAlignItems(AlignFlexEnd)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
@@ -1629,13 +1629,13 @@ func TestAlign_items_center_child_without_margin_bigger_than_parent(t *testing.T
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(rootChild0, AlignCenter)
+	rootChild0.StyleSetAlignItems(AlignCenter)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
@@ -1682,13 +1682,13 @@ func TestAlign_items_flex_end_child_without_margin_bigger_than_parent(t *testing
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetJustifyContent(JustifyCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	root.StyleSetWidth(52)
 	root.StyleSetHeight(52)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(rootChild0, AlignFlexEnd)
+	rootChild0.StyleSetAlignItems(AlignFlexEnd)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
@@ -1735,13 +1735,13 @@ func TestAlign_center_should_size_based_on_content(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetAlignItems(root, AlignCenter)
+	root.StyleSetAlignItems(AlignCenter)
 	NodeStyleSetMargin(root, EdgeTop, 20)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(rootChild0, JustifyCenter)
+	rootChild0.StyleSetJustifyContent(JustifyCenter)
 	NodeStyleSetFlexShrink(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -1809,7 +1809,7 @@ func TestAlign_strech_should_size_based_on_parent(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetJustifyContent(rootChild0, JustifyCenter)
+	rootChild0.StyleSetJustifyContent(JustifyCenter)
 	NodeStyleSetFlexShrink(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 

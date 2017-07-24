@@ -56,7 +56,7 @@ func measure8449(node *Node, width float32, widthMode MeasureMode, height float3
 func TestMeasure_once_single_flexible_child(t *testing.T) {
 	root := NewNode()
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -93,7 +93,7 @@ func TestRemeasure_with_same_exact_width_larger_than_needed_height(t *testing.T)
 
 func TestRemeasure_with_same_atmost_width_larger_than_needed_height(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 
 	rootChild0 := NewNode()
 	measureCount := 0
@@ -111,7 +111,7 @@ func TestRemeasure_with_same_atmost_width_larger_than_needed_height(t *testing.T
 
 func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 
 	rootChild0 := NewNode()
 	measureCount := 0
@@ -120,7 +120,7 @@ func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
-	NodeStyleSetAlignItems(root, AlignStretch)
+	root.StyleSetAlignItems(AlignStretch)
 	NodeCalculateLayout(root, 10, 50, DirectionLTR)
 
 	measureCount = rootChild0.Context.(int)
@@ -130,7 +130,7 @@ func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 
 func TestRemeasure_with_atmost_computed_width_undefined_height(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetAlignItems(root, AlignFlexStart)
+	root.StyleSetAlignItems(AlignFlexStart)
 
 	rootChild0 := NewNode()
 	measureCount := 0
