@@ -9,7 +9,7 @@ import (
 func TestAssert_default_values(t *testing.T) {
 	root := NewNode()
 
-	assert.Equal(t, 0, NodeGetChildCount(root))
+	assert.Equal(t, 0, len(root.Children))
 	var nilNode *Node
 	assert.Equal(t, nilNode, NodeGetChild(root, 1))
 	assert.Equal(t, nilNode, NodeGetChild(root, 0))

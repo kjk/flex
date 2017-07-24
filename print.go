@@ -148,7 +148,7 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 	}
 	log(node, LogLevelDebug, ">")
 
-	childCount := YGNodeListCount(node.Children)
+	childCount := len(node.Children)
 	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
 			log(node, LogLevelDebug, "\n")

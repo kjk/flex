@@ -91,7 +91,7 @@ type Node struct {
 	lineIndex int
 
 	Parent   *Node
-	Children *YGNodeList
+	Children []*Node
 
 	NextChild *Node
 
@@ -299,10 +299,10 @@ func NewNode() *Node {
 
 // NodeReset resets a node
 func NodeReset(node *Node) {
-	assertWithNode(node, NodeGetChildCount(node) == 0, "Cannot reset a node which still has children attached")
+	assertWithNode(node, len(node.Children) == 0, "Cannot reset a node which still has children attached")
 	assertWithNode(node, node.Parent == nil, "Cannot reset a node still attached to a parent")
 
-	YGNodeListFree(node.Children)
+	node.Children = nil
 
 	config := node.Config
 	*node = nodeDefaults
@@ -351,7 +351,7 @@ func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
 	} else {
 		assertWithNode(
 			node,
-			NodeGetChildCount(node) == 0,
+			len(node.Children) == 0,
 			"Cannot set measure function: Nodes with measure functions cannot have children.")
 		node.Measure = measureFunc
 		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
@@ -360,18 +360,39 @@ func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
 }
 
 // NodeInsertChild inserts a child
-func NodeInsertChild(node *Node, child *Node, index int) {
+func NodeInsertChild(node *Node, child *Node, idx int) {
 	assertWithNode(node, child.Parent == nil, "Child already has a parent, it must be removed first.")
 	assertWithNode(node, node.Measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
 
-	YGNodeListInsert(&node.Children, child, index)
+	a := node.Children
+	// https://github.com/golang/go/wiki/SliceTricks
+	a = append(a[:idx], append([]*Node{child}, a[idx:]...)...)
+
+	node.Children = a
+
 	child.Parent = node
 	nodeMarkDirtyInternal(node)
 }
 
+func (node *Node) deleteChild(child *Node) *Node {
+	a := node.Children
+	n := len(a)
+	for i := 0; i < n; i++ {
+		if a[i] == child {
+			removed := a[i]
+			copy(a[i:], a[i+1:])
+			a[len(a)-1] = nil // or the zero value of T
+			a = a[:len(a)-1]
+			node.Children = a
+			return removed
+		}
+	}
+	return nil
+}
+
 // NodeRemoveChild removes the child
 func NodeRemoveChild(node *Node, child *Node) {
-	if NodeListDelete(node.Children, child) != nil {
+	if node.deleteChild(child) != nil {
 		child.Layout = nodeDefaults.Layout // layout is no longer valid
 		child.Parent = nil
 		nodeMarkDirtyInternal(node)
@@ -379,13 +400,11 @@ func NodeRemoveChild(node *Node, child *Node) {
 }
 
 // NodeGetChild returns a child
-func NodeGetChild(node *Node, index int) *Node {
-	return YGNodeListGet(node.Children, index)
-}
-
-// NodeGetChildCount returns number of children
-func NodeGetChildCount(node *Node) int {
-	return YGNodeListCount(node.Children)
+func NodeGetChild(node *Node, idx int) *Node {
+	if idx < len(node.Children) {
+		return node.Children[idx]
+	}
+	return nil
 }
 
 // NodeMarkDirty marks node as dirty
@@ -688,7 +707,7 @@ func Baseline(node *Node) float32 {
 	}
 
 	var baselineChild *Node
-	childCount := NodeGetChildCount(node)
+	childCount := len(node.Children)
 	for i := 0; i < childCount; i++ {
 		child := NodeGetChild(node, i)
 		if child.lineIndex > 0 {
@@ -747,7 +766,7 @@ func IsBaselineLayout(node *Node) bool {
 	if node.Style.AlignItems == AlignBaseline {
 		return true
 	}
-	childCount := NodeGetChildCount(node)
+	childCount := len(node.Children)
 	for i := 0; i < childCount; i++ {
 		child := NodeGetChild(node, i)
 		if child.Style.PositionType == PositionTypeRelative &&
@@ -1353,9 +1372,9 @@ func zeroOutLayoutRecursivly(node *Node) {
 	node.Layout.cachedLayout.computedWidth = 0
 	node.Layout.cachedLayout.computedHeight = 0
 	node.hasNewLayout = true
-	childCount := NodeGetChildCount(node)
+	childCount := len(node.Children)
 	for i := 0; i < childCount; i++ {
-		child := YGNodeListGet(node.Children, i)
+		child := node.Children[i]
 		zeroOutLayoutRecursivly(child)
 	}
 }
@@ -1478,7 +1497,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		return
 	}
 
-	childCount := YGNodeListCount(node.Children)
+	childCount := len(node.Children)
 	if childCount == 0 {
 		nodeEmptyContainerSetMeasuredDimensions(node, availableWidth, availableHeight, widthMeasureMode, heightMeasureMode, parentWidth, parentHeight)
 		return
@@ -1595,7 +1614,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 
 	// STEP 3: DETERMINE FLEX BASIS FOR EACH ITEM
 	for i := 0; i < childCount; i++ {
-		child := YGNodeListGet(node.Children, i)
+		child := node.Children[i]
 		if child.Style.Display == DisplayNone {
 			zeroOutLayoutRecursivly(child)
 			child.hasNewLayout = true
@@ -1695,7 +1714,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 
 		// Add items to the current line until it's full or we run out of items.
 		for i := startOfLineIndex; i < childCount; i++ {
-			child := YGNodeListGet(node.Children, i)
+			child := node.Children[i]
 			if child.Style.Display == DisplayNone {
 				endOfLineIndex++
 				continue
@@ -2090,7 +2109,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 
 		numberOfAutoMarginsOnCurrentLine := 0
 		for i := startOfLineIndex; i < endOfLineIndex; i++ {
-			child := YGNodeListGet(node.Children, i)
+			child := node.Children[i]
 			if child.Style.PositionType == PositionTypeRelative {
 				if marginLeadingValue(child, mainAxis).Unit == UnitAuto {
 					numberOfAutoMarginsOnCurrentLine++
@@ -2125,7 +2144,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		var crossDim float32
 
 		for i := startOfLineIndex; i < endOfLineIndex; i++ {
-			child := YGNodeListGet(node.Children, i)
+			child := node.Children[i]
 			if child.Style.Display == DisplayNone {
 				continue
 			}
@@ -2210,7 +2229,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		// We can skip child alignment if we're just measuring the container.
 		if performLayout {
 			for i := startOfLineIndex; i < endOfLineIndex; i++ {
-				child := YGNodeListGet(node.Children, i)
+				child := node.Children[i]
 				if child.Style.Display == DisplayNone {
 					continue
 				}
@@ -2383,7 +2402,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 			var maxAscentForCurrentLine float32
 			var maxDescentForCurrentLine float32
 			for ii = startIndex; ii < childCount; ii++ {
-				child := YGNodeListGet(node.Children, ii)
+				child := node.Children[ii]
 				if child.Style.Display == DisplayNone {
 					continue
 				}
@@ -2410,7 +2429,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 
 			if performLayout {
 				for ii = startIndex; ii < endIndex; ii++ {
-					child := YGNodeListGet(node.Children, ii)
+					child := node.Children[ii]
 					if child.Style.Display == DisplayNone {
 						continue
 					}
@@ -2568,7 +2587,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		// Set trailing position if necessary.
 		if needsMainTrailingPos || needsCrossTrailingPos {
 			for i := 0; i < childCount; i++ {
-				child := YGNodeListGet(node.Children, i)
+				child := node.Children[i]
 				if child.Style.Display == DisplayNone {
 					continue
 				}
@@ -2967,7 +2986,7 @@ func roundToPixelGrid(node *Node, pointScaleFactor float32, absoluteLeft float32
 			(textRounding && !hasFractionalHeight)) -
 			roundValueToPixelGrid(absoluteNodeTop, pointScaleFactor, false, textRounding)
 
-	childCount := YGNodeListCount(node.Children)
+	childCount := len(node.Children)
 	for i := 0; i < childCount; i++ {
 		roundToPixelGrid(NodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
 	}
