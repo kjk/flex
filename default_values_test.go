@@ -23,8 +23,8 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, PositionTypeRelative, root.Style.PositionType)
 	assert.Equal(t, WrapNoWrap, root.Style.FlexWrap)
 	assert.Equal(t, OverflowVisible, root.Style.Overflow)
-	assertFloatEqual(t, 0, NodeStyleGetFlexGrow(root))
-	assertFloatEqual(t, 0, NodeStyleGetFlexShrink(root))
+	assertFloatEqual(t, 0, root.StyleGetFlexGrow())
+	assertFloatEqual(t, 0, root.StyleGetFlexShrink())
 	assert.Equal(t, root.Style.FlexBasis.Unit, UnitAuto)
 
 	assert.Equal(t, root.StyleGetPosition(EdgeLeft).Unit, UnitUndefined)
@@ -34,26 +34,26 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, root.StyleGetPosition(EdgeStart).Unit, UnitUndefined)
 	assert.Equal(t, root.StyleGetPosition(EdgeEnd).Unit, UnitUndefined)
 
-	assert.Equal(t, NodeStyleGetMargin(root, EdgeLeft).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMargin(root, EdgeTop).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMargin(root, EdgeRight).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMargin(root, EdgeBottom).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMargin(root, EdgeStart).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMargin(root, EdgeEnd).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMargin(EdgeLeft).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMargin(EdgeTop).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMargin(EdgeRight).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMargin(EdgeBottom).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMargin(EdgeStart).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMargin(EdgeEnd).Unit, UnitUndefined)
 
-	assert.Equal(t, NodeStyleGetPadding(root, EdgeLeft).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetPadding(root, EdgeTop).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetPadding(root, EdgeRight).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetPadding(root, EdgeBottom).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetPadding(root, EdgeStart).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetPadding(root, EdgeEnd).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetPadding(EdgeLeft).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetPadding(EdgeTop).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetPadding(EdgeRight).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetPadding(EdgeBottom).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetPadding(EdgeStart).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetPadding(EdgeEnd).Unit, UnitUndefined)
 
-	assert.True(t, FloatIsUndefined(NodeStyleGetBorder(root, EdgeLeft)))
-	assert.True(t, FloatIsUndefined(NodeStyleGetBorder(root, EdgeTop)))
-	assert.True(t, FloatIsUndefined(NodeStyleGetBorder(root, EdgeRight)))
-	assert.True(t, FloatIsUndefined(NodeStyleGetBorder(root, EdgeBottom)))
-	assert.True(t, FloatIsUndefined(NodeStyleGetBorder(root, EdgeStart)))
-	assert.True(t, FloatIsUndefined(NodeStyleGetBorder(root, EdgeEnd)))
+	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeLeft)))
+	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeTop)))
+	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeRight)))
+	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeBottom)))
+	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeStart)))
+	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeEnd)))
 
 	assert.Equal(t, NodeStyleGetWidth(root).Unit, UnitAuto)
 	assert.Equal(t, NodeStyleGetHeight(root).Unit, UnitAuto)
@@ -95,7 +95,7 @@ func TestAssert_webdefault_values(t *testing.T) {
 
 	assert.Equal(t, FlexDirectionRow, root.Style.FlexDirection)
 	assert.Equal(t, AlignStretch, root.Style.AlignContent)
-	assertFloatEqual(t, 1, NodeStyleGetFlexShrink(root))
+	assertFloatEqual(t, 1, root.StyleGetFlexShrink())
 
 }
 
@@ -107,6 +107,6 @@ func TestAssert_webdefault_values_reset(t *testing.T) {
 
 	assert.Equal(t, FlexDirectionRow, root.Style.FlexDirection)
 	assert.Equal(t, AlignStretch, root.Style.AlignContent)
-	assertFloatEqual(t, 1, NodeStyleGetFlexShrink(root))
+	assertFloatEqual(t, 1, root.StyleGetFlexShrink())
 
 }

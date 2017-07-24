@@ -338,8 +338,8 @@ func YGNodeStyleSetMarginPercent(node *Node, edge Edge, margin float32) {
 	}
 }
 
-// NodeStyleGetMargin gets margin
-func NodeStyleGetMargin(node *Node, edge Edge) Value {
+// StyleGetMargin gets margin
+func (node *Node) StyleGetMargin(edge Edge) Value {
 	return node.Style.Margin[edge]
 }
 
@@ -378,8 +378,8 @@ func NodeStyleSetPaddingPercent(node *Node, edge Edge, padding float32) {
 	}
 }
 
-// NodeStyleGetPadding gets padding
-func NodeStyleGetPadding(node *Node, edge Edge) Value {
+// StyleGetPadding gets padding
+func (node *Node) StyleGetPadding(edge Edge) Value {
 	return node.Style.Padding[edge]
 }
 
@@ -396,8 +396,8 @@ func NodeStyleSetBorder(node *Node, edge Edge, border float32) {
 	}
 }
 
-// NodeStyleGetBorder gets border
-func NodeStyleGetBorder(node *Node, edge Edge) float32 {
+// StyleGetBorder gets border
+func (node *Node) StyleGetBorder(edge Edge) float32 {
 	return node.Style.Border[edge].Value
 }
 

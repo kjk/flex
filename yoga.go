@@ -471,16 +471,16 @@ func resolveFlexGrow(node *Node) float32 {
 	return defaultFlexGrow
 }
 
-// NodeStyleGetFlexGrow gets flex grow
-func NodeStyleGetFlexGrow(node *Node) float32 {
+// StyleGetFlexGrow gets flex grow
+func (node *Node) StyleGetFlexGrow() float32 {
 	if FloatIsUndefined(node.Style.FlexGrow) {
 		return defaultFlexGrow
 	}
 	return node.Style.FlexGrow
 }
 
-// NodeStyleGetFlexShrink gets flex shrink
-func NodeStyleGetFlexShrink(node *Node) float32 {
+// StyleGetFlexShrink gets flex shrink
+func (node *Node) StyleGetFlexShrink() float32 {
 	if FloatIsUndefined(node.Style.FlexShrink) {
 		if node.Config.UseWebDefaults {
 			return webDefaultFlexShrink
