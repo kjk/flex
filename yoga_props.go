@@ -204,22 +204,12 @@ func NodeStyleSetDirection(node *Node, direction Direction) {
 	}
 }
 
-// NodeStyleGetDirection gets direction
-func NodeStyleGetDirection(node *Node) Direction {
-	return node.Style.Direction
-}
-
 // NodeStyleSetFlexDirection sets flex directions
 func NodeStyleSetFlexDirection(node *Node, flexDirection FlexDirection) {
 	if node.Style.FlexDirection != flexDirection {
 		node.Style.FlexDirection = flexDirection
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetFlexDirection gets flex direction
-func NodeStyleGetFlexDirection(node *Node) FlexDirection {
-	return node.Style.FlexDirection
 }
 
 // NodeStyleSetJustifyContent sets justify content
@@ -230,22 +220,12 @@ func NodeStyleSetJustifyContent(node *Node, justifyContent Justify) {
 	}
 }
 
-// NodeStyleGetJustifyContent gets justify content
-func NodeStyleGetJustifyContent(node *Node) Justify {
-	return node.Style.JustifyContent
-}
-
 // NodeStyleSetAlignContent sets align content
 func NodeStyleSetAlignContent(node *Node, alignContent Align) {
 	if node.Style.AlignContent != alignContent {
 		node.Style.AlignContent = alignContent
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetAlignContent gets align content
-func NodeStyleGetAlignContent(node *Node) Align {
-	return node.Style.AlignContent
 }
 
 // NodeStyleSetAlignItems sets align content
@@ -256,22 +236,12 @@ func NodeStyleSetAlignItems(node *Node, alignItems Align) {
 	}
 }
 
-// NodeStyleGetAlignItems gets align items
-func NodeStyleGetAlignItems(node *Node) Align {
-	return node.Style.AlignItems
-}
-
 // NodeStyleSetAlignSelf sets align self
 func NodeStyleSetAlignSelf(node *Node, alignSelf Align) {
 	if node.Style.AlignSelf != alignSelf {
 		node.Style.AlignSelf = alignSelf
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetAlignSelf gets align self
-func NodeStyleGetAlignSelf(node *Node) Align {
-	return node.Style.AlignSelf
 }
 
 // NodeStyleSetFlexWrap sets flex wrap
@@ -282,11 +252,6 @@ func NodeStyleSetFlexWrap(node *Node, flexWrap Wrap) {
 	}
 }
 
-// NodeStyleGetFlexWrap gets flex wrap
-func NodeStyleGetFlexWrap(node *Node) Wrap {
-	return node.Style.FlexWrap
-}
-
 // NodeStyleSetOverflow sets overflow
 func NodeStyleSetOverflow(node *Node, overflow Overflow) {
 	if node.Style.Overflow != overflow {
@@ -295,22 +260,12 @@ func NodeStyleSetOverflow(node *Node, overflow Overflow) {
 	}
 }
 
-// NodeStyleGetOverflow gets overflow
-func NodeStyleGetOverflow(node *Node) Overflow {
-	return node.Style.Overflow
-}
-
 // NodeStyleSetDisplay sets display
 func NodeStyleSetDisplay(node *Node, display Display) {
 	if node.Style.Display != display {
 		node.Style.Display = display
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetDisplay gets display
-func NodeStyleGetDisplay(node *Node) Display {
-	return node.Style.Display
 }
 
 // NodeStyleSetFlex sets flex
@@ -375,11 +330,6 @@ func NodeStyleSetFlexBasisAuto(node *Node) {
 		node.Style.FlexBasis.Unit = UnitAuto
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetFlexBasis gets flex basis
-func NodeStyleGetFlexBasis(node *Node) Value {
-	return node.Style.FlexBasis
 }
 
 // NodeStyleSetMargin sets margin

@@ -14,18 +14,18 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, nilNode, NodeGetChild(root, 1))
 	assert.Equal(t, nilNode, NodeGetChild(root, 0))
 
-	assert.Equal(t, DirectionInherit, NodeStyleGetDirection(root))
-	assert.Equal(t, FlexDirectionColumn, NodeStyleGetFlexDirection(root))
-	assert.Equal(t, JustifyFlexStart, NodeStyleGetJustifyContent(root))
-	assert.Equal(t, AlignFlexStart, NodeStyleGetAlignContent(root))
-	assert.Equal(t, AlignStretch, NodeStyleGetAlignItems(root))
-	assert.Equal(t, AlignAuto, NodeStyleGetAlignSelf(root))
+	assert.Equal(t, DirectionInherit, root.Style.Direction)
+	assert.Equal(t, FlexDirectionColumn, root.Style.FlexDirection)
+	assert.Equal(t, JustifyFlexStart, root.Style.JustifyContent)
+	assert.Equal(t, AlignFlexStart, root.Style.AlignContent)
+	assert.Equal(t, AlignStretch, root.Style.AlignItems)
+	assert.Equal(t, AlignAuto, root.Style.AlignSelf)
 	assert.Equal(t, PositionTypeRelative, root.Style.PositionType)
-	assert.Equal(t, WrapNoWrap, NodeStyleGetFlexWrap(root))
-	assert.Equal(t, OverflowVisible, NodeStyleGetOverflow(root))
+	assert.Equal(t, WrapNoWrap, root.Style.FlexWrap)
+	assert.Equal(t, OverflowVisible, root.Style.Overflow)
 	assertFloatEqual(t, 0, NodeStyleGetFlexGrow(root))
 	assertFloatEqual(t, 0, NodeStyleGetFlexShrink(root))
-	assert.Equal(t, NodeStyleGetFlexBasis(root).Unit, UnitAuto)
+	assert.Equal(t, root.Style.FlexBasis.Unit, UnitAuto)
 
 	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeLeft).Unit, UnitUndefined)
 	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeTop).Unit, UnitUndefined)
@@ -93,8 +93,8 @@ func TestAssert_webdefault_values(t *testing.T) {
 	config.UseWebDefaults = true
 	root := NewNodeWithConfig(config)
 
-	assert.Equal(t, FlexDirectionRow, NodeStyleGetFlexDirection(root))
-	assert.Equal(t, AlignStretch, NodeStyleGetAlignContent(root))
+	assert.Equal(t, FlexDirectionRow, root.Style.FlexDirection)
+	assert.Equal(t, AlignStretch, root.Style.AlignContent)
 	assertFloatEqual(t, 1, NodeStyleGetFlexShrink(root))
 
 }
@@ -105,8 +105,8 @@ func TestAssert_webdefault_values_reset(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	NodeReset(root)
 
-	assert.Equal(t, FlexDirectionRow, NodeStyleGetFlexDirection(root))
-	assert.Equal(t, AlignStretch, NodeStyleGetAlignContent(root))
+	assert.Equal(t, FlexDirectionRow, root.Style.FlexDirection)
+	assert.Equal(t, AlignStretch, root.Style.AlignContent)
 	assertFloatEqual(t, 1, NodeStyleGetFlexShrink(root))
 
 }
