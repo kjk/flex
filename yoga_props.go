@@ -91,8 +91,8 @@ func NodeStyleSetWidthAuto(node *Node) {
 	}
 }
 
-// NodeStyleGetWidth gets width
-func NodeStyleGetWidth(node *Node) Value {
+// StyleGetWidth gets width
+func (node *Node) StyleGetWidth() Value {
 	return node.Style.Dimensions[DimensionWidth]
 }
 
@@ -132,8 +132,8 @@ func NodeStyleSetHeightAuto(node *Node) {
 	}
 }
 
-// NodeStyleGetHeight gets height
-func NodeStyleGetHeight(node *Node) Value {
+// StyleGetHeight gets height
+func (node *Node) StyleGetHeight() Value {
 	return node.Style.Dimensions[DimensionHeight]
 }
 
@@ -427,8 +427,8 @@ func NodeStyleSetMinWidthPercent(node *Node, minWidth float32) {
 	}
 }
 
-// NodeStyleGetMinWidth gets min width
-func NodeStyleGetMinWidth(node *Node) Value {
+// StyleGetMinWidth gets min width
+func (node *Node) StyleGetMinWidth() Value {
 	return node.Style.MinDimensions[DimensionWidth]
 }
 
@@ -458,8 +458,8 @@ func NodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
 	}
 }
 
-// NodeStyleGetMinHeight gets min height
-func NodeStyleGetMinHeight(node *Node) Value {
+// StyleGetMinHeight gets min height
+func (node *Node) StyleGetMinHeight() Value {
 	return node.Style.MinDimensions[DimensionHeight]
 }
 
@@ -489,8 +489,8 @@ func NodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
 	}
 }
 
-// NodeStyleGetMaxWidth gets max width
-func NodeStyleGetMaxWidth(node *Node) Value {
+// StyleGetMaxWidth gets max width
+func (node *Node) StyleGetMaxWidth() Value {
 	return node.Style.MaxDimensions[DimensionWidth]
 }
 
@@ -520,8 +520,8 @@ func NodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
 	}
 }
 
-// NodeStyleGetMaxHeight gets max height
-func NodeStyleGetMaxHeight(node *Node) Value {
+// StyleGetMaxHeight gets max height
+func (node *Node) StyleGetMaxHeight() Value {
 	return node.Style.MaxDimensions[DimensionHeight]
 }
 

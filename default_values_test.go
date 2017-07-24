@@ -55,12 +55,12 @@ func TestAssert_default_values(t *testing.T) {
 	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeStart)))
 	assert.True(t, FloatIsUndefined(root.StyleGetBorder(EdgeEnd)))
 
-	assert.Equal(t, NodeStyleGetWidth(root).Unit, UnitAuto)
-	assert.Equal(t, NodeStyleGetHeight(root).Unit, UnitAuto)
-	assert.Equal(t, NodeStyleGetMinWidth(root).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMinHeight(root).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMaxWidth(root).Unit, UnitUndefined)
-	assert.Equal(t, NodeStyleGetMaxHeight(root).Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetWidth().Unit, UnitAuto)
+	assert.Equal(t, root.StyleGetHeight().Unit, UnitAuto)
+	assert.Equal(t, root.StyleGetMinWidth().Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMinHeight().Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMaxWidth().Unit, UnitUndefined)
+	assert.Equal(t, root.StyleGetMaxHeight().Unit, UnitUndefined)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
 	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
