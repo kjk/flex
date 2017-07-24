@@ -171,8 +171,8 @@ func NodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
 	}
 }
 
-// YGNodeStyleGetPosition gets position
-func YGNodeStyleGetPosition(node *Node, edge Edge) Value {
+// NodeStyleGetPosition gets position
+func NodeStyleGetPosition(node *Node, edge Edge) Value {
 	return node.Style.Position[edge]
 }
 

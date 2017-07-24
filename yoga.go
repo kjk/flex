@@ -18,7 +18,7 @@ type CachedMeasurement struct {
 
 // This value was chosen based on empiracle data. Even the most complicated
 // layouts should not require more than 16 entries to fit within the cache.
-const YG_MAX_CACHED_RESULT_COUNT = 16
+const maxCachedResultCount = 16
 
 // Layout describes layout
 type Layout struct {
@@ -39,7 +39,7 @@ type Layout struct {
 	lastParentDirection Direction
 
 	nextCachedMeasurementsIndex int
-	cachedMeasurements          [YG_MAX_CACHED_RESULT_COUNT]CachedMeasurement
+	cachedMeasurements          [maxCachedResultCount]CachedMeasurement
 
 	measuredDimensions [2]float32
 
@@ -321,7 +321,7 @@ func ConfigGetDefault() *Config {
 // NewConfig creates new config
 func NewConfig() *Config {
 	config := &Config{}
-	YGAssert(config != nil, "Could not allocate memory for config")
+	assertCond(config != nil, "Could not allocate memory for config")
 
 	*config = configDefaults
 	return config
@@ -679,8 +679,8 @@ func nodeResolveDirection(node *Node, parentDirection Direction) Direction {
 	return node.Style.Direction
 }
 
-// YGBaseline retuns baseline
-func YGBaseline(node *Node) float32 {
+// Baseline retuns baseline
+func Baseline(node *Node) float32 {
 	if node.Baseline != nil {
 		baseline := node.Baseline(node, node.Layout.measuredDimensions[DimensionWidth], node.Layout.measuredDimensions[DimensionHeight])
 		assertWithNode(node, !FloatIsUndefined(baseline), "Expect custom baseline function to not return NaN")
@@ -711,7 +711,7 @@ func YGBaseline(node *Node) float32 {
 		return node.Layout.measuredDimensions[DimensionHeight]
 	}
 
-	baseline := YGBaseline(baselineChild)
+	baseline := Baseline(baselineChild)
 	return baseline + baselineChild.Layout.Position[EdgeTop]
 }
 
@@ -733,8 +733,8 @@ func flexDirectionCross(flexDirection FlexDirection, direction Direction) FlexDi
 	return FlexDirectionColumn
 }
 
-// NodeIsFlex returns true if node is flex
-func NodeIsFlex(node *Node) bool {
+// nodeIsFlex returns true if node is flex
+func nodeIsFlex(node *Node) bool {
 	return (node.Style.PositionType == PositionTypeRelative &&
 		(resolveFlexGrow(node) != 0 || nodeResolveFlexShrink(node) != 0))
 }
@@ -866,7 +866,7 @@ func marginTrailingValue(node *Node, axis FlexDirection) *Value {
 
 }
 
-// nodeBoundAxis is like YGNodeBoundAxisWithinMinAndMax but also ensures that
+// nodeBoundAxis is like nodeBoundAxisWithinMinAndMax but also ensures that
 // the value doesn't go below the padding and border amount.
 func nodeBoundAxis(node *Node, axis FlexDirection, value float32, axisSize float32, widthSize float32) float32 {
 	return fmaxf(nodeBoundAxisWithinMinAndMax(node, axis, value, axisSize),
@@ -1235,8 +1235,8 @@ func nodeAbsoluteLayoutChild(node *Node, child *Node, width float32, widthMode M
 	}
 }
 
-// YGNodeWithMeasureFuncSetMeasuredDimensions sets measure dimensions for node with measure func
-func YGNodeWithMeasureFuncSetMeasuredDimensions(node *Node, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
+// nodeWithMeasureFuncSetMeasuredDimensions sets measure dimensions for node with measure func
+func nodeWithMeasureFuncSetMeasuredDimensions(node *Node, availableWidth float32, availableHeight float32, widthMeasureMode MeasureMode, heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32) {
 	assertWithNode(node, node.Measure != nil, "Expected node to have custom measure function")
 
 	paddingAndBorderAxisRow := nodePaddingAndBorderForAxis(node, FlexDirectionRow, availableWidth)
@@ -1448,8 +1448,8 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	parentDirection Direction, widthMeasureMode MeasureMode,
 	heightMeasureMode MeasureMode, parentWidth float32, parentHeight float32,
 	performLayout bool, config *Config) {
-	// YGAssertWithNode(node, YGFloatIsUndefined(availableWidth) ? widthMeasureMode == YGMeasureModeUndefined : true, "availableWidth is indefinite so widthMeasureMode must be YGMeasureModeUndefined");
-	//YGAssertWithNode(node, YGFloatIsUndefined(availableHeight) ? heightMeasureMode == YGMeasureModeUndefined : true, "availableHeight is indefinite so heightMeasureMode must be YGMeasureModeUndefined");
+	// assertWithNode(node, YGFloatIsUndefined(availableWidth) ? widthMeasureMode == YGMeasureModeUndefined : true, "availableWidth is indefinite so widthMeasureMode must be YGMeasureModeUndefined");
+	//assertWithNode(node, YGFloatIsUndefined(availableHeight) ? heightMeasureMode == YGMeasureModeUndefined : true, "availableHeight is indefinite so heightMeasureMode must be YGMeasureModeUndefined");
 
 	// Set the resolved resolution in the node's layout.
 	direction := nodeResolveDirection(node, parentDirection)
@@ -1474,7 +1474,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	node.Layout.Padding[EdgeBottom] = nodeTrailingPadding(node, flexColumnDirection, parentWidth)
 
 	if node.Measure != nil {
-		YGNodeWithMeasureFuncSetMeasuredDimensions(node, availableWidth, availableHeight, widthMeasureMode, heightMeasureMode, parentWidth, parentHeight)
+		nodeWithMeasureFuncSetMeasuredDimensions(node, availableWidth, availableHeight, widthMeasureMode, heightMeasureMode, parentWidth, parentHeight)
 		return
 	}
 
@@ -1580,7 +1580,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		for i := 0; i < childCount; i++ {
 			child := NodeGetChild(node, i)
 			if singleFlexChild != nil {
-				if NodeIsFlex(child) {
+				if nodeIsFlex(child) {
 					// There is already a flexible child, abort.
 					singleFlexChild = nil
 					break
@@ -1723,7 +1723,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 				sizeConsumedOnCurrentLine += flexBasisWithMinAndMaxConstraints + childMarginMainAxis
 				itemsOnLine++
 
-				if NodeIsFlex(child) {
+				if nodeIsFlex(child) {
 					totalFlexGrowFactors += resolveFlexGrow(child)
 
 					// Unlike the grow factor, the shrink factor is scaled relative to the child dimension.
@@ -1991,7 +1991,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 					childCrossMeasureMode = MeasureModeExactly
 
 					// Parent size raint should have higher priority than flex
-					if NodeIsFlex(currentRelativeChild) {
+					if nodeIsFlex(currentRelativeChild) {
 						childCrossSize = fminf(childCrossSize-marginCross, availableInnerCrossDim)
 						childMainSize = marginMain
 						if isMainAxisRow {
@@ -2397,7 +2397,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 								nodeMarginForAxis(child, crossAxis, availableInnerWidth))
 					}
 					if nodeAlignItem(node, child) == AlignBaseline {
-						ascent := YGBaseline(child) + nodeLeadingMargin(child, FlexDirectionColumn, availableInnerWidth)
+						ascent := Baseline(child) + nodeLeadingMargin(child, FlexDirectionColumn, availableInnerWidth)
 						descent := child.Layout.measuredDimensions[DimensionHeight] + nodeMarginForAxis(child, FlexDirectionColumn, availableInnerWidth) - ascent
 						maxAscentForCurrentLine = fmaxf(maxAscentForCurrentLine, ascent)
 						maxDescentForCurrentLine = fmaxf(maxDescentForCurrentLine, descent)
@@ -2474,7 +2474,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 						case AlignBaseline:
 							{
 								child.Layout.Position[EdgeTop] =
-									currentLead + maxAscentForCurrentLine - YGBaseline(child) +
+									currentLead + maxAscentForCurrentLine - Baseline(child) +
 										nodeLeadingPosition(child, FlexDirectionColumn, availableInnerCrossDim)
 							}
 						case AlignAuto:
@@ -2870,7 +2870,7 @@ func layoutNodeInternal(node *Node, availableWidth float32, availableHeight floa
 		layout.lastParentDirection = parentDirection
 
 		if cachedResults == nil {
-			if layout.nextCachedMeasurementsIndex == YG_MAX_CACHED_RESULT_COUNT {
+			if layout.nextCachedMeasurementsIndex == maxCachedResultCount {
 				if gPrintChanges {
 					fmt.Printf("Out of cache entries!\n")
 				}
@@ -3050,8 +3050,7 @@ func log(node *Node, level LogLevel, format string, args ...interface{}) {
 	fmt.Printf(format, args...)
 }
 
-// YGAssert asserts that cond is true
-func YGAssert(cond bool, format string, args ...interface{}) {
+func assertCond(cond bool, format string, args ...interface{}) {
 	if !cond {
 		panic(format)
 	}
@@ -3059,7 +3058,7 @@ func YGAssert(cond bool, format string, args ...interface{}) {
 
 // assertWithNode assert if cond is not true
 func assertWithNode(node *Node, cond bool, format string, args ...interface{}) {
-	YGAssert(cond, format, args...)
+	assertCond(cond, format, args...)
 }
 
 // assertWithConfig asserts with config

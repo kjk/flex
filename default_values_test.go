@@ -27,12 +27,12 @@ func TestAssert_default_values(t *testing.T) {
 	assertFloatEqual(t, 0, NodeStyleGetFlexShrink(root))
 	assert.Equal(t, root.Style.FlexBasis.Unit, UnitAuto)
 
-	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeLeft).Unit, UnitUndefined)
-	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeTop).Unit, UnitUndefined)
-	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeRight).Unit, UnitUndefined)
-	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeBottom).Unit, UnitUndefined)
-	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeStart).Unit, UnitUndefined)
-	assert.Equal(t, YGNodeStyleGetPosition(root, EdgeEnd).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetPosition(root, EdgeLeft).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetPosition(root, EdgeTop).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetPosition(root, EdgeRight).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetPosition(root, EdgeBottom).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetPosition(root, EdgeStart).Unit, UnitUndefined)
+	assert.Equal(t, NodeStyleGetPosition(root, EdgeEnd).Unit, UnitUndefined)
 
 	assert.Equal(t, NodeStyleGetMargin(root, EdgeLeft).Unit, UnitUndefined)
 	assert.Equal(t, NodeStyleGetMargin(root, EdgeTop).Unit, UnitUndefined)
