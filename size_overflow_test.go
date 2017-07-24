@@ -16,7 +16,7 @@ func TestNested_overflowing_child(t *testing.T) {
 	rootChild0Child0.StyleSetWidth(200)
 	rootChild0Child0.StyleSetHeight(200)
 	rootChild0.InsertChild(rootChild0Child0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -33,7 +33,7 @@ func TestNested_overflowing_child(t *testing.T) {
 	assertFloatEqual(t, 200, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 200, rootChild0Child0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -67,7 +67,7 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	rootChild0Child0.StyleSetWidth(200)
 	rootChild0Child0.StyleSetHeight(200)
 	rootChild0.InsertChild(rootChild0Child0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -84,7 +84,7 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	assertFloatEqual(t, 200, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 200, rootChild0Child0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -117,7 +117,7 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 	rootChild0Child0.StyleSetWidth(100)
 	rootChild0Child0.StyleSetHeight(200)
 	rootChild0.InsertChild(rootChild0Child0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -134,7 +134,7 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 200, rootChild0Child0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())

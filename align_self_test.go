@@ -14,7 +14,7 @@ func TestAlign_self_center(t *testing.T) {
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -26,7 +26,7 @@ func TestAlign_self_center(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -51,7 +51,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -63,7 +63,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -88,7 +88,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -100,7 +100,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -126,7 +126,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -138,7 +138,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -175,7 +175,7 @@ func TestAlign_self_baseline(t *testing.T) {
 	rootChild1child0.StyleSetWidth(50)
 	rootChild1child0.StyleSetHeight(10)
 	rootChild1.InsertChild(rootChild1child0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -197,7 +197,7 @@ func TestAlign_self_baseline(t *testing.T) {
 	assertFloatEqual(t, 50, rootChild1child0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild1child0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())

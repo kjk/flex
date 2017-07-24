@@ -28,7 +28,7 @@ func TestAspect_ratio_cross_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -47,7 +47,7 @@ func TestAspect_ratio_main_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -68,7 +68,7 @@ func TestAspect_ratio_both_dimensions_defined_row(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -88,7 +88,7 @@ func TestAspect_ratio_both_dimensions_defined_column(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -105,7 +105,7 @@ func TestAspect_ratio_align_stretch(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -125,7 +125,7 @@ func TestAspect_ratio_flex_grow(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -145,7 +145,7 @@ func TestAspect_ratio_flex_shrink(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -164,7 +164,7 @@ func TestAspect_ratio_basis(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -185,7 +185,7 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -206,7 +206,7 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -226,7 +226,7 @@ func TestAspect_ratio_with_max_cross_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -246,7 +246,7 @@ func TestAspect_ratio_with_max_main_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -266,7 +266,7 @@ func TestAspect_ratio_with_min_cross_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -286,7 +286,7 @@ func TestAspect_ratio_with_min_main_defined(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -305,7 +305,7 @@ func TestAspect_ratio_double_cross(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(2)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -324,7 +324,7 @@ func TestAspect_ratio_half_cross(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(0.5)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -343,7 +343,7 @@ func TestAspect_ratio_double_main(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(0.5)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -362,7 +362,7 @@ func TestAspect_ratio_half_main(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(2)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -381,7 +381,7 @@ func TestAspect_ratio_with_measure_func(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -403,7 +403,7 @@ func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -424,7 +424,7 @@ func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -451,7 +451,7 @@ func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
 	rootChild1.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild1, 1)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -482,7 +482,7 @@ func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
 	rootChild1.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild1, 1)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -508,7 +508,7 @@ func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(0.5)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -528,7 +528,7 @@ func TestAspect_ratio_overrides_flex_grow_column(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(2)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -549,7 +549,7 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 10, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetTop())
@@ -570,7 +570,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 10, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetTop())
@@ -589,7 +589,7 @@ func TestAspect_ratio_width_overrides_align_stretch_row(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -607,7 +607,7 @@ func TestAspect_ratio_height_overrides_align_stretch_column(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(1)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
@@ -625,7 +625,7 @@ func TestAspect_ratio_allow_child_overflow_parent_size(t *testing.T) {
 	rootChild0.StyleSetAspectRatio(4)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 100, root.LayoutGetWidth())
 	assertFloatEqual(t, 50, root.LayoutGetHeight())
@@ -648,7 +648,7 @@ func TestAspect_ratio_defined_main_with_margin(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeRight, 10)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 100, root.LayoutGetWidth())
 	assertFloatEqual(t, 100, root.LayoutGetHeight())
@@ -671,7 +671,7 @@ func TestAspect_ratio_defined_cross_with_margin(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeRight, 10)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 100, root.LayoutGetWidth())
 	assertFloatEqual(t, 100, root.LayoutGetHeight())

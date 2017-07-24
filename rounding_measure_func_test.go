@@ -28,37 +28,37 @@ func TestRounding_feature_with_custom_measure_func_floor(t *testing.T) {
 	rootChild0.SetMeasureFunc(_measureFloor)
 	root.InsertChild(rootChild0, 0)
 
-	ConfigSetPointScaleFactor(config, 0)
+	config.SetPointScaleFactor(0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 10.2, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10.2, rootChild0.LayoutGetHeight())
 
-	ConfigSetPointScaleFactor(config, 1)
+	config.SetPointScaleFactor(1)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 11, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 11, rootChild0.LayoutGetHeight())
 
-	ConfigSetPointScaleFactor(config, 2)
+	config.SetPointScaleFactor(2)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 10.5, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10.5, rootChild0.LayoutGetHeight())
 
-	ConfigSetPointScaleFactor(config, 4)
+	config.SetPointScaleFactor(4)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 10.25, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10.25, rootChild0.LayoutGetHeight())
 
-	ConfigSetPointScaleFactor(config, float32(1)/float32(3))
+	config.SetPointScaleFactor(float32(1) / float32(3))
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 12.0, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 12.0, rootChild0.LayoutGetHeight())
@@ -72,9 +72,9 @@ func TestRounding_feature_with_custom_measure_func_ceil(t *testing.T) {
 	rootChild0.SetMeasureFunc(_measureCeil)
 	root.InsertChild(rootChild0, 0)
 
-	ConfigSetPointScaleFactor(config, 1)
+	config.SetPointScaleFactor(1)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 11, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 11, rootChild0.LayoutGetHeight())
@@ -89,9 +89,9 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 	rootChild0.SetMeasureFunc(_measureFractial)
 	root.InsertChild(rootChild0, 0)
 
-	ConfigSetPointScaleFactor(config, 2)
+	config.SetPointScaleFactor(2)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0.5, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 0.5, rootChild0.LayoutGetHeight())

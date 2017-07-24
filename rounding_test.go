@@ -21,7 +21,7 @@ func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetFlexGrow(1)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -43,7 +43,7 @@ func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 	assertFloatEqual(t, 33, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -93,7 +93,7 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	rootChild4 := NewNodeWithConfig(config)
 	rootChild4.StyleSetFlexGrow(1)
 	root.InsertChild(rootChild4, 4)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -125,7 +125,7 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	assertFloatEqual(t, 23, rootChild4.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild4.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -178,7 +178,7 @@ func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetFlexBasis(25)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -200,7 +200,7 @@ func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 	assertFloatEqual(t, 25, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -245,7 +245,7 @@ func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -267,7 +267,7 @@ func TestRounding_flex_basis_overrides_main_size(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 24, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -312,7 +312,7 @@ func TestRounding_total_fractial(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1.1)
 	rootChild2.StyleSetHeight(10.7)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -334,7 +334,7 @@ func TestRounding_total_fractial(t *testing.T) {
 	assertFloatEqual(t, 87, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 24, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -393,7 +393,7 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1.1)
 	rootChild2.StyleSetHeight(10.7)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -425,7 +425,7 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	assertFloatEqual(t, 87, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 24, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -480,7 +480,7 @@ func TestRounding_fractial_input_1(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -502,7 +502,7 @@ func TestRounding_fractial_input_1(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 24, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -547,7 +547,7 @@ func TestRounding_fractial_input_2(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -569,7 +569,7 @@ func TestRounding_fractial_input_2(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 25, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -615,7 +615,7 @@ func TestRounding_fractial_input_3(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -637,7 +637,7 @@ func TestRounding_fractial_input_3(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 25, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -683,7 +683,7 @@ func TestRounding_fractial_input_4(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 1, root.LayoutGetTop())
@@ -705,7 +705,7 @@ func TestRounding_fractial_input_4(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 24, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 1, root.LayoutGetTop())
@@ -754,7 +754,7 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -781,7 +781,7 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	assertFloatEqual(t, 107, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -834,7 +834,7 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetWidth(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -861,7 +861,7 @@ func TestRounding_inner_node_controversy_vertical(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 107, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -931,7 +931,7 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeightPercent(100)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -973,7 +973,7 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	assertFloatEqual(t, 213, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 320, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())

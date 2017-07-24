@@ -10,14 +10,14 @@ func TestBorder_no_size(t *testing.T) {
 	root.StyleSetBorder(EdgeTop, 10)
 	root.StyleSetBorder(EdgeRight, 10)
 	root.StyleSetBorder(EdgeBottom, 10)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
 	assertFloatEqual(t, 20, root.LayoutGetWidth())
 	assertFloatEqual(t, 20, root.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -38,7 +38,7 @@ func TestBorder_container_match_child(t *testing.T) {
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -50,7 +50,7 @@ func TestBorder_container_match_child(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -78,7 +78,7 @@ func TestBorder_flex_child(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetWidth(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -90,7 +90,7 @@ func TestBorder_flex_child(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 80, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -117,7 +117,7 @@ func TestBorder_stretch_child(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -129,7 +129,7 @@ func TestBorder_stretch_child(t *testing.T) {
 	assertFloatEqual(t, 80, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -158,7 +158,7 @@ func TestBorder_center_child(t *testing.T) {
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	root.InsertChild(rootChild0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -170,7 +170,7 @@ func TestBorder_center_child(t *testing.T) {
 	assertFloatEqual(t, 10, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())

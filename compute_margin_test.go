@@ -8,12 +8,12 @@ func TestComputed_layout_margin(t *testing.T) {
 	root.StyleSetHeight(100)
 	root.StyleSetMarginPercent(EdgeStart, 10)
 
-	NodeCalculateLayout(root, 100, 100, DirectionLTR)
+	CalculateLayout(root, 100, 100, DirectionLTR)
 
 	assertFloatEqual(t, 10, root.LayoutGetMargin(EdgeLeft))
 	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeRight))
 
-	NodeCalculateLayout(root, 100, 100, DirectionRTL)
+	CalculateLayout(root, 100, 100, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeLeft))
 	assertFloatEqual(t, 10, root.LayoutGetMargin(EdgeRight))

@@ -14,14 +14,14 @@ func TestReset_layout_when_child_removed(t *testing.T) {
 	rootChild0.StyleSetHeight(100)
 	root.InsertChild(rootChild0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())
 	assertFloatEqual(t, 100, rootChild0.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild0.LayoutGetHeight())
 
-	NodeRemoveChild(root, rootChild0)
+	root.RemoveChild(rootChild0)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetLeft())
 	assertFloatEqual(t, 0, rootChild0.LayoutGetTop())

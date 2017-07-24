@@ -30,7 +30,7 @@ func TestChildren_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 	child1.StyleSetMargin(EdgeBottom, 5)
 	root.InsertChild(child1, 1)
 
-	NodeCalculateLayout(root, 200, 100, DirectionLTR)
+	CalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, root.Layout.HadOverflow)
 }
@@ -49,7 +49,7 @@ func TestSpacing_overflow_no_wrap_and_no_flex_children(t *testing.T) {
 	child1.StyleSetMargin(EdgeBottom, 5)
 	root.InsertChild(child1, 1)
 
-	NodeCalculateLayout(root, 200, 100, DirectionLTR)
+	CalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, root.Layout.HadOverflow)
 }
@@ -69,7 +69,7 @@ func TestNo_overflow_no_wrap_and_flex_children(t *testing.T) {
 	child1.StyleSetFlexShrink(1)
 	root.InsertChild(child1, 1)
 
-	NodeCalculateLayout(root, 200, 100, DirectionLTR)
+	CalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.False(t, root.Layout.HadOverflow)
 }
@@ -88,13 +88,13 @@ func TestHadOverflow_gets_reset_if_not_logger_valid(t *testing.T) {
 	child1.StyleSetMargin(EdgeBottom, 5)
 	root.InsertChild(child1, 1)
 
-	NodeCalculateLayout(root, 200, 100, DirectionLTR)
+	CalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, root.Layout.HadOverflow)
 
 	child1.StyleSetFlexShrink(1)
 
-	NodeCalculateLayout(root, 200, 100, DirectionLTR)
+	CalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.False(t, root.Layout.HadOverflow)
 }
@@ -117,7 +117,7 @@ func TestSpacing_overflow_in_nested_nodes(t *testing.T) {
 	child1_1.StyleSetMargin(EdgeBottom, 5)
 	child1.InsertChild(child1_1, 0)
 
-	NodeCalculateLayout(root, 200, 100, DirectionLTR)
+	CalculateLayout(root, 200, 100, DirectionLTR)
 
 	assert.True(t, root.Layout.HadOverflow)
 }

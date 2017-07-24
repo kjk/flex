@@ -390,8 +390,8 @@ func (node *Node) deleteChild(child *Node) *Node {
 	return nil
 }
 
-// NodeRemoveChild removes the child
-func NodeRemoveChild(node *Node, child *Node) {
+// RemoveChild removes the child
+func (node *Node) RemoveChild(child *Node) {
 	if node.deleteChild(child) != nil {
 		child.Layout = nodeDefaults.Layout // layout is no longer valid
 		child.Parent = nil
@@ -758,8 +758,8 @@ func nodeIsFlex(node *Node) bool {
 		(resolveFlexGrow(node) != 0 || nodeResolveFlexShrink(node) != 0))
 }
 
-// IsBaselineLayout returns true if it's baseline layout
-func IsBaselineLayout(node *Node) bool {
+// isBaselineLayout returns true if it's baseline layout
+func isBaselineLayout(node *Node) bool {
 	if flexDirectionIsColumn(node.Style.FlexDirection) {
 		return false
 	}
@@ -892,8 +892,7 @@ func nodeBoundAxis(node *Node, axis FlexDirection, value float32, axisSize float
 		nodePaddingAndBorderForAxis(node, axis, widthSize))
 }
 
-// NodeSetChildTrailingPosition sets child's trailing position
-func NodeSetChildTrailingPosition(node *Node, child *Node, axis FlexDirection) {
+func nodeSetChildTrailingPosition(node *Node, child *Node, axis FlexDirection) {
 	size := child.Layout.measuredDimensions[dim[axis]]
 	child.Layout.Position[trailing[axis]] =
 		node.Layout.measuredDimensions[dim[axis]] - size - child.Layout.Position[pos[axis]]
@@ -931,8 +930,7 @@ func constrainMaxSizeForMode(node *Node, axis FlexDirection, parentAxisSize floa
 	}
 }
 
-// NodeSetPosition sets position
-func NodeSetPosition(node *Node, direction Direction, mainSize float32, crossSize float32, parentWidth float32) {
+func nodeSetPosition(node *Node, direction Direction, mainSize float32, crossSize float32, parentWidth float32) {
 	/* Root nodes should be always layouted as LTR, so we don't return negative values. */
 	directionRespectingRoot := DirectionLTR
 	if node.Parent != nil {
@@ -1625,7 +1623,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 		if performLayout {
 			// Set the initial position (relative to the parent).
 			childDirection := nodeResolveDirection(child, direction)
-			NodeSetPosition(child,
+			nodeSetPosition(child,
 				childDirection,
 				availableInnerMainDim,
 				availableInnerCrossDim,
@@ -2358,7 +2356,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	}
 
 	// STEP 8: MULTI-LINE CONTENT ALIGNMENT
-	if performLayout && (lineCount > 1 || IsBaselineLayout(node)) &&
+	if performLayout && (lineCount > 1 || isBaselineLayout(node)) &&
 		!FloatIsUndefined(availableInnerCrossDim) {
 		remainingAlignContentDim := availableInnerCrossDim - totalLineCrossDim
 
@@ -2592,11 +2590,11 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 					continue
 				}
 				if needsMainTrailingPos {
-					NodeSetChildTrailingPosition(node, child, mainAxis)
+					nodeSetChildTrailingPosition(node, child, mainAxis)
 				}
 
 				if needsCrossTrailingPos {
-					NodeSetChildTrailingPosition(node, child, crossAxis)
+					nodeSetChildTrailingPosition(node, child, crossAxis)
 				}
 			}
 		}
@@ -2927,8 +2925,8 @@ func layoutNodeInternal(node *Node, availableWidth float32, availableHeight floa
 	return needToVisitNode || cachedResults == nil
 }
 
-// ConfigSetPointScaleFactor sets scale factor
-func ConfigSetPointScaleFactor(config *Config, pixelsInPoint float32) {
+// SetPointScaleFactor sets scale factor
+func (config *Config) SetPointScaleFactor(pixelsInPoint float32) {
 	assertWithConfig(config, pixelsInPoint >= 0, "Scale factor should not be less than zero")
 
 	// We store points for Pixel as we will use it for rounding
@@ -3027,8 +3025,8 @@ func calcStartHeight(node *Node, parentWidth, parentHeight float32) (float32, Me
 	return height, heightMeasureMode
 }
 
-// NodeCalculateLayout calculates layout
-func NodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32, parentDirection Direction) {
+// CalculateLayout calculates layout
+func CalculateLayout(node *Node, parentWidth float32, parentHeight float32, parentDirection Direction) {
 	// Increment the generation count. This will force the recursive routine to
 	// visit
 	// all dirty nodes at least once. Subsequent visits will be skipped if the
@@ -3044,7 +3042,7 @@ func NodeCalculateLayout(node *Node, parentWidth float32, parentHeight float32, 
 	if layoutNodeInternal(node, width, height, parentDirection,
 		widthMeasureMode, heightMeasureMode, parentWidth, parentHeight,
 		true, "initial", node.Config) {
-		NodeSetPosition(node, node.Layout.Direction, parentWidth, parentHeight, parentWidth)
+		nodeSetPosition(node, node.Layout.Direction, parentWidth, parentHeight, parentWidth)
 		roundToPixelGrid(node, node.Config.PointScaleFactor, 0, 0)
 
 		if gPrintTree {

@@ -31,7 +31,7 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	rootChild1child0.Baseline = baselineFunc
 	rootChild1child0.StyleSetHeight(20)
 	rootChild1.InsertChild(rootChild1child0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())

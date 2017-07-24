@@ -22,7 +22,7 @@ func TestDirty_propagation(t *testing.T) {
 	rootChild1.StyleSetHeight(20)
 	root.InsertChild(rootChild1, 1)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	rootChild0.StyleSetWidth(20)
 
@@ -30,7 +30,7 @@ func TestDirty_propagation(t *testing.T) {
 	assert.False(t, rootChild1.IsDirty)
 	assert.True(t, root.IsDirty)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assert.False(t, rootChild0.IsDirty)
 	assert.False(t, rootChild1.IsDirty)
@@ -54,7 +54,7 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	rootChild1.StyleSetHeight(20)
 	root.InsertChild(rootChild1, 1)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	rootChild0.StyleSetWidth(50)
 
@@ -87,25 +87,25 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 
 	child0.StyleSetDisplay(DisplayFlex)
 	child1.StyleSetDisplay(DisplayNone)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 0, child1Child0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 0, child1Child0Child0.LayoutGetHeight())
 
 	child0.StyleSetDisplay(DisplayNone)
 	child1.StyleSetDisplay(DisplayFlex)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 8, child1Child0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 16, child1Child0Child0.LayoutGetHeight())
 
 	child0.StyleSetDisplay(DisplayFlex)
 	child1.StyleSetDisplay(DisplayNone)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 0, child1Child0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 0, child1Child0Child0.LayoutGetHeight())
 
 	child0.StyleSetDisplay(DisplayNone)
 	child1.StyleSetDisplay(DisplayFlex)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 8, child1Child0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 16, child1Child0Child0.LayoutGetHeight())
 }
@@ -121,12 +121,12 @@ func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	child0.StyleSetHeight(25)
 	root.InsertChild(child0, 0)
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	child1 := NewNode()
-	NodeRemoveChild(root, child1)
+	root.RemoveChild(child1)
 	assert.False(t, root.IsDirty)
 
-	NodeRemoveChild(root, child0)
+	root.RemoveChild(child0)
 	assert.True(t, root.IsDirty)
 }

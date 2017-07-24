@@ -18,7 +18,7 @@ func TestDisplay_none(t *testing.T) {
 	rootChild1.StyleSetFlexGrow(1)
 	rootChild1.StyleSetDisplay(DisplayNone)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -35,7 +35,7 @@ func TestDisplay_none(t *testing.T) {
 	assertFloatEqual(t, 0, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 0, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -70,7 +70,7 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 	rootChild1.StyleSetHeight(20)
 	rootChild1.StyleSetDisplay(DisplayNone)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -87,7 +87,7 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 	assertFloatEqual(t, 0, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 0, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -126,7 +126,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -143,7 +143,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -196,7 +196,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 	rootChild2.StyleSetFlexShrink(1)
 	rootChild2.StyleSetFlexBasisPercent(0)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -223,7 +223,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 	assertFloatEqual(t, 50, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -268,7 +268,7 @@ func TestDisplay_none_with_position(t *testing.T) {
 	rootChild1.StyleSetPosition(EdgeTop, 10)
 	rootChild1.StyleSetDisplay(DisplayNone)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -285,7 +285,7 @@ func TestDisplay_none_with_position(t *testing.T) {
 	assertFloatEqual(t, 0, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 0, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())

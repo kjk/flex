@@ -17,7 +17,7 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -34,7 +34,7 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 25, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -68,7 +68,7 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -85,7 +85,7 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 	assertFloatEqual(t, 25, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -118,7 +118,7 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexBasis(50)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -135,7 +135,7 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 50, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -169,7 +169,7 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexBasis(50)
 	root.InsertChild(rootChild1, 1)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -186,7 +186,7 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 	assertFloatEqual(t, 50, rootChild1.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild1.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -225,7 +225,7 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 	rootChild2.StyleSetWidth(50)
 	rootChild2.StyleSetHeight(50)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -247,7 +247,7 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 	assertFloatEqual(t, 50, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 50, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -292,7 +292,7 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -314,7 +314,7 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 20, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -351,7 +351,7 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 	rootChild0Child0.StyleSetFlexGrow(1)
 	rootChild0Child0.StyleSetFlexShrink(1)
 	rootChild0.InsertChild(rootChild0Child0, 0)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -368,7 +368,7 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 0, rootChild0Child0.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -405,7 +405,7 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetFlexGrow(0.4)
 	root.InsertChild(rootChild2, 2)
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
+	CalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
@@ -427,7 +427,7 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 	assertFloatEqual(t, 200, rootChild2.LayoutGetWidth())
 	assertFloatEqual(t, 184, rootChild2.LayoutGetHeight())
 
-	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
+	CalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
 	assertFloatEqual(t, 0, root.LayoutGetTop())
