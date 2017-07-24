@@ -533,8 +533,8 @@ func NodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
 	}
 }
 
-// NodeLayoutGetLeft gets left
-func NodeLayoutGetLeft(node *Node) float32 {
+// LayoutGetLeft gets left
+func (node *Node) LayoutGetLeft() float32 {
 	return node.Layout.Position[EdgeLeft]
 }
 

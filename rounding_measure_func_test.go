@@ -95,5 +95,5 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 
 	assertFloatEqual(t, 0.5, NodeLayoutGetWidth(rootChild0))
 	assertFloatEqual(t, 0.5, NodeLayoutGetHeight(rootChild0))
-	assertFloatEqual(t, 73.5, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 73.5, rootChild0.LayoutGetLeft())
 }
