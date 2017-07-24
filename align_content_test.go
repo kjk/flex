@@ -1458,7 +1458,7 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
-	NodeStyleSetMaxHeight(rootChild1, 20)
+	rootChild1.StyleSetMaxHeight(20)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
@@ -1553,7 +1553,7 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
-	NodeStyleSetMinHeight(rootChild1, 80)
+	rootChild1.StyleSetMinHeight(80)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)

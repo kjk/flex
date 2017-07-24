@@ -1318,7 +1318,7 @@ func TestWrapped_column_max_height(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(500)
-	NodeStyleSetMaxHeight(rootChild0, 200)
+	rootChild0.StyleSetMaxHeight(200)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -1396,7 +1396,7 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	rootChild0.StyleSetFlexBasisPercent(0)
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(500)
-	NodeStyleSetMaxHeight(rootChild0, 200)
+	rootChild0.StyleSetMaxHeight(200)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)

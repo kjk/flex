@@ -1273,7 +1273,7 @@ func TestMargin_should_not_be_part_of_max_height(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeTop, 20)
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(100)
-	NodeStyleSetMaxHeight(rootChild0, 100)
+	rootChild0.StyleSetMaxHeight(100)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -1311,7 +1311,7 @@ func TestMargin_should_not_be_part_of_max_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetMargin(EdgeLeft, 20)
 	rootChild0.StyleSetWidth(100)
-	NodeStyleSetMaxWidth(rootChild0, 100)
+	rootChild0.StyleSetMaxWidth(100)
 	rootChild0.StyleSetHeight(100)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

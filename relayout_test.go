@@ -24,14 +24,14 @@ func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
 	root := NewNode()
 
 	rootChild0 := NewNode()
-	NodeStyleSetMinHeight(rootChild0, 10)
-	NodeStyleSetMaxHeight(rootChild0, 10)
+	rootChild0.StyleSetMinHeight(10)
+	rootChild0.StyleSetMaxHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())
 
-	NodeStyleSetMinHeight(rootChild0, Undefined)
+	rootChild0.StyleSetMinHeight(Undefined)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, rootChild0.LayoutGetHeight())

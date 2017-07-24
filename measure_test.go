@@ -89,9 +89,9 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
 	rootChild0.StyleSetMinWidth(10)
-	NodeStyleSetMaxWidth(rootChild0, 10)
-	NodeStyleSetMinHeight(rootChild0, 10)
-	NodeStyleSetMaxHeight(rootChild0, 10)
+	rootChild0.StyleSetMaxWidth(10)
+	rootChild0.StyleSetMinHeight(10)
+	rootChild0.StyleSetMaxHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -115,9 +115,9 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
 	rootChild0.StyleSetMinWidthPercent(10)
-	NodeStyleSetMaxWidthPercent(rootChild0, 10)
-	NodeStyleSetMinHeightPercent(rootChild0, 10)
-	NodeStyleSetMaxHeightPercent(rootChild0, 10)
+	rootChild0.StyleSetMaxWidthPercent(10)
+	rootChild0.StyleSetMinHeightPercent(10)
+	rootChild0.StyleSetMaxHeightPercent(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -141,9 +141,9 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
 	rootChild0.StyleSetMinWidthPercent(10)
-	NodeStyleSetMaxWidthPercent(rootChild0, 10)
-	NodeStyleSetMinHeight(rootChild0, 10)
-	NodeStyleSetMaxHeight(rootChild0, 10)
+	rootChild0.StyleSetMaxWidthPercent(10)
+	rootChild0.StyleSetMinHeight(10)
+	rootChild0.StyleSetMaxHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -167,9 +167,9 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
 	rootChild0.StyleSetMinWidth(10)
-	NodeStyleSetMaxWidth(rootChild0, 10)
-	NodeStyleSetMinHeightPercent(rootChild0, 10)
-	NodeStyleSetMaxHeightPercent(rootChild0, 10)
+	rootChild0.StyleSetMaxWidth(10)
+	rootChild0.StyleSetMinHeightPercent(10)
+	rootChild0.StyleSetMaxHeightPercent(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

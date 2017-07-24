@@ -432,8 +432,8 @@ func (node *Node) StyleGetMinWidth() Value {
 	return node.Style.MinDimensions[DimensionWidth]
 }
 
-// NodeStyleSetMinHeight sets min width
-func NodeStyleSetMinHeight(node *Node, minHeight float32) {
+// StyleSetMinHeight sets min width
+func (node *Node) StyleSetMinHeight(minHeight float32) {
 	if node.Style.MinDimensions[DimensionHeight].Value != minHeight ||
 		node.Style.MinDimensions[DimensionHeight].Unit != UnitPoint {
 		node.Style.MinDimensions[DimensionHeight].Value = minHeight
@@ -445,8 +445,8 @@ func NodeStyleSetMinHeight(node *Node, minHeight float32) {
 	}
 }
 
-// NodeStyleSetMinHeightPercent sets min height percent
-func NodeStyleSetMinHeightPercent(node *Node, minHeight float32) {
+// StyleSetMinHeightPercent sets min height percent
+func (node *Node) StyleSetMinHeightPercent(minHeight float32) {
 	if node.Style.MinDimensions[DimensionHeight].Value != minHeight ||
 		node.Style.MinDimensions[DimensionHeight].Unit != UnitPercent {
 		node.Style.MinDimensions[DimensionHeight].Value = minHeight
@@ -463,8 +463,8 @@ func (node *Node) StyleGetMinHeight() Value {
 	return node.Style.MinDimensions[DimensionHeight]
 }
 
-// NodeStyleSetMaxWidth sets max width
-func NodeStyleSetMaxWidth(node *Node, maxWidth float32) {
+// StyleSetMaxWidth sets max width
+func (node *Node) StyleSetMaxWidth(maxWidth float32) {
 	if node.Style.MaxDimensions[DimensionWidth].Value != maxWidth ||
 		node.Style.MaxDimensions[DimensionWidth].Unit != UnitPoint {
 		node.Style.MaxDimensions[DimensionWidth].Value = maxWidth
@@ -476,8 +476,8 @@ func NodeStyleSetMaxWidth(node *Node, maxWidth float32) {
 	}
 }
 
-// NodeStyleSetMaxWidthPercent sets max width percent
-func NodeStyleSetMaxWidthPercent(node *Node, maxWidth float32) {
+// StyleSetMaxWidthPercent sets max width percent
+func (node *Node) StyleSetMaxWidthPercent(maxWidth float32) {
 	if node.Style.MaxDimensions[DimensionWidth].Value != maxWidth ||
 		node.Style.MaxDimensions[DimensionWidth].Unit != UnitPercent {
 		node.Style.MaxDimensions[DimensionWidth].Value = maxWidth
@@ -494,8 +494,8 @@ func (node *Node) StyleGetMaxWidth() Value {
 	return node.Style.MaxDimensions[DimensionWidth]
 }
 
-// NodeStyleSetMaxHeight sets max width
-func NodeStyleSetMaxHeight(node *Node, maxHeight float32) {
+// StyleSetMaxHeight sets max width
+func (node *Node) StyleSetMaxHeight(maxHeight float32) {
 	if node.Style.MaxDimensions[DimensionHeight].Value != maxHeight ||
 		node.Style.MaxDimensions[DimensionHeight].Unit != UnitPoint {
 		node.Style.MaxDimensions[DimensionHeight].Value = maxHeight
@@ -507,8 +507,8 @@ func NodeStyleSetMaxHeight(node *Node, maxHeight float32) {
 	}
 }
 
-// NodeStyleSetMaxHeightPercent sets max height percent
-func NodeStyleSetMaxHeightPercent(node *Node, maxHeight float32) {
+// StyleSetMaxHeightPercent sets max height percent
+func (node *Node) StyleSetMaxHeightPercent(maxHeight float32) {
 	if node.Style.MaxDimensions[DimensionHeight].Value != maxHeight ||
 		node.Style.MaxDimensions[DimensionHeight].Unit != UnitPercent {
 		node.Style.MaxDimensions[DimensionHeight].Value = maxHeight
@@ -525,8 +525,8 @@ func (node *Node) StyleGetMaxHeight() Value {
 	return node.Style.MaxDimensions[DimensionHeight]
 }
 
-// NodeStyleSetAspectRatio sets axpect ratio
-func NodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
+// StyleSetAspectRatio sets axpect ratio
+func (node *Node) StyleSetAspectRatio(aspectRatio float32) {
 	if node.Style.AspectRatio != aspectRatio {
 		node.Style.AspectRatio = aspectRatio
 		nodeMarkDirtyInternal(node)
@@ -548,7 +548,7 @@ func (node *Node) LayoutGetRight() float32 {
 	return node.Layout.Position[EdgeRight]
 }
 
-// NodeLayoutGetBottom gets bottom
+// LayoutGetBottom gets bottom
 func (node *Node) LayoutGetBottom() float32 {
 	return node.Layout.Position[EdgeBottom]
 }
