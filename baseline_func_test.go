@@ -9,7 +9,7 @@ func baselineFunc(node *Node, width float32, height float32) float32 {
 
 func TestAlign_baseline_customer_func(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignBaseline)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)

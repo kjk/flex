@@ -43,7 +43,7 @@ func TestMax_height(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -132,7 +132,7 @@ func TestMin_width(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -382,13 +382,13 @@ func TestFlex_grow_in_at_most_container(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
@@ -435,7 +435,7 @@ func TestFlex_grow_child(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
@@ -526,7 +526,7 @@ func TestFlex_grow_within_max_width(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMaxWidth(rootChild0, 100)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -578,7 +578,7 @@ func TestFlex_grow_within_constrained_max_width(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMaxWidth(rootChild0, 300)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -814,7 +814,7 @@ func TestFlex_grow_within_constrained_min_row(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMinWidth(root, 100)
 	root.StyleSetHeight(100)
 
@@ -917,7 +917,7 @@ func TestFlex_grow_within_constrained_max_row(t *testing.T) {
 	root.StyleSetWidth(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMaxWidth(rootChild0, 100)
 	rootChild0.StyleSetHeight(100)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1031,7 +1031,7 @@ func TestChild_min_max_width_flexing(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(120)
 	root.StyleSetHeight(50)
 

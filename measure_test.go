@@ -216,13 +216,13 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 func TestMeasure_zero_space_should_grow(t *testing.T) {
 	root := NewNode()
 	root.StyleSetHeight(200)
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	NodeStyleSetFlexGrow(root, 0)
 
 	measureCount := 0
 
 	rootChild0 := NewNode()
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionColumn)
+	rootChild0.StyleSetFlexDirection(FlexDirectionColumn)
 	NodeStyleSetPadding(rootChild0, EdgeAll, 100)
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure3)
@@ -239,7 +239,7 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetPadding(root, EdgeLeft, 25)
 	NodeStyleSetPadding(root, EdgeTop, 25)
 	NodeStyleSetPadding(root, EdgeRight, 25)
@@ -312,7 +312,7 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMargin(root, EdgeTop, 20)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
@@ -347,7 +347,7 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMargin(root, EdgeTop, 20)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
@@ -522,7 +522,7 @@ func TestCant_call_negative_measure(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(10)
 
@@ -538,7 +538,7 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(10)
 	root.StyleSetHeight(20)
 

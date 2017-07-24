@@ -140,7 +140,7 @@ func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *test
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetOverflow(root, OverflowHidden)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
@@ -800,7 +800,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
@@ -878,7 +878,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)

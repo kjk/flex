@@ -4,7 +4,7 @@ import "testing"
 
 func TestStart_overrides(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -26,7 +26,7 @@ func TestStart_overrides(t *testing.T) {
 
 func TestEnd_overrides(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -48,7 +48,7 @@ func TestEnd_overrides(t *testing.T) {
 
 func TestHorizontal_overridden(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -65,7 +65,7 @@ func TestHorizontal_overridden(t *testing.T) {
 
 func TestVertical_overridden(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -82,7 +82,7 @@ func TestVertical_overridden(t *testing.T) {
 
 func TestHorizontal_overrides_all(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -101,7 +101,7 @@ func TestHorizontal_overrides_all(t *testing.T) {
 
 func TestVertical_overrides_all(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -120,7 +120,7 @@ func TestVertical_overrides_all(t *testing.T) {
 
 func TestAll_overridden(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

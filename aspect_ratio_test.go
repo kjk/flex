@@ -57,7 +57,7 @@ func TestAspect_ratio_main_defined(t *testing.T) {
 
 func TestAspect_ratio_both_dimensions_defined_row(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
@@ -391,7 +391,7 @@ func TestAspect_ratio_with_measure_func(t *testing.T) {
 
 func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignFlexStart)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(200)
@@ -435,7 +435,7 @@ func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
 func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetAlignItems(root, AlignFlexStart)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(200)
 
@@ -498,7 +498,7 @@ func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
 func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetAlignItems(root, AlignFlexStart)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -580,7 +580,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 
 func TestAspect_ratio_width_overrides_align_stretch_row(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

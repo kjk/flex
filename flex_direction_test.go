@@ -67,7 +67,7 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
@@ -193,7 +193,7 @@ func TestFlex_direction_row(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -257,7 +257,7 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionColumnReverse)
+	root.StyleSetFlexDirection(FlexDirectionColumnReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -321,7 +321,7 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRowReverse)
+	root.StyleSetFlexDirection(FlexDirectionRowReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

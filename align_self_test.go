@@ -155,7 +155,7 @@ func TestAlign_self_baseline(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

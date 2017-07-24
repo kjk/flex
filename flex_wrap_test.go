@@ -89,7 +89,7 @@ func TestWrap_row(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 
@@ -171,7 +171,7 @@ func TestWrap_row_align_items_flex_end(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignFlexEnd)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
@@ -254,7 +254,7 @@ func TestWrap_row_align_items_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
@@ -337,7 +337,7 @@ func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(100)
 
@@ -393,7 +393,7 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignItems(rootChild0, AlignFlexStart)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	NodeInsertChild(root, rootChild0, 0)
@@ -470,7 +470,7 @@ func TestFlex_wrap_align_stretch_fits_one_row(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrap)
 	root.StyleSetWidth(150)
 	root.StyleSetHeight(100)
@@ -521,7 +521,7 @@ func TestWrap_reverse_row_align_content_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
 
@@ -618,7 +618,7 @@ func TestWrap_reverse_row_align_content_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignContent(root, AlignCenter)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
@@ -716,7 +716,7 @@ func TestWrap_reverse_row_single_line_different_size(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(300)
 
@@ -813,7 +813,7 @@ func TestWrap_reverse_row_align_content_stretch(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignContent(root, AlignStretch)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
@@ -911,7 +911,7 @@ func TestWrap_reverse_row_align_content_space_around(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetAlignContent(root, AlignSpaceAround)
 	NodeStyleSetFlexWrap(root, WrapWrapReverse)
 	root.StyleSetWidth(100)
@@ -1112,7 +1112,7 @@ func TestWrapped_row_within_align_items_center(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -1179,7 +1179,7 @@ func TestWrapped_row_within_align_items_flex_start(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -1246,7 +1246,7 @@ func TestWrapped_row_within_align_items_flex_end(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -1468,7 +1468,7 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	root.StyleSetHeight(500)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	rootChild0.StyleSetWidth(85)
 	NodeInsertChild(root, rootChild0, 0)
@@ -1562,7 +1562,7 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	root.StyleSetHeight(500)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
+	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetFlexWrap(rootChild0, WrapWrap)
 	rootChild0.StyleSetWidth(70)
 	NodeInsertChild(root, rootChild0, 0)

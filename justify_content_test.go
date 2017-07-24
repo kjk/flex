@@ -6,7 +6,7 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
 
@@ -70,7 +70,7 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
@@ -135,7 +135,7 @@ func TestJustify_content_row_center(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifyCenter)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
@@ -200,7 +200,7 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifySpaceBetween)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)
@@ -265,7 +265,7 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifySpaceAround)
 	root.StyleSetWidth(102)
 	root.StyleSetHeight(102)

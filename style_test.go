@@ -22,7 +22,7 @@ func TestCopy_style_modified(t *testing.T) {
 	assert.False(t, node0.StyleGetMaxHeight().Unit != UnitUndefined)
 
 	node1 := NewNode()
-	NodeStyleSetFlexDirection(node1, FlexDirectionRow)
+	node1.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMaxHeight(node1, 10)
 
 	NodeCopyStyle(node0, node1)
@@ -33,13 +33,13 @@ func TestCopy_style_modified(t *testing.T) {
 
 func TestCopy_style_modified_same(t *testing.T) {
 	node0 := NewNode()
-	NodeStyleSetFlexDirection(node0, FlexDirectionRow)
+	node0.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMaxHeight(node0, 10)
 	NodeCalculateLayout(node0, Undefined, Undefined, DirectionLTR)
 	assert.False(t, node0.IsDirty)
 
 	node1 := NewNode()
-	NodeStyleSetFlexDirection(node1, FlexDirectionRow)
+	node1.StyleSetFlexDirection(FlexDirectionRow)
 	NodeStyleSetMaxHeight(node1, 10)
 
 	NodeCopyStyle(node0, node1)

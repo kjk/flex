@@ -11,7 +11,7 @@ func newHadOverflowTests() (*Config, *Node) {
 	root := NewNodeWithConfig(config)
 	root.StyleSetWidth(200)
 	root.StyleSetHeight(100)
-	NodeStyleSetFlexDirection(root, FlexDirectionColumn)
+	root.StyleSetFlexDirection(FlexDirectionColumn)
 	NodeStyleSetFlexWrap(root, WrapNoWrap)
 	return config, root
 }

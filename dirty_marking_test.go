@@ -66,7 +66,7 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 
 func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetHeight(100)
 
 	child0 := NewNode()

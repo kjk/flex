@@ -6,7 +6,7 @@ func TestRounding_flex_basis_flex_grow_row_width_of_100(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -70,7 +70,7 @@ func TestRounding_flex_basis_flex_grow_row_prime_number_width(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(113)
 	root.StyleSetHeight(100)
 
@@ -162,7 +162,7 @@ func TestRounding_flex_basis_flex_shrink_row(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(101)
 	root.StyleSetHeight(100)
 
@@ -732,7 +732,7 @@ func TestRounding_inner_node_controversy_horizontal(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(320)
 
 	rootChild0 := NewNodeWithConfig(config)
@@ -893,7 +893,7 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexDirection(root, FlexDirectionRow)
+	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetWidth(640)
 	root.StyleSetHeight(320)
 

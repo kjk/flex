@@ -176,16 +176,16 @@ func (node *Node) StyleGetPosition(edge Edge) Value {
 	return node.Style.Position[edge]
 }
 
-// NodeStyleSetDirection sets direction
-func NodeStyleSetDirection(node *Node, direction Direction) {
+// StyleSetDirection sets direction
+func (node *Node) StyleSetDirection(direction Direction) {
 	if node.Style.Direction != direction {
 		node.Style.Direction = direction
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetFlexDirection sets flex directions
-func NodeStyleSetFlexDirection(node *Node, flexDirection FlexDirection) {
+// StyleSetFlexDirection sets flex directions
+func (node *Node) StyleSetFlexDirection(flexDirection FlexDirection) {
 	if node.Style.FlexDirection != flexDirection {
 		node.Style.FlexDirection = flexDirection
 		nodeMarkDirtyInternal(node)
