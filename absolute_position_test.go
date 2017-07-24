@@ -309,7 +309,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenter(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -349,7 +349,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentFlexEnd(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyFlexEnd)
 	root.StyleSetAlignItems(AlignFlexEnd)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -388,7 +388,7 @@ func TestAbsoluteLayoutJustifyContentCenter(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -427,7 +427,7 @@ func TestAbsoluteLayoutAlignItemsCenter(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -465,7 +465,7 @@ func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -506,7 +506,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndTopPosition(t *testin
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -547,7 +547,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndBottomPosition(t *tes
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -588,7 +588,7 @@ func TestAbsoluteLayoutAlignItemsAndJustifyContentCenterAndLeftPosition(t *testi
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 
@@ -629,7 +629,7 @@ func TestAbsolute_layout_align_items_and_justify_content_center_and_right_positi
 	root := NewNodeWithConfig(config)
 	root.StyleSetJustifyContent(JustifyCenter)
 	root.StyleSetAlignItems(AlignCenter)
-	NodeStyleSetFlexGrow(root, 1)
+	root.StyleSetFlexGrow(1)
 	root.StyleSetWidth(110)
 	root.StyleSetHeight(100)
 

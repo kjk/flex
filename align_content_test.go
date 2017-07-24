@@ -206,13 +206,13 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	root.StyleSetHeight(120)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasisPercent(0)
 	rootChild0.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	rootChild1.StyleSetFlexBasisPercent(0)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(10)
@@ -223,8 +223,8 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild3, 1)
-	NodeStyleSetFlexShrink(rootChild3, 1)
+	rootChild3.StyleSetFlexGrow(1)
+	rootChild3.StyleSetFlexShrink(1)
 	rootChild3.StyleSetFlexBasisPercent(0)
 	rootChild3.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild3, 3)
@@ -797,8 +797,8 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0Child0, 1)
-	NodeStyleSetFlexShrink(rootChild0Child0, 1)
+	rootChild0Child0.StyleSetFlexGrow(1)
+	rootChild0Child0.StyleSetFlexShrink(1)
 	rootChild0Child0.StyleSetFlexBasisPercent(0)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
@@ -907,8 +907,8 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetFlexShrink(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
+	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetFlexBasisPercent(0)
 	rootChild1.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild1, 1)
@@ -918,8 +918,8 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild3, 1)
-	NodeStyleSetFlexShrink(rootChild3, 1)
+	rootChild3.StyleSetFlexGrow(1)
+	rootChild3.StyleSetFlexShrink(1)
 	rootChild3.StyleSetFlexBasisPercent(0)
 	rootChild3.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild3, 3)
@@ -1007,8 +1007,8 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetFlexShrink(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
+	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetFlexBasisPercent(0)
 	rootChild1.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild1, 1)
@@ -1018,7 +1018,7 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild3, 1)
+	rootChild3.StyleSetFlexGrow(1)
 	rootChild3.StyleSetFlexBasisPercent(0)
 	rootChild3.StyleSetWidth(50)
 	NodeInsertChild(root, rootChild3, 3)
@@ -1646,14 +1646,14 @@ func TestAlign_content_stretch_column(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0Child0, 1)
-	NodeStyleSetFlexShrink(rootChild0Child0, 1)
+	rootChild0Child0.StyleSetFlexGrow(1)
+	rootChild0Child0.StyleSetFlexShrink(1)
 	rootChild0Child0.StyleSetFlexBasisPercent(0)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetFlexShrink(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
+	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetFlexBasisPercent(0)
 	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)

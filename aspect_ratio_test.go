@@ -121,7 +121,7 @@ func TestAspect_ratio_flex_grow(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetHeight(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -141,7 +141,7 @@ func TestAspect_ratio_flex_shrink(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetHeight(150)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexShrink(1)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -160,7 +160,7 @@ func TestAspect_ratio_basis(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetFlexBasis(rootChild0, 50)
+	rootChild0.StyleSetFlexBasis(50)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -399,7 +399,7 @@ func TestAspect_ratio_width_height_flex_grow_row(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -420,7 +420,7 @@ func TestAspect_ratio_width_height_flex_grow_column(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -441,13 +441,13 @@ func TestAspect_ratio_height_as_flex_basis(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetHeight(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
 	rootChild1.StyleSetHeight(100)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild1, 1)
 	NodeInsertChild(root, rootChild1, 1)
 
@@ -472,13 +472,13 @@ func TestAspect_ratio_width_as_flex_basis(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
 	rootChild1.StyleSetWidth(100)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild1, 1)
 	NodeInsertChild(root, rootChild1, 1)
 
@@ -504,7 +504,7 @@ func TestAspect_ratio_overrides_flex_grow_row(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 0.5)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -524,7 +524,7 @@ func TestAspect_ratio_overrides_flex_grow_column(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetHeight(50)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetAspectRatio(rootChild0, 2)
 	NodeInsertChild(root, rootChild0, 0)
 

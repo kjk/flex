@@ -75,7 +75,7 @@ func TestPadding_flex_child(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

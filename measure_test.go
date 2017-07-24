@@ -49,8 +49,8 @@ func TestDont_measure_single_grow_shrink_child(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0, _measure)
-	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
+	rootChild0.StyleSetFlexShrink(1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -217,7 +217,7 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 	root := NewNode()
 	root.StyleSetHeight(200)
 	root.StyleSetFlexDirection(FlexDirectionColumn)
-	NodeStyleSetFlexGrow(root, 0)
+	root.StyleSetFlexGrow(0)
 
 	measureCount := 0
 
@@ -427,7 +427,7 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexShrink(1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -462,7 +462,7 @@ func TestMeasure_no_padding(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexShrink(1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)

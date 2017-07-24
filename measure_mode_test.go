@@ -206,7 +206,7 @@ func TestFlex_child(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.Context = &constraintList
 	NodeSetMeasureFunc(rootChild0, _measure2)
 	NodeInsertChild(root, rootChild0, 0)
@@ -233,8 +233,8 @@ func TestFlex_child_with_flex_basis(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetFlexBasis(rootChild0, 0)
+	rootChild0.StyleSetFlexGrow(1)
+	rootChild0.StyleSetFlexBasis(0)
 	rootChild0.Context = &constraintList
 	NodeSetMeasureFunc(rootChild0, _measure2)
 	NodeInsertChild(root, rootChild0, 0)

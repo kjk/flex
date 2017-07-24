@@ -70,9 +70,9 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	child0 := NewNode()
-	NodeStyleSetFlexGrow(child0, 1)
+	child0.StyleSetFlexGrow(1)
 	child1 := NewNode()
-	NodeStyleSetFlexGrow(child1, 1)
+	child1.StyleSetFlexGrow(1)
 
 	child1Child0 := NewNode()
 	child1Child0Child0 := NewNode()

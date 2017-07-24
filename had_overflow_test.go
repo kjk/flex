@@ -66,7 +66,7 @@ func TestNo_overflow_no_wrap_and_flex_children(t *testing.T) {
 	child1.StyleSetWidth(80)
 	child1.StyleSetHeight(40)
 	NodeStyleSetMargin(child1, EdgeBottom, 5)
-	NodeStyleSetFlexShrink(child1, 1)
+	child1.StyleSetFlexShrink(1)
 	NodeInsertChild(root, child1, 1)
 
 	NodeCalculateLayout(root, 200, 100, DirectionLTR)
@@ -92,7 +92,7 @@ func TestHadOverflow_gets_reset_if_not_logger_valid(t *testing.T) {
 
 	assert.True(t, root.Layout.HadOverflow)
 
-	NodeStyleSetFlexShrink(child1, 1)
+	child1.StyleSetFlexShrink(1)
 
 	NodeCalculateLayout(root, 200, 100, DirectionLTR)
 

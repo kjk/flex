@@ -10,12 +10,12 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetFlexBasis(rootChild0, 50)
+	rootChild0.StyleSetFlexGrow(1)
+	rootChild0.StyleSetFlexBasis(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -61,12 +61,12 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetFlexBasis(rootChild0, 50)
+	rootChild0.StyleSetFlexGrow(1)
+	rootChild0.StyleSetFlexBasis(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -111,12 +111,12 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexShrink(rootChild0, 1)
-	NodeStyleSetFlexBasis(rootChild0, 100)
+	rootChild0.StyleSetFlexShrink(1)
+	rootChild0.StyleSetFlexBasis(100)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexBasis(rootChild1, 50)
+	rootChild1.StyleSetFlexBasis(50)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -162,12 +162,12 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexShrink(rootChild0, 1)
-	NodeStyleSetFlexBasis(rootChild0, 100)
+	rootChild0.StyleSetFlexShrink(1)
+	rootChild0.StyleSetFlexBasis(100)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexBasis(rootChild1, 50)
+	rootChild1.StyleSetFlexBasis(50)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -216,7 +216,7 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexShrink(rootChild1, 1)
+	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)
@@ -278,18 +278,18 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetFlexBasis(rootChild0, 50)
+	rootChild0.StyleSetFlexGrow(1)
+	rootChild0.StyleSetFlexBasis(50)
 	rootChild0.StyleSetHeight(20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild2, 1)
+	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
@@ -348,8 +348,8 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0Child0, 1)
-	NodeStyleSetFlexShrink(rootChild0Child0, 1)
+	rootChild0Child0.StyleSetFlexGrow(1)
+	rootChild0Child0.StyleSetFlexShrink(1)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -394,16 +394,16 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 	root.StyleSetHeight(500)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 0.2)
-	NodeStyleSetFlexBasis(rootChild0, 40)
+	rootChild0.StyleSetFlexGrow(0.2)
+	rootChild0.StyleSetFlexBasis(40)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 0.2)
+	rootChild1.StyleSetFlexGrow(0.2)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild2, 0.4)
+	rootChild2.StyleSetFlexGrow(0.4)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

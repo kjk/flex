@@ -1742,12 +1742,12 @@ func TestAlign_center_should_size_based_on_content(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetJustifyContent(JustifyCenter)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexShrink(1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0Child0, 1)
-	NodeStyleSetFlexShrink(rootChild0Child0, 1)
+	rootChild0Child0.StyleSetFlexGrow(1)
+	rootChild0Child0.StyleSetFlexShrink(1)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0Child0Child0 := NewNodeWithConfig(config)
@@ -1810,12 +1810,12 @@ func TestAlign_strech_should_size_based_on_parent(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetJustifyContent(JustifyCenter)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexShrink(1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0Child0, 1)
-	NodeStyleSetFlexShrink(rootChild0Child0, 1)
+	rootChild0Child0.StyleSetFlexGrow(1)
+	rootChild0Child0.StyleSetFlexShrink(1)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0Child0Child0 := NewNodeWithConfig(config)

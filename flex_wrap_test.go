@@ -342,13 +342,13 @@ func TestFlex_wrap_children_with_min_main_overriding_flex_basis(t *testing.T) {
 	root.StyleSetWidth(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexBasis(rootChild0, 50)
+	rootChild0.StyleSetFlexBasis(50)
 	NodeStyleSetMinWidth(rootChild0, 55)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexBasis(rootChild1, 50)
+	rootChild1.StyleSetFlexBasis(50)
 	NodeStyleSetMinWidth(rootChild1, 55)
 	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)
@@ -1391,8 +1391,8 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	root.StyleSetHeight(500)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetFlexShrink(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
+	rootChild0.StyleSetFlexShrink(1)
 	rootChild0.StyleSetFlexBasisPercent(0)
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(500)
@@ -1400,8 +1400,8 @@ func TestWrapped_column_max_height_flex(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetFlexShrink(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
+	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetFlexBasisPercent(0)
 	NodeStyleSetMargin(rootChild1, EdgeLeft, 20)
 	NodeStyleSetMargin(rootChild1, EdgeTop, 20)

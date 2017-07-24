@@ -261,24 +261,24 @@ func NodeStyleGetFlex(node *Node) float32 {
 	return node.Style.Flex
 }
 
-// NodeStyleSetFlexGrow sets flex grow
-func NodeStyleSetFlexGrow(node *Node, flexGrow float32) {
+// StyleSetFlexGrow sets flex grow
+func (node *Node) StyleSetFlexGrow(flexGrow float32) {
 	if node.Style.FlexGrow != flexGrow {
 		node.Style.FlexGrow = flexGrow
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetFlexShrink sets flex shrink
-func NodeStyleSetFlexShrink(node *Node, flexShrink float32) {
+// StyleSetFlexShrink sets flex shrink
+func (node *Node) StyleSetFlexShrink(flexShrink float32) {
 	if node.Style.FlexShrink != flexShrink {
 		node.Style.FlexShrink = flexShrink
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetFlexBasis sets flex basis
-func NodeStyleSetFlexBasis(node *Node, flexBasis float32) {
+// StyleSetFlexBasis sets flex basis
+func (node *Node) StyleSetFlexBasis(flexBasis float32) {
 	if node.Style.FlexBasis.Value != flexBasis ||
 		node.Style.FlexBasis.Unit != UnitPoint {
 		node.Style.FlexBasis.Value = flexBasis

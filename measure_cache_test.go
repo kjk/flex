@@ -64,7 +64,7 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 	measureCount := 0
 	rootChild0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0, measureMax)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

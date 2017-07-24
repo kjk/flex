@@ -163,7 +163,7 @@ func TestMargin_and_flex_row(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetMargin(rootChild0, EdgeStart, 10)
 	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -201,7 +201,7 @@ func TestMargin_and_flex_column(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetMargin(rootChild0, EdgeTop, 10)
 	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -240,7 +240,7 @@ func TestMargin_and_stretch_row(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetMargin(rootChild0, EdgeTop, 10)
 	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -278,7 +278,7 @@ func TestMargin_and_stretch_column(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetMargin(rootChild0, EdgeStart, 10)
 	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -317,12 +317,12 @@ func TestMargin_with_sibling_row(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetMargin(rootChild0, EdgeEnd, 10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -368,12 +368,12 @@ func TestMargin_with_sibling_column(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild0, 1)
+	rootChild0.StyleSetFlexGrow(1)
 	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetFlexGrow(rootChild1, 1)
+	rootChild1.StyleSetFlexGrow(1)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
