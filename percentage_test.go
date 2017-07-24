@@ -11,8 +11,8 @@ func TestPercentage_width_height(t *testing.T) {
 	root.StyleSetHeight(200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidthPercent(rootChild0, 30)
-	NodeStyleSetHeightPercent(rootChild0, 30)
+	rootChild0.StyleSetWidthPercent(30)
+	rootChild0.StyleSetHeightPercent(30)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -50,8 +50,8 @@ func TestPercentage_position_left_top(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetPositionPercent(rootChild0, EdgeLeft, 10)
 	NodeStyleSetPositionPercent(rootChild0, EdgeTop, 20)
-	NodeStyleSetWidthPercent(rootChild0, 45)
-	NodeStyleSetHeightPercent(rootChild0, 55)
+	rootChild0.StyleSetWidthPercent(45)
+	rootChild0.StyleSetHeightPercent(55)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -89,8 +89,8 @@ func TestPercentage_position_bottom_right(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetPositionPercent(rootChild0, EdgeRight, 20)
 	NodeStyleSetPositionPercent(rootChild0, EdgeBottom, 10)
-	NodeStyleSetWidthPercent(rootChild0, 55)
-	NodeStyleSetHeightPercent(rootChild0, 15)
+	rootChild0.StyleSetWidthPercent(55)
+	rootChild0.StyleSetHeightPercent(15)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -622,7 +622,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	NodeStyleSetPaddingPercent(rootChild0Child0, EdgeTop, 3)
 	NodeStyleSetPaddingPercent(rootChild0Child0, EdgeRight, 3)
 	NodeStyleSetPaddingPercent(rootChild0Child0, EdgeBottom, 3)
-	NodeStyleSetWidthPercent(rootChild0Child0, 50)
+	rootChild0Child0.StyleSetWidthPercent(50)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0Child0Child0 := NewNodeWithConfig(config)
@@ -634,7 +634,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	NodeStyleSetPadding(rootChild0Child0Child0, EdgeTop, 3)
 	NodeStyleSetPadding(rootChild0Child0Child0, EdgeRight, 3)
 	NodeStyleSetPadding(rootChild0Child0Child0, EdgeBottom, 3)
-	NodeStyleSetWidthPercent(rootChild0Child0Child0, 45)
+	rootChild0Child0Child0.StyleSetWidthPercent(45)
 	NodeInsertChild(rootChild0Child0, rootChild0Child0Child0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -850,8 +850,8 @@ func TestPercentage_width_height_undefined_parent_size(t *testing.T) {
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidthPercent(rootChild0, 50)
-	NodeStyleSetHeightPercent(rootChild0, 50)
+	rootChild0.StyleSetWidthPercent(50)
+	rootChild0.StyleSetHeightPercent(50)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -895,7 +895,7 @@ func TestPercent_within_flex_grow(t *testing.T) {
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild1child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidthPercent(rootChild1child0, 100)
+	rootChild1child0.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild2 := NewNodeWithConfig(config)
@@ -971,7 +971,7 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(rootChild0Child0, FlexDirectionRow)
 	NodeStyleSetJustifyContent(rootChild0Child0, JustifyCenter)
-	NodeStyleSetWidthPercent(rootChild0Child0, 100)
+	rootChild0Child0.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0Child0Child0 := NewNodeWithConfig(config)
@@ -1049,16 +1049,16 @@ func TestPercent_absolute_position(t *testing.T) {
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPositionPercent(rootChild0, EdgeLeft, 50)
-	NodeStyleSetWidthPercent(rootChild0, 100)
+	rootChild0.StyleSetWidthPercent(100)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidthPercent(rootChild0Child0, 100)
+	rootChild0Child0.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
-	NodeStyleSetWidthPercent(rootChild0child1, 100)
+	rootChild0child1.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild0, rootChild0child1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

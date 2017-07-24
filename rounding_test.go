@@ -899,37 +899,37 @@ func TestRounding_inner_node_controversy_combined(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetHeightPercent(rootChild0, 100)
+	rootChild0.StyleSetHeightPercent(100)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetHeightPercent(rootChild1, 100)
+	rootChild1.StyleSetHeightPercent(100)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild1child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1child0, 1)
-	NodeStyleSetWidthPercent(rootChild1child0, 100)
+	rootChild1child0.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild1_child1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1_child1, 1)
-	NodeStyleSetWidthPercent(rootChild1_child1, 100)
+	rootChild1_child1.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild1, rootChild1_child1, 1)
 
 	rootChild1_child1Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1_child1Child0, 1)
-	NodeStyleSetWidthPercent(rootChild1_child1Child0, 100)
+	rootChild1_child1Child0.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild1_child1, rootChild1_child1Child0, 0)
 
 	rootChild1_child2 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1_child2, 1)
-	NodeStyleSetWidthPercent(rootChild1_child2, 100)
+	rootChild1_child2.StyleSetWidthPercent(100)
 	NodeInsertChild(rootChild1, rootChild1_child2, 2)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild2, 1)
-	NodeStyleSetHeightPercent(rootChild2, 100)
+	rootChild2.StyleSetHeightPercent(100)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

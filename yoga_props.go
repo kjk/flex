@@ -68,8 +68,8 @@ func (node *Node) StyleSetWidth(width float32) {
 	}
 }
 
-// NodeStyleSetWidthPercent sets width percent
-func NodeStyleSetWidthPercent(node *Node, width float32) {
+// StyleSetWidthPercent sets width percent
+func (node *Node) StyleSetWidthPercent(width float32) {
 	dim := &node.Style.Dimensions[DimensionWidth]
 	if dim.Value != width || dim.Unit != UnitPercent {
 		dim.Value = width
@@ -109,8 +109,8 @@ func (node *Node) StyleSetHeight(height float32) {
 	}
 }
 
-// NodeStyleSetHeightPercent sets height percent
-func NodeStyleSetHeightPercent(node *Node, height float32) {
+// StyleSetHeightPercent sets height percent
+func (node *Node) StyleSetHeightPercent(height float32) {
 	dim := &node.Style.Dimensions[DimensionHeight]
 	if dim.Value != height || dim.Unit != UnitPercent {
 		dim.Value = height
