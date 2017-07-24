@@ -16,15 +16,15 @@ func TestReset_layout_when_child_removed(t *testing.T) {
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(rootChild0))
 
 	YGNodeRemoveChild(root, rootChild0)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(rootChild0))
-	assert.True(t, FloatIsUndefined(YGNodeLayoutGetWidth(rootChild0)))
-	assert.True(t, FloatIsUndefined(YGNodeLayoutGetHeight(rootChild0)))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(rootChild0))
+	assert.True(t, FloatIsUndefined(NodeLayoutGetWidth(rootChild0)))
+	assert.True(t, FloatIsUndefined(NodeLayoutGetHeight(rootChild0)))
 }

@@ -12,17 +12,17 @@ func TestBorder_no_size(t *testing.T) {
 	NodeStyleSetBorder(root, EdgeBottom, 10)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 20, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 20, NodeLayoutGetHeight(root))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 20, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 20, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 20, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 20, NodeLayoutGetHeight(root))
 }
 
 func TestBorder_container_match_child(t *testing.T) {
@@ -40,27 +40,27 @@ func TestBorder_container_match_child(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 30, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 30, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 30, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 30, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 30, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 30, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
 }
 
 func TestBorder_flex_child(t *testing.T) {
@@ -80,27 +80,27 @@ func TestBorder_flex_child(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 80, NodeLayoutGetHeight(rootChild0))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 80, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 80, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 80, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 80, NodeLayoutGetHeight(rootChild0))
 }
 
 func TestBorder_stretch_child(t *testing.T) {
@@ -119,27 +119,27 @@ func TestBorder_stretch_child(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 80, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 10, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 80, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 80, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
 }
 
 func TestBorder_center_child(t *testing.T) {
@@ -160,25 +160,25 @@ func TestBorder_center_child(t *testing.T) {
 	YGNodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 40, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 35, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 40, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 35, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionRTL)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetWidth(root))
-	assertFloatEqual(t, 100, YGNodeLayoutGetHeight(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 100, NodeLayoutGetWidth(root))
+	assertFloatEqual(t, 100, NodeLayoutGetHeight(root))
 
-	assertFloatEqual(t, 50, YGNodeLayoutGetLeft(rootChild0))
-	assertFloatEqual(t, 35, YGNodeLayoutGetTop(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetWidth(rootChild0))
-	assertFloatEqual(t, 10, YGNodeLayoutGetHeight(rootChild0))
+	assertFloatEqual(t, 50, NodeLayoutGetLeft(rootChild0))
+	assertFloatEqual(t, 35, NodeLayoutGetTop(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetWidth(rootChild0))
+	assertFloatEqual(t, 10, NodeLayoutGetHeight(rootChild0))
 }

@@ -613,13 +613,13 @@ func NodeStyleGetAspectRatio(node *Node) float32 {
 	return node.Style.aspectRatio
 }
 
-// YGNodeLayoutGetLeft gets left
-func YGNodeLayoutGetLeft(node *Node) float32 {
+// NodeLayoutGetLeft gets left
+func NodeLayoutGetLeft(node *Node) float32 {
 	return node.Layout.Position[EdgeLeft]
 }
 
-// YGNodeLayoutGetTop gets top
-func YGNodeLayoutGetTop(node *Node) float32 {
+// NodeLayoutGetTop gets top
+func NodeLayoutGetTop(node *Node) float32 {
 	return node.Layout.Position[EdgeTop]
 }
 
@@ -633,13 +633,13 @@ func NodeLayoutGetBottom(node *Node) float32 {
 	return node.Layout.Position[EdgeBottom]
 }
 
-// YGNodeLayoutGetWidth gets width
-func YGNodeLayoutGetWidth(node *Node) float32 {
+// NodeLayoutGetWidth gets width
+func NodeLayoutGetWidth(node *Node) float32 {
 	return node.Layout.dimensions[DimensionWidth]
 }
 
-// YGNodeLayoutGetHeight gets height
-func YGNodeLayoutGetHeight(node *Node) float32 {
+// NodeLayoutGetHeight gets height
+func NodeLayoutGetHeight(node *Node) float32 {
 	return node.Layout.dimensions[DimensionHeight]
 }
 

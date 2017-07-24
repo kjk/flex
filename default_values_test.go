@@ -62,8 +62,8 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, NodeStyleGetMaxWidth(root).Unit, UnitUndefined)
 	assert.Equal(t, NodeStyleGetMaxHeight(root).Unit, UnitUndefined)
 
-	assertFloatEqual(t, 0, YGNodeLayoutGetLeft(root))
-	assertFloatEqual(t, 0, YGNodeLayoutGetTop(root))
+	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
+	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
 	assertFloatEqual(t, 0, NodeLayoutGetRight(root))
 	assertFloatEqual(t, 0, NodeLayoutGetBottom(root))
 
@@ -82,8 +82,8 @@ func TestAssert_default_values(t *testing.T) {
 	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeRight))
 	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeBottom))
 
-	assert.True(t, FloatIsUndefined(YGNodeLayoutGetWidth(root)))
-	assert.True(t, FloatIsUndefined(YGNodeLayoutGetHeight(root)))
+	assert.True(t, FloatIsUndefined(NodeLayoutGetWidth(root)))
+	assert.True(t, FloatIsUndefined(NodeLayoutGetHeight(root)))
 	assert.Equal(t, DirectionInherit, NodeLayoutGetDirection(root))
 
 }
