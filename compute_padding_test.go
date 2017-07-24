@@ -4,8 +4,8 @@ import "testing"
 
 func TestComputed_layout_padding(t *testing.T) {
 	root := NewNode()
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 	NodeStyleSetPaddingPercent(root, EdgeStart, 10)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)

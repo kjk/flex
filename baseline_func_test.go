@@ -11,25 +11,25 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignBaseline)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetWidth(rootChild0, 50)
-	NodeStyleSetHeight(rootChild0, 50)
+	rootChild0.StyleSetWidth(50)
+	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
-	NodeStyleSetWidth(rootChild1, 50)
-	NodeStyleSetHeight(rootChild1, 20)
+	rootChild1.StyleSetWidth(50)
+	rootChild1.StyleSetHeight(20)
 	NodeInsertChild(root, rootChild1, 1)
 
 	var baselineValue float32 = 10
 	rootChild1child0 := NewNode()
 	rootChild1child0.Context = baselineValue
-	NodeStyleSetWidth(rootChild1child0, 50)
+	rootChild1child0.StyleSetWidth(50)
 	rootChild1child0.Baseline = baselineFunc
-	NodeStyleSetHeight(rootChild1child0, 20)
+	rootChild1child0.StyleSetHeight(20)
 	NodeInsertChild(rootChild1, rootChild1child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

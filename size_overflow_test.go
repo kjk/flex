@@ -6,15 +6,15 @@ func TestNested_overflowing_child(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0, 200)
-	NodeStyleSetHeight(rootChild0Child0, 200)
+	rootChild0Child0.StyleSetWidth(200)
+	rootChild0Child0.StyleSetHeight(200)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -55,17 +55,17 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 100)
-	NodeStyleSetHeight(rootChild0, 100)
+	rootChild0.StyleSetWidth(100)
+	rootChild0.StyleSetHeight(100)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0, 200)
-	NodeStyleSetHeight(rootChild0Child0, 200)
+	rootChild0Child0.StyleSetWidth(200)
+	rootChild0Child0.StyleSetHeight(200)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -106,16 +106,16 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 100)
+	rootChild0.StyleSetWidth(100)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0, 100)
-	NodeStyleSetHeight(rootChild0Child0, 200)
+	rootChild0Child0.StyleSetWidth(100)
+	rootChild0Child0.StyleSetHeight(200)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

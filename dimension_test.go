@@ -7,8 +7,8 @@ func TestWrap_child(t *testing.T) {
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 100)
-	NodeStyleSetHeight(rootChild0, 100)
+	rootChild0.StyleSetWidth(100)
+	rootChild0.StyleSetHeight(100)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -44,8 +44,8 @@ func TestWrap_grandchild(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0, 100)
-	NodeStyleSetHeight(rootChild0Child0, 100)
+	rootChild0Child0.StyleSetWidth(100)
+	rootChild0Child0.StyleSetHeight(100)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

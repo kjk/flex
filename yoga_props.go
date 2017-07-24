@@ -55,8 +55,8 @@ YG_NODE_LAYOUT_RESOLVED_PROPERTY_IMPL(float, Border, border);
 YG_NODE_LAYOUT_RESOLVED_PROPERTY_IMPL(float, Padding, padding);
 */
 
-// NodeStyleSetWidth sets width
-func NodeStyleSetWidth(node *Node, width float32) {
+// StyleSetWidth sets width
+func (node *Node) StyleSetWidth(width float32) {
 	dim := &node.Style.Dimensions[DimensionWidth]
 	if dim.Value != width || dim.Unit != UnitPoint {
 		dim.Value = width
@@ -96,8 +96,8 @@ func (node *Node) StyleGetWidth() Value {
 	return node.Style.Dimensions[DimensionWidth]
 }
 
-// NodeStyleSetHeight sets height
-func NodeStyleSetHeight(node *Node, height float32) {
+// StyleSetHeight sets height
+func (node *Node) StyleSetHeight(height float32) {
 	dim := &node.Style.Dimensions[DimensionHeight]
 	if dim.Value != height || dim.Unit != UnitPoint {
 		dim.Value = height

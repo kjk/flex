@@ -35,8 +35,8 @@ func TestBorder_container_match_child(t *testing.T) {
 	NodeStyleSetBorder(root, EdgeBottom, 10)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -71,12 +71,12 @@ func TestBorder_flex_child(t *testing.T) {
 	NodeStyleSetBorder(root, EdgeTop, 10)
 	NodeStyleSetBorder(root, EdgeRight, 10)
 	NodeStyleSetBorder(root, EdgeBottom, 10)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -111,11 +111,11 @@ func TestBorder_stretch_child(t *testing.T) {
 	NodeStyleSetBorder(root, EdgeTop, 10)
 	NodeStyleSetBorder(root, EdgeRight, 10)
 	NodeStyleSetBorder(root, EdgeBottom, 10)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -151,12 +151,12 @@ func TestBorder_center_child(t *testing.T) {
 	NodeStyleSetBorder(root, EdgeStart, 10)
 	NodeStyleSetBorder(root, EdgeEnd, 20)
 	NodeStyleSetBorder(root, EdgeBottom, 20)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

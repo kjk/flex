@@ -5,18 +5,18 @@ import "testing"
 func TestFlex_direction_column_no_height(t *testing.T) {
 	config := NewConfig()
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
+	root.StyleSetWidth(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -68,18 +68,18 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -130,19 +130,19 @@ func TestFlex_direction_column(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -194,19 +194,19 @@ func TestFlex_direction_row(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -258,19 +258,19 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionColumnReverse)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -322,19 +322,19 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRowReverse)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

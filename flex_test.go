@@ -6,8 +6,8 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
@@ -57,8 +57,8 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
@@ -107,8 +107,8 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexShrink(rootChild0, 1)
@@ -158,8 +158,8 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexShrink(rootChild0, 1)
@@ -208,22 +208,22 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetHeight(root, 75)
+	root.StyleSetHeight(75)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 50)
-	NodeStyleSetHeight(rootChild0, 50)
+	rootChild0.StyleSetWidth(50)
+	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexShrink(rootChild1, 1)
-	NodeStyleSetWidth(rootChild1, 50)
-	NodeStyleSetHeight(rootChild1, 50)
+	rootChild1.StyleSetWidth(50)
+	rootChild1.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 50)
-	NodeStyleSetHeight(rootChild2, 50)
+	rootChild2.StyleSetWidth(50)
+	rootChild2.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -274,23 +274,23 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasis(rootChild0, 50)
-	NodeStyleSetHeight(rootChild0, 20)
+	rootChild0.StyleSetHeight(20)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild2, 1)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -341,8 +341,8 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeInsertChild(root, rootChild0, 0)
@@ -390,8 +390,8 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 200)
-	NodeStyleSetHeight(root, 500)
+	root.StyleSetWidth(200)
+	root.StyleSetHeight(500)
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 0.2)

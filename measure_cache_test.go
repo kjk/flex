@@ -57,8 +57,8 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignFlexStart)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	measureCount := 0
@@ -149,8 +149,8 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	measureCount := 0
 
 	root := NewNode()
-	NodeStyleSetWidth(root, 288)
-	NodeStyleSetHeight(root, 288)
+	root.StyleSetWidth(288)
+	root.StyleSetHeight(288)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 
 	rootChild0 := NewNode()

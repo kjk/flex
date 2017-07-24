@@ -7,19 +7,19 @@ func TestJustify_content_row_flex_start(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -72,19 +72,19 @@ func TestJustify_content_row_flex_end(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -137,19 +137,19 @@ func TestJustify_content_row_center(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -202,19 +202,19 @@ func TestJustify_content_row_space_between(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifySpaceBetween)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -267,19 +267,19 @@ func TestJustify_content_row_space_around(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetJustifyContent(root, JustifySpaceAround)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0, 10)
+	rootChild0.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild1, 10)
+	rootChild1.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild2, 10)
+	rootChild2.StyleSetWidth(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -330,18 +330,18 @@ func TestJustify_content_column_flex_start(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -393,19 +393,19 @@ func TestJustify_content_column_flex_end(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetJustifyContent(root, JustifyFlexEnd)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -457,19 +457,19 @@ func TestJustify_content_column_center(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetJustifyContent(root, JustifyCenter)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -521,19 +521,19 @@ func TestJustify_content_column_space_between(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetJustifyContent(root, JustifySpaceBetween)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -585,19 +585,19 @@ func TestJustify_content_column_space_around(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	NodeStyleSetJustifyContent(root, JustifySpaceAround)
-	NodeStyleSetWidth(root, 102)
-	NodeStyleSetHeight(root, 102)
+	root.StyleSetWidth(102)
+	root.StyleSetHeight(102)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild0, 10)
+	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild1, 10)
+	rootChild1.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
-	NodeStyleSetHeight(rootChild2, 10)
+	rootChild2.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

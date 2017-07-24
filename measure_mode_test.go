@@ -54,8 +54,8 @@ func TestExactly_measure_stretched_child_column(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -79,8 +79,8 @@ func TestExactly_measure_stretched_child_row(t *testing.T) {
 
 	root := NewNode()
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -103,8 +103,8 @@ func TestAt_most_main_axis_column(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -128,8 +128,8 @@ func TestAt_most_cross_axis_column(t *testing.T) {
 
 	root := NewNode()
 	NodeStyleSetAlignItems(root, AlignFlexStart)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -153,8 +153,8 @@ func TestAt_most_main_axis_row(t *testing.T) {
 
 	root := NewNode()
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -179,8 +179,8 @@ func TestAt_most_cross_axis_row(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetAlignItems(root, AlignFlexStart)
-	NodeStyleSetWidth(root, 100)
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetWidth(100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -203,7 +203,7 @@ func TestFlex_child(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	NodeStyleSetFlexGrow(rootChild0, 1)
@@ -230,7 +230,7 @@ func TestFlex_child_with_flex_basis(t *testing.T) {
 	}
 
 	root := NewNode()
-	NodeStyleSetHeight(root, 100)
+	root.StyleSetHeight(100)
 
 	rootChild0 := NewNode()
 	NodeStyleSetFlexGrow(rootChild0, 1)
@@ -257,8 +257,8 @@ func TestOverflow_scroll_column(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetAlignItems(root, AlignFlexStart)
 	NodeStyleSetOverflow(root, OverflowScroll)
-	NodeStyleSetHeight(root, 100)
-	NodeStyleSetWidth(root, 100)
+	root.StyleSetHeight(100)
+	root.StyleSetWidth(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
@@ -287,8 +287,8 @@ func TestOverflow_scroll_row(t *testing.T) {
 	NodeStyleSetAlignItems(root, AlignFlexStart)
 	NodeStyleSetFlexDirection(root, FlexDirectionRow)
 	NodeStyleSetOverflow(root, OverflowScroll)
-	NodeStyleSetHeight(root, 100)
-	NodeStyleSetWidth(root, 100)
+	root.StyleSetHeight(100)
+	root.StyleSetWidth(100)
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &constraintList
