@@ -25,8 +25,8 @@ func TestRounding_feature_with_custom_measure_func_floor(t *testing.T) {
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _measureFloor)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_measureFloor)
+	root.InsertChild(rootChild0, 0)
 
 	ConfigSetPointScaleFactor(config, 0)
 
@@ -69,8 +69,8 @@ func TestRounding_feature_with_custom_measure_func_ceil(t *testing.T) {
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _measureCeil)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_measureCeil)
+	root.InsertChild(rootChild0, 0)
 
 	ConfigSetPointScaleFactor(config, 1)
 
@@ -86,8 +86,8 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetPosition(EdgeLeft, 73.625)
-	NodeSetMeasureFunc(rootChild0, _measureFractial)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_measureFractial)
+	root.InsertChild(rootChild0, 0)
 
 	ConfigSetPointScaleFactor(config, 2)
 

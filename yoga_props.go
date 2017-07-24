@@ -81,8 +81,8 @@ func (node *Node) StyleSetWidthPercent(width float32) {
 	}
 }
 
-// NodeStyleSetWidthAuto sets width auto
-func NodeStyleSetWidthAuto(node *Node) {
+// StyleSetWidthAuto sets width auto
+func (node *Node) StyleSetWidthAuto() {
 	dim := &node.Style.Dimensions[DimensionWidth]
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
@@ -122,8 +122,8 @@ func (node *Node) StyleSetHeightPercent(height float32) {
 	}
 }
 
-// NodeStyleSetHeightAuto sets height auto
-func NodeStyleSetHeightAuto(node *Node) {
+// StyleSetHeightAuto sets height auto
+func (node *Node) StyleSetHeightAuto() {
 	dim := &node.Style.Dimensions[DimensionHeight]
 	if dim.Unit != UnitAuto {
 		dim.Value = Undefined
@@ -254,11 +254,6 @@ func (node *Node) StyleSetFlex(flex float32) {
 		node.Style.Flex = flex
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetFlex gets flex
-func NodeStyleGetFlex(node *Node) float32 {
-	return node.Style.Flex
 }
 
 // StyleSetFlexGrow sets flex grow

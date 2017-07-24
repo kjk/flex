@@ -13,7 +13,7 @@ func TestStart_overrides(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeStart, 10)
 	rootChild0.StyleSetMargin(EdgeLeft, 20)
 	rootChild0.StyleSetMargin(EdgeRight, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, rootChild0.LayoutGetLeft())
@@ -35,7 +35,7 @@ func TestEnd_overrides(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeEnd, 10)
 	rootChild0.StyleSetMargin(EdgeLeft, 20)
 	rootChild0.StyleSetMargin(EdgeRight, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, rootChild0.LayoutGetLeft())
@@ -56,7 +56,7 @@ func TestHorizontal_overridden(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeHorizontal, 10)
 	rootChild0.StyleSetMargin(EdgeLeft, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, rootChild0.LayoutGetLeft())
@@ -73,7 +73,7 @@ func TestVertical_overridden(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeVertical, 10)
 	rootChild0.StyleSetMargin(EdgeTop, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, rootChild0.LayoutGetTop())
@@ -90,7 +90,7 @@ func TestHorizontal_overrides_all(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeHorizontal, 10)
 	rootChild0.StyleSetMargin(EdgeAll, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, rootChild0.LayoutGetLeft())
@@ -109,7 +109,7 @@ func TestVertical_overrides_all(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeVertical, 10)
 	rootChild0.StyleSetMargin(EdgeAll, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 20, rootChild0.LayoutGetLeft())
@@ -131,7 +131,7 @@ func TestAll_overridden(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeRight, 10)
 	rootChild0.StyleSetMargin(EdgeBottom, 10)
 	rootChild0.StyleSetMargin(EdgeAll, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, rootChild0.LayoutGetLeft())

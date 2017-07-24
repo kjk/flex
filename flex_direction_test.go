@@ -9,15 +9,15 @@ func TestFlex_direction_column_no_height(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -72,15 +72,15 @@ func TestFlex_direction_row_no_width(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -135,15 +135,15 @@ func TestFlex_direction_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -199,15 +199,15 @@ func TestFlex_direction_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -263,15 +263,15 @@ func TestFlex_direction_column_reverse(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -327,15 +327,15 @@ func TestFlex_direction_row_reverse(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())

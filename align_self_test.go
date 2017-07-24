@@ -13,7 +13,7 @@ func TestAlign_self_center(t *testing.T) {
 	rootChild0.StyleSetAlignSelf(AlignCenter)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -50,7 +50,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 	rootChild0.StyleSetAlignSelf(AlignFlexEnd)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -87,7 +87,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 	rootChild0.StyleSetAlignSelf(AlignFlexStart)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -125,7 +125,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	rootChild0.StyleSetAlignSelf(AlignFlexEnd)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -163,18 +163,18 @@ func TestAlign_self_baseline(t *testing.T) {
 	rootChild0.StyleSetAlignSelf(AlignBaseline)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetAlignSelf(AlignBaseline)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(20)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild1child0 := NewNodeWithConfig(config)
 	rootChild1child0.StyleSetWidth(50)
 	rootChild1child0.StyleSetHeight(10)
-	NodeInsertChild(rootChild1, rootChild1child0, 0)
+	rootChild1.InsertChild(rootChild1child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())

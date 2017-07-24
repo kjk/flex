@@ -342,8 +342,8 @@ func nodeMarkDirtyInternal(node *Node) {
 	}
 }
 
-// NodeSetMeasureFunc sets measure function
-func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
+// SetMeasureFunc sets measure function
+func (node *Node) SetMeasureFunc(measureFunc MeasureFunc) {
 	if measureFunc == nil {
 		node.Measure = nil
 		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
@@ -359,8 +359,8 @@ func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
 	}
 }
 
-// NodeInsertChild inserts a child
-func NodeInsertChild(node *Node, child *Node, idx int) {
+// InsertChild inserts a child
+func (node *Node) InsertChild(child *Node, idx int) {
 	assertWithNode(node, child.Parent == nil, "Child already has a parent, it must be removed first.")
 	assertWithNode(node, node.Measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
 

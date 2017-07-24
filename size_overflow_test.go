@@ -10,12 +10,12 @@ func TestNested_overflowing_child(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	rootChild0Child0.StyleSetWidth(200)
 	rootChild0Child0.StyleSetHeight(200)
-	NodeInsertChild(rootChild0, rootChild0Child0, 0)
+	rootChild0.InsertChild(rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -61,12 +61,12 @@ func TestNested_overflowing_child_in_constraint_parent(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	rootChild0Child0.StyleSetWidth(200)
 	rootChild0Child0.StyleSetHeight(200)
-	NodeInsertChild(rootChild0, rootChild0Child0, 0)
+	rootChild0.InsertChild(rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -111,12 +111,12 @@ func TestParent_wrap_child_size_overflowing_parent(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	rootChild0Child0.StyleSetWidth(100)
 	rootChild0Child0.StyleSetHeight(200)
-	NodeInsertChild(rootChild0, rootChild0Child0, 0)
+	rootChild0.InsertChild(rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())

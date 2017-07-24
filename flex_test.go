@@ -12,11 +12,11 @@ func TestFlex_basis_flex_grow_column(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasis(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -63,11 +63,11 @@ func TestFlex_basis_flex_grow_row(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasis(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -113,11 +113,11 @@ func TestFlex_basis_flex_shrink_column(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexShrink(1)
 	rootChild0.StyleSetFlexBasis(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexBasis(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -164,11 +164,11 @@ func TestFlex_basis_flex_shrink_row(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexShrink(1)
 	rootChild0.StyleSetFlexBasis(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexBasis(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -213,18 +213,18 @@ func TestFlex_shrink_to_zero(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexShrink(1)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetWidth(50)
 	rootChild2.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -281,17 +281,17 @@ func TestFlex_basis_overrides_main_size(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexBasis(50)
 	rootChild0.StyleSetHeight(20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
 	rootChild1.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetFlexGrow(1)
 	rootChild2.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -345,12 +345,12 @@ func TestFlex_grow_shrink_at_most(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	rootChild0Child0.StyleSetFlexGrow(1)
 	rootChild0Child0.StyleSetFlexShrink(1)
-	NodeInsertChild(rootChild0, rootChild0Child0, 0)
+	rootChild0.InsertChild(rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -396,15 +396,15 @@ func TestFlex_grow_less_than_factor_one(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(0.2)
 	rootChild0.StyleSetFlexBasis(40)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(0.2)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetFlexGrow(0.4)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())

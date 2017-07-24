@@ -63,9 +63,9 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 	rootChild0 := NewNode()
 	measureCount := 0
 	rootChild0.Context = measureCount
-	NodeSetMeasureFunc(rootChild0, measureMax)
+	rootChild0.SetMeasureFunc(measureMax)
 	rootChild0.StyleSetFlexGrow(1)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -80,8 +80,8 @@ func TestRemeasure_with_same_exact_width_larger_than_needed_height(t *testing.T)
 	rootChild0 := NewNode()
 	measureCount := 0
 	rootChild0.Context = measureCount
-	NodeSetMeasureFunc(rootChild0, measureMin)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(measureMin)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 	NodeCalculateLayout(root, 100, 50, DirectionLTR)
@@ -98,8 +98,8 @@ func TestRemeasure_with_same_atmost_width_larger_than_needed_height(t *testing.T
 	rootChild0 := NewNode()
 	measureCount := 0
 	rootChild0.Context = measureCount
-	NodeSetMeasureFunc(rootChild0, measureMin)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(measureMin)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 	NodeCalculateLayout(root, 100, 50, DirectionLTR)
@@ -116,8 +116,8 @@ func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 	rootChild0 := NewNode()
 	measureCount := 0
 	rootChild0.Context = measureCount
-	NodeSetMeasureFunc(rootChild0, measureMin)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(measureMin)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 	root.StyleSetAlignItems(AlignStretch)
@@ -135,8 +135,8 @@ func TestRemeasure_with_atmost_computed_width_undefined_height(t *testing.T) {
 	rootChild0 := NewNode()
 	measureCount := 0
 	rootChild0.Context = measureCount
-	NodeSetMeasureFunc(rootChild0, measureMin)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(measureMin)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, Undefined, DirectionLTR)
 	NodeCalculateLayout(root, 10, Undefined, DirectionLTR)
@@ -156,12 +156,12 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	rootChild0 := NewNode()
 	rootChild0.StyleSetPadding(EdgeAll, 2.88)
 	rootChild0.StyleSetFlexDirection(FlexDirectionRow)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild0Child0 := NewNode()
 	rootChild0Child0.Context = measureCount
-	NodeSetMeasureFunc(rootChild0Child0, measure8449)
-	NodeInsertChild(rootChild0, rootChild0Child0, 0)
+	rootChild0Child0.SetMeasureFunc(measure8449)
+	rootChild0.InsertChild(rootChild0Child0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

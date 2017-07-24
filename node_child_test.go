@@ -12,7 +12,7 @@ func TestReset_layout_when_child_removed(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

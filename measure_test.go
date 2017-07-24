@@ -48,10 +48,10 @@ func TestDont_measure_single_grow_shrink_child(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0, _measure)
+	rootChild0.SetMeasureFunc(_measure)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetFlexShrink(1)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -62,15 +62,15 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 	root := NewNode()
 
 	rootChild0 := NewNode()
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	measureCount := 0
 
 	rootChild0Child0 := NewNode()
 	rootChild0Child0.StyleSetPositionType(PositionTypeAbsolute)
 	rootChild0Child0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0Child0, _measure3)
-	NodeInsertChild(rootChild0, rootChild0Child0, 0)
+	rootChild0Child0.SetMeasureFunc(_measure3)
+	rootChild0.InsertChild(rootChild0Child0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -87,12 +87,12 @@ func TestDont_measure_when_min_equals_max(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0, _measure3)
+	rootChild0.SetMeasureFunc(_measure3)
 	rootChild0.StyleSetMinWidth(10)
 	rootChild0.StyleSetMaxWidth(10)
 	rootChild0.StyleSetMinHeight(10)
 	rootChild0.StyleSetMaxHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -113,12 +113,12 @@ func TestDont_measure_when_min_equals_max_percentages(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0, _measure3)
+	rootChild0.SetMeasureFunc(_measure3)
 	rootChild0.StyleSetMinWidthPercent(10)
 	rootChild0.StyleSetMaxWidthPercent(10)
 	rootChild0.StyleSetMinHeightPercent(10)
 	rootChild0.StyleSetMaxHeightPercent(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -139,12 +139,12 @@ func TestDont_measure_when_min_equals_max_mixed_width_percent(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0, _measure3)
+	rootChild0.SetMeasureFunc(_measure3)
 	rootChild0.StyleSetMinWidthPercent(10)
 	rootChild0.StyleSetMaxWidthPercent(10)
 	rootChild0.StyleSetMinHeight(10)
 	rootChild0.StyleSetMaxHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -165,12 +165,12 @@ func TestDont_measure_when_min_equals_max_mixed_height_percent(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0, _measure3)
+	rootChild0.SetMeasureFunc(_measure3)
 	rootChild0.StyleSetMinWidth(10)
 	rootChild0.StyleSetMaxWidth(10)
 	rootChild0.StyleSetMinHeightPercent(10)
 	rootChild0.StyleSetMaxHeightPercent(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -187,9 +187,9 @@ func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetAlignSelf(AlignFlexStart)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
 
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -203,9 +203,9 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetAlignSelf(AlignFlexStart)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
 
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -225,9 +225,9 @@ func TestMeasure_zero_space_should_grow(t *testing.T) {
 	rootChild0.StyleSetFlexDirection(FlexDirectionColumn)
 	rootChild0.StyleSetPadding(EdgeAll, 100)
 	rootChild0.Context = &measureCount
-	NodeSetMeasureFunc(rootChild0, _measure3)
+	rootChild0.SetMeasureFunc(_measure3)
 
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, 282, Undefined, DirectionLTR)
 
@@ -248,13 +248,13 @@ func TestMeasure_flex_direction_row_and_padding(t *testing.T) {
 	root.StyleSetHeight(50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -283,13 +283,13 @@ func TestMeasure_flex_direction_column_and_padding(t *testing.T) {
 	root.StyleSetHeight(50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -318,13 +318,13 @@ func TestMeasure_flex_direction_row_no_padding(t *testing.T) {
 	root.StyleSetHeight(50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -354,13 +354,13 @@ func TestMeasure_flex_direction_row_no_padding_align_items_flexstart(t *testing.
 	root.StyleSetAlignItems(AlignFlexStart)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
-	NodeInsertChild(root, rootChild0, 0)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -389,15 +389,15 @@ func TestMeasure_with_fixed_size(t *testing.T) {
 	root.StyleSetHeight(50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -426,14 +426,14 @@ func TestMeasure_with_flex_shrink(t *testing.T) {
 	root.StyleSetHeight(50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
 	rootChild0.StyleSetFlexShrink(1)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -461,14 +461,14 @@ func TestMeasure_no_padding(t *testing.T) {
 	root.StyleSetHeight(50)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
+	rootChild0.SetMeasureFunc(_simulate_wrapping_text)
 	rootChild0.StyleSetFlexShrink(1)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(5)
 	rootChild1.StyleSetHeight(5)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -491,10 +491,10 @@ func TestMeasure_no_padding(t *testing.T) {
 #if GTEST_HAS_DEATH_TEST
 TEST(YogaDeathTest, cannot_add_child_to_node_with_measure_func) {
   root := YGNodeNew();
-  YGNodeSetMeasureFunc(root, _measure3);
+  YGroot.SetMeasureFunc(_measure3);
 
   rootChild0 := YGNodeNew();
-  ASSERT_DEATH(YGNodeInsertChild(root, rootChild0, 0), "Cannot add child.*");
+  ASSERT_DEATH(YGroot.InsertChild(rootChild0, 0), "Cannot add child.*");
   YGNodeFree(rootChild0);
   ;
 }
@@ -502,9 +502,9 @@ TEST(YogaDeathTest, cannot_add_child_to_node_with_measure_func) {
 TEST(YogaDeathTest, cannot_add_nonnull_measure_func_to_non_leaf_node) {
   root := YGNodeNew();
   rootChild0 := YGNodeNew();
-  YGNodeInsertChild(root, rootChild0, 0);
+  YGroot.InsertChild(rootChild0, 0);
 
-  ASSERT_DEATH(YGNodeSetMeasureFunc(root, _measure3), "Cannot set measure function.*");
+  ASSERT_DEATH(YGroot.SetMeasureFunc(_measure3), "Cannot set measure function.*");
   ;
 }
 #endif
@@ -512,9 +512,9 @@ TEST(YogaDeathTest, cannot_add_nonnull_measure_func_to_non_leaf_node) {
 
 func TestCan_nullify_measure_func_on_any_node(t *testing.T) {
 	root := NewNode()
-	NodeInsertChild(root, NewNode(), 0)
+	root.InsertChild(NewNode(), 0)
 
-	NodeSetMeasureFunc(root, nil)
+	root.SetMeasureFunc(nil)
 	assert.True(t, root.Measure == nil)
 }
 
@@ -527,9 +527,9 @@ func TestCant_call_negative_measure(t *testing.T) {
 	root.StyleSetHeight(10)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _measure_assert_negative)
+	rootChild0.SetMeasureFunc(_measure_assert_negative)
 	rootChild0.StyleSetMargin(EdgeTop, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 }
@@ -543,9 +543,9 @@ func TestCant_call_negative_measure_horizontal(t *testing.T) {
 	root.StyleSetHeight(20)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeSetMeasureFunc(rootChild0, _measure_assert_negative)
+	rootChild0.SetMeasureFunc(_measure_assert_negative)
 	rootChild0.StyleSetMargin(EdgeStart, 20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 }

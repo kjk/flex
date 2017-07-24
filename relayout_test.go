@@ -12,7 +12,7 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexBasisPercent(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, Undefined, DirectionLTR)
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
@@ -26,7 +26,7 @@ func TestRecalculate_resolvedDimonsion_onchange(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetMinHeight(10)
 	rootChild0.StyleSetMaxHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 	assertFloatEqual(t, 10, rootChild0.LayoutGetHeight())

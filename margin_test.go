@@ -13,7 +13,7 @@ func TestMargin_start(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetMargin(EdgeStart, 10)
 	rootChild0.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -50,7 +50,7 @@ func TestMargin_top(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetMargin(EdgeTop, 10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -89,7 +89,7 @@ func TestMargin_end(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetMargin(EdgeEnd, 10)
 	rootChild0.StyleSetWidth(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -127,7 +127,7 @@ func TestMargin_bottom(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetMargin(EdgeBottom, 10)
 	rootChild0.StyleSetHeight(10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -166,7 +166,7 @@ func TestMargin_and_flex_row(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeStart, 10)
 	rootChild0.StyleSetMargin(EdgeEnd, 10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -204,7 +204,7 @@ func TestMargin_and_flex_column(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeTop, 10)
 	rootChild0.StyleSetMargin(EdgeBottom, 10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -243,7 +243,7 @@ func TestMargin_and_stretch_row(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeTop, 10)
 	rootChild0.StyleSetMargin(EdgeBottom, 10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -281,7 +281,7 @@ func TestMargin_and_stretch_column(t *testing.T) {
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeStart, 10)
 	rootChild0.StyleSetMargin(EdgeEnd, 10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -319,11 +319,11 @@ func TestMargin_with_sibling_row(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeEnd, 10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -370,11 +370,11 @@ func TestMargin_with_sibling_column(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	rootChild0.StyleSetFlexGrow(1)
 	rootChild0.StyleSetMargin(EdgeBottom, 10)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexGrow(1)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -423,12 +423,12 @@ func TestMargin_auto_bottom(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -477,12 +477,12 @@ func TestMargin_auto_top(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeTop)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -532,12 +532,12 @@ func TestMargin_auto_bottom_and_top(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -587,12 +587,12 @@ func TestMargin_auto_bottom_and_top_justify_center(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -641,18 +641,18 @@ func TestMargin_auto_mutiple_children_column(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeTop)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetMarginAuto(EdgeTop)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetWidth(50)
 	rootChild2.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -712,18 +712,18 @@ func TestMargin_auto_mutiple_children_row(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetMarginAuto(EdgeRight)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	rootChild2.StyleSetWidth(50)
 	rootChild2.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild2, 2)
+	root.InsertChild(rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -784,12 +784,12 @@ func Testargin_auto_left_and_right_column(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -838,12 +838,12 @@ func TestMargin_auto_left_and_right(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -894,12 +894,12 @@ func TestMargin_auto_start_and_end_column(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeEnd)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -948,12 +948,12 @@ func TestMargin_auto_start_and_end(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeEnd)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1003,12 +1003,12 @@ func TestMargin_auto_left_and_right_column_and_center(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1057,12 +1057,12 @@ func TestMargin_auto_left(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeLeft)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1111,12 +1111,12 @@ func TestMargin_auto_right(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1166,12 +1166,12 @@ func TestMargin_auto_left_and_right_strech(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1220,12 +1220,12 @@ func TestMargin_auto_top_and_bottom_strech(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeBottom)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(50)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1274,7 +1274,7 @@ func TestMargin_should_not_be_part_of_max_height(t *testing.T) {
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetHeight(100)
 	rootChild0.StyleSetMaxHeight(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1313,7 +1313,7 @@ func TestMargin_should_not_be_part_of_max_width(t *testing.T) {
 	rootChild0.StyleSetWidth(100)
 	rootChild0.StyleSetMaxWidth(100)
 	rootChild0.StyleSetHeight(100)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1353,7 +1353,7 @@ func TestMargin_auto_left_right_child_bigger_than_parent(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1392,7 +1392,7 @@ func TestMargin_auto_left_child_bigger_than_parent(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeLeft)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1432,7 +1432,7 @@ func TestMargin_fix_left_auto_right_child_bigger_than_parent(t *testing.T) {
 	rootChild0.StyleSetMarginAuto(EdgeRight)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
@@ -1472,7 +1472,7 @@ func TestMargin_auto_left_fix_right_child_bigger_than_parent(t *testing.T) {
 	rootChild0.StyleSetMargin(EdgeRight, 10)
 	rootChild0.StyleSetWidth(72)
 	rootChild0.StyleSetHeight(72)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())

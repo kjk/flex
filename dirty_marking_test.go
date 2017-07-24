@@ -15,12 +15,12 @@ func TestDirty_propagation(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNode()
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(20)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -47,12 +47,12 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	rootChild0 := NewNode()
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(20)
-	NodeInsertChild(root, rootChild0, 0)
+	root.InsertChild(rootChild0, 0)
 
 	rootChild1 := NewNode()
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(20)
-	NodeInsertChild(root, rootChild1, 1)
+	root.InsertChild(rootChild1, 1)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -79,11 +79,11 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	child1Child0Child0.StyleSetWidth(8)
 	child1Child0Child0.StyleSetHeight(16)
 
-	NodeInsertChild(child1Child0, child1Child0Child0, 0)
+	child1Child0.InsertChild(child1Child0Child0, 0)
 
-	NodeInsertChild(child1, child1Child0, 0)
-	NodeInsertChild(root, child0, 0)
-	NodeInsertChild(root, child1, 0)
+	child1.InsertChild(child1Child0, 0)
+	root.InsertChild(child0, 0)
+	root.InsertChild(child1, 0)
 
 	child0.StyleSetDisplay(DisplayFlex)
 	child1.StyleSetDisplay(DisplayNone)
@@ -119,7 +119,7 @@ func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	child0 := NewNode()
 	child0.StyleSetWidth(50)
 	child0.StyleSetHeight(25)
-	NodeInsertChild(root, child0, 0)
+	root.InsertChild(child0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
