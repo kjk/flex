@@ -20,7 +20,7 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, AlignFlexStart, NodeStyleGetAlignContent(root))
 	assert.Equal(t, AlignStretch, NodeStyleGetAlignItems(root))
 	assert.Equal(t, AlignAuto, NodeStyleGetAlignSelf(root))
-	assert.Equal(t, PositionTypeRelative, NodeStyleGetPositionType(root))
+	assert.Equal(t, PositionTypeRelative, root.Style.PositionType)
 	assert.Equal(t, WrapNoWrap, NodeStyleGetFlexWrap(root))
 	assert.Equal(t, OverflowVisible, NodeStyleGetOverflow(root))
 	assertFloatEqual(t, 0, NodeStyleGetFlexGrow(root))

@@ -67,7 +67,7 @@ func TestMeasure_absolute_child_with_no_constraints(t *testing.T) {
 	measureCount := 0
 
 	rootChild0Child0 := NewNode()
-	NodeStyleSetPositionType(rootChild0Child0, PositionTypeAbsolute)
+	rootChild0Child0.StyleSetPositionType(PositionTypeAbsolute)
 	rootChild0Child0.Context = &measureCount
 	NodeSetMeasureFunc(rootChild0Child0, _measure3)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)

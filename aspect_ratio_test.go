@@ -178,7 +178,7 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
+	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPosition(rootChild0, EdgeLeft, 0)
 	NodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	NodeStyleSetWidth(rootChild0, 50)
@@ -199,7 +199,7 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
+	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPosition(rootChild0, EdgeLeft, 0)
 	NodeStyleSetPosition(rootChild0, EdgeTop, 0)
 	NodeStyleSetHeight(rootChild0, 50)
@@ -542,7 +542,7 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
+	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPosition(rootChild0, EdgeLeft, 10)
 	NodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	NodeStyleSetPosition(rootChild0, EdgeRight, 10)
@@ -563,7 +563,7 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
+	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPosition(rootChild0, EdgeLeft, 10)
 	NodeStyleSetPosition(rootChild0, EdgeTop, 10)
 	NodeStyleSetPosition(rootChild0, EdgeBottom, 10)

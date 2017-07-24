@@ -137,17 +137,12 @@ func NodeStyleGetHeight(node *Node) Value {
 	return node.Style.Dimensions[DimensionHeight]
 }
 
-// NodeStyleSetPositionType sets position type
-func NodeStyleSetPositionType(node *Node, positionType PositionType) {
+// StyleSetPositionType sets position type
+func (node *Node) StyleSetPositionType(positionType PositionType) {
 	if node.Style.PositionType != positionType {
 		node.Style.PositionType = positionType
 		nodeMarkDirtyInternal(node)
 	}
-}
-
-// NodeStyleGetPositionType gets position type
-func NodeStyleGetPositionType(node *Node) PositionType {
-	return node.Style.PositionType
 }
 
 // NodeStyleSetPosition sets position

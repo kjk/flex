@@ -813,7 +813,7 @@ func TestPercentage_absolute_position(t *testing.T) {
 	NodeStyleSetHeight(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
+	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPositionPercent(rootChild0, EdgeLeft, 30)
 	NodeStyleSetPositionPercent(rootChild0, EdgeTop, 10)
 	NodeStyleSetWidth(rootChild0, 10)
@@ -1047,7 +1047,7 @@ func TestPercent_absolute_position(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
-	NodeStyleSetPositionType(rootChild0, PositionTypeAbsolute)
+	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	NodeStyleSetPositionPercent(rootChild0, EdgeLeft, 50)
 	NodeStyleSetWidthPercent(rootChild0, 100)
 	NodeStyleSetHeight(rootChild0, 50)
