@@ -298,7 +298,7 @@ func NewNode() *Node {
 }
 
 // NodeReset resets a node
-func NodeReset(node *Node) {
+func (node *Node) Reset() {
 	assertWithNode(node, len(node.Children) == 0, "Cannot reset a node which still has children attached")
 	assertWithNode(node, node.Parent == nil, "Cannot reset a node still attached to a parent")
 
@@ -407,8 +407,8 @@ func (node *Node) GetChild(idx int) *Node {
 	return nil
 }
 
-// NodeMarkDirty marks node as dirty
-func NodeMarkDirty(node *Node) {
+// MarkDirty marks node as dirty
+func (node *Node) MarkDirty() {
 	assertWithNode(node, node.Measure != nil,
 		"Only leaf nodes with custom measure functions should manually mark themselves as dirty")
 	nodeMarkDirtyInternal(node)
