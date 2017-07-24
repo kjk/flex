@@ -45,17 +45,13 @@ func YGNodeListInsert(listp **YGNodeList, node *Node, i int) {
 }
 
 // YGNodeListRemove removes a node from list
-func YGNodeListRemove(list *YGNodeList, index int) *Node {
-	removed := list.items[index]
-	list.items[index] = nil
-
-	n := len(list.items)
-	for i := index; i < n-1; i++ {
-		list.items[i] = list.items[i+1]
-		list.items[i+1] = nil
-	}
-
-	list.items = list.items[:n-1]
+func YGNodeListRemove(list *YGNodeList, idx int) *Node {
+	a := list.items
+	removed := a[idx]
+	copy(a[idx:], a[idx+1:])
+	a[len(a)-1] = nil // or the zero value of T
+	a = a[:len(a)-1]
+	list.items = a
 	return removed
 }
 
