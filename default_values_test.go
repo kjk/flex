@@ -9,10 +9,10 @@ import (
 func TestAssert_default_values(t *testing.T) {
 	root := NewNode()
 
-	assert.Equal(t, 0, YGNodeGetChildCount(root))
+	assert.Equal(t, 0, NodeGetChildCount(root))
 	var nilNode *Node
-	assert.Equal(t, nilNode, YGNodeGetChild(root, 1))
-	assert.Equal(t, nilNode, YGNodeGetChild(root, 0))
+	assert.Equal(t, nilNode, NodeGetChild(root, 1))
+	assert.Equal(t, nilNode, NodeGetChild(root, 0))
 
 	assert.Equal(t, DirectionInherit, NodeStyleGetDirection(root))
 	assert.Equal(t, FlexDirectionColumn, NodeStyleGetFlexDirection(root))

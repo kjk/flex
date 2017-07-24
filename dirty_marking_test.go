@@ -15,12 +15,12 @@ func TestDirty_propagation(t *testing.T) {
 	rootChild0 := NewNode()
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 20)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -47,12 +47,12 @@ func TestDirty_propagation_only_if_prop_changed(t *testing.T) {
 	rootChild0 := NewNode()
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 20)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -79,11 +79,11 @@ func TestDirty_mark_all_children_as_dirty_when_display_changes(t *testing.T) {
 	NodeStyleSetWidth(child1Child0Child0, 8)
 	NodeStyleSetHeight(child1Child0Child0, 16)
 
-	YGNodeInsertChild(child1Child0, child1Child0Child0, 0)
+	NodeInsertChild(child1Child0, child1Child0Child0, 0)
 
-	YGNodeInsertChild(child1, child1Child0, 0)
-	YGNodeInsertChild(root, child0, 0)
-	YGNodeInsertChild(root, child1, 0)
+	NodeInsertChild(child1, child1Child0, 0)
+	NodeInsertChild(root, child0, 0)
+	NodeInsertChild(root, child1, 0)
 
 	NodeStyleSetDisplay(child0, DisplayFlex)
 	NodeStyleSetDisplay(child1, DisplayNone)
@@ -119,14 +119,14 @@ func TestDirty_node_only_if_children_are_actually_removed(t *testing.T) {
 	child0 := NewNode()
 	NodeStyleSetWidth(child0, 50)
 	NodeStyleSetHeight(child0, 25)
-	YGNodeInsertChild(root, child0, 0)
+	NodeInsertChild(root, child0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	child1 := NewNode()
-	YGNodeRemoveChild(root, child1)
+	NodeRemoveChild(root, child1)
 	assert.False(t, root.IsDirty)
 
-	YGNodeRemoveChild(root, child0)
+	NodeRemoveChild(root, child0)
 	assert.True(t, root.IsDirty)
 }

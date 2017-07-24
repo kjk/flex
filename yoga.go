@@ -109,41 +109,41 @@ type Node struct {
 }
 
 var (
-	YG_UNDEFINED_VALUES = Value{
+	undefinedValue = Value{
 		Value: Undefined,
 		Unit:  UnitUndefined,
 	}
 
-	YG_AUTO_VALUES = Value{
+	autoValue = Value{
 		Value: Undefined,
 		Unit:  UnitAuto,
 	}
 
-	YG_DEFAULT_EDGE_VALUES_UNIT = [EdgeCount]Value{
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
+	defaultEdgeValuesUnit = [EdgeCount]Value{
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
+		undefinedValue,
 	}
 
-	YG_DEFAULT_DIMENSION_VALUES = [2]float32{
+	defaultDimensionValues = [2]float32{
 		Undefined,
 		Undefined,
 	}
 
-	YG_DEFAULT_DIMENSION_VALUES_UNIT = [2]Value{
-		YG_UNDEFINED_VALUES,
-		YG_UNDEFINED_VALUES,
+	defaultDimensionValuesUnit = [2]Value{
+		undefinedValue,
+		undefinedValue,
 	}
 
-	YG_DEFAULT_DIMENSION_VALUES_AUTO_UNIT = [2]Value{
-		YG_AUTO_VALUES,
-		YG_AUTO_VALUES,
+	defaultDimensionValuesAutoUnit = [2]Value{
+		autoValue,
+		autoValue,
 	}
 )
 
@@ -154,7 +154,7 @@ const (
 )
 
 var (
-	gYGNodeDefaults = Node{
+	nodeDefaults = Node{
 		Parent:             nil,
 		Children:           nil,
 		hasNewLayout:       true,
@@ -165,7 +165,7 @@ var (
 			Flex:           Undefined,
 			FlexGrow:       Undefined,
 			FlexShrink:     Undefined,
-			FlexBasis:      YG_AUTO_VALUES,
+			FlexBasis:      autoValue,
 			JustifyContent: JustifyFlexStart,
 			AlignItems:     AlignStretch,
 			AlignContent:   AlignFlexStart,
@@ -173,22 +173,22 @@ var (
 			FlexDirection:  FlexDirectionColumn,
 			Overflow:       OverflowVisible,
 			Display:        DisplayFlex,
-			Dimensions:     YG_DEFAULT_DIMENSION_VALUES_AUTO_UNIT,
-			MinDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
-			MaxDimensions:  YG_DEFAULT_DIMENSION_VALUES_UNIT,
-			Position:       YG_DEFAULT_EDGE_VALUES_UNIT,
-			Margin:         YG_DEFAULT_EDGE_VALUES_UNIT,
-			Padding:        YG_DEFAULT_EDGE_VALUES_UNIT,
-			Border:         YG_DEFAULT_EDGE_VALUES_UNIT,
+			Dimensions:     defaultDimensionValuesAutoUnit,
+			MinDimensions:  defaultDimensionValuesUnit,
+			MaxDimensions:  defaultDimensionValuesUnit,
+			Position:       defaultEdgeValuesUnit,
+			Margin:         defaultEdgeValuesUnit,
+			Padding:        defaultEdgeValuesUnit,
+			Border:         defaultEdgeValuesUnit,
 			AspectRatio:    Undefined,
 		},
 		Layout: Layout{
-			dimensions:                  YG_DEFAULT_DIMENSION_VALUES,
+			dimensions:                  defaultDimensionValues,
 			lastParentDirection:         Direction(-1),
 			nextCachedMeasurementsIndex: 0,
 			computedFlexBasis:           Undefined,
 			HadOverflow:                 false,
-			measuredDimensions:          YG_DEFAULT_DIMENSION_VALUES,
+			measuredDimensions:          defaultDimensionValues,
 			cachedLayout: CachedMeasurement{
 				widthMeasureMode:  MeasureMode(-1),
 				heightMeasureMode: MeasureMode(-1),
@@ -198,7 +198,7 @@ var (
 		},
 	}
 
-	gYGConfigDefaults = Config{
+	configDefaults = Config{
 		experimentalFeatures: [experimentalFeatureCount + 1]bool{
 			false,
 			false,
@@ -282,7 +282,7 @@ func resolveValueMargin(value *Value, parentSize float32) float32 {
 
 // NewNodeWithConfig creates new node with config
 func NewNodeWithConfig(config *Config) *Node {
-	node := gYGNodeDefaults
+	node := nodeDefaults
 
 	if config.UseWebDefaults {
 		node.Style.FlexDirection = FlexDirectionRow
@@ -294,18 +294,18 @@ func NewNodeWithConfig(config *Config) *Node {
 
 // NewNode creates a new node
 func NewNode() *Node {
-	return NewNodeWithConfig(&gYGConfigDefaults)
+	return NewNodeWithConfig(&configDefaults)
 }
 
 // NodeReset resets a node
 func NodeReset(node *Node) {
-	assertWithNode(node, YGNodeGetChildCount(node) == 0, "Cannot reset a node which still has children attached")
+	assertWithNode(node, NodeGetChildCount(node) == 0, "Cannot reset a node which still has children attached")
 	assertWithNode(node, node.Parent == nil, "Cannot reset a node still attached to a parent")
 
 	YGNodeListFree(node.Children)
 
 	config := node.Config
-	*node = gYGNodeDefaults
+	*node = nodeDefaults
 	if config.UseWebDefaults {
 		node.Style.FlexDirection = FlexDirectionRow
 		node.Style.AlignContent = AlignStretch
@@ -315,7 +315,7 @@ func NodeReset(node *Node) {
 
 // ConfigGetDefault returns default config, only for C#
 func ConfigGetDefault() *Config {
-	return &gYGConfigDefaults
+	return &configDefaults
 }
 
 // NewConfig creates new config
@@ -323,7 +323,7 @@ func NewConfig() *Config {
 	config := &Config{}
 	YGAssert(config != nil, "Could not allocate memory for config")
 
-	*config = gYGConfigDefaults
+	*config = configDefaults
 	return config
 }
 
@@ -351,7 +351,7 @@ func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
 	} else {
 		assertWithNode(
 			node,
-			YGNodeGetChildCount(node) == 0,
+			NodeGetChildCount(node) == 0,
 			"Cannot set measure function: Nodes with measure functions cannot have children.")
 		node.Measure = measureFunc
 		// TODO: t18095186 Move nodeType to opt-in function and mark appropriate places in Litho
@@ -359,8 +359,8 @@ func NodeSetMeasureFunc(node *Node, measureFunc MeasureFunc) {
 	}
 }
 
-// YGNodeInsertChild inserts a child
-func YGNodeInsertChild(node *Node, child *Node, index int) {
+// NodeInsertChild inserts a child
+func NodeInsertChild(node *Node, child *Node, index int) {
 	assertWithNode(node, child.Parent == nil, "Child already has a parent, it must be removed first.")
 	assertWithNode(node, node.Measure == nil, "Cannot add child: Nodes with measure functions cannot have children.")
 
@@ -369,22 +369,22 @@ func YGNodeInsertChild(node *Node, child *Node, index int) {
 	nodeMarkDirtyInternal(node)
 }
 
-// YGNodeRemoveChild removes the child
-func YGNodeRemoveChild(node *Node, child *Node) {
-	if YGNodeListDelete(node.Children, child) != nil {
-		child.Layout = gYGNodeDefaults.Layout // layout is no longer valid
+// NodeRemoveChild removes the child
+func NodeRemoveChild(node *Node, child *Node) {
+	if NodeListDelete(node.Children, child) != nil {
+		child.Layout = nodeDefaults.Layout // layout is no longer valid
 		child.Parent = nil
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// YGNodeGetChild returns a child
-func YGNodeGetChild(node *Node, index int) *Node {
+// NodeGetChild returns a child
+func NodeGetChild(node *Node, index int) *Node {
 	return YGNodeListGet(node.Children, index)
 }
 
-// YGNodeGetChildCount returns number of children
-func YGNodeGetChildCount(node *Node) int {
+// NodeGetChildCount returns number of children
+func NodeGetChildCount(node *Node) int {
 	return YGNodeListCount(node.Children)
 }
 
@@ -688,9 +688,9 @@ func YGBaseline(node *Node) float32 {
 	}
 
 	var baselineChild *Node
-	childCount := YGNodeGetChildCount(node)
+	childCount := NodeGetChildCount(node)
 	for i := 0; i < childCount; i++ {
-		child := YGNodeGetChild(node, i)
+		child := NodeGetChild(node, i)
 		if child.lineIndex > 0 {
 			break
 		}
@@ -747,9 +747,9 @@ func IsBaselineLayout(node *Node) bool {
 	if node.Style.AlignItems == AlignBaseline {
 		return true
 	}
-	childCount := YGNodeGetChildCount(node)
+	childCount := NodeGetChildCount(node)
 	for i := 0; i < childCount; i++ {
-		child := YGNodeGetChild(node, i)
+		child := NodeGetChild(node, i)
 		if child.Style.PositionType == PositionTypeRelative &&
 			child.Style.AlignSelf == AlignBaseline {
 			return true
@@ -1353,7 +1353,7 @@ func zeroOutLayoutRecursivly(node *Node) {
 	node.Layout.cachedLayout.computedWidth = 0
 	node.Layout.cachedLayout.computedHeight = 0
 	node.hasNewLayout = true
-	childCount := YGNodeGetChildCount(node)
+	childCount := NodeGetChildCount(node)
 	for i := 0; i < childCount; i++ {
 		child := YGNodeListGet(node.Children, i)
 		zeroOutLayoutRecursivly(child)
@@ -1578,7 +1578,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	var singleFlexChild *Node
 	if measureModeMainDim == MeasureModeExactly {
 		for i := 0; i < childCount; i++ {
-			child := YGNodeGetChild(node, i)
+			child := NodeGetChild(node, i)
 			if singleFlexChild != nil {
 				if NodeIsFlex(child) {
 					// There is already a flexible child, abort.
@@ -2535,7 +2535,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	// As we only wrapped in normal direction yet, we need to reverse the positions on wrap-reverse.
 	if performLayout && node.Style.FlexWrap == WrapWrapReverse {
 		for i := 0; i < childCount; i++ {
-			child := YGNodeGetChild(node, i)
+			child := NodeGetChild(node, i)
 			if child.Style.PositionType == PositionTypeRelative {
 				child.Layout.Position[pos[crossAxis]] = node.Layout.measuredDimensions[dim[crossAxis]] -
 					child.Layout.Position[pos[crossAxis]] -
@@ -2969,7 +2969,7 @@ func roundToPixelGrid(node *Node, pointScaleFactor float32, absoluteLeft float32
 
 	childCount := YGNodeListCount(node.Children)
 	for i := 0; i < childCount; i++ {
-		roundToPixelGrid(YGNodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
+		roundToPixelGrid(NodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
 	}
 }
 

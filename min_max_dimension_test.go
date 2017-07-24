@@ -12,7 +12,7 @@ func TestMax_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetMaxWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -50,7 +50,7 @@ func TestMax_height(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetMaxHeight(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -87,11 +87,11 @@ func TestMin_height(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetMinHeight(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -139,11 +139,11 @@ func TestMin_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetMinWidth(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -192,7 +192,7 @@ func TestJustify_content_min_max(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 60)
 	NodeStyleSetHeight(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -231,7 +231,7 @@ func TestAlign_items_min_max(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 60)
 	NodeStyleSetHeight(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -269,17 +269,17 @@ func TestJustify_content_overflow_min_max(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
 	NodeStyleSetHeight(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -337,11 +337,11 @@ func TestFlex_grow_to_min(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexShrink(rootChild0, 1)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -389,12 +389,12 @@ func TestFlex_grow_in_at_most_container(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetFlexBasis(rootChild0Child0, 0)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -441,7 +441,7 @@ func TestFlex_grow_child(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasis(rootChild0, 0)
 	NodeStyleSetHeight(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -477,11 +477,11 @@ func TestFlex_grow_within_constrained_min_max_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -528,12 +528,12 @@ func TestFlex_grow_within_max_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	NodeStyleSetMaxWidth(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetHeight(rootChild0Child0, 20)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -580,12 +580,12 @@ func TestFlex_grow_within_constrained_max_width(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	NodeStyleSetMaxWidth(rootChild0, 300)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetHeight(rootChild0Child0, 20)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -634,11 +634,11 @@ func TestFlex_root_ignored(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasis(rootChild0, 200)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild1, 100)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -687,16 +687,16 @@ func TestFlex_grow_root_minimized(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetMinHeight(rootChild0, 100)
 	NodeStyleSetMaxHeight(rootChild0, 500)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetFlexBasis(rootChild0Child0, 200)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild0child1, 100)
-	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
+	NodeInsertChild(rootChild0, rootChild0child1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -754,16 +754,16 @@ func TestFlex_grow_height_maximized(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetMinHeight(rootChild0, 100)
 	NodeStyleSetMaxHeight(rootChild0, 500)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetFlexBasis(rootChild0Child0, 200)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild0child1, 100)
-	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
+	NodeInsertChild(rootChild0, rootChild0child1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -820,11 +820,11 @@ func TestFlex_grow_within_constrained_min_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -869,11 +869,11 @@ func TestFlex_grow_within_constrained_min_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -920,16 +920,16 @@ func TestFlex_grow_within_constrained_max_row(t *testing.T) {
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
 	NodeStyleSetMaxWidth(rootChild0, 100)
 	NodeStyleSetHeight(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexShrink(rootChild0Child0, 1)
 	NodeStyleSetFlexBasis(rootChild0Child0, 100)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0child1, 50)
-	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
+	NodeInsertChild(rootChild0, rootChild0child1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -986,11 +986,11 @@ func TestFlex_grow_within_constrained_max_column(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexShrink(rootChild0, 1)
 	NodeStyleSetFlexBasis(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1039,13 +1039,13 @@ func TestChild_min_max_width_flexing(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasis(rootChild0, 0)
 	NodeStyleSetMinWidth(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 50)
 	NodeStyleSetMaxWidth(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1183,7 +1183,7 @@ func TestMin_max_percent_no_width_height(t *testing.T) {
 	NodeStyleSetMaxWidthPercent(rootChild0, 10)
 	NodeStyleSetMinHeightPercent(rootChild0, 10)
 	NodeStyleSetMaxHeightPercent(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))

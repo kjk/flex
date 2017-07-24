@@ -9,7 +9,7 @@ func TestWrap_child(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 100)
 	NodeStyleSetHeight(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -41,12 +41,12 @@ func TestWrap_grandchild(t *testing.T) {
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0Child0, 100)
 	NodeStyleSetHeight(rootChild0Child0, 100)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))

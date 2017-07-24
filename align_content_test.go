@@ -16,27 +16,27 @@ func TestAlignContentFlexStart(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
 	NodeStyleSetHeight(rootChild2, 10)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
 	NodeStyleSetHeight(rootChild3, 10)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
 	NodeStyleSetHeight(rootChild4, 10)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -113,25 +113,25 @@ func TestAlign_content_flex_start_without_height_on_children(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
 	NodeStyleSetHeight(rootChild3, 10)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -209,29 +209,29 @@ func TestAlign_content_flex_start_with_flex(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 0)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 0)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild3, 1)
 	NodeStyleSetFlexShrink(rootChild3, 1)
 	NodeStyleSetFlexBasisPercent(rootChild3, 0)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -309,27 +309,27 @@ func TestAlign_content_flex_end(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
 	NodeStyleSetHeight(rootChild2, 10)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
 	NodeStyleSetHeight(rootChild3, 10)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
 	NodeStyleSetHeight(rootChild4, 10)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -406,23 +406,23 @@ func TestAlign_content_stretch(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -501,27 +501,27 @@ func TestAlign_content_spacebetween(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
 	NodeStyleSetHeight(rootChild2, 10)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
 	NodeStyleSetHeight(rootChild3, 10)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
 	NodeStyleSetHeight(rootChild4, 10)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -602,27 +602,27 @@ func TestAlign_content_spacearound(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
 	NodeStyleSetHeight(rootChild2, 10)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
 	NodeStyleSetHeight(rootChild3, 10)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
 	NodeStyleSetHeight(rootChild4, 10)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -700,23 +700,23 @@ func TestAlign_content_stretch_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -794,29 +794,29 @@ func TestAlign_content_stretch_row_with_children(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetFlexShrink(rootChild0Child0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0Child0, 0)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -904,29 +904,29 @@ func TestAlign_content_stretch_row_with_flex(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexShrink(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 0)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild3, 1)
 	NodeStyleSetFlexShrink(rootChild3, 1)
 	NodeStyleSetFlexBasisPercent(rootChild3, 0)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1004,28 +1004,28 @@ func TestAlign_content_stretch_row_with_flex_no_shrink(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexShrink(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 0)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild3, 1)
 	NodeStyleSetFlexBasisPercent(rootChild3, 0)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1103,7 +1103,7 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetMargin(rootChild1, EdgeLeft, 10)
@@ -1111,11 +1111,11 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	NodeStyleSetMargin(rootChild1, EdgeRight, 10)
 	NodeStyleSetMargin(rootChild1, EdgeBottom, 10)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetMargin(rootChild3, EdgeLeft, 10)
@@ -1123,11 +1123,11 @@ func TestAlign_content_stretch_row_with_margin(t *testing.T) {
 	NodeStyleSetMargin(rootChild3, EdgeRight, 10)
 	NodeStyleSetMargin(rootChild3, EdgeBottom, 10)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1205,7 +1205,7 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetPadding(rootChild1, EdgeLeft, 10)
@@ -1213,11 +1213,11 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	NodeStyleSetPadding(rootChild1, EdgeRight, 10)
 	NodeStyleSetPadding(rootChild1, EdgeBottom, 10)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetPadding(rootChild3, EdgeLeft, 10)
@@ -1225,11 +1225,11 @@ func TestAlign_content_stretch_row_with_padding(t *testing.T) {
 	NodeStyleSetPadding(rootChild3, EdgeRight, 10)
 	NodeStyleSetPadding(rootChild3, EdgeBottom, 10)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1307,11 +1307,11 @@ func TestAlign_content_stretch_row_with_single_row(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1359,24 +1359,24 @@ func TestAlign_content_stretch_row_with_fixed_height(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 60)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1454,24 +1454,24 @@ func TestAlign_content_stretch_row_with_max_height(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetMaxHeight(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1549,24 +1549,24 @@ func TestAlign_content_stretch_row_with_min_height(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetMinHeight(rootChild1, 80)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1643,32 +1643,32 @@ func TestAlign_content_stretch_column(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetFlexShrink(rootChild0Child0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0Child0, 0)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexShrink(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 0)
 	NodeStyleSetHeight(rootChild1, 50)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild2, 50)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 
 	rootChild3 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild3, 50)
-	YGNodeInsertChild(root, rootChild3, 3)
+	NodeInsertChild(root, rootChild3, 3)
 
 	rootChild4 := NewNodeWithConfig(config)
 	NodeStyleSetHeight(rootChild4, 50)
-	YGNodeInsertChild(root, rootChild4, 4)
+	NodeInsertChild(root, rootChild4, 4)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1756,13 +1756,13 @@ func TestAlign_content_stretch_is_not_overriding_align_items(t *testing.T) {
 	NodeStyleSetAlignItems(rootChild0, AlignCenter)
 	NodeStyleSetWidth(rootChild0, 100)
 	NodeStyleSetHeight(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetAlignContent(rootChild0Child0, AlignStretch)
 	NodeStyleSetWidth(rootChild0Child0, 10)
 	NodeStyleSetHeight(rootChild0Child0, 10)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))

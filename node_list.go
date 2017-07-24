@@ -59,8 +59,8 @@ func YGNodeListRemove(list *YGNodeList, index int) *Node {
 	return removed
 }
 
-// YGNodeListDelete deletes a node
-func YGNodeListDelete(list *YGNodeList, node *Node) *Node {
+// NodeListDelete deletes a node
+func NodeListDelete(list *YGNodeList, node *Node) *Node {
 	n := len(list.items)
 	for i := 0; i < n; i++ {
 		if list.items[i] == node {

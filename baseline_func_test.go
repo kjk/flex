@@ -17,12 +17,12 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	rootChild0 := NewNode()
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNode()
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	var baselineValue float32 = 10
 	rootChild1child0 := NewNode()
@@ -30,7 +30,7 @@ func TestAlign_baseline_customer_func(t *testing.T) {
 	NodeStyleSetWidth(rootChild1child0, 50)
 	rootChild1child0.Baseline = baselineFunc
 	NodeStyleSetHeight(rootChild1child0, 20)
-	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
+	NodeInsertChild(rootChild1, rootChild1child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))

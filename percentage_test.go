@@ -13,7 +13,7 @@ func TestPercentage_width_height(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidthPercent(rootChild0, 30)
 	NodeStyleSetHeightPercent(rootChild0, 30)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -52,7 +52,7 @@ func TestPercentage_position_left_top(t *testing.T) {
 	NodeStyleSetPositionPercent(rootChild0, EdgeTop, 20)
 	NodeStyleSetWidthPercent(rootChild0, 45)
 	NodeStyleSetHeightPercent(rootChild0, 55)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -91,7 +91,7 @@ func TestPercentage_position_bottom_right(t *testing.T) {
 	NodeStyleSetPositionPercent(rootChild0, EdgeBottom, 10)
 	NodeStyleSetWidthPercent(rootChild0, 55)
 	NodeStyleSetHeightPercent(rootChild0, 15)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -128,12 +128,12 @@ func TestPercentage_flex_basis(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 25)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -179,12 +179,12 @@ func TestPercentage_flex_basis_cross(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexBasisPercent(rootChild1, 25)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -230,12 +230,12 @@ func TestPercentage_flex_basis_cross_min_height(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetMinHeightPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 2)
 	NodeStyleSetMinHeightPercent(rootChild1, 10)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -283,13 +283,13 @@ func TestPercentage_flex_basis_main_max_height(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 10)
 	NodeStyleSetMaxHeightPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 10)
 	NodeStyleSetMaxHeightPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -336,13 +336,13 @@ func TestPercentage_flex_basis_cross_max_height(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 10)
 	NodeStyleSetMaxHeightPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 10)
 	NodeStyleSetMaxHeightPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -390,13 +390,13 @@ func TestPercentage_flex_basis_main_max_width(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 15)
 	NodeStyleSetMaxWidthPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 10)
 	NodeStyleSetMaxWidthPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -443,13 +443,13 @@ func TestPercentage_flex_basis_cross_max_width(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 10)
 	NodeStyleSetMaxWidthPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 15)
 	NodeStyleSetMaxWidthPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -497,13 +497,13 @@ func TestPercentage_flex_basis_main_min_width(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 15)
 	NodeStyleSetMinWidthPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 10)
 	NodeStyleSetMinWidthPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -550,13 +550,13 @@ func TestPercentage_flex_basis_cross_min_width(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild0, 1)
 	NodeStyleSetFlexBasisPercent(rootChild0, 10)
 	NodeStyleSetMinWidthPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 15)
 	NodeStyleSetMinWidthPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -611,7 +611,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	NodeStyleSetPadding(rootChild0, EdgeRight, 3)
 	NodeStyleSetPadding(rootChild0, EdgeBottom, 3)
 	NodeStyleSetMinWidthPercent(rootChild0, 60)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetMargin(rootChild0Child0, EdgeLeft, 5)
@@ -623,7 +623,7 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	NodeStyleSetPaddingPercent(rootChild0Child0, EdgeRight, 3)
 	NodeStyleSetPaddingPercent(rootChild0Child0, EdgeBottom, 3)
 	NodeStyleSetWidthPercent(rootChild0Child0, 50)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0Child0_child0 := NewNodeWithConfig(config)
 	YGNodeStyleSetMarginPercent(rootChild0Child0_child0, EdgeLeft, 5)
@@ -635,13 +635,13 @@ func TestPercentage_multiple_nested_with_padding_margin_and_percentage_values(t 
 	NodeStyleSetPadding(rootChild0Child0_child0, EdgeRight, 3)
 	NodeStyleSetPadding(rootChild0Child0_child0, EdgeBottom, 3)
 	NodeStyleSetWidthPercent(rootChild0Child0_child0, 45)
-	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
+	NodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 4)
 	NodeStyleSetFlexBasisPercent(rootChild1, 15)
 	NodeStyleSetMinWidthPercent(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -710,12 +710,12 @@ func TestPercentage_margin_should_calculate_based_only_on_width(t *testing.T) {
 	YGNodeStyleSetMarginPercent(rootChild0, EdgeTop, 10)
 	YGNodeStyleSetMarginPercent(rootChild0, EdgeRight, 10)
 	YGNodeStyleSetMarginPercent(rootChild0, EdgeBottom, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0Child0, 10)
 	NodeStyleSetHeight(rootChild0Child0, 10)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -764,12 +764,12 @@ func TestPercentage_padding_should_calculate_based_only_on_width(t *testing.T) {
 	NodeStyleSetPaddingPercent(rootChild0, EdgeTop, 10)
 	NodeStyleSetPaddingPercent(rootChild0, EdgeRight, 10)
 	NodeStyleSetPaddingPercent(rootChild0, EdgeBottom, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0Child0, 10)
 	NodeStyleSetHeight(rootChild0Child0, 10)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -818,7 +818,7 @@ func TestPercentage_absolute_position(t *testing.T) {
 	NodeStyleSetPositionPercent(rootChild0, EdgeTop, 10)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -852,7 +852,7 @@ func TestPercentage_width_height_undefined_parent_size(t *testing.T) {
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidthPercent(rootChild0, 50)
 	NodeStyleSetHeightPercent(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -888,19 +888,19 @@ func TestPercent_within_flex_grow(t *testing.T) {
 
 	rootChild0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0, 100)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild1child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidthPercent(rootChild1child0, 100)
-	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
+	NodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild2 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild2, 100)
-	YGNodeInsertChild(root, rootChild2, 2)
+	NodeInsertChild(root, rootChild2, 2)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -966,23 +966,23 @@ func TestPercentage_container_in_wrapping_container(t *testing.T) {
 	NodeStyleSetHeight(root, 200)
 
 	rootChild0 := NewNodeWithConfig(config)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexDirection(rootChild0Child0, FlexDirectionRow)
 	NodeStyleSetJustifyContent(rootChild0Child0, JustifyCenter)
 	NodeStyleSetWidthPercent(rootChild0Child0, 100)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0Child0_child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0Child0_child0, 50)
 	NodeStyleSetHeight(rootChild0Child0_child0, 50)
-	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
+	NodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
 
 	rootChild0Child0_child1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild0Child0_child1, 50)
 	NodeStyleSetHeight(rootChild0Child0_child1, 50)
-	YGNodeInsertChild(rootChild0Child0, rootChild0Child0_child1, 1)
+	NodeInsertChild(rootChild0Child0, rootChild0Child0_child1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -1051,15 +1051,15 @@ func TestPercent_absolute_position(t *testing.T) {
 	NodeStyleSetPositionPercent(rootChild0, EdgeLeft, 50)
 	NodeStyleSetWidthPercent(rootChild0, 100)
 	NodeStyleSetHeight(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidthPercent(rootChild0Child0, 100)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetWidthPercent(rootChild0child1, 100)
-	YGNodeInsertChild(rootChild0, rootChild0child1, 1)
+	NodeInsertChild(rootChild0, rootChild0child1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))

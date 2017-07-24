@@ -65,7 +65,7 @@ func TestMeasure_once_single_flexible_child(t *testing.T) {
 	rootChild0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0, measureMax)
 	NodeStyleSetFlexGrow(rootChild0, 1)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -81,7 +81,7 @@ func TestRemeasure_with_same_exact_width_larger_than_needed_height(t *testing.T)
 	measureCount := 0
 	rootChild0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0, measureMin)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 	NodeCalculateLayout(root, 100, 50, DirectionLTR)
@@ -99,7 +99,7 @@ func TestRemeasure_with_same_atmost_width_larger_than_needed_height(t *testing.T
 	measureCount := 0
 	rootChild0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0, measureMin)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 	NodeCalculateLayout(root, 100, 50, DirectionLTR)
@@ -117,7 +117,7 @@ func TestRemeasure_with_computed_width_larger_than_needed_height(t *testing.T) {
 	measureCount := 0
 	rootChild0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0, measureMin)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 	NodeStyleSetAlignItems(root, AlignStretch)
@@ -136,7 +136,7 @@ func TestRemeasure_with_atmost_computed_width_undefined_height(t *testing.T) {
 	measureCount := 0
 	rootChild0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0, measureMin)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, Undefined, DirectionLTR)
 	NodeCalculateLayout(root, 10, Undefined, DirectionLTR)
@@ -156,12 +156,12 @@ func TestRemeasure_with_already_measured_value_smaller_but_still_float_equal(t *
 	rootChild0 := NewNode()
 	NodeStyleSetPadding(rootChild0, EdgeAll, 2.88)
 	NodeStyleSetFlexDirection(rootChild0, FlexDirectionRow)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild0Child0 := NewNode()
 	rootChild0Child0.Context = measureCount
 	NodeSetMeasureFunc(rootChild0Child0, measure8449)
-	YGNodeInsertChild(rootChild0, rootChild0Child0, 0)
+	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

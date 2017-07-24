@@ -13,7 +13,7 @@ func TestAlign_self_center(t *testing.T) {
 	NodeStyleSetAlignSelf(rootChild0, AlignCenter)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -50,7 +50,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -87,7 +87,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 	NodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -125,7 +125,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
 	NodeStyleSetWidth(rootChild0, 10)
 	NodeStyleSetHeight(rootChild0, 10)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))
@@ -163,18 +163,18 @@ func TestAlign_self_baseline(t *testing.T) {
 	NodeStyleSetAlignSelf(rootChild0, AlignBaseline)
 	NodeStyleSetWidth(rootChild0, 50)
 	NodeStyleSetHeight(rootChild0, 50)
-	YGNodeInsertChild(root, rootChild0, 0)
+	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetAlignSelf(rootChild1, AlignBaseline)
 	NodeStyleSetWidth(rootChild1, 50)
 	NodeStyleSetHeight(rootChild1, 20)
-	YGNodeInsertChild(root, rootChild1, 1)
+	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild1child0 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1child0, 50)
 	NodeStyleSetHeight(rootChild1child0, 10)
-	YGNodeInsertChild(rootChild1, rootChild1child0, 0)
+	NodeInsertChild(rootChild1, rootChild1child0, 0)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
 	assertFloatEqual(t, 0, NodeLayoutGetLeft(root))

@@ -79,25 +79,25 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 
 	if options&PrintOptionsStyle != 0 {
 		log(node, LogLevelDebug, "style=\"")
-		if node.Style.FlexDirection != gYGNodeDefaults.Style.FlexDirection {
+		if node.Style.FlexDirection != nodeDefaults.Style.FlexDirection {
 			log(node,
 				LogLevelDebug,
 				"flex-direction: %s; ",
 				YGFlexDirectionToString(node.Style.FlexDirection))
 		}
-		if node.Style.JustifyContent != gYGNodeDefaults.Style.JustifyContent {
+		if node.Style.JustifyContent != nodeDefaults.Style.JustifyContent {
 			log(node,
 				LogLevelDebug,
 				"justify-content: %s; ",
 				YGJustifyToString(node.Style.JustifyContent))
 		}
-		if node.Style.AlignItems != gYGNodeDefaults.Style.AlignItems {
+		if node.Style.AlignItems != nodeDefaults.Style.AlignItems {
 			log(node, LogLevelDebug, "align-items: %s; ", YGAlignToString(node.Style.AlignItems))
 		}
-		if node.Style.AlignContent != gYGNodeDefaults.Style.AlignContent {
+		if node.Style.AlignContent != nodeDefaults.Style.AlignContent {
 			log(node, LogLevelDebug, "align-content: %s; ", YGAlignToString(node.Style.AlignContent))
 		}
-		if node.Style.AlignSelf != gYGNodeDefaults.Style.AlignSelf {
+		if node.Style.AlignSelf != nodeDefaults.Style.AlignSelf {
 			log(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.Style.AlignSelf))
 		}
 
@@ -106,15 +106,15 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 		printNumberIfNotAuto(node, "flex-basis", &node.Style.FlexBasis)
 		printNumberIfNotUndefinedf(node, "flex", node.Style.Flex)
 
-		if node.Style.FlexWrap != gYGNodeDefaults.Style.FlexWrap {
+		if node.Style.FlexWrap != nodeDefaults.Style.FlexWrap {
 			log(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.Style.FlexWrap))
 		}
 
-		if node.Style.Overflow != gYGNodeDefaults.Style.Overflow {
+		if node.Style.Overflow != nodeDefaults.Style.Overflow {
 			log(node, LogLevelDebug, "overflow: %s; ", YGOverflowToString(node.Style.Overflow))
 		}
 
-		if node.Style.Display != gYGNodeDefaults.Style.Display {
+		if node.Style.Display != nodeDefaults.Style.Display {
 			log(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.Style.Display))
 		}
 
@@ -129,7 +129,7 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 		printNumberIfNotAuto(node, "min-width", &node.Style.MinDimensions[DimensionWidth])
 		printNumberIfNotAuto(node, "min-height", &node.Style.MinDimensions[DimensionHeight])
 
-		if node.Style.PositionType != gYGNodeDefaults.Style.PositionType {
+		if node.Style.PositionType != nodeDefaults.Style.PositionType {
 			log(node,
 				LogLevelDebug,
 				"position: %s; ",
@@ -152,7 +152,7 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
 			log(node, LogLevelDebug, "\n")
-			nodePrintInternal(YGNodeGetChild(node, i), options, level+1)
+			nodePrintInternal(NodeGetChild(node, i), options, level+1)
 		}
 		indent(node, level)
 		log(node, LogLevelDebug, "\n")
