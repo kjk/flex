@@ -16,7 +16,7 @@ func TestDisplay_none(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetDisplay(rootChild1, DisplayNone)
+	rootChild1.StyleSetDisplay(DisplayNone)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -68,7 +68,7 @@ func TestDisplay_none_fixed_size(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetWidth(20)
 	rootChild1.StyleSetHeight(20)
-	NodeStyleSetDisplay(rootChild1, DisplayNone)
+	rootChild1.StyleSetDisplay(DisplayNone)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 
@@ -120,7 +120,7 @@ func TestDisplay_none_with_margin(t *testing.T) {
 	NodeStyleSetMargin(rootChild0, EdgeBottom, 10)
 	rootChild0.StyleSetWidth(20)
 	rootChild0.StyleSetHeight(20)
-	NodeStyleSetDisplay(rootChild0, DisplayNone)
+	rootChild0.StyleSetDisplay(DisplayNone)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
@@ -179,7 +179,7 @@ func TestDisplay_none_with_child(t *testing.T) {
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	NodeStyleSetFlexShrink(rootChild1, 1)
 	rootChild1.StyleSetFlexBasisPercent(0)
-	NodeStyleSetDisplay(rootChild1, DisplayNone)
+	rootChild1.StyleSetDisplay(DisplayNone)
 	NodeInsertChild(root, rootChild1, 1)
 
 	rootChild1child0 := NewNodeWithConfig(config)
@@ -266,7 +266,7 @@ func TestDisplay_none_with_position(t *testing.T) {
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
 	rootChild1.StyleSetPosition(EdgeTop, 10)
-	NodeStyleSetDisplay(rootChild1, DisplayNone)
+	rootChild1.StyleSetDisplay(DisplayNone)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)
 

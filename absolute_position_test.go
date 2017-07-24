@@ -141,7 +141,7 @@ func TestDoNotClampHeightOfAbsoluteNodeToHeightOfItsOverflowHiddenParent(t *test
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetOverflow(root, OverflowHidden)
+	root.StyleSetOverflow(OverflowHidden)
 	root.StyleSetWidth(50)
 	root.StyleSetHeight(50)
 
@@ -470,7 +470,7 @@ func TestAbsoluteLayoutAlignItemsCenterOnChildOnly(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignCenter)
+	rootChild0.StyleSetAlignSelf(AlignCenter)
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	rootChild0.StyleSetWidth(60)
 	rootChild0.StyleSetHeight(40)
@@ -762,7 +762,7 @@ func TestAbsolute_layout_in_wrap_reverse_column_container(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexWrap(root, WrapWrapReverse)
+	root.StyleSetFlexWrap(WrapWrapReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -801,7 +801,7 @@ func TestAbsolute_layout_in_wrap_reverse_row_container(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetFlexWrap(root, WrapWrapReverse)
+	root.StyleSetFlexWrap(WrapWrapReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -839,12 +839,12 @@ func TestAbsolute_layout_in_wrap_reverse_column_container_flex_end(t *testing.T)
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetFlexWrap(root, WrapWrapReverse)
+	root.StyleSetFlexWrap(WrapWrapReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
+	rootChild0.StyleSetAlignSelf(AlignFlexEnd)
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	rootChild0.StyleSetWidth(20)
 	rootChild0.StyleSetHeight(20)
@@ -879,12 +879,12 @@ func TestAbsolute_layout_in_wrap_reverse_row_container_flex_end(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetFlexWrap(root, WrapWrapReverse)
+	root.StyleSetFlexWrap(WrapWrapReverse)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
+	rootChild0.StyleSetAlignSelf(AlignFlexEnd)
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
 	rootChild0.StyleSetWidth(20)
 	rootChild0.StyleSetHeight(20)

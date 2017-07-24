@@ -10,7 +10,7 @@ func TestAlign_self_center(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignCenter)
+	rootChild0.StyleSetAlignSelf(AlignCenter)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -47,7 +47,7 @@ func TestAlign_self_flex_end(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
+	rootChild0.StyleSetAlignSelf(AlignFlexEnd)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -84,7 +84,7 @@ func TestAlign_self_flex_start(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
+	rootChild0.StyleSetAlignSelf(AlignFlexStart)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -122,7 +122,7 @@ func TestAlign_self_flex_end_override_flex_start(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexEnd)
+	rootChild0.StyleSetAlignSelf(AlignFlexEnd)
 	rootChild0.StyleSetWidth(10)
 	rootChild0.StyleSetHeight(10)
 	NodeInsertChild(root, rootChild0, 0)
@@ -160,13 +160,13 @@ func TestAlign_self_baseline(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild0, AlignBaseline)
+	rootChild0.StyleSetAlignSelf(AlignBaseline)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild1, AlignBaseline)
+	rootChild1.StyleSetAlignSelf(AlignBaseline)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(20)
 	NodeInsertChild(root, rootChild1, 1)

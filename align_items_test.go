@@ -291,7 +291,7 @@ func TestAlign_baseline_child_multiline(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetFlexWrap(rootChild1, WrapWrap)
+	rootChild1.StyleSetFlexWrap(WrapWrap)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(25)
 	NodeInsertChild(root, rootChild1, 1)
@@ -407,7 +407,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetFlexWrap(rootChild1, WrapWrap)
+	rootChild1.StyleSetFlexWrap(WrapWrap)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(25)
 	NodeInsertChild(root, rootChild1, 1)
@@ -418,7 +418,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 	NodeInsertChild(rootChild1, rootChild1child0, 0)
 
 	rootChild1_child1 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild1_child1, AlignBaseline)
+	rootChild1_child1.StyleSetAlignSelf(AlignBaseline)
 	rootChild1_child1.StyleSetWidth(25)
 	rootChild1_child1.StyleSetHeight(10)
 	NodeInsertChild(rootChild1, rootChild1_child1, 1)
@@ -429,7 +429,7 @@ func TestAlign_baseline_child_multiline_override(t *testing.T) {
 	NodeInsertChild(rootChild1, rootChild1_child2, 2)
 
 	rootChild1_child3 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild1_child3, AlignBaseline)
+	rootChild1_child3.StyleSetAlignSelf(AlignBaseline)
 	rootChild1_child3.StyleSetWidth(25)
 	rootChild1_child3.StyleSetHeight(10)
 	NodeInsertChild(rootChild1, rootChild1_child3, 3)
@@ -525,7 +525,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 
 	rootChild1 := NewNodeWithConfig(config)
 	rootChild1.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetFlexWrap(rootChild1, WrapWrap)
+	rootChild1.StyleSetFlexWrap(WrapWrap)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(25)
 	NodeInsertChild(root, rootChild1, 1)
@@ -546,7 +546,7 @@ func TestAlign_baseline_child_multiline_no_override_on_secondline(t *testing.T) 
 	NodeInsertChild(rootChild1, rootChild1_child2, 2)
 
 	rootChild1_child3 := NewNodeWithConfig(config)
-	NodeStyleSetAlignSelf(rootChild1_child3, AlignBaseline)
+	rootChild1_child3.StyleSetAlignSelf(AlignBaseline)
 	rootChild1_child3.StyleSetWidth(25)
 	rootChild1_child3.StyleSetHeight(10)
 	NodeInsertChild(rootChild1, rootChild1_child3, 3)
@@ -1063,7 +1063,7 @@ func TestAlign_baseline_multiline(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetAlignItems(AlignBaseline)
-	NodeStyleSetFlexWrap(root, WrapWrap)
+	root.StyleSetFlexWrap(WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -1177,7 +1177,7 @@ func TestAlign_baseline_multiline_column(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetAlignItems(AlignBaseline)
-	NodeStyleSetFlexWrap(root, WrapWrap)
+	root.StyleSetFlexWrap(WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -1291,7 +1291,7 @@ func TestAlign_baseline_multiline_column2(t *testing.T) {
 
 	root := NewNodeWithConfig(config)
 	root.StyleSetAlignItems(AlignBaseline)
-	NodeStyleSetFlexWrap(root, WrapWrap)
+	root.StyleSetFlexWrap(WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 
@@ -1406,7 +1406,7 @@ func TestAlign_baseline_multiline_row_and_column(t *testing.T) {
 	root := NewNodeWithConfig(config)
 	root.StyleSetFlexDirection(FlexDirectionRow)
 	root.StyleSetAlignItems(AlignBaseline)
-	NodeStyleSetFlexWrap(root, WrapWrap)
+	root.StyleSetFlexWrap(WrapWrap)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(100)
 

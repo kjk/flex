@@ -216,40 +216,40 @@ func (node *Node) StyleSetAlignItems(alignItems Align) {
 	}
 }
 
-// NodeStyleSetAlignSelf sets align self
-func NodeStyleSetAlignSelf(node *Node, alignSelf Align) {
+// StyleSetAlignSelf sets align self
+func (node *Node) StyleSetAlignSelf(alignSelf Align) {
 	if node.Style.AlignSelf != alignSelf {
 		node.Style.AlignSelf = alignSelf
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetFlexWrap sets flex wrap
-func NodeStyleSetFlexWrap(node *Node, flexWrap Wrap) {
+// StyleSetFlexWrap sets flex wrap
+func (node *Node) StyleSetFlexWrap(flexWrap Wrap) {
 	if node.Style.FlexWrap != flexWrap {
 		node.Style.FlexWrap = flexWrap
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetOverflow sets overflow
-func NodeStyleSetOverflow(node *Node, overflow Overflow) {
+// StyleSetOverflow sets overflow
+func (node *Node) StyleSetOverflow(overflow Overflow) {
 	if node.Style.Overflow != overflow {
 		node.Style.Overflow = overflow
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetDisplay sets display
-func NodeStyleSetDisplay(node *Node, display Display) {
+// StyleSetDisplay sets display
+func (node *Node) StyleSetDisplay(display Display) {
 	if node.Style.Display != display {
 		node.Style.Display = display
 		nodeMarkDirtyInternal(node)
 	}
 }
 
-// NodeStyleSetFlex sets flex
-func NodeStyleSetFlex(node *Node, flex float32) {
+// StyleSetFlex sets flex
+func (node *Node) StyleSetFlex(flex float32) {
 	if node.Style.Flex != flex {
 		node.Style.Flex = flex
 		nodeMarkDirtyInternal(node)

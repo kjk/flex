@@ -186,7 +186,7 @@ func TestMeasure_enough_size_should_be_in_single_line(t *testing.T) {
 	root.StyleSetWidth(100)
 
 	rootChild0 := NewNode()
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
+	rootChild0.StyleSetAlignSelf(AlignFlexStart)
 	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 
 	NodeInsertChild(root, rootChild0, 0)
@@ -202,7 +202,7 @@ func TestMeasure_not_enough_size_should_wrap(t *testing.T) {
 	root.StyleSetWidth(55)
 
 	rootChild0 := NewNode()
-	NodeStyleSetAlignSelf(rootChild0, AlignFlexStart)
+	rootChild0.StyleSetAlignSelf(AlignFlexStart)
 	NodeSetMeasureFunc(rootChild0, _simulate_wrapping_text)
 
 	NodeInsertChild(root, rootChild0, 0)

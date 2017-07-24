@@ -256,7 +256,7 @@ func TestOverflow_scroll_column(t *testing.T) {
 
 	root := NewNode()
 	root.StyleSetAlignItems(AlignFlexStart)
-	NodeStyleSetOverflow(root, OverflowScroll)
+	root.StyleSetOverflow(OverflowScroll)
 	root.StyleSetHeight(100)
 	root.StyleSetWidth(100)
 
@@ -286,7 +286,7 @@ func TestOverflow_scroll_row(t *testing.T) {
 	root := NewNode()
 	root.StyleSetAlignItems(AlignFlexStart)
 	root.StyleSetFlexDirection(FlexDirectionRow)
-	NodeStyleSetOverflow(root, OverflowScroll)
+	root.StyleSetOverflow(OverflowScroll)
 	root.StyleSetHeight(100)
 	root.StyleSetWidth(100)
 
