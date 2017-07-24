@@ -20,7 +20,7 @@ type CachedMeasurement struct {
 // layouts should not require more than 16 entries to fit within the cache.
 const maxCachedResultCount = 16
 
-// Layout describes layout
+// Layout describes position information after layout is finished
 type Layout struct {
 	Position   [4]float32
 	Dimensions [2]float32
@@ -46,7 +46,7 @@ type Layout struct {
 	cachedLayout CachedMeasurement
 }
 
-// Style describes a style
+// Style describes CSS flexbox style of the node
 type Style struct {
 	Direction      Direction
 	FlexDirection  FlexDirection
@@ -84,7 +84,7 @@ type Config struct {
 	Context                   interface{}
 }
 
-// Node describes a node
+// Node describes a an element
 type Node struct {
 	Style     Style
 	Layout    Layout
@@ -297,7 +297,7 @@ func NewNode() *Node {
 	return NewNodeWithConfig(&configDefaults)
 }
 
-// NodeReset resets a node
+// Reset resets a node
 func (node *Node) Reset() {
 	assertWithNode(node, len(node.Children) == 0, "Cannot reset a node which still has children attached")
 	assertWithNode(node, node.Parent == nil, "Cannot reset a node still attached to a parent")
@@ -390,7 +390,7 @@ func (node *Node) deleteChild(child *Node) *Node {
 	return nil
 }
 
-// RemoveChild removes the child
+// RemoveChild removes child node
 func (node *Node) RemoveChild(child *Node) {
 	if node.deleteChild(child) != nil {
 		child.Layout = nodeDefaults.Layout // layout is no longer valid
@@ -399,7 +399,7 @@ func (node *Node) RemoveChild(child *Node) {
 	}
 }
 
-// GetChild returns a child
+// GetChild returns a child at a given index
 func (node *Node) GetChild(idx int) *Node {
 	if idx < len(node.Children) {
 		return node.Children[idx]
@@ -752,13 +752,11 @@ func flexDirectionCross(flexDirection FlexDirection, direction Direction) FlexDi
 	return FlexDirectionColumn
 }
 
-// nodeIsFlex returns true if node is flex
 func nodeIsFlex(node *Node) bool {
 	return (node.Style.PositionType == PositionTypeRelative &&
 		(resolveFlexGrow(node) != 0 || nodeResolveFlexShrink(node) != 0))
 }
 
-// isBaselineLayout returns true if it's baseline layout
 func isBaselineLayout(node *Node) bool {
 	if flexDirectionIsColumn(node.Style.FlexDirection) {
 		return false
@@ -898,7 +896,6 @@ func nodeSetChildTrailingPosition(node *Node, child *Node, axis FlexDirection) {
 		node.Layout.measuredDimensions[dim[axis]] - size - child.Layout.Position[pos[axis]]
 }
 
-// nodeRelativePosition gets relative position.
 // If both left and right are defined, then use left. Otherwise return
 // +left or -right depending on which is defined.
 func nodeRelativePosition(node *Node, axis FlexDirection, axisSize float32) float32 {
@@ -980,7 +977,7 @@ func nodeComputeFlexBasisForChild(node *Node,
 
 	if !FloatIsUndefined(resolvedFlexBasis) && !FloatIsUndefined(mainAxisSize) {
 		if FloatIsUndefined(child.Layout.computedFlexBasis) ||
-			(ConfigIsExperimentalFeatureEnabled(child.Config, ExperimentalFeatureWebFlexBasis) &&
+			(child.Config.IsExperimentalFeatureEnabled(ExperimentalFeatureWebFlexBasis) &&
 				child.Layout.computedFlexBasisGeneration != currentGenerationCount) {
 			child.Layout.computedFlexBasis =
 				fmaxf(resolvedFlexBasis, nodePaddingAndBorderForAxis(child, mainAxis, parentWidth))
@@ -3051,17 +3048,16 @@ func CalculateLayout(node *Node, parentWidth float32, parentHeight float32, pare
 	}
 }
 
-// ConfigSetExperimentalFeatureEnabled enables experimental feature
-func ConfigSetExperimentalFeatureEnabled(config *Config, feature ExperimentalFeature, enabled bool) {
+// SetExperimentalFeatureEnabled enables experimental feature
+func (config *Config) SetExperimentalFeatureEnabled(feature ExperimentalFeature, enabled bool) {
 	config.experimentalFeatures[feature] = enabled
 }
 
-// ConfigIsExperimentalFeatureEnabled returns if experimental feature is enabled
-func ConfigIsExperimentalFeatureEnabled(config *Config, feature ExperimentalFeature) bool {
+// IsExperimentalFeatureEnabled returns if experimental feature is enabled
+func (config *Config) IsExperimentalFeatureEnabled(feature ExperimentalFeature) bool {
 	return config.experimentalFeatures[feature]
 }
 
-// log logs
 func log(node *Node, level LogLevel, format string, args ...interface{}) {
 	fmt.Printf(format, args...)
 }
@@ -3072,12 +3068,10 @@ func assertCond(cond bool, format string, args ...interface{}) {
 	}
 }
 
-// assertWithNode assert if cond is not true
 func assertWithNode(node *Node, cond bool, format string, args ...interface{}) {
 	assertCond(cond, format, args...)
 }
 
-// assertWithConfig asserts with config
 func assertWithConfig(config *Config, condition bool, message string) {
 	if !condition {
 		panic(message)
