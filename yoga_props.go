@@ -290,8 +290,8 @@ func NodeStyleSetFlexBasis(node *Node, flexBasis float32) {
 	}
 }
 
-// NodeStyleSetFlexBasisPercent sets flex basis percent
-func NodeStyleSetFlexBasisPercent(node *Node, flexBasis float32) {
+// StyleSetFlexBasisPercent sets flex basis percent
+func (node *Node) StyleSetFlexBasisPercent(flexBasis float32) {
 	if node.Style.FlexBasis.Value != flexBasis ||
 		node.Style.FlexBasis.Unit != UnitPercent {
 		node.Style.FlexBasis.Value = flexBasis
@@ -581,8 +581,8 @@ func (node *Node) LayoutGetMargin(edge Edge) float32 {
 	return node.Layout.Margin[edge]
 }
 
-// NodeLayoutGetBorder gets border
-func NodeLayoutGetBorder(node *Node, edge Edge) float32 {
+// LayoutGetBorder gets border
+func (node *Node) LayoutGetBorder(edge Edge) float32 {
 	assertWithNode(node, edge < EdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
@@ -600,8 +600,8 @@ func NodeLayoutGetBorder(node *Node, edge Edge) float32 {
 	return node.Layout.Border[edge]
 }
 
-// NodeLayoutGetPadding gets padding
-func NodeLayoutGetPadding(node *Node, edge Edge) float32 {
+// LayoutGetPadding gets padding
+func (node *Node) LayoutGetPadding(edge Edge) float32 {
 	assertWithNode(node, edge < EdgeEnd,
 		"Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {

@@ -10,11 +10,11 @@ func TestComputed_layout_padding(t *testing.T) {
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 
-	assertFloatEqual(t, 10, NodeLayoutGetPadding(root, EdgeLeft))
-	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeRight))
+	assertFloatEqual(t, 10, root.LayoutGetPadding(EdgeLeft))
+	assertFloatEqual(t, 0, root.LayoutGetPadding(EdgeRight))
 
 	NodeCalculateLayout(root, 100, 100, DirectionRTL)
 
-	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeLeft))
-	assertFloatEqual(t, 10, NodeLayoutGetPadding(root, EdgeRight))
+	assertFloatEqual(t, 0, root.LayoutGetPadding(EdgeLeft))
+	assertFloatEqual(t, 10, root.LayoutGetPadding(EdgeRight))
 }

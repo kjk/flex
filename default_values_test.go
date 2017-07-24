@@ -72,15 +72,15 @@ func TestAssert_default_values(t *testing.T) {
 	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeRight))
 	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeBottom))
 
-	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeLeft))
-	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeTop))
-	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeRight))
-	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeBottom))
+	assertFloatEqual(t, 0, root.LayoutGetPadding(EdgeLeft))
+	assertFloatEqual(t, 0, root.LayoutGetPadding(EdgeTop))
+	assertFloatEqual(t, 0, root.LayoutGetPadding(EdgeRight))
+	assertFloatEqual(t, 0, root.LayoutGetPadding(EdgeBottom))
 
-	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeLeft))
-	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeTop))
-	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeRight))
-	assertFloatEqual(t, 0, NodeLayoutGetBorder(root, EdgeBottom))
+	assertFloatEqual(t, 0, root.LayoutGetBorder(EdgeLeft))
+	assertFloatEqual(t, 0, root.LayoutGetBorder(EdgeTop))
+	assertFloatEqual(t, 0, root.LayoutGetBorder(EdgeRight))
+	assertFloatEqual(t, 0, root.LayoutGetBorder(EdgeBottom))
 
 	assert.True(t, FloatIsUndefined(root.LayoutGetWidth()))
 	assert.True(t, FloatIsUndefined(root.LayoutGetHeight()))

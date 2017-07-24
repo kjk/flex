@@ -1043,7 +1043,7 @@ func TestChild_min_max_width_flexing(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetFlexBasisPercent(rootChild1, 50)
+	rootChild1.StyleSetFlexBasisPercent(50)
 	NodeStyleSetMaxWidth(rootChild1, 20)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

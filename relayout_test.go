@@ -11,7 +11,7 @@ func TestDont_cache_computed_flex_basis_between_layouts(t *testing.T) {
 	NodeStyleSetWidthPercent(root, 100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetFlexBasisPercent(rootChild0, 100)
+	rootChild0.StyleSetFlexBasisPercent(100)
 	NodeInsertChild(root, rootChild0, 0)
 
 	NodeCalculateLayout(root, 100, Undefined, DirectionLTR)
