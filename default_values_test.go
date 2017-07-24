@@ -11,8 +11,8 @@ func TestAssert_default_values(t *testing.T) {
 
 	assert.Equal(t, 0, len(root.Children))
 	var nilNode *Node
-	assert.Equal(t, nilNode, NodeGetChild(root, 1))
-	assert.Equal(t, nilNode, NodeGetChild(root, 0))
+	assert.Equal(t, nilNode, root.GetChild(1))
+	assert.Equal(t, nilNode, root.GetChild(0))
 
 	assert.Equal(t, DirectionInherit, root.Style.Direction)
 	assert.Equal(t, FlexDirectionColumn, root.Style.FlexDirection)

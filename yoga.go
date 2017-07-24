@@ -399,8 +399,8 @@ func NodeRemoveChild(node *Node, child *Node) {
 	}
 }
 
-// NodeGetChild returns a child
-func NodeGetChild(node *Node, idx int) *Node {
+// GetChild returns a child
+func (node *Node) GetChild(idx int) *Node {
 	if idx < len(node.Children) {
 		return node.Children[idx]
 	}
@@ -709,7 +709,7 @@ func Baseline(node *Node) float32 {
 	var baselineChild *Node
 	childCount := len(node.Children)
 	for i := 0; i < childCount; i++ {
-		child := NodeGetChild(node, i)
+		child := node.GetChild(i)
 		if child.lineIndex > 0 {
 			break
 		}
@@ -768,7 +768,7 @@ func IsBaselineLayout(node *Node) bool {
 	}
 	childCount := len(node.Children)
 	for i := 0; i < childCount; i++ {
-		child := NodeGetChild(node, i)
+		child := node.GetChild(i)
 		if child.Style.PositionType == PositionTypeRelative &&
 			child.Style.AlignSelf == AlignBaseline {
 			return true
@@ -1597,7 +1597,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	var singleFlexChild *Node
 	if measureModeMainDim == MeasureModeExactly {
 		for i := 0; i < childCount; i++ {
-			child := NodeGetChild(node, i)
+			child := node.GetChild(i)
 			if singleFlexChild != nil {
 				if nodeIsFlex(child) {
 					// There is already a flexible child, abort.
@@ -2554,7 +2554,7 @@ func nodelayoutImpl(node *Node, availableWidth float32, availableHeight float32,
 	// As we only wrapped in normal direction yet, we need to reverse the positions on wrap-reverse.
 	if performLayout && node.Style.FlexWrap == WrapWrapReverse {
 		for i := 0; i < childCount; i++ {
-			child := NodeGetChild(node, i)
+			child := node.GetChild(i)
 			if child.Style.PositionType == PositionTypeRelative {
 				child.Layout.Position[pos[crossAxis]] = node.Layout.measuredDimensions[dim[crossAxis]] -
 					child.Layout.Position[pos[crossAxis]] -
@@ -2986,9 +2986,8 @@ func roundToPixelGrid(node *Node, pointScaleFactor float32, absoluteLeft float32
 			(textRounding && !hasFractionalHeight)) -
 			roundValueToPixelGrid(absoluteNodeTop, pointScaleFactor, false, textRounding)
 
-	childCount := len(node.Children)
-	for i := 0; i < childCount; i++ {
-		roundToPixelGrid(NodeGetChild(node, i), pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
+	for _, child := range node.Children {
+		roundToPixelGrid(child, pointScaleFactor, absoluteNodeLeft, absoluteNodeTop)
 	}
 }
 

@@ -152,7 +152,7 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 	if options&PrintOptionsChildren != 0 && childCount > 0 {
 		for i := 0; i < childCount; i++ {
 			log(node, LogLevelDebug, "\n")
-			nodePrintInternal(NodeGetChild(node, i), options, level+1)
+			nodePrintInternal(node.Children[i], options, level+1)
 		}
 		indent(node, level)
 		log(node, LogLevelDebug, "\n")
