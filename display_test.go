@@ -265,7 +265,7 @@ func TestDisplay_none_with_position(t *testing.T) {
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild1, 1)
-	NodeStyleSetPosition(rootChild1, EdgeTop, 10)
+	rootChild1.StyleSetPosition(EdgeTop, 10)
 	NodeStyleSetDisplay(rootChild1, DisplayNone)
 	NodeInsertChild(root, rootChild1, 1)
 	NodeCalculateLayout(root, Undefined, Undefined, DirectionLTR)

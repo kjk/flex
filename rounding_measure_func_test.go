@@ -85,7 +85,7 @@ func TestRounding_feature_with_custom_measure_and_fractial_matching_scale(t *tes
 	root := NewNodeWithConfig(config)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetPosition(rootChild0, EdgeLeft, 73.625)
+	rootChild0.StyleSetPosition(EdgeLeft, 73.625)
 	NodeSetMeasureFunc(rootChild0, _measureFractial)
 	NodeInsertChild(root, rootChild0, 0)
 

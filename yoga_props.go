@@ -145,8 +145,8 @@ func (node *Node) StyleSetPositionType(positionType PositionType) {
 	}
 }
 
-// NodeStyleSetPosition sets position
-func NodeStyleSetPosition(node *Node, edge Edge, position float32) {
+// StyleSetPosition sets position
+func (node *Node) StyleSetPosition(edge Edge, position float32) {
 	pos := &node.Style.Position[edge]
 	if pos.Value != position || pos.Unit != UnitPoint {
 		pos.Value = position
@@ -158,8 +158,8 @@ func NodeStyleSetPosition(node *Node, edge Edge, position float32) {
 	}
 }
 
-// NodeStyleSetPositionPercent sets position percent
-func NodeStyleSetPositionPercent(node *Node, edge Edge, position float32) {
+// StyleSetPositionPercent sets position percent
+func (node *Node) StyleSetPositionPercent(edge Edge, position float32) {
 	pos := &node.Style.Position[edge]
 	if pos.Value != position || pos.Unit != UnitPercent {
 		pos.Value = position

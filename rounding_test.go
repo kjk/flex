@@ -373,14 +373,14 @@ func TestRounding_total_fractial_nested(t *testing.T) {
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0Child0, 1)
 	NodeStyleSetFlexBasis(rootChild0Child0, 0.3)
-	NodeStyleSetPosition(rootChild0Child0, EdgeBottom, 13.3)
+	rootChild0Child0.StyleSetPosition(EdgeBottom, 13.3)
 	rootChild0Child0.StyleSetHeight(9.9)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetFlexGrow(rootChild0child1, 4)
 	NodeStyleSetFlexBasis(rootChild0child1, 0.3)
-	NodeStyleSetPosition(rootChild0child1, EdgeTop, 13.3)
+	rootChild0child1.StyleSetPosition(EdgeTop, 13.3)
 	rootChild0child1.StyleSetHeight(1.1)
 	NodeInsertChild(rootChild0, rootChild0child1, 1)
 
@@ -596,7 +596,7 @@ func TestRounding_fractial_input_3(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetPosition(root, EdgeTop, 0.3)
+	root.StyleSetPosition(EdgeTop, 0.3)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(113.4)
 
@@ -664,7 +664,7 @@ func TestRounding_fractial_input_4(t *testing.T) {
 	config := NewConfig()
 
 	root := NewNodeWithConfig(config)
-	NodeStyleSetPosition(root, EdgeTop, 0.7)
+	root.StyleSetPosition(EdgeTop, 0.7)
 	root.StyleSetWidth(100)
 	root.StyleSetHeight(113.4)
 

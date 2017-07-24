@@ -636,7 +636,7 @@ func TestAlign_baseline_child_top(t *testing.T) {
 	root.StyleSetHeight(100)
 
 	rootChild0 := NewNodeWithConfig(config)
-	NodeStyleSetPosition(rootChild0, EdgeTop, 10)
+	rootChild0.StyleSetPosition(EdgeTop, 10)
 	rootChild0.StyleSetWidth(50)
 	rootChild0.StyleSetHeight(50)
 	NodeInsertChild(root, rootChild0, 0)
@@ -711,7 +711,7 @@ func TestAlign_baseline_child_top2(t *testing.T) {
 	NodeInsertChild(root, rootChild0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
-	NodeStyleSetPosition(rootChild1, EdgeTop, 5)
+	rootChild1.StyleSetPosition(EdgeTop, 5)
 	rootChild1.StyleSetWidth(50)
 	rootChild1.StyleSetHeight(20)
 	NodeInsertChild(root, rootChild1, 1)

@@ -179,8 +179,8 @@ func TestAspect_ratio_absolute_layout_width_defined(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
-	NodeStyleSetPosition(rootChild0, EdgeLeft, 0)
-	NodeStyleSetPosition(rootChild0, EdgeTop, 0)
+	rootChild0.StyleSetPosition(EdgeLeft, 0)
+	rootChild0.StyleSetPosition(EdgeTop, 0)
 	rootChild0.StyleSetWidth(50)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
@@ -200,8 +200,8 @@ func TestAspect_ratio_absolute_layout_height_defined(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
-	NodeStyleSetPosition(rootChild0, EdgeLeft, 0)
-	NodeStyleSetPosition(rootChild0, EdgeTop, 0)
+	rootChild0.StyleSetPosition(EdgeLeft, 0)
+	rootChild0.StyleSetPosition(EdgeTop, 0)
 	rootChild0.StyleSetHeight(50)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
@@ -543,9 +543,9 @@ func TestAspect_ratio_left_right_absolute(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
-	NodeStyleSetPosition(rootChild0, EdgeLeft, 10)
-	NodeStyleSetPosition(rootChild0, EdgeTop, 10)
-	NodeStyleSetPosition(rootChild0, EdgeRight, 10)
+	rootChild0.StyleSetPosition(EdgeLeft, 10)
+	rootChild0.StyleSetPosition(EdgeTop, 10)
+	rootChild0.StyleSetPosition(EdgeRight, 10)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
@@ -564,9 +564,9 @@ func TestAspect_ratio_top_bottom_absolute(t *testing.T) {
 
 	rootChild0 := NewNode()
 	rootChild0.StyleSetPositionType(PositionTypeAbsolute)
-	NodeStyleSetPosition(rootChild0, EdgeLeft, 10)
-	NodeStyleSetPosition(rootChild0, EdgeTop, 10)
-	NodeStyleSetPosition(rootChild0, EdgeBottom, 10)
+	rootChild0.StyleSetPosition(EdgeLeft, 10)
+	rootChild0.StyleSetPosition(EdgeTop, 10)
+	rootChild0.StyleSetPosition(EdgeBottom, 10)
 	NodeStyleSetAspectRatio(rootChild0, 1)
 	NodeInsertChild(root, rootChild0, 0)
 
