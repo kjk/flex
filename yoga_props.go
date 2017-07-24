@@ -176,26 +176,6 @@ func NodeStyleGetPosition(node *Node, edge Edge) Value {
 	return node.Style.Position[edge]
 }
 
-// NodeSetPrintFunc sets print func
-func NodeSetPrintFunc(node *Node, printFunc PrintFunc) {
-	node.Print = printFunc
-}
-
-// NodeGetHasNewLayout gets has new layout
-func NodeGetHasNewLayout(node *Node) bool {
-	return node.hasNewLayout
-}
-
-// NodeSetNodeType sets node type
-func NodeSetNodeType(node *Node, nodeType NodeType) {
-	node.NodeType = nodeType
-}
-
-// NodeGetNodeType gets node type
-func NodeGetNodeType(node *Node) NodeType {
-	return node.NodeType
-}
-
 // NodeStyleSetDirection sets direction
 func NodeStyleSetDirection(node *Node, direction Direction) {
 	if node.Style.Direction != direction {
@@ -553,11 +533,6 @@ func NodeStyleSetAspectRatio(node *Node, aspectRatio float32) {
 	}
 }
 
-// NodeStyleGetAspectRatio gets aspect ratio
-func NodeStyleGetAspectRatio(node *Node) float32 {
-	return node.Style.AspectRatio
-}
-
 // NodeLayoutGetLeft gets left
 func NodeLayoutGetLeft(node *Node) float32 {
 	return node.Layout.Position[EdgeLeft]
@@ -586,16 +561,6 @@ func NodeLayoutGetWidth(node *Node) float32 {
 // NodeLayoutGetHeight gets height
 func NodeLayoutGetHeight(node *Node) float32 {
 	return node.Layout.dimensions[DimensionHeight]
-}
-
-// NodeLayoutGetDirection gets direction
-func NodeLayoutGetDirection(node *Node) Direction {
-	return node.Layout.Direction
-}
-
-// NodeLayoutGetHadOverflow gets hadOverflow
-func NodeLayoutGetHadOverflow(node *Node) bool {
-	return node.Layout.HadOverflow
 }
 
 // NodeLayoutGetMargin gets margin

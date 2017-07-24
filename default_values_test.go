@@ -84,7 +84,7 @@ func TestAssert_default_values(t *testing.T) {
 
 	assert.True(t, FloatIsUndefined(NodeLayoutGetWidth(root)))
 	assert.True(t, FloatIsUndefined(NodeLayoutGetHeight(root)))
-	assert.Equal(t, DirectionInherit, NodeLayoutGetDirection(root))
+	assert.Equal(t, DirectionInherit, root.Layout.Direction)
 
 }
 
