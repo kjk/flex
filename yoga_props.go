@@ -538,8 +538,8 @@ func (node *Node) LayoutGetLeft() float32 {
 	return node.Layout.Position[EdgeLeft]
 }
 
-// NodeLayoutGetTop gets top
-func NodeLayoutGetTop(node *Node) float32 {
+// LayoutGetTop gets top
+func (node *Node) LayoutGetTop() float32 {
 	return node.Layout.Position[EdgeTop]
 }
 

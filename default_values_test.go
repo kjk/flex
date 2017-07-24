@@ -63,7 +63,7 @@ func TestAssert_default_values(t *testing.T) {
 	assert.Equal(t, root.StyleGetMaxHeight().Unit, UnitUndefined)
 
 	assertFloatEqual(t, 0, root.LayoutGetLeft())
-	assertFloatEqual(t, 0, NodeLayoutGetTop(root))
+	assertFloatEqual(t, 0, root.LayoutGetTop())
 	assertFloatEqual(t, 0, NodeLayoutGetRight(root))
 	assertFloatEqual(t, 0, NodeLayoutGetBottom(root))
 
