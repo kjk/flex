@@ -70,8 +70,8 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 
 	if options&PrintOptionsLayout != 0 {
 		log(node, LogLevelDebug, "layout=\"")
-		log(node, LogLevelDebug, "width: %g; ", node.Layout.dimensions[DimensionWidth])
-		log(node, LogLevelDebug, "height: %g; ", node.Layout.dimensions[DimensionHeight])
+		log(node, LogLevelDebug, "width: %g; ", node.Layout.Dimensions[DimensionWidth])
+		log(node, LogLevelDebug, "height: %g; ", node.Layout.Dimensions[DimensionHeight])
 		log(node, LogLevelDebug, "top: %g; ", node.Layout.Position[EdgeTop])
 		log(node, LogLevelDebug, "left: %g;", node.Layout.Position[EdgeLeft])
 		log(node, LogLevelDebug, "\" ")

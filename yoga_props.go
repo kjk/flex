@@ -555,12 +555,12 @@ func NodeLayoutGetBottom(node *Node) float32 {
 
 // NodeLayoutGetWidth gets width
 func NodeLayoutGetWidth(node *Node) float32 {
-	return node.Layout.dimensions[DimensionWidth]
+	return node.Layout.Dimensions[DimensionWidth]
 }
 
 // NodeLayoutGetHeight gets height
 func NodeLayoutGetHeight(node *Node) float32 {
-	return node.Layout.dimensions[DimensionHeight]
+	return node.Layout.Dimensions[DimensionHeight]
 }
 
 // NodeLayoutGetMargin gets margin

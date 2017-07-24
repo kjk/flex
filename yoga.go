@@ -23,7 +23,7 @@ const maxCachedResultCount = 16
 // Layout describes layout
 type Layout struct {
 	Position   [4]float32
-	dimensions [2]float32
+	Dimensions [2]float32
 	Margin     [6]float32
 	Border     [6]float32
 	Padding    [6]float32
@@ -183,7 +183,7 @@ var (
 			AspectRatio:    Undefined,
 		},
 		Layout: Layout{
-			dimensions:                  defaultDimensionValues,
+			Dimensions:                  defaultDimensionValues,
 			lastParentDirection:         Direction(-1),
 			nextCachedMeasurementsIndex: 0,
 			computedFlexBasis:           Undefined,
@@ -1340,8 +1340,8 @@ func nodeFixedSizeSetMeasuredDimensions(node *Node,
 
 // zeroOutLayoutRecursivly zeros out layout recursively
 func zeroOutLayoutRecursivly(node *Node) {
-	node.Layout.dimensions[DimensionHeight] = 0
-	node.Layout.dimensions[DimensionWidth] = 0
+	node.Layout.Dimensions[DimensionHeight] = 0
+	node.Layout.Dimensions[DimensionWidth] = 0
 	node.Layout.Position[EdgeTop] = 0
 	node.Layout.Position[EdgeBottom] = 0
 	node.Layout.Position[EdgeLeft] = 0
@@ -2897,8 +2897,8 @@ func layoutNodeInternal(node *Node, availableWidth float32, availableHeight floa
 	}
 
 	if performLayout {
-		node.Layout.dimensions[DimensionWidth] = node.Layout.measuredDimensions[DimensionWidth]
-		node.Layout.dimensions[DimensionHeight] = node.Layout.measuredDimensions[DimensionHeight]
+		node.Layout.Dimensions[DimensionWidth] = node.Layout.measuredDimensions[DimensionWidth]
+		node.Layout.Dimensions[DimensionHeight] = node.Layout.measuredDimensions[DimensionHeight]
 		node.hasNewLayout = true
 		node.IsDirty = false
 	}
@@ -2929,8 +2929,8 @@ func roundToPixelGrid(node *Node, pointScaleFactor float32, absoluteLeft float32
 	nodeLeft := node.Layout.Position[EdgeLeft]
 	nodeTop := node.Layout.Position[EdgeTop]
 
-	nodeWidth := node.Layout.dimensions[DimensionWidth]
-	nodeHeight := node.Layout.dimensions[DimensionHeight]
+	nodeWidth := node.Layout.Dimensions[DimensionWidth]
+	nodeHeight := node.Layout.Dimensions[DimensionHeight]
 
 	absoluteNodeLeft := absoluteLeft + nodeLeft
 	absoluteNodeTop := absoluteTop + nodeTop
@@ -2952,14 +2952,14 @@ func roundToPixelGrid(node *Node, pointScaleFactor float32, absoluteLeft float32
 	hasFractionalHeight := !FloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1), 0) &&
 		!FloatsEqual(fmodf(nodeHeight*pointScaleFactor, 1), 1)
 
-	node.Layout.dimensions[DimensionWidth] =
+	node.Layout.Dimensions[DimensionWidth] =
 		roundValueToPixelGrid(
 			absoluteNodeRight,
 			pointScaleFactor,
 			(textRounding && hasFractionalWidth),
 			(textRounding && !hasFractionalWidth)) -
 			roundValueToPixelGrid(absoluteNodeLeft, pointScaleFactor, false, textRounding)
-	node.Layout.dimensions[DimensionHeight] =
+	node.Layout.Dimensions[DimensionHeight] =
 		roundValueToPixelGrid(
 			absoluteNodeBottom,
 			pointScaleFactor,
