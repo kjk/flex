@@ -402,10 +402,10 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	NodeStyleSetWidth(rootChild0Child0, 100)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0Child0_child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0_child0, 100)
-	NodeStyleSetHeight(rootChild0Child0_child0, 100)
-	NodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
+	rootChild0Child0Child0 := NewNodeWithConfig(config)
+	NodeStyleSetWidth(rootChild0Child0Child0, 100)
+	NodeStyleSetHeight(rootChild0Child0Child0, 100)
+	NodeInsertChild(rootChild0Child0, rootChild0Child0Child0, 0)
 
 	rootChild1 := NewNodeWithConfig(config)
 	NodeStyleSetWidth(rootChild1, 100)
@@ -428,10 +428,10 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild0Child0.LayoutGetHeight())
 
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetLeft())
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetTop())
-	assertFloatEqual(t, 100, rootChild0Child0_child0.LayoutGetWidth())
-	assertFloatEqual(t, 100, rootChild0Child0_child0.LayoutGetHeight())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetLeft())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetTop())
+	assertFloatEqual(t, 100, rootChild0Child0Child0.LayoutGetWidth())
+	assertFloatEqual(t, 100, rootChild0Child0Child0.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 100, rootChild1.LayoutGetTop())
@@ -455,10 +455,10 @@ func TestFlex_wrap_wrap_to_child_height(t *testing.T) {
 	assertFloatEqual(t, 100, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 100, rootChild0Child0.LayoutGetHeight())
 
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetLeft())
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetTop())
-	assertFloatEqual(t, 100, rootChild0Child0_child0.LayoutGetWidth())
-	assertFloatEqual(t, 100, rootChild0Child0_child0.LayoutGetHeight())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetLeft())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetTop())
+	assertFloatEqual(t, 100, rootChild0Child0Child0.LayoutGetWidth())
+	assertFloatEqual(t, 100, rootChild0Child0Child0.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild1.LayoutGetLeft())
 	assertFloatEqual(t, 100, rootChild1.LayoutGetTop())
@@ -1476,10 +1476,10 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0Child0_child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0_child0, 40)
-	NodeStyleSetHeight(rootChild0Child0_child0, 40)
-	NodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
+	rootChild0Child0Child0 := NewNodeWithConfig(config)
+	NodeStyleSetWidth(rootChild0Child0Child0, 40)
+	NodeStyleSetHeight(rootChild0Child0Child0, 40)
+	NodeInsertChild(rootChild0Child0, rootChild0Child0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetMargin(rootChild0child1, EdgeRight, 10)
@@ -1506,10 +1506,10 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetHeight())
 
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetLeft())
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetTop())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetWidth())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetHeight())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetLeft())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetTop())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetWidth())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild0child1.LayoutGetLeft())
 	assertFloatEqual(t, 40, rootChild0child1.LayoutGetTop())
@@ -1538,10 +1538,10 @@ func TestWrap_nodes_with_content_sizing_overflowing_margin(t *testing.T) {
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetHeight())
 
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetLeft())
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetTop())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetWidth())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetHeight())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetLeft())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetTop())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetWidth())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetHeight())
 
 	assertFloatEqual(t, 35, rootChild0child1.LayoutGetLeft())
 	assertFloatEqual(t, 40, rootChild0child1.LayoutGetTop())
@@ -1570,10 +1570,10 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	rootChild0Child0 := NewNodeWithConfig(config)
 	NodeInsertChild(rootChild0, rootChild0Child0, 0)
 
-	rootChild0Child0_child0 := NewNodeWithConfig(config)
-	NodeStyleSetWidth(rootChild0Child0_child0, 40)
-	NodeStyleSetHeight(rootChild0Child0_child0, 40)
-	NodeInsertChild(rootChild0Child0, rootChild0Child0_child0, 0)
+	rootChild0Child0Child0 := NewNodeWithConfig(config)
+	NodeStyleSetWidth(rootChild0Child0Child0, 40)
+	NodeStyleSetHeight(rootChild0Child0Child0, 40)
+	NodeInsertChild(rootChild0Child0, rootChild0Child0Child0, 0)
 
 	rootChild0child1 := NewNodeWithConfig(config)
 	NodeStyleSetMargin(rootChild0child1, EdgeTop, 10)
@@ -1600,10 +1600,10 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetHeight())
 
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetLeft())
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetTop())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetWidth())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetHeight())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetLeft())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetTop())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetWidth())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetHeight())
 
 	assertFloatEqual(t, 0, rootChild0child1.LayoutGetLeft())
 	assertFloatEqual(t, 50, rootChild0child1.LayoutGetTop())
@@ -1632,10 +1632,10 @@ func TestWrap_nodes_with_content_sizing_margin_cross(t *testing.T) {
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetWidth())
 	assertFloatEqual(t, 40, rootChild0Child0.LayoutGetHeight())
 
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetLeft())
-	assertFloatEqual(t, 0, rootChild0Child0_child0.LayoutGetTop())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetWidth())
-	assertFloatEqual(t, 40, rootChild0Child0_child0.LayoutGetHeight())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetLeft())
+	assertFloatEqual(t, 0, rootChild0Child0Child0.LayoutGetTop())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetWidth())
+	assertFloatEqual(t, 40, rootChild0Child0Child0.LayoutGetHeight())
 
 	assertFloatEqual(t, 30, rootChild0child1.LayoutGetLeft())
 	assertFloatEqual(t, 50, rootChild0child1.LayoutGetTop())

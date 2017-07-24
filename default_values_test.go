@@ -67,10 +67,10 @@ func TestAssert_default_values(t *testing.T) {
 	assertFloatEqual(t, 0, root.LayoutGetRight())
 	assertFloatEqual(t, 0, root.LayoutGetBottom())
 
-	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeLeft))
-	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeTop))
-	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeRight))
-	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeBottom))
+	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeLeft))
+	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeTop))
+	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeRight))
+	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeBottom))
 
 	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeLeft))
 	assertFloatEqual(t, 0, NodeLayoutGetPadding(root, EdgeTop))

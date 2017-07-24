@@ -6,15 +6,15 @@ func TestComputed_layout_margin(t *testing.T) {
 	root := NewNode()
 	NodeStyleSetWidth(root, 100)
 	NodeStyleSetHeight(root, 100)
-	YGNodeStyleSetMarginPercent(root, EdgeStart, 10)
+	root.StyleSetMarginPercent(EdgeStart, 10)
 
 	NodeCalculateLayout(root, 100, 100, DirectionLTR)
 
-	assertFloatEqual(t, 10, NodeLayoutGetMargin(root, EdgeLeft))
-	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeRight))
+	assertFloatEqual(t, 10, root.LayoutGetMargin(EdgeLeft))
+	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeRight))
 
 	NodeCalculateLayout(root, 100, 100, DirectionRTL)
 
-	assertFloatEqual(t, 0, NodeLayoutGetMargin(root, EdgeLeft))
-	assertFloatEqual(t, 10, NodeLayoutGetMargin(root, EdgeRight))
+	assertFloatEqual(t, 0, root.LayoutGetMargin(EdgeLeft))
+	assertFloatEqual(t, 10, root.LayoutGetMargin(EdgeRight))
 }

@@ -325,8 +325,8 @@ func NodeStyleSetMargin(node *Node, edge Edge, margin float32) {
 	}
 }
 
-// YGNodeStyleSetMarginPercent sets margin percent
-func YGNodeStyleSetMarginPercent(node *Node, edge Edge, margin float32) {
+// StyleSetMarginPercent sets margin percent
+func (node *Node) StyleSetMarginPercent(edge Edge, margin float32) {
 	if node.Style.Margin[edge].Value != margin ||
 		node.Style.Margin[edge].Unit != UnitPercent {
 		node.Style.Margin[edge].Value = margin
@@ -563,8 +563,8 @@ func (node *Node) LayoutGetHeight() float32 {
 	return node.Layout.Dimensions[DimensionHeight]
 }
 
-// NodeLayoutGetMargin gets margin
-func NodeLayoutGetMargin(node *Node, edge Edge) float32 {
+// LayoutGetMargin gets margin
+func (node *Node) LayoutGetMargin(edge Edge) float32 {
 	assertWithNode(node, edge < EdgeEnd, "Cannot get layout properties of multi-edge shorthands")
 	if edge == EdgeLeft {
 		if node.Layout.Direction == DirectionRTL {
