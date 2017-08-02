@@ -2,7 +2,7 @@
 
 Go implementation of flexbox CSS layout algorithm.
 
-A pure GO port of [Facebook's Yoga](https://github.com/facebook/yoga).
+A pure Go port of [Facebook's Yoga](https://github.com/facebook/yoga).
 
 For usage examples look at `_test.go` files.
 
@@ -13,6 +13,8 @@ Logic is currently synced up to  https://github.com/facebook/yoga/commit/c938476
 * manually ported [C code](https://github.com/facebook/yoga/tree/master/yoga) to Go, line-by-line
 * manually ported [tests](https://github.com/facebook/yoga/tree/master/tests) to Go
 * tweak the API from C style to be more Go like. The structure and logic still is very close to C code (this makes porting future C changes easy)
+
+You can read more [here](https://blog.kowalczyk.info/article/wN9R/experience-porting-4.5k-loc-of-c-to-go-facebooks-css-flexbox-implementation-yoga.html)
 
 ## Status
 
