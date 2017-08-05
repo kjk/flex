@@ -22,4 +22,4 @@ The port is finished. The code works and passess all Yoga tests.
 
 The API is awkward by Go standards but it's the best I could do given that I want to stay close to C version.
 
-Logic is currently synced up to  https://github.com/facebook/yoga/commit/c9384762ee367f890a3de57ff3270d8f9c445866
+Logic is currently synced up to  https://github.com/facebook/yoga/commit/f45059e1e696727c1282742b89d2c8bf06345254

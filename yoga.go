@@ -2655,13 +2655,17 @@ func roundValueToPixelGrid(value float32, pointScaleFactor float32, forceCeil bo
 	scaledValue := value * pointScaleFactor
 	fractial := fmodf(scaledValue, 1.0)
 	if FloatsEqual(fractial, 0) {
-		// Still remove fractial as fractial could be  extremely small.
+		// First we check if the value is already rounded
 		scaledValue = scaledValue - fractial
+	} else if FloatsEqual(fractial, 1.0) {
+		scaledValue = scaledValue - fractial + 1.0
 	} else if forceCeil {
+		// Next we check if we need to use forced rounding
 		scaledValue = scaledValue - fractial + 1.0
 	} else if forceFloor {
 		scaledValue = scaledValue - fractial
 	} else {
+		// Finally we just round the value
 		var f float32
 		if fractial >= 0.5 {
 			f = 1.0
