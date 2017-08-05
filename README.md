@@ -1,10 +1,12 @@
 # flex - CSS flexbox layout implementation in Go
 
-Go implementation of flexbox CSS layout algorithm. A pure Go port of [Facebook's Yoga](https://github.com/facebook/yoga).
+Go implementation of [flexbox CSS](https://www.w3.org/TR/css-flexbox-1/) layout algorithm.
+
+A pure Go port of [Facebook's Yoga](https://github.com/facebook/yoga).
 
 ## How to use
 
-For usage examples look at `_test.go` files.
+Read [tutorial](https://blog.kowalczyk.info/article/9/tutorial-on-using-github.comkjkflex-go-package.html) or look at `_test.go` files.
 
 ## How the port was made
 
