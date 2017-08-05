@@ -221,65 +221,234 @@ const (
 	WrapWrapReverse
 )
 
-func YGWrapToString(value Wrap) string {
-	return ""
+// AlignToString returns string version of Align enum
+func AlignToString(value Align) string {
+	switch value {
+	case AlignAuto:
+		return "auto"
+	case AlignFlexStart:
+		return "flex-start"
+	case AlignCenter:
+		return "center"
+	case AlignFlexEnd:
+		return "flex-end"
+	case AlignStretch:
+		return "stretch"
+	case AlignBaseline:
+		return "baseline"
+	case AlignSpaceBetween:
+		return "space-between"
+	case AlignSpaceAround:
+		return "space-around"
+	}
+	return "unknown"
 }
 
-func YGAlignToString(value Align) string {
-	return ""
+// DimensionToString returns string version of Dimension enum
+func DimensionToString(value Dimension) string {
+	switch value {
+	case DimensionWidth:
+		return "width"
+	case DimensionHeight:
+		return "height"
+	}
+	return "unknown"
 }
 
-func YGDimensionToString(value Dimension) string {
-	return ""
+// DirectionToString returns string version of Direction enum
+func DirectionToString(value Direction) string {
+	switch value {
+	case DirectionInherit:
+		return "inherit"
+	case DirectionLTR:
+		return "ltr"
+	case DirectionRTL:
+		return "rtl"
+	}
+	return "unknown"
 }
 
-func YGDirectionToString(value Direction) string {
-	return ""
+// DisplayToString returns string version of Display enum
+func DisplayToString(value Display) string {
+	switch value {
+	case DisplayFlex:
+		return "flex"
+	case DisplayNone:
+		return "none"
+	}
+	return "unknown"
 }
 
-func YGDisplayToString(value Display) string {
-	return ""
+// EdgeToString returns string version of Edge enum
+func EdgeToString(value Edge) string {
+	switch value {
+	case EdgeLeft:
+		return "left"
+	case EdgeTop:
+		return "top"
+	case EdgeRight:
+		return "right"
+	case EdgeBottom:
+		return "bottom"
+	case EdgeStart:
+		return "start"
+	case EdgeEnd:
+		return "end"
+	case EdgeHorizontal:
+		return "horizontal"
+	case EdgeVertical:
+		return "vertical"
+	case EdgeAll:
+		return "all"
+	}
+	return "unknown"
 }
 
-func YGEdgeToString(value Edge) string {
-	return ""
-}
-func YGExperimentalFeatureToString(value ExperimentalFeature) string {
-	return ""
-}
-
-func YGFlexDirectionToString(value FlexDirection) string {
-	return ""
+// ExperimentalFeatureToString returns string version of ExperimentalFeature enum
+func ExperimentalFeatureToString(value ExperimentalFeature) string {
+	switch value {
+	case ExperimentalFeatureWebFlexBasis:
+		return "web-flex-basis"
+	}
+	return "unknown"
 }
 
-func YGJustifyToString(value Justify) string {
-	return ""
+// FlexDirectionToString returns string version of FlexDirection enum
+func FlexDirectionToString(value FlexDirection) string {
+	switch value {
+	case FlexDirectionColumn:
+		return "column"
+	case FlexDirectionColumnReverse:
+		return "column-reverse"
+	case FlexDirectionRow:
+		return "row"
+	case FlexDirectionRowReverse:
+		return "row-reverse"
+	}
+	return "unknown"
 }
 
-func YGLogLevelToString(value LogLevel) string {
-	return ""
+// JustifyToString returns string version of Justify enum
+func JustifyToString(value Justify) string {
+	switch value {
+	case JustifyFlexStart:
+		return "flex-start"
+	case JustifyCenter:
+		return "center"
+	case JustifyFlexEnd:
+		return "flex-end"
+	case JustifySpaceBetween:
+		return "space-between"
+	case JustifySpaceAround:
+		return "space-around"
+	}
+	return "unknown"
 }
 
-func YGMeasureModeToString(value MeasureMode) string {
-	return ""
+// LogLevelToString returns string version of LogLevel enum
+func LogLevelToString(value LogLevel) string {
+	switch value {
+	case LogLevelError:
+		return "error"
+	case LogLevelWarn:
+		return "warn"
+	case LogLevelInfo:
+		return "info"
+	case LogLevelDebug:
+		return "debug"
+	case LogLevelVerbose:
+		return "verbose"
+	case LogLevelFatal:
+		return "fatal"
+	}
+	return "unknown"
 }
 
-func YGNodeTypeToString(value NodeType) string {
-	return ""
+// MeasureModeToString returns string version of MeasureMode enum
+func MeasureModeToString(value MeasureMode) string {
+	switch value {
+	case MeasureModeUndefined:
+		return "undefined"
+	case MeasureModeExactly:
+		return "exactly"
+	case MeasureModeAtMost:
+		return "at-most"
+	}
+	return "unknown"
 }
 
-func YGOverflowToString(value Overflow) string {
-	return ""
+// NodeTypeToString returns string version of NodeType enum
+func NodeTypeToString(value NodeType) string {
+	switch value {
+	case NodeTypeDefault:
+		return "default"
+	case NodeTypeText:
+		return "text"
+	}
+	return "unknown"
 }
 
-func YGPositionTypeToString(value PositionType) string {
-	return ""
+// OverflowToString returns string version of Overflow enum
+func OverflowToString(value Overflow) string {
+	switch value {
+	case OverflowVisible:
+		return "visible"
+	case OverflowHidden:
+		return "hidden"
+	case OverflowScroll:
+		return "scroll"
+	}
+	return "unknown"
 }
 
-func YGPrintOptionsToString(value PrintOptions) string {
-	return ""
+// PositionTypeToString returns string version of PositionType enum
+func PositionTypeToString(value PositionType) string {
+	switch value {
+	case PositionTypeRelative:
+		return "relative"
+	case PositionTypeAbsolute:
+		return "absolute"
+	}
+	return "unknown"
 }
 
-func YGUnitToString(value Unit) string {
-	return ""
+// PrintOptionsToString returns string version of PrintOptions enum
+func PrintOptionsToString(value PrintOptions) string {
+	switch value {
+	case PrintOptionsLayout:
+		return "layout"
+	case PrintOptionsStyle:
+		return "style"
+	case PrintOptionsChildren:
+		return "children"
+	}
+	return "unknown"
+}
+
+// UnitToString returns string version of Unit enum
+func UnitToString(value Unit) string {
+	switch value {
+	case UnitUndefined:
+		return "undefined"
+	case UnitPoint:
+		return "point"
+	case UnitPercent:
+		return "percent"
+	case UnitAuto:
+		return "auto"
+	}
+	return "unknown"
+}
+
+// WrapToString returns string version of Wrap enum
+func WrapToString(value Wrap) string {
+	switch value {
+	case WrapNoWrap:
+		return "no-wrap"
+	case WrapWrap:
+		return "wrap"
+	case WrapWrapReverse:
+		return "wrap-reverse"
+	}
+	return "unknown"
 }

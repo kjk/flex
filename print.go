@@ -54,7 +54,7 @@ func printEdges(node *Node, str string, edges []Value) {
 		printNumberIfNotZero(node, str, &edges[EdgeLeft])
 	} else {
 		for edge := EdgeLeft; edge < EdgeCount; edge++ {
-			buf := fmt.Sprintf("%s-%s", str, YGEdgeToString(edge))
+			buf := fmt.Sprintf("%s-%s", str, EdgeToString(edge))
 			printNumberIfNotZero(node, buf, &edges[edge])
 		}
 	}
@@ -83,22 +83,22 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 			log(node,
 				LogLevelDebug,
 				"flex-direction: %s; ",
-				YGFlexDirectionToString(node.Style.FlexDirection))
+				FlexDirectionToString(node.Style.FlexDirection))
 		}
 		if node.Style.JustifyContent != nodeDefaults.Style.JustifyContent {
 			log(node,
 				LogLevelDebug,
 				"justify-content: %s; ",
-				YGJustifyToString(node.Style.JustifyContent))
+				JustifyToString(node.Style.JustifyContent))
 		}
 		if node.Style.AlignItems != nodeDefaults.Style.AlignItems {
-			log(node, LogLevelDebug, "align-items: %s; ", YGAlignToString(node.Style.AlignItems))
+			log(node, LogLevelDebug, "align-items: %s; ", AlignToString(node.Style.AlignItems))
 		}
 		if node.Style.AlignContent != nodeDefaults.Style.AlignContent {
-			log(node, LogLevelDebug, "align-content: %s; ", YGAlignToString(node.Style.AlignContent))
+			log(node, LogLevelDebug, "align-content: %s; ", AlignToString(node.Style.AlignContent))
 		}
 		if node.Style.AlignSelf != nodeDefaults.Style.AlignSelf {
-			log(node, LogLevelDebug, "align-self: %s; ", YGAlignToString(node.Style.AlignSelf))
+			log(node, LogLevelDebug, "align-self: %s; ", AlignToString(node.Style.AlignSelf))
 		}
 
 		printNumberIfNotUndefinedf(node, "flex-grow", node.Style.FlexGrow)
@@ -107,15 +107,15 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 		printNumberIfNotUndefinedf(node, "flex", node.Style.Flex)
 
 		if node.Style.FlexWrap != nodeDefaults.Style.FlexWrap {
-			log(node, LogLevelDebug, "flexWrap: %s; ", YGWrapToString(node.Style.FlexWrap))
+			log(node, LogLevelDebug, "flexWrap: %s; ", WrapToString(node.Style.FlexWrap))
 		}
 
 		if node.Style.Overflow != nodeDefaults.Style.Overflow {
-			log(node, LogLevelDebug, "overflow: %s; ", YGOverflowToString(node.Style.Overflow))
+			log(node, LogLevelDebug, "overflow: %s; ", OverflowToString(node.Style.Overflow))
 		}
 
 		if node.Style.Display != nodeDefaults.Style.Display {
-			log(node, LogLevelDebug, "display: %s; ", YGDisplayToString(node.Style.Display))
+			log(node, LogLevelDebug, "display: %s; ", DisplayToString(node.Style.Display))
 		}
 
 		printEdges(node, "margin", node.Style.Margin[:])
@@ -133,7 +133,7 @@ func nodePrintInternal(node *Node, options PrintOptions, level int) {
 			log(node,
 				LogLevelDebug,
 				"position: %s; ",
-				YGPositionTypeToString(node.Style.PositionType))
+				PositionTypeToString(node.Style.PositionType))
 		}
 
 		printEdgeIfNotUndefined(node, "left", node.Style.Position[:], EdgeLeft)
