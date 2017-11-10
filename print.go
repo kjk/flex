@@ -123,6 +123,9 @@ func (printer *NodePrinter) printNode(node *Node, level int) {
 		printer.printIndent(level)
 		printer.printf("\n")
 	}
+	if childCount != 0 {
+		printer.printIndent(level)
+	}
 	printer.printf("</div>")
 }
 
