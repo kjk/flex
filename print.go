@@ -106,10 +106,10 @@ func (printer *NodePrinter) printNode(node *Node, level int) {
 		printer.printEdgeIfNotUndefined(node, "right", node.Style.Position[:], EdgeRight)
 		printer.printEdgeIfNotUndefined(node, "top", node.Style.Position[:], EdgeTop)
 		printer.printEdgeIfNotUndefined(node, "bottom", node.Style.Position[:], EdgeBottom)
-		printer.printf("\" ")
+		printer.printf("\"")
 
 		if node.Measure != nil {
-			printer.printf("has-custom-measure=\"true\"")
+			printer.printf(" has-custom-measure=\"true\"")
 		}
 	}
 	printer.printf(">")
