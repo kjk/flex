@@ -132,6 +132,14 @@ func (printer *NodePrinter) printNode(node *Node, level int) {
 func (printer *NodePrinter) printEdges(node *Node, str string, edges []Value) {
 	if fourValuesEqual(edges) {
 		printer.printNumberIfNotZero(node, str, &edges[EdgeLeft])
+		// bugfix for issue #5
+		// if we set EdgeAll, the values are
+		// [{NaN 0} {NaN 0} {NaN 0} {NaN 0} {NaN 0} {NaN 0} {NaN 0} {NaN 0} {20 1}]
+		// so EdgeLeft is not printed and we won't print padding
+		// for simplicity, I assume that EdgeAll is exclusive with setting specific edges
+		// so we can print both and only one should show up
+		// C code has this bug: https://github.com/facebook/yoga/blob/26481a6553a33d9c005f2b8d24a7952fc58df32c/yoga/Yoga.c#L1036
+		printer.printNumberIfNotZero(node, str, &edges[EdgeAll])
 	} else {
 		for edge := EdgeLeft; edge < EdgeCount; edge++ {
 			buf := fmt.Sprintf("%s-%s", str, EdgeToString(edge))
