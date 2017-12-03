@@ -916,14 +916,11 @@ func constrainMaxSizeForMode(node *Node, axis FlexDirection, parentAxisSize floa
 		} else {
 			*size = maxSize
 		}
-
-		break
 	case MeasureModeUndefined:
 		if !FloatIsUndefined(maxSize) {
 			*mode = MeasureModeAtMost
 			*size = maxSize
 		}
-		break
 	}
 }
 

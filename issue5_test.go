@@ -25,7 +25,7 @@ func TestIssue5(t *testing.T) {
 	w := &bytes.Buffer{}
 	printer := NewNodePrinter(w, PrintOptionsLayout|PrintOptionsStyle|PrintOptionsChildren)
 	printer.Print(root)
-	got := string(w.Bytes())
+	got := w.String()
 	exp := `<div layout="width: 40; height: 40; top: 0; left: 0;" style="height: 100%; ">
   <div layout="width: 40; height: 40; top: 0; left: 0;" style="padding: 20px; "></div>
 </div>`
